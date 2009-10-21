@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="omg.org/UML/1.4" xmi.version="2.0">
+   <XMI.header>
+      <XMI.metamodel xmi.name="UML" xmi.version="1.4"/>
+		<XMI.documentation>
+			<XMI.exporter>
+				Embarcadero's Describe
+			</XMI.exporter>
+			<XMI.exporterVersion>
+				6.0
+			</XMI.exporterVersion>
+		</XMI.documentation>
+   </XMI.header>
+
+   <XMI.content>
+   <UML:Profile xmi.id="DCE.31B7626E-2721-C007-0034-2191B585A5AD" name="Unnamed" isCloned="true" href="./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]" isDirty="false"><UML:Element.ownedElement>
+<UML:Stereotype xmi.id="DCE.6A6E5FDB-DC32-6FD4-AF1C-24659E5F0FE9" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/>
+<UML:Stereotype xmi.id="DCE.1B5F747B-80D5-81A4-F731-C3AFA9A21CFC" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/>
+<UML:Stereotype xmi.id="DCE.32DBBADF-63C0-40FC-6EC6-F7CC93C1254E" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/>
+<UML:Stereotype xmi.id="DCE.D2FDD409-56BF-7C9A-3A90-E5BB561DDAFB" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/>
+<UML:Stereotype xmi.id="DCE.EF3C74AF-C1AE-8741-148C-91B9E7E4C5BC" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/>
+<UML:Stereotype xmi.id="DCE.E3E73174-6E68-652C-A283-8FCA598E3F61" name="interface" owner="__uri_./HidatoUML.etup#//*[@xmi.id=&apos;DCE.31B7626E-2721-C007-0034-2191B585A5AD&apos;]"/></UML:Element.ownedElement></UML:Profile></XMI.content>
+</XMI>
