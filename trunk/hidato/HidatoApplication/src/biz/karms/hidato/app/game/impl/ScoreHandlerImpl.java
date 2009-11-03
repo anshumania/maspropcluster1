@@ -2,6 +2,7 @@ package biz.karms.hidato.app.game.impl;
 
 import biz.karms.hidato.app.game.ScoreHandler;
 import java.util.SortedMap;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
@@ -9,7 +10,7 @@ import java.util.SortedMap;
  */
 public class ScoreHandlerImpl implements ScoreHandler {
 
-    private SortedMap<Integer,String> scoreList;
+    private SortedMap<Integer, String> scoreList;
 
     public ScoreHandlerImpl() {
         this.loadScoreList();
@@ -25,9 +26,11 @@ public class ScoreHandlerImpl implements ScoreHandler {
     }
 
     public int computeScore(String difficulty, int time) {
+        throw new NotImplementedException();
     }
 
     public boolean compareScore(int score) {
+        throw new NotImplementedException();
     }
 
     public void deleteLastRecord() {
