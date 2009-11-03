@@ -6,9 +6,10 @@ package biz.karms.hidato.app.game.matrix.impl;
  */
 public class Matrix {
 
-    private Cell matrix[][];
+    private Cell[][] matrix;
 
     public Matrix(int width, int height, int[] values) {
+        matrix = new Cell[width][height];
     }
 
     public Cell[][] getMatrix() {
