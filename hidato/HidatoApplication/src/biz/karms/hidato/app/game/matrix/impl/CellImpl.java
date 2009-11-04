@@ -4,13 +4,13 @@ package biz.karms.hidato.app.game.matrix.impl;
  *
  * @author
  */
-public class Cell {
+public class CellImpl {
 
     private int value;
     private boolean predefined;
     private boolean active;
 
-    public Cell(int value, boolean predefined, boolean active) {
+    public CellImpl(int value, boolean predefined, boolean active) {
         this.value = value;
         this.predefined = predefined;
         this.active = active;
