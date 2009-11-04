@@ -1,5 +1,7 @@
 package biz.karms.hidato.app.game.matrix.impl;
 
+import biz.karms.hidato.app.game.matrix.Cell;
+
 /**
  *
  * @author
