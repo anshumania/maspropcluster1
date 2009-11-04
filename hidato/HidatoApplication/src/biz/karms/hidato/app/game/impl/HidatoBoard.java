@@ -11,6 +11,7 @@ import biz.karms.hidato.app.game.matrix.impl.Matrix;
 public class HidatoBoard implements Board {
 
     private int time;
+    private int difficulty;
     private Matrix matrix;
     private GameMatrix gameMatrix;
 }
