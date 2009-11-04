@@ -1,27 +1,22 @@
 package biz.karms.hidato.app.game.matrix.impl;
 
+import biz.karms.hidato.app.game.matrix.Cell;
+
 /**
- *
+ * represents cell with value and others attributes which describe it
+ * 
  * @author
  */
-public class CellImpl {
+public class CellImpl implements Cell{
 
     private int value;
-    private boolean predefined;
     private boolean active;
+    private boolean editable;
 
-    public CellImpl(int value, boolean predefined, boolean active) {
+    public CellImpl(int value, boolean active, boolean editable) {
         this.value = value;
-        this.predefined = predefined;
-        this.active = active;
-    }
-
-    public boolean isPredefined() {
-        return predefined;
-    }
-
-    public void setPredefined(boolean predefined) {
-        this.predefined = predefined;
+        this.active = active;   //describes if cell is active or not
+        this.editable = editable;   //if true, it is not allowed to modify value
     }
 
     public int getValue() {
@@ -38,5 +33,13 @@ public class CellImpl {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }

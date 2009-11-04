@@ -1,7 +1,7 @@
 package biz.karms.hidato.app.controller.impl;
 
 import biz.karms.hidato.app.controller.Controller;
-import biz.karms.hidato.app.game.Board;
+import biz.karms.hidato.app.game.Game;
 import biz.karms.hidato.app.game.matrix.impl.Matrix;
 import java.util.TreeMap;
 
@@ -11,7 +11,7 @@ import java.util.TreeMap;
  */
 public class HidatoController implements Controller {
 
-    public Board generateGame(int cells, int filledCells, int shape, int difficultyLevel) {
+    public Game generateGame(int cells, int filledCells, int shape, int difficultyLevel) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
