@@ -3,29 +3,39 @@ package biz.karms.hidato.app.game;
 import java.util.TreeMap;
 
 /**
+ * handles score in finished game
  *
  * @author
  */
 public interface ScoreHandler {
 
     /**
-     *
+     * When we want to handle a new score record
+     * 
+     * @param game
      */
-    void loadScoreList();
+    public void handleScore(Game game);
 
     /**
      *
+     * @param game a finished game
+     * @return score based on constraint
      */
-    void saveScoreList();
+    public int computeScore(Game game);
 
     /**
-     * When we want to handle a new score record.
      *
-     * @param name is a name of the player who finished the game.
-     * @param difficulty is the finished game difficulty.
-     * @param time id the time the game took.
+     * @param score
+     * @return true if score is higher than last record in scoreList
      */
-    void handleScore(String name, int difficulty, int time);
+    public boolean compareScore(int score);
+
+    /**
+     *
+     * @param name is a name of the player who finished the game
+     * @param score
+     */
+    public void insertScore(int name, int score);
 
     /**
      * 

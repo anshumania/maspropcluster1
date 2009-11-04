@@ -1,6 +1,6 @@
 package biz.karms.hidato.app.controller;
 
-import biz.karms.hidato.app.game.Board;
+import biz.karms.hidato.app.game.Game;
 import biz.karms.hidato.app.game.matrix.impl.Matrix;
 import java.util.TreeMap;
 
@@ -19,9 +19,9 @@ public interface Controller {
      * @param filledCells   number of cell filled with numbers
      * @param shape one of the possible gamematrix shapes
      * @param difficultyLevel difficulty level chosen by user
-     * @return Board with game matrixes, available for player to play
+     * @return Game with game matrixes, available for player to play
      */
-    Board generateGame(int cells, int filledCells, int shape, int difficultyLevel);
+    Game generateGame(int cells, int filledCells, int shape, int difficultyLevel);
 
     /**
      *
