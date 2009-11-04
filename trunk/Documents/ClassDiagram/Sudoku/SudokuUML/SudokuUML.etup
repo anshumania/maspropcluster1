@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="omg.org/UML/1.4" xmi.version="2.0">
+   <XMI.header>
+      <XMI.metamodel xmi.name="UML" xmi.version="1.4"/>
+		<XMI.documentation>
+			<XMI.exporter>
+				Embarcadero's Describe
+			</XMI.exporter>
+			<XMI.exporterVersion>
+				6.0
+			</XMI.exporterVersion>
+		</XMI.documentation>
+   </XMI.header>
+
+   <XMI.content>
+   <UML:Profile xmi.id="DCE.693E10EB-FC30-CFD3-5449-E16B77668F25" name="Unnamed" isCloned="true" href=".\SudokuUML.etup#//*[@xmi.id=&apos;DCE.693E10EB-FC30-CFD3-5449-E16B77668F25&apos;]" isDirty="false"><UML:Element.ownedElement>
+<UML:Stereotype xmi.id="DCE.6C4F82C3-BF5A-B4C3-AD3F-AAFF07A99F4A" name="interface" owner="__uri_.\SudokuUML.etup#//*[@xmi.id=&apos;DCE.693E10EB-FC30-CFD3-5449-E16B77668F25&apos;]"/>
+<UML:Stereotype xmi.id="DCE.71547F44-AE4C-806D-EE9C-6549552A5E58" name="utility" owner="__uri_.\SudokuUML.etup#//*[@xmi.id=&apos;DCE.693E10EB-FC30-CFD3-5449-E16B77668F25&apos;]"/>
+<UML:Stereotype xmi.id="DCE.69F751E8-BC0D-1F68-76C4-1B18413E189D" name="creates" owner="__uri_.\SudokuUML.etup#//*[@xmi.id=&apos;DCE.693E10EB-FC30-CFD3-5449-E16B77668F25&apos;]"/></UML:Element.ownedElement></UML:Profile></XMI.content>
+</XMI>
