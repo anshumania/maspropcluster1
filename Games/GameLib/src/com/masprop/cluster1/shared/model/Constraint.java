@@ -4,8 +4,10 @@ package com.masprop.cluster1.shared.model;
 // #[regen=yes,id=DCE.966D659F-2024-894A-C4F5-F584C3018F7D]
 // </editor-fold> 
 /**
- *
+ * 
  * @author
+ * this class handle some game parameters such as level of difficulty, 
+ * number of cells free/busy, game variant
  */
 public class Constraint {
 
@@ -37,6 +39,7 @@ public class Constraint {
     /**
      *
      * @return
+	 * this return the game level value
      */
     public GameLevelType getGameLevel() {
         return gameLevel;
@@ -59,6 +62,7 @@ public class Constraint {
     /**
      *
      * @return
+	 * this return the game variant value
      */
     public GameVariant getGameVariant() {
         return gameVariant;
@@ -81,6 +85,7 @@ public class Constraint {
     /**
      *
      * @return
+	 * this return the total amount of free cells
      */
     public int getNoOfCellsFilled() {
         return noOfCellsFilled;
