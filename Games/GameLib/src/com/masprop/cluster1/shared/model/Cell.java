@@ -4,29 +4,40 @@ package com.masprop.cluster1.shared.model;
 // #[regen=yes,id=DCE.2EF6D954-197B-64BE-C423-66C653AE39C6]
 // </editor-fold> 
 /**
- *
- * @author
+ * This class represents single element of the game grid
+ * with current value of cell and other settings.
  */
 public class Cell {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.C09F1D13-E3E0-984C-9DCF-848CD545786B]
-    // </editor-fold> 
+    // </editor-fold>
+    /**
+     * current value of the cell
+     */
     private int currentValue;
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3EE78E72-050A-AA7E-977B-E44CD647254D]
-    // </editor-fold> 
+    // </editor-fold>
+    /**
+     * indicates if user is allowed to edit this cell
+     */
     private boolean editable;
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D35670E4-A1EC-8695-2935-8DBE4D83B8B2]
-    // </editor-fold> 
+    // </editor-fold>
+    /**
+     * indicates if cell is active,
+     * inactive cells are used in case of
+     * game shapes which are not rectangle
+     */
     private boolean active;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2BCEE42B-E1F5-8765-D116-A6CE6FB9CD2C]
     // </editor-fold> 
     /**
-     *
+     * Class constructor.
      */
     public Cell() {
     }
@@ -36,10 +47,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @return
+     * @return true if cell is active
      */
-    public boolean getActive() {
-        return active;
+    public boolean isActive() {
+        return this.active;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -47,10 +58,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @param val
+     * @param active indicates if cell is active
      */
-    public void setActive(boolean val) {
-        this.active = val;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -58,10 +69,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @return
+     * @return current value of cell
      */
     public int getCurrentValue() {
-        return currentValue;
+        return this.currentValue;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -69,10 +80,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @param val
+     * @param currentValue value of the cell
      */
-    public void setCurrentValue(int val) {
-        this.currentValue = val;
+    public void setCurrentValue(int currentValue) {
+        this.currentValue = currentValue;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -80,10 +91,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @return
+     * @return true if cell is editable
      */
-    public boolean getEditable() {
-        return editable;
+    public boolean isEditable() {
+        return this.editable;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -91,10 +102,10 @@ public class Cell {
     // </editor-fold> 
     /**
      *
-     * @param val
+     * @param editable indicates if cell is editable by user
      */
-    public void setEditable(boolean val) {
-        this.editable = val;
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }
 
