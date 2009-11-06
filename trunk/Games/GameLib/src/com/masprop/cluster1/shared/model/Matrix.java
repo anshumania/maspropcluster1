@@ -7,7 +7,7 @@ package com.masprop.cluster1.shared.model;
  *
  * @author
  */
-public interface GameMatrix {
+public interface Matrix {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.912EB343-E420-AC5F-DF70-FA177A255E50]

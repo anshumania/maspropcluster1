@@ -16,7 +16,7 @@ public abstract class Game {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2E2EEB0D-E314-FCEC-740B-99122E6FDA5C]
     // </editor-fold> 
-    private GameMatrix gameMatrix;
+    private Matrix gameMatrix;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.C261F173-6B11-46E2-D9D7-A9FA8980BB19]
@@ -83,7 +83,7 @@ public abstract class Game {
      *
      * @return
      */
-    public GameMatrix getGameMatrix() {
+    public Matrix getGameMatrix() {
         return gameMatrix;
     }
 
@@ -94,7 +94,7 @@ public abstract class Game {
      *
      * @param val
      */
-    public void setGameMatrix(GameMatrix val) {
+    public void setGameMatrix(Matrix val) {
         this.gameMatrix = val;
     }
 }
