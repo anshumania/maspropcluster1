@@ -5,7 +5,8 @@ package com.masprop.cluster1.shared.model;
 // </editor-fold> 
 /**
  *
- * @author
+ * @author 
+ * it defines a matrix which will contains the number 
  */
 public interface Matrix {
 
@@ -15,6 +16,7 @@ public interface Matrix {
     /**
      *
      * @param value
+	 * it receives a value and it insert it in a cell
      */
     public void putValueInCell(int value);
 
@@ -25,6 +27,7 @@ public interface Matrix {
      *
      * @param cell
      * @return
+	 * it returns the value present in a cell
      */
     public int getValueInCell(Cell cell);
 
