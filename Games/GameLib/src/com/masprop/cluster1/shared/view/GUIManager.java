@@ -11,7 +11,7 @@ import com.masprop.cluster1.shared.model.Game;
 // </editor-fold> 
 /**
  *
- * @author Karm
+ * @author Michal Karm Babacek
  */
 public abstract class GUIManager {
 
