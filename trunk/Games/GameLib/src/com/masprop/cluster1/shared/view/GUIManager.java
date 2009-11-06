@@ -15,26 +15,30 @@ import com.masprop.cluster1.shared.model.Game;
  */
 public abstract class GUIManager {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.D3440315-CD12-0FF8-31E9-403482836CF0]
-    // </editor-fold> 
-    private Game game;
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.7CA33296-8964-8957-623C-55CF2FA2A457]
-    // </editor-fold> 
-    private Constraint constraint;
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.D96D9C3C-CF01-3F3E-CAC2-72261C8E5B50]
-    // </editor-fold> 
-    private GameManager mGameManager;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.39939E06-1455-CE10-97B9-6BDE0F3383B1]
-    // </editor-fold> 
     /**
-     *
+     * The actual game (includes matrix and constraints)
      */
-    public GUIManager() {
+    private Game game = null;
+    /**
+     * Various setings.
+     */
+    private Constraint constraint = null;
+    /**
+     * GameManager - game business logic handler.
+     */
+    private GameManager mGameManager = null;
+
+    /**
+     * JFrame definitions, GUI elements
+     */
+    private GUI gui = null;
+
+    /**
+     * GUIManager handles all the GUI actions.
+     * @param gui actual GUI
+     */
+    public GUIManager(GUI gui) {
+        this.gui = gui;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -156,6 +160,13 @@ public abstract class GUIManager {
      */
     public List<String> getStatistics() {
         return null;
+    }
+
+    /**
+     * Exit the application.
+     */
+    public void exit() {
+
     }
 }
 
