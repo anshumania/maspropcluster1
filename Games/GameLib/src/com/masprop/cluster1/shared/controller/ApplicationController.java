@@ -3,7 +3,6 @@ package com.masprop.cluster1.shared.controller;
 import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.shared.view.GUIManager;
 
-
 // TODO: Auto-generated Javadoc
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.9D1AFF78-BC75-2E5A-5E47-7D10B2FFAA03]
@@ -27,8 +26,6 @@ import com.masprop.cluster1.shared.view.GUIManager;
  */
 public abstract class ApplicationController {
 
-	
-	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.05C4EBBA-3261-0712-221C-8BDD1F4181B3]
     // </editor-fold> 
@@ -36,14 +33,12 @@ public abstract class ApplicationController {
      * 
      */
     private static ApplicationController uniqueInstance;
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.EBEDD426-2108-9E5A-BA72-C7BD32B42E42]
     // </editor-fold> 
     /** The reference to the GameManager. 
      * */
     private GameManager gameManager;
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.37A2FE41-3628-426D-E501-99CBDF3AEEBB]
     // </editor-fold> 
@@ -51,24 +46,23 @@ public abstract class ApplicationController {
      * To be read from a system file, system property or constant file.
      *  */
     private GameType gameToPlay;
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.775789EA-C180-630C-E34C-566606AA2FE0]
     // </editor-fold> 
     /** The reference to the GUIManager for the Game Application. */
     private GUIManager guiManager;
 
-     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.D4E4A3CB-93C2-52A8-1B01-ABFEA5A2C50D]
     // </editor-fold> 
     /**
-      * Gets the single instance of ApplicationController.
-      * 
-      * @param gameType the game type
-      * 
-      * @return single instance of ApplicationController
-      */
-     public static ApplicationController getInstance (GameType gameType) {
+     * Gets the single instance of ApplicationController.
+     *
+     * @param gameType the game type
+     *
+     * @return single instance of ApplicationController
+     */
+    public static ApplicationController getInstance(GameType gameType) {
         return null;
     }
 
@@ -80,7 +74,7 @@ public abstract class ApplicationController {
      * 
      * @return the game manager
      */
-    public GameManager getGameManager () {
+    public GameManager getGameManager() {
         return gameManager;
     }
 
@@ -92,7 +86,7 @@ public abstract class ApplicationController {
      * 
      * @param val the new game manager
      */
-    public void setGameManager (GameManager val) {
+    public void setGameManager(GameManager val) {
         this.gameManager = val;
     }
 
@@ -104,7 +98,7 @@ public abstract class ApplicationController {
      * 
      * @return the game to play
      */
-    public GameType getGameToPlay () {
+    public GameType getGameToPlay() {
         return null;
     }
 
@@ -116,7 +110,7 @@ public abstract class ApplicationController {
      * 
      * @return the gui manager
      */
-    public GUIManager getGuiManager () {
+    public GUIManager getGuiManager() {
         return guiManager;
     }
 
@@ -127,7 +121,7 @@ public abstract class ApplicationController {
      * This is an internal delegation operation which signal the GUIManager
      * to create the necessary components for the view.
      */
-    protected void generateGUI () {
+    protected void generateGUI() {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -137,7 +131,7 @@ public abstract class ApplicationController {
      * This is an internal delegation operation to initialize all the components
      * related to start a Game Application.
      */
-    protected void initalizeComponents () {
+    protected void initalizeComponents() {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -148,11 +142,8 @@ public abstract class ApplicationController {
      * 
      * @param guiManager the new gui manager
      */
-    void setGuiManager (GUIManager guiManager) {
+    void setGuiManager(GUIManager guiManager) {
         this.guiManager = guiManager;
     }
-
-
-
 }
 
