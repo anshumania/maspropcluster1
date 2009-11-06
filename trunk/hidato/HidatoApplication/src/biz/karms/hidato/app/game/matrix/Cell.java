@@ -1,27 +1,38 @@
 package biz.karms.hidato.app.game.matrix;
 
 /**
- * represents cell with value and others attributes which describe it
  *
  * @author
  */
 public interface Cell {
 
     /**
-     *
-     * @return value of the cell
+     * 
+     * @return
+     */
+    boolean isPredefined();
+
+    /**
+     * 
+     * @param predefined
+     */
+    void setPredefined(boolean predefined);
+
+    /**
+     * 
+     * @return
      */
     int getValue();
 
     /**
-     *
+     * 
      * @param value
      */
     void setValue(int value);
 
     /**
-     *
-     * @return true if cell is active
+     * 
+     * @return
      */
     boolean isActive();
 
@@ -30,16 +41,4 @@ public interface Cell {
      * @param active
      */
     void setActive(boolean active);
-
-    /**
-     *
-     * @return true if cell is editable
-     */
-    boolean isEditable();
-
-    /**
-     *
-     * @param editable
-     */
-    void setEditable(boolean editable);
 }

@@ -18,13 +18,10 @@ public enum GameType {
     // </editor-fold> 
     /** The Game SUDOKU. */
     SUDOKU,
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.987F56DD-B975-834A-31F3-9793D14F442C]
     // </editor-fold> 
     /** The Game HIDATO. */
     HIDATO;
-
-
 }
 

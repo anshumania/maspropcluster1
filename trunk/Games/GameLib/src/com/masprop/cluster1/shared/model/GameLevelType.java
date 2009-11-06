@@ -18,19 +18,15 @@ public enum GameLevelType {
     // </editor-fold> 
     /** Game of type EASY. */
     EASY,
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.76D13FA7-BBE3-F590-179C-58BFADEF0FB8]
     // </editor-fold> 
     /** Game of type MEDIUM. */
     MEDIUM,
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.C60AAD51-9D3C-F054-F2A9-F0C0EE881844]
     // </editor-fold> 
     /** Game of type DIFFICULT. */
     DIFFICULT;
-
-
 }
 

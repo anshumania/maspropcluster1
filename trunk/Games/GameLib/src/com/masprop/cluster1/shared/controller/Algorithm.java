@@ -29,7 +29,6 @@ public interface Algorithm {
      * 
      * @param game the game
      */
-    public void performArlogrithmics (Game game);
-
+    public void performArlogrithmics(Game game);
 }
 
