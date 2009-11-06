@@ -13,7 +13,7 @@ import javax.swing.JSplitPane;
 public class GUI extends javax.swing.JFrame {
 
     /**
-     * Action manager.
+     * Actions and Swingworkers handled here manager.
      */
     private GUIManager guiManager = null;
 
@@ -23,15 +23,15 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         guiManager = new GUIManager(this) {};
         initComponents();
-    }
+    }   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        sideMenuPanel = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newGameMenuItem = new javax.swing.JMenuItem();
@@ -44,33 +44,33 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(187, 178, 178));
+        sideMenuPanel.setBackground(new java.awt.Color(187, 178, 178));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout sideMenuPanelLayout = new javax.swing.GroupLayout(sideMenuPanel);
+        sideMenuPanel.setLayout(sideMenuPanelLayout);
+        sideMenuPanelLayout.setHorizontalGroup(
+            sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 93, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        sideMenuPanelLayout.setVerticalGroup(
+            sideMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setLeftComponent(jPanel1);
+        jSplitPane1.setLeftComponent(sideMenuPanel);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 302, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel2);
+        jSplitPane1.setRightComponent(mainPanel);
 
         fileMenu.setText("File");
 
@@ -146,27 +146,29 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JMenuItem loadGameMenuItem;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuItem manualMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newGameMenuItem;
     private javax.swing.JMenuItem scoresMenuItem;
+    private javax.swing.JPanel sideMenuPanel;
     // End of variables declaration//GEN-END:variables
 
     /*Getters and Setters*/
     /**
-     *
-     * @return
+     * About menu item.
+     * Story: User wants to read something about the application.
+     * @return an about menu item.
      */
     public JMenuItem getAboutMenuItem() {
         return aboutMenuItem;
     }
 
     /**
-     *
+     * About menu item.
+     * Story: User wants to read something about the application.
      * @param aboutMenuItem
      */
     public void setAboutMenuItem(JMenuItem aboutMenuItem) {
@@ -174,15 +176,17 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * Exit menu item.
+     * Story: User wishes to exit the application.
+     * @return exit menu item
      */
     public JMenuItem getExitMenuItem() {
         return exitMenuItem;
     }
 
     /**
-     *
+     * Exit menu item.
+     * Story: User wishes to exit the application.
      * @param exitMenuItem
      */
     public void setExitMenuItem(JMenuItem exitMenuItem) {
@@ -190,15 +194,19 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * File menu
+     * Story: User wishes to perform one of the
+     * initial use-cases.
+     * @return file menu item
      */
     public JMenu getFileMenu() {
         return fileMenu;
     }
 
     /**
-     *
+     * File menu
+     * Story: User wishes to perform one of the
+     * initial use-cases.
      * @param fileMenu
      */
     public void setFileMenu(JMenu fileMenu) {
@@ -206,15 +214,19 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * Help menu
+     * Story: User wishes to know more about the application
+     * or wants to access the help / manual.
+     * @return help menu item.
      */
     public JMenu getHelpMenu() {
         return helpMenu;
     }
 
     /**
-     *
+     * Help menu
+     * Story: User wishes to know more about the application
+     * or wants to access the help / manual.
      * @param helpMenu
      */
     public void setHelpMenu(JMenu helpMenu) {
@@ -222,63 +234,17 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
-     */
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    /**
-     *
-     * @param jPanel1
-     */
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    /**
-     *
-     * @param jPanel2
-     */
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public JSplitPane getjSplitPane1() {
-        return jSplitPane1;
-    }
-
-    /**
-     *
-     * @param jSplitPane1
-     */
-    public void setjSplitPane1(JSplitPane jSplitPane1) {
-        this.jSplitPane1 = jSplitPane1;
-    }
-
-    /**
-     * 
-     * @return
+     * Load game menu item
+     * Story: User wishes to load a game from the disk.
+     * @return load game menu item
      */
     public JMenuItem getLoadGameMenuItem() {
         return loadGameMenuItem;
     }
 
     /**
-     *
+     * Load game menu item
+     * Story: User wishes to load a game from the disk.
      * @param loadGameMenuItem
      */
     public void setLoadGameMenuItem(JMenuItem loadGameMenuItem) {
@@ -286,15 +252,17 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * Manual menu item
+     * Story: User wishes to read the manual.
+     * @return manual menu item
      */
     public JMenuItem getManualMenuItem() {
         return manualMenuItem;
     }
 
     /**
-     *
+     * Manual menu item
+     * Story: User wishes to read the manual.
      * @param manualMenuItem
      */
     public void setManualMenuItem(JMenuItem manualMenuItem) {
@@ -302,15 +270,17 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * Main menu bar.
+     * Story: User wishes to perform application control actions.
+     * @return main menu bar item.
      */
     public JMenuBar getMainMenuBar() {
         return menuBar;
     }
 
     /**
-     *
+     * Main menu bar.
+     * Story: User wishes to perform application control actions.
      * @param menuBar
      */
     public void setMainMenuBar(JMenuBar menuBar) {
@@ -318,7 +288,8 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * New game menu item
+     * Story: User wishes to start a new game.
      * @return
      */
     public JMenuItem getNewGameMenuItem() {
@@ -326,7 +297,8 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * New game menu item
+     * Story: User wishes to start a new game.
      * @param newGameMenuItem
      */
     public void setNewGameMenuItem(JMenuItem newGameMenuItem) {
@@ -334,15 +306,17 @@ public class GUI extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @return
+     * Scores menu item
+     * Story: User wishes to browse the score list.
+     * @return scores menu item
      */
     public JMenuItem getScoresMenuItem() {
         return scoresMenuItem;
     }
 
     /**
-     *
+     * Scores menu item
+     * Story: User wishes to browse the score list.
      * @param scoresMenuItem
      */
     public void setScoresMenuItem(JMenuItem scoresMenuItem) {

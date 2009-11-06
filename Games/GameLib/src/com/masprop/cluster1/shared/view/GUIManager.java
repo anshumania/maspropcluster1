@@ -6,12 +6,12 @@ import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.646B58CC-9C3F-ED34-36E0-E4AC8FE9BAEE]
-// </editor-fold> 
 /**
- *
- * @author Michal Karm Babacek
+ * GUIManager is imlementing the action logic, swing workers and other
+ * operations invoked from the GUI. GUIManager calls operations on the
+ * GameManager in order to carry out the desired user demands.
+ * 
+ * @author
  */
 public abstract class GUIManager {
 
@@ -29,7 +29,7 @@ public abstract class GUIManager {
     private GameManager mGameManager = null;
 
     /**
-     * JFrame definitions, GUI elements
+     * JFrame definitions, GUI elements, action listener
      */
     private GUI gui = null;
 
@@ -41,56 +41,46 @@ public abstract class GUIManager {
         this.gui = gui;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.DC5B8585-060E-B865-6289-7E8BCF91453F]
-    // </editor-fold> 
     /**
+     * Retrieves a new game object from the
+     * GameManager.
      *
      * @param constraint
-     * @return
+     * @return a new game instance
      */
     public Game getNewGame(Constraint constraint) {
         return null;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.5CE99A0E-FBE3-7EFE-4ECE-51F64FC2C161]
-    // </editor-fold> 
     /**
+     * Asks the GameManager to validate the Game.
      *
      * @param game
-     * @return
+     * @return true/false, valid game/invalid game
      */
     public boolean validateGame(Game game) {
         return true;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0EE6AC7C-C6E0-5AE1-44B2-4814D13D16D8]
-    // </editor-fold> 
     /**
+     * Asks the GameManager for providing the solution for the Game.
      *
      * @param game
-     * @return
+     * @return solved game
      */
     public Game solveGame(Game game) {
         return null;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.BDE12BF8-A08F-0A88-8C2E-A17E10BBF758]
-    // </editor-fold> 
     /**
-     *
-     * @param game
+     * Asks the GameManager to persist the current Game object.
+     * @param game to be saved
      */
     public void saveGame(Game game) {
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8CE538E4-FA50-75DF-D9A5-CBA159226F51]
-    // </editor-fold> 
     /**
+     * Load a game or a collection of instances of the Game.
      *
      * @return
      */
@@ -98,72 +88,56 @@ public abstract class GUIManager {
         return null;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.2E7EF1ED-5941-27D3-6876-3D95527F5F7D]
-    // </editor-fold> 
     /**
-     *
+     * Sets all the JForm elements and all proper variables in order to
+     * display the correct UI for the player.
      */
     public void displayGame() {
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.E4BA316F-BA19-9386-2048-7D2765E589BE]
-    // </editor-fold> 
     /**
-     *
-     * @return
+     * Settings provider.
+     * @return current settings.
      */
     public Constraint getConstraint() {
         return constraint;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.9706EA69-A1A7-90F1-660F-D3044C756D3E]
-    // </editor-fold> 
     /**
-     *
-     * @param val
+     * Sets the setting.
+     * @param new settings to be set
      */
     public void setConstraint(Constraint val) {
         this.constraint = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.EAF3E87C-DC7A-AC46-61B4-1C147EA82E51]
-    // </editor-fold> 
     /**
-     *
-     * @return
+     * Provide the current Game object instance.
+     * @return game to be returned
      */
     public Game getGame() {
         return game;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.3CADEA8E-F53F-8CF8-1AB0-9FF19ACB5167]
-    // </editor-fold> 
     /**
-     *
-     * @param val
+     * Sets the current Game instance.
+     * @param game to be set
      */
     public void setGame(Game val) {
         this.game = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.7A680B94-D457-D278-66E2-9B32ABEDEC50]
-    // </editor-fold> 
     /**
-     *
-     * @return
+     * Retrieve the statistics.
+     * @return statistics
      */
     public List<String> getStatistics() {
         return null;
     }
 
     /**
-     * Exit the application.
+     * Notify the controller that the user wishes to exit the application.
+     * Exit then...
      */
     public void exit() {
 
