@@ -1,5 +1,6 @@
 package biz.karms.hidato.app.game;
 
+import com.masprop.cluster1.shared.model.Game;
 import java.util.TreeMap;
 
 /**

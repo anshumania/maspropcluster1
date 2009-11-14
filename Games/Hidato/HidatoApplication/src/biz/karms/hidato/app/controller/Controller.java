@@ -1,7 +1,7 @@
 package biz.karms.hidato.app.controller;
 
-import biz.karms.hidato.app.game.Game;
-import biz.karms.hidato.app.game.matrix.impl.Matrix;
+import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
+import com.masprop.cluster1.shared.model.Game;
 import java.util.TreeMap;
 
 /**
@@ -40,7 +40,7 @@ public interface Controller {
      * @param matrix player's work
      * @return true if the solution is valid, false othervise
      */
-    boolean validateSolution(Matrix matrix);
+    boolean validateSolution(HidatoMatrix matrix);
 
 
 }
