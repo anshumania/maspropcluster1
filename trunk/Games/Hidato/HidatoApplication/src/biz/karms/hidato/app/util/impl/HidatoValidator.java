@@ -1,11 +1,20 @@
 package biz.karms.hidato.app.util.impl;
 
-import biz.karms.hidato.app.util.Validator;
+import com.masprop.cluster1.shared.controller.GameValidator;
+import com.masprop.cluster1.shared.model.Game;
 
 /**
  *
  * @author
  */
-public class HidatoValidator implements Validator {
+public class HidatoValidator implements GameValidator {
 
+    /**
+     * 
+     * @param game
+     * @return
+     */
+    public boolean validateGame(Game game) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

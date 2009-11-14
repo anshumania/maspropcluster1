@@ -1,50 +1,42 @@
 package biz.karms.hidato.app.game.impl;
 
-import biz.karms.hidato.app.game.Game;
-import biz.karms.hidato.app.game.matrix.impl.Matrix;
+import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
+import com.masprop.cluster1.shared.model.Constraint;
+import com.masprop.cluster1.shared.model.Game;
 import java.util.List;
 
 /**
- * describes hidato game with matrix, solutions, and constraint
+ * Describes hidato game with matrix, solutions and constraint.
  *
- * @author
+ * @author Matus Pleva
  */
-public class HidatoGame implements Game {
-
-    private Matrix gameMatrix;
-    private List<Matrix> solutions;
-    private Constraint constraint;
+public class HidatoGame extends Game {
 
     /**
-     * class constructor
-     *
-     * @param constraint
+     * List of all possible solutions.
      */
-    public HidatoGame(Constraint constraint) {
-        this.constraint = constraint;
+    private List<HidatoMatrix> solutions;
+
+    /**
+     *
+     * @param constraint informations that describe game
+     * @param gameMatrix game grid
+     */
+    public HidatoGame(Constraint constraint, HidatoMatrix gameMatrix) {
+        super(constraint, gameMatrix);
     }
 
-    public Matrix getGameMatrix() {
-        return gameMatrix;
+    /**
+     * @return List of possible solutions
+     */
+    public List<HidatoMatrix> getSolutions() {
+        return this.solutions;
     }
 
-    public void setGameMatrix(Matrix gameMatrix) {
-        this.gameMatrix = gameMatrix;
-    }
-
-    public List<Matrix> getSolutions() {
-        return solutions;
-    }
-
-    public void setSolutions(List<Matrix> solutions) {
+    /**
+     * @param solutions list of possible solutions
+     */
+    public void setSolutions(List<HidatoMatrix> solutions) {
         this.solutions = solutions;
-    }
-
-    public Constraint getConstraint() {
-        return constraint;
-    }
-
-    public void setConstraint(Constraint constraint) {
-        this.constraint = constraint;
     }
 }
