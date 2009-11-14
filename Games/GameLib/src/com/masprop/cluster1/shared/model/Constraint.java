@@ -1,105 +1,78 @@
 package com.masprop.cluster1.shared.model;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.966D659F-2024-894A-C4F5-F584C3018F7D]
-// </editor-fold> 
 /**
- * 
- * @author
- * this class handle some game parameters such as level of difficulty, 
- * number of cells free/busy, game variant
+ * Class handles game parameters such as difficulty level,
+ * number of cells already filled and game variant.
+ *
+ * @author Andrea Gritti
  */
 public class Constraint {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.5837A26D-42DC-5707-A581-F86367A1E485]
-    // </editor-fold> 
-    private GameLevelType gameLevel;
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.03DAA2BE-9B02-D402-4BF0-0923218BFF11]
-    // </editor-fold> 
-    private int noOfCellsFilled;
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.E246BBC1-17D8-54B5-7E3D-27C0E96524D5]
-    // </editor-fold> 
+    /**
+     * Game difficulty level.
+     */
+    private GameLevelType gameLevelType;
+    /**
+     * Game variant keeps information about board shape and size
+     */
     private GameVariant gameVariant;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.A29CCD33-D1E8-1471-D44E-E7A5FB049121]
-    // </editor-fold> 
     /**
-     *
+     * Number of cells already filled.
      */
-    public Constraint() {
+    private int noOfFilledCells;
+
+    /**
+     * Class constructor.
+     *
+     * @param gameLevelType difficulty level
+     * @param gameVariant information about board shape and size
+     * @param noOfFilledCells number of cells already filled
+     */
+    public Constraint(GameLevelType gameLevelType, GameVariant gameVariant, int noOfFilledCells) {
+        this.gameLevelType = gameLevelType;
+        this.gameVariant = gameVariant;
+        this.noOfFilledCells = noOfFilledCells;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.D6CEE28C-64D9-6EC6-BFEA-ADABE1E6DBE8]
-    // </editor-fold> 
     /**
-     *
-     * @return
-	 * this return the game level value
+     * @return gameLevel level of the game
      */
-    public GameLevelType getGameLevel() {
-        return gameLevel;
+    public GameLevelType getGameLevelType() {
+        return this.gameLevelType;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.78239763-192F-6250-2870-A4E8C6228247]
-    // </editor-fold> 
     /**
-     *
-     * @param val
+     * @param gameLevelType represents difficulty level of game
      */
-    public void setGameLevel(GameLevelType val) {
-        this.gameLevel = val;
+    public void setGameLevelType(GameLevelType gameLevelType) {
+        this.gameLevelType = gameLevelType;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.FA24E11D-B5C6-22D7-B5B1-73A793F3DE72]
-    // </editor-fold> 
     /**
-     *
-     * @return
-	 * this return the game variant value
+     * @return gameVariant information about board shape and size
      */
     public GameVariant getGameVariant() {
-        return gameVariant;
+        return this.gameVariant;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.CC569EF5-BF1A-AB44-711A-B889734666CC]
-    // </editor-fold> 
     /**
-     *
-     * @param val
+     * @param gameVariant information about board shape and size
      */
-    public void setGameVariant(GameVariant val) {
-        this.gameVariant = val;
+    public void setGameVariant(GameVariant gameVariant) {
+        this.gameVariant = gameVariant;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.F49F66F2-7F54-D44F-C55E-9F4B581EE8D4]
-    // </editor-fold> 
     /**
-     *
-     * @return
-	 * this return the total amount of free cells
+     * @return noOfFilledCells number of cells already filled
      */
-    public int getNoOfCellsFilled() {
-        return noOfCellsFilled;
+    public int getNoOfFilledCells() {
+        return noOfFilledCells;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B3BA2907-1794-78EB-2AC1-56CED5D03FCC]
-    // </editor-fold> 
     /**
-     *
-     * @param val
+     * @param noOfFilledCells number of cells already filled
      */
-    public void setNoOfCellsFilled(int val) {
-        this.noOfCellsFilled = val;
+    public void setNoOfFilledCells(int noOfFilledCells) {
+        this.noOfFilledCells = noOfFilledCells;
     }
 }
-
