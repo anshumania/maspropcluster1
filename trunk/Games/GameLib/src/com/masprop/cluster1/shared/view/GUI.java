@@ -251,10 +251,10 @@ public class GUI extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(gameBoard);
 
         statusBar.setBackground(new java.awt.Color(248, 233, 210));
-        statusBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        statusBar.setLayout(new java.awt.BorderLayout());
 
         statusText.setText("Welcome");
-        statusBar.add(statusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        statusBar.add(statusText, java.awt.BorderLayout.CENTER);
 
         menuBar.setBackground(new java.awt.Color(230, 215, 193));
 
@@ -372,7 +372,7 @@ public class GUI extends javax.swing.JFrame {
         CellKeyListener cellKeyListener = new CellKeyListener();
         JTextField cell = null;
         cells = new ArrayList<JTextField>();
-
+        
         for (int i = 0; i < 100; i++) {
 
             cell = new JTextField();
@@ -386,9 +386,23 @@ public class GUI extends javax.swing.JFrame {
             cell.addActionListener(cellActionListener);
             cell.addFocusListener(cellFocusListener);
             cell.addKeyListener(cellKeyListener);
+            //cell.setText(""+i);
             gameBoard.add(cell);
             cells.add(cell);
         }
+        cells.get(13).setVisible(false);
+        cells.get(14).setVisible(false);
+        cells.get(15).setVisible(false);
+        cells.get(16).setVisible(false);
+        
+        cells.get(22).setVisible(false);
+        cells.get(27).setVisible(false);
+        cells.get(32).setVisible(false);
+        cells.get(43).setVisible(false);
+
+        cells.get(97).setVisible(false);
+        cells.get(88).setVisible(false);
+        cells.get(79).setVisible(false);
     }
 
     class CellKeyListener implements KeyListener {
