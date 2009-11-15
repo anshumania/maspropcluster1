@@ -80,10 +80,10 @@ public class GUI extends javax.swing.JFrame {
         aboutDialog.setTitle("About");
         aboutDialog.setIconImage(null);
         aboutDialog.setIconImages(null);
-        aboutDialog.setMinimumSize(new java.awt.Dimension(380, 330));
+        aboutDialog.setMinimumSize(new java.awt.Dimension(400, 350));
         aboutDialog.setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel1.setText("Authors:");
 
         jLabel2.setText("Michal \"Karm\" Babacek");
@@ -98,18 +98,18 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel7.setText("Andrea Gritti");
 
-        jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel8.setText("Version:");
 
-        jLabel9.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel9.setText("Licence:");
 
-        jLabel10.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel10.setText("Third party:");
 
         jLabel11.setText("Icons by Brsev, CC by-nc-nd, 3.0");
 
-        jLabel12.setFont(new java.awt.Font("DejaVu Sans", 2, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("DejaVu Sans", 2, 14));
         jLabel12.setText("http://brsev.deviantart.com/");
 
         jLabel13.setText("0.1b, rev32");
@@ -159,16 +159,16 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel11))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aboutDialogLayout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+                .addContainerGap(242, Short.MAX_VALUE)
                 .addComponent(buttonGameIsDone1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(61, 61, 61))
         );
         aboutDialogLayout.setVerticalGroup(
             aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(aboutDialogLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(aboutDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
@@ -196,9 +196,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonGameIsDone1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         fileChooser.setBackground(new java.awt.Color(230, 215, 193));
