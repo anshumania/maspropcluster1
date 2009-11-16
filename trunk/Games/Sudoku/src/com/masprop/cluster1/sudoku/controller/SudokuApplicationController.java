@@ -10,19 +10,17 @@ public class SudokuApplicationController extends ApplicationController {
 	private SudokuApplicationController()
 	{
 		// defeat instantiation
+		setUniqueInstance(this);
 	}
 	
 	public static ApplicationController getSudokuApplicationController()
 	{
 	
-		setUniqueInstance(getUniqueInstance()== null ?
-			 	new SudokuApplicationController() :  getUniqueInstance());
-			
-			if(null == getUniqueInstance())
-				throw new IllegalArgumentException("Cannot create a Controller for " + getGameToPlay() );
-
-					
-	        return getUniqueInstance();
+		if(null == getGameToPlay())
+			throw new IllegalArgumentException("Cannot create a Controller for " + getGameToPlay() );
+		else
+			return getUniqueInstance()== null ?
+			 	new SudokuApplicationController() :  getUniqueInstance();
 	}
 }	
 
