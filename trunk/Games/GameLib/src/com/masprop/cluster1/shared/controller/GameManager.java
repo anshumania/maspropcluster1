@@ -2,6 +2,8 @@ package com.masprop.cluster1.shared.controller;
 
 import java.util.List;
 
+import sun.nio.cs.Surrogate.Generator;
+
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 
@@ -29,21 +31,38 @@ import com.masprop.cluster1.shared.model.Game;
  * @version 1.0
  * @since 1.0
  */
-public interface GameManager {
+public abstract class GameManager {
 
+	
+	protected GameGenerator gameGenerator;
+	
+	protected GameSolver gameSolver;
+	
+	protected GameValidator gameValidator;
+	
+	protected StorageManager storageManager;
+	
+	protected StatisticsManager statisticsManager;
+	
     /**
      * Gets the game generator.
      *
      * @return the game generator
      */
-    public GameGenerator getGameGenerator();
+    public GameGenerator getGameGenerator()
+    {
+    	return gameGenerator;
+    }
 
     /**
      * Gets the game solver.
      * 
      * @return the game solver
      */
-    public GameSolver getGameSolver();
+    public GameSolver getGameSolver()
+    {
+    	return gameSolver;
+    }
 
      
     /**
@@ -51,14 +70,20 @@ public interface GameManager {
      * 
      * @return the game validator
      */
-    public GameValidator getGameValidator();
+    public GameValidator getGameValidator()
+    {
+    	return gameValidator;
+    }
 
     /**
      * Gets the storage manager.
      *
      * @return the storage manager
      */
-    public StorageManager getStorageManager();
+    public StorageManager getStorageManager()
+    {
+    	return storageManager;
+    }
 
      
     /**
@@ -68,7 +93,10 @@ public interface GameManager {
      * 
      * @return the new game
      */
-    public Game getNewGame(Constraint constraint);
+    public Game getNewGame(Constraint constraint)
+    {
+    	return getGameGenerator().generateGame(constraint);
+    }
 
      
     /**
@@ -78,7 +106,10 @@ public interface GameManager {
      * 
      * @return true, if successful
      */
-    public boolean validateGame(Game game);
+    public boolean validateGame(Game game)
+    {
+    	return getGameValidator().validateGame(game);
+    }
 
      
     /**
@@ -88,7 +119,10 @@ public interface GameManager {
      * 
      * @return the game
      */
-    public Game solveGame(Game game);
+    public Game solveGame(Game game)
+    {
+    	return getGameSolver().solveGame(game);
+    }
 
      
     /**
@@ -96,7 +130,10 @@ public interface GameManager {
      * 
      * @param game the game
      */
-    public void saveGame(Game game);
+    public void saveGame(Game game)
+    {
+    	getStorageManager().saveToFile(game);
+    }
 
      
     /**
@@ -104,7 +141,10 @@ public interface GameManager {
      * 
      * @return the list< game>
      */
-    public List<Game> loadGame();
+    public List<Game> loadGame()
+    {
+    	return getStorageManager().loadFromFile();
+    }
 
      
     /**
@@ -112,6 +152,35 @@ public interface GameManager {
      * 
      * @return the statistics
      */
-    public List<String> getStatistics();
+    public List<String> getStatistics()
+    {
+    	return new java.util.ArrayList<String>();
+    }
+    
+    
+	public void setGameGenerator(GameGenerator gameGenerator) {
+		this.gameGenerator = gameGenerator;
+	}
+
+	public void setGameSolver(GameSolver gameSolver) {
+		this.gameSolver = gameSolver;
+	}
+
+	public void setGameValidator(GameValidator gameValidator) {
+		this.gameValidator = gameValidator;
+	}
+
+	public void setStorageManager(StorageManager storageManager) {
+		this.storageManager = storageManager;
+	}
+
+	public void setStatisticsManager(StatisticsManager statisticsManager) {
+		this.statisticsManager = statisticsManager;
+	}
+
+	public StatisticsManager getStatisticsManager() {
+		return statisticsManager;
+	}
+
 }
 

@@ -44,7 +44,7 @@ public abstract class ApplicationController {
 	private static GameType gameToPlay;
 	/** The reference to the GUIManager for the Game Application. */
 	private GUIManager guiManager;
-
+	
 	/**
 	 * Gets the single instance of ApplicationController.
 	 * 
@@ -55,8 +55,8 @@ public abstract class ApplicationController {
 	 */
 	public static ApplicationController getInstance(GameType gameType) {
 
-		//setGameToPlay(getGameToPlay() == null ? gameType : getGameToPlay());
-		
+	//TODO : Should the names for the classes be read from a property file ?
+	//TODO : Maybe this can be a switch construct with the addition of a new group to the cluster	
 		try {
 			Class<?> gameController;
 			if (gameType == GameType.SUDOKU) {
@@ -146,11 +146,9 @@ public abstract class ApplicationController {
 	/**
 	 * This is an internal delegation operation to initialize all the components
 	 * related to start a Game Application.
+	 * Each implementation of ApplicationController should override this
 	 */
-	protected void initalizeComponents() {
-		
-		
-	}
+	protected abstract void initalizeComponents();
 
 	/**
 	 * Sets the gui manager.
@@ -163,7 +161,12 @@ public abstract class ApplicationController {
 	}
 	
 	
-
+  /**
+   * This instance should be used by client applications which are aware that
+   * that their ApplicationController has been instantiated.
+   * The null checks have to be handled by the client.
+   * @return
+   */
 	public static ApplicationController getUniqueInstance() {
 		return uniqueInstance;
 	}
