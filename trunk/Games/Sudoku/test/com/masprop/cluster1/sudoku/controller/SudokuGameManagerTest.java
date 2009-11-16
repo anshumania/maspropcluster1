@@ -10,8 +10,10 @@ import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
+import com.masprop.cluster1.sudoku.model.SudokuGameVariant;
 
 public class SudokuGameManagerTest {
 	
@@ -88,7 +90,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testGetNewGame() {
-		Constraint constraint = new Constraint();
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game sudokuGame = ApplicationController.getUniqueInstance().getGameManager().getNewGame(constraint);
 		assertNotNull(sudokuGame);
 		assertTrue(sudokuGame instanceof SudokuGame);
@@ -98,7 +100,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testValidateGame() {
-		Constraint constraint = new Constraint();
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game game = new SudokuGame(constraint);
 		boolean validation = true;
 		validation = ApplicationController.getUniqueInstance().getGameManager().getGameValidator().validateGame(game);
@@ -107,7 +109,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testSolveGame() {
-		Constraint constraint = new Constraint();
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game game = new SudokuGame(constraint);
 		Game solvedGame = ApplicationController.getUniqueInstance().getGameManager().getGameSolver().solveGame(game);
 		
