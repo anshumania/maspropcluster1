@@ -3,7 +3,6 @@ package com.masprop.cluster1.sudoku.controller;
 import javax.activation.UnsupportedDataTypeException;
 
 import com.masprop.cluster1.shared.controller.ApplicationController;
-import com.masprop.cluster1.shared.model.GameType;
 
 public class SudokuApplicationController extends ApplicationController {
 	
@@ -21,6 +20,20 @@ public class SudokuApplicationController extends ApplicationController {
 		else
 			return getUniqueInstance()== null ?
 			 	new SudokuApplicationController() :  getUniqueInstance();
+	}
+	
+	@Override
+	public void initalizeComponents()
+	{
+		setGameManager(new SudokuGameManager());
+		
+		assert getGameManager()!=null;
+		
+		getGameManager().setGameGenerator(new SudokuGameGenerator());
+		getGameManager().setGameSolver(new SudokuGameSolver());
+		getGameManager().setGameValidator(new SudokuGameValidator());
+		getGameManager().setStorageManager(new SudokuStorageManager());
+		getGameManager().setStatisticsManager(new SudokuStatisticsManager());
 	}
 }	
 
