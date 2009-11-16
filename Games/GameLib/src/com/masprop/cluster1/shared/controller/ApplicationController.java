@@ -55,6 +55,8 @@ public abstract class ApplicationController {
 	 */
 	public static ApplicationController getInstance(GameType gameType) {
 
+		//setGameToPlay(getGameToPlay() == null ? gameType : getGameToPlay());
+		
 		try {
 			Class<?> gameController;
 			if (gameType == GameType.SUDOKU) {
@@ -159,8 +161,18 @@ public abstract class ApplicationController {
 	void setGuiManager(GUIManager guiManager) {
 		this.guiManager = guiManager;
 	}
+	
+	
 
 	public static ApplicationController getUniqueInstance() {
 		return uniqueInstance;
+	}
+
+	public static void setUniqueInstance(ApplicationController uniqueInstance) {
+		ApplicationController.uniqueInstance = uniqueInstance;
+	}
+
+	public static void setGameToPlay(GameType gameToPlay) {
+		ApplicationController.gameToPlay = gameToPlay;
 	}
 }
