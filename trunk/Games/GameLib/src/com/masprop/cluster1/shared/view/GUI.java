@@ -1,22 +1,11 @@
 package com.masprop.cluster1.shared.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,7 +17,6 @@ public class GUI extends javax.swing.JFrame {
      * Actions and Swingworkers handled here manager.
      */
     private GUIManager guiManager = null;
-    List<JTextField> cells = null;
 
     /**
      * Initialization of all the components included in this JFrame.
@@ -37,7 +25,7 @@ public class GUI extends javax.swing.JFrame {
         guiManager = new GUIManager(this) {
         };
         initComponents();
-        initializeCells();
+        guiManager.initializeCells();
     }
 
     @SuppressWarnings("unchecked")
@@ -375,112 +363,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_saveGameMenuItemActionPerformed
 
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
-
-        if(fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
+        if (fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
             guiManager.loadGame(fileChooser.getSelectedFile());
-        } else if(fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
-
+        } else if (fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
+            guiManager.saveGame();
         } else {
             throw new IllegalArgumentException("illegal fileChooser state");
         }
-
     }//GEN-LAST:event_fileChooserActionPerformed
-
-    private void initializeCells() {
-        CellActionListener cellActionListener = new CellActionListener();
-        CellFocusListener cellFocusListener = new CellFocusListener();
-        CellKeyListener cellKeyListener = new CellKeyListener();
-        JTextField cell = null;
-        cells = new ArrayList<JTextField>();
-        
-        for (int i = 0; i < 100; i++) {
-
-            cell = new JTextField();
-            cell.setBackground(new Color(239, 227, 209));
-            cell.setColumns(2);
-            cell.setFont(new Font("DejaVu Sans", 1, 31));
-            cell.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-            cell.setMaximumSize(new Dimension(2, 2));
-            cell.setMinimumSize(new Dimension(2, 2));
-
-            cell.addActionListener(cellActionListener);
-            cell.addFocusListener(cellFocusListener);
-            cell.addKeyListener(cellKeyListener);
-            //cell.setText(""+i);
-            gameBoard.add(cell);
-            cells.add(cell);
-        }
-        cells.get(13).setVisible(false);
-        cells.get(14).setVisible(false);
-        cells.get(15).setVisible(false);
-        cells.get(16).setVisible(false);
-        
-        cells.get(22).setVisible(false);
-        cells.get(27).setVisible(false);
-        cells.get(32).setVisible(false);
-        cells.get(43).setVisible(false);
-
-        cells.get(97).setVisible(false);
-        cells.get(88).setVisible(false);
-        cells.get(79).setVisible(false);
-    }
-
-    class CellKeyListener implements KeyListener {
-
-        public void keyTyped(KeyEvent e) {
-        }
-
-        public void keyPressed(KeyEvent e) {
-            //Nothing
-        }
-
-        public void keyReleased(KeyEvent e) {
-            if (e.getSource() instanceof JTextField) {
-                try {
-                    if (!((JTextField) e.getSource()).getText().isEmpty()) {
-                        if (Integer.parseInt(((JTextField) e.getSource()).getText()) > 100) {
-                            ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
-                            ((JTextField) e.getSource()).setText("");
-                            statusText.setText("Max allowed number you can fill in is 100...");
-                        } else {
-                            statusText.setText("");
-                            ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-                        }
-                    }
-                } catch (NumberFormatException ex) {
-                    ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
-                    ((JTextField) e.getSource()).setText("");
-                    statusText.setText("Only numbers are allowed in cells...");
-                }
-            }
-        }
-    }
-
-    class CellActionListener implements ActionListener {
-
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-    }
-
-    class CellFocusListener implements FocusListener {
-
-        public void focusGained(FocusEvent e) {
-            if (e.getSource() instanceof JTextField) {
-                ((JTextField) e.getSource()).setBackground(new Color(236, 184, 21));
-            }
-        }
-
-        public void focusLost(FocusEvent e) {
-            if (e.getSource() instanceof JTextField) {
-                ((JTextField) e.getSource()).setBackground(new Color(239, 227, 209));
-                if (((JTextField) e.getSource()).getText().isEmpty()) {
-                    statusText.setText("");
-                    ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-                }
-            }
-        }
-    }
 
     /**
      * Run the main thread.
@@ -696,4 +586,21 @@ public class GUI extends javax.swing.JFrame {
     public void setScoresMenuItem(JMenuItem scoresMenuItem) {
         this.scoresMenuItem = scoresMenuItem;
     }
+
+    public JPanel getGameBoard() {
+        return gameBoard;
+    }
+
+    public void setGameBoard(JPanel gameBoard) {
+        this.gameBoard = gameBoard;
+    }
+
+    public JLabel getStatusText() {
+        return statusText;
+    }
+
+    public void setStatusText(JLabel statusText) {
+        this.statusText = statusText;
+    }
+
 }

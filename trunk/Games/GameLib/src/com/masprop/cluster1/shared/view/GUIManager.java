@@ -5,7 +5,19 @@ import java.util.List;
 import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
+import java.util.ArrayList;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 /**
  * GUIManager is imlementing the action logic, swing workers and other
@@ -42,6 +54,116 @@ public abstract class GUIManager {
         this.gui = gui;
     }
 
+    public void initializeCells() {
+        CellActionListener cellActionListener = new CellActionListener();
+        CellFocusListener cellFocusListener = new CellFocusListener();
+        CellKeyListener cellKeyListener = new CellKeyListener();
+        JTextField cell = null;
+        List<JTextField> cells = new ArrayList<JTextField>();
+
+        for (int i = 0; i < 100; i++) {
+
+            cell = new JTextField();
+            cell.setBackground(new Color(239, 227, 209));
+            cell.setColumns(2);
+            cell.setFont(new Font("DejaVu Sans", 1, 31));
+            cell.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+            cell.setMaximumSize(new Dimension(2, 2));
+            cell.setMinimumSize(new Dimension(2, 2));
+
+            cell.addActionListener(cellActionListener);
+            cell.addFocusListener(cellFocusListener);
+            cell.addKeyListener(cellKeyListener);
+            //cell.setText(""+i);
+            gui.getGameBoard().add(cell);
+            cells.add(cell);
+        }
+        cells.get(13).setVisible(false);
+        cells.get(14).setVisible(false);
+        cells.get(15).setVisible(false);
+        cells.get(16).setVisible(false);
+
+        cells.get(22).setVisible(false);
+        cells.get(27).setVisible(false);
+        cells.get(32).setVisible(false);
+        cells.get(43).setVisible(false);
+
+        cells.get(97).setVisible(false);
+        cells.get(88).setVisible(false);
+        cells.get(79).setVisible(false);
+    }
+
+    class CellKeyListener implements KeyListener {
+
+        public void keyTyped(KeyEvent e) {
+            //Nothing
+        }
+
+        public void keyPressed(KeyEvent e) {
+            //Nothing
+        }
+
+        /**
+         * Validator for user imput in cells.
+         * @param e enent
+         */
+        public void keyReleased(KeyEvent e) {
+            if (e.getSource() instanceof JTextField) {
+                try {
+                    if (!((JTextField) e.getSource()).getText().isEmpty()) {
+                        if (Integer.parseInt(((JTextField) e.getSource()).getText()) > 100) {
+                            ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
+                            ((JTextField) e.getSource()).setText("");
+                            gui.getStatusText().setText("Max allowed number you can fill in is 100...");
+                        } else {
+                            gui.getStatusText().setText("");
+                            ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+                        }
+                    }
+                } catch (NumberFormatException ex) {
+                    ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
+                    ((JTextField) e.getSource()).setText("");
+                    gui.getStatusText().setText("Only numbers are allowed in cells...");
+                }
+            }
+        }
+    }
+
+    class CellActionListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    /**
+     * Just fancy color changing so as we can determine whether the particular cell is focused on or not.
+     */
+    class CellFocusListener implements FocusListener {
+        /**
+         * Change the color
+         * @param e event
+         */
+        public void focusGained(FocusEvent e) {
+            if (e.getSource() instanceof JTextField) {
+                ((JTextField) e.getSource()).setBackground(new Color(236, 184, 21));
+            }
+        }
+        /**
+         * Change the color
+         * @param e event
+         */
+        public void focusLost(FocusEvent e) {
+            if (e.getSource() instanceof JTextField) {
+                ((JTextField) e.getSource()).setBackground(new Color(239, 227, 209));
+                if (((JTextField) e.getSource()).getText().isEmpty()) {
+                    gui.getStatusText().setText("");
+                    ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+                }
+            }
+        }
+    }
+
     /**
      * Retrieves a new game object from the
      * GameManager.
@@ -73,11 +195,17 @@ public abstract class GUIManager {
         return null;
     }
 
+    private void updateGameObject() {
+//TODO: DO :-)
+    }
+
     /**
      * Asks the GameManager to persist the current Game object.
      * @param game to be saved
      */
-    public void saveGame(Game game) {
+    public void saveGame() {
+        updateGameObject();
+        gameManager.saveGame(game);
     }
 
     /**
