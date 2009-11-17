@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -202,6 +203,11 @@ public class GUI extends javax.swing.JFrame {
         );
 
         fileChooser.setBackground(new java.awt.Color(230, 215, 193));
+        fileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileChooserActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
@@ -361,10 +367,24 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonGameIsDone1ActionPerformed
 
     private void loadGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameMenuItemActionPerformed
+        fileChooser.showOpenDialog(menuBar);
     }//GEN-LAST:event_loadGameMenuItemActionPerformed
 
     private void saveGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameMenuItemActionPerformed
+        fileChooser.showSaveDialog(menuBar);
     }//GEN-LAST:event_saveGameMenuItemActionPerformed
+
+    private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
+
+        if(fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
+            guiManager.loadGame()
+        } else if(fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
+
+        } else {
+            throw new IllegalArgumentException("illegal fileChooser state");
+        }
+
+    }//GEN-LAST:event_fileChooserActionPerformed
 
     private void initializeCells() {
         CellActionListener cellActionListener = new CellActionListener();

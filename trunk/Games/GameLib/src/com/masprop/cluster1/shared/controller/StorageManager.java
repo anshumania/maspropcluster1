@@ -1,8 +1,8 @@
 package com.masprop.cluster1.shared.controller;
 
-import java.util.List;
 
 import com.masprop.cluster1.shared.model.Game;
+import java.io.File;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.878F01D5-7373-FE1B-BF53-79E3DCE4A0A7]
@@ -39,7 +39,8 @@ public class StorageManager {
     /**
      * Load game from a XML file.
      */
-     public List<Game> loadFromFile() {
+     public Game loadFromFile(File file) {
+         //TODO: Implement the code for reading properties and re-creating Game object.
         return null;
     }
 

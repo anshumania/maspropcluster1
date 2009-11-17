@@ -2,10 +2,10 @@ package com.masprop.cluster1.shared.controller;
 
 import java.util.List;
 
-import sun.nio.cs.Surrogate.Generator;
 
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
+import java.io.File;
 
 /**
  * This Interface provides the management operations on a <tt>Game</tt>
@@ -139,11 +139,11 @@ public abstract class GameManager {
     /**
      * Load game.
      * 
-     * @return the list< game>
+     * @return the game
      */
-    public List<Game> loadGame()
+    public Game loadGame(File file)
     {
-    	return getStorageManager().loadFromFile();
+    	return getStorageManager().loadFromFile(file);
     }
 
      
