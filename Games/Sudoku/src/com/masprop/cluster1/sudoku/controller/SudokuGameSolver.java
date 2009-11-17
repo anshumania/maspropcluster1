@@ -9,7 +9,8 @@ public class SudokuGameSolver implements GameSolver {
 	@Override
 	public Game solveGame(Game game) {
 		// TODO Auto-generated method stub
-		return new SudokuGame(game.getConstraint());
+		
+		return new SudokuGame();
 	}
 
 }
