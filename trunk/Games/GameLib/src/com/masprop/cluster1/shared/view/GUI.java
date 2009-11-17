@@ -377,7 +377,7 @@ public class GUI extends javax.swing.JFrame {
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
 
         if(fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
-            guiManager.loadGame()
+            guiManager.loadGame(fileChooser.getSelectedFile());
         } else if(fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
 
         } else {
