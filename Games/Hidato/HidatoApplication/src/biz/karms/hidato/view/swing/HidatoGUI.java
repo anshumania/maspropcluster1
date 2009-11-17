@@ -11,6 +11,10 @@
 
 package biz.karms.hidato.view.swing;
 
+import biz.karms.hidato.app.controller.impl.HidatoGameManager;
+import biz.karms.hidato.app.game.impl.HidatoGame;
+import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
+
 /**
  *
  * @author Karm
@@ -51,11 +55,21 @@ public class HidatoGUI extends javax.swing.JFrame {
     * @param args the command line arguments
     */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HidatoGUI().setVisible(true);
             }
-        });
+        });*/
+        
+        HidatoGameManager hgm = new HidatoGameManager();
+
+        HidatoGame hg = (HidatoGame) hgm.getNewGame(null);
+        ((HidatoMatrix) hg.getGameMatrix()).write();
+
+        System.out.println();
+
+        hg = (HidatoGame) hgm.solveGame(hg);
+        ((HidatoMatrix) hg.getGameMatrix()).write();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
