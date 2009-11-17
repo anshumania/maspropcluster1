@@ -26,7 +26,19 @@ public class HidatoMatrix implements Matrix {
      */
     public HidatoMatrix(int width, int height, int[] values) {
         matrix = new Cell[width][height];
-        //TODO set value in each cell
+        int k = 0;
+        for (int i=0;i<this.getHeight();i++) {
+            for (int j=0;j<this.getWidth();j++) {
+                boolean editable;
+                if (values[k]==0) {
+                    editable = true;
+                } else {
+                    editable = false;
+                }
+                this.matrix[i][j] = new Cell(values[k], editable, true);
+                k++;
+            }
+        }
     }
 
     /**
@@ -57,5 +69,18 @@ public class HidatoMatrix implements Matrix {
      */
     public int getHeight() {
         return this.matrix[0].length;
+    }
+
+    /**
+     * Only for testing
+     */
+    public void write() {
+        for (int i=0;i<this.getHeight();i++) {
+            for (int j=0;j<this.getWidth();j++) {
+                if (matrix[i][j].getCurrentValue()<10) System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
+                else System.out.print(matrix[i][j].getCurrentValue() + " ");
+            }
+            System.out.println();
+        }
     }
 }
