@@ -5,6 +5,7 @@ import java.util.List;
 import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
+import java.io.File;
 
 /**
  * GUIManager is imlementing the action logic, swing workers and other
@@ -26,7 +27,7 @@ public abstract class GUIManager {
     /**
      * GameManager - game business logic handler.
      */
-    private GameManager mGameManager = null;
+    private GameManager gameManager = null;
 
     /**
      * JFrame definitions, GUI elements, action listener
@@ -84,8 +85,8 @@ public abstract class GUIManager {
      *
      * @return
      */
-    public List<Game> loadGame() {
-        return null;
+    public Game loadGame(File file) {
+        return gameManager.loadGame(file);
     }
 
     /**
