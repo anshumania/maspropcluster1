@@ -20,6 +20,10 @@ public abstract class Game {
      * Game grid as a set of cells.
      */
     private Matrix gameMatrix;
+    /**
+     * Time spent on playing game.
+     */
+    private long time;
 
     /**
      * Class constructor.
@@ -58,6 +62,20 @@ public abstract class Game {
      */
     public void setGameMatrix(Matrix matrix) {
         this.gameMatrix = matrix;
+    }
+
+    /**
+     * @return time spent on playing game
+     */
+    public long getTime() {
+        return time;
+    }
+
+    /**
+     * @param time time spent on playing game
+     */
+    public void setTime(long time) {
+        this.time = time;
     }
 }
 
