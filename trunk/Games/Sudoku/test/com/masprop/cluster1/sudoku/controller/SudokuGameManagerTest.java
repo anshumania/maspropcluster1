@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.controller.GameManager;
+import com.masprop.cluster1.shared.controller.GameSolver;
+import com.masprop.cluster1.shared.controller.GameValidator;
+import com.masprop.cluster1.shared.controller.StatisticsManager;
+import com.masprop.cluster1.shared.controller.StorageManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameLevelType;
@@ -63,6 +67,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testGetAndSetGameGenerator() {
+		//TODO update when GameGenerator is implemented
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac.getGameManager().getGameGenerator());
 		
@@ -70,27 +75,50 @@ public class SudokuGameManagerTest {
 		GameManager newGameManager = new SudokuGameManager();
 		sac.setGameManager(newGameManager);
 		
-		assertNotSame(oldGameManager, sac.getGameManager());
+		assertNotSame(oldGameManager, sac.getGameManager() );
 		
 	}
 
 	@Test
 	public void testGetAndSetGameSolver() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when GameSolver is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac.getGameManager().getGameSolver());
+		
+		GameSolver oldgs = sac.getGameManager().getGameSolver();
+		GameSolver newgs = new SudokuGameSolver();
+		sac.getGameManager().setGameSolver(newgs);
+		assertNotSame(oldgs, sac.getGameManager().getGameSolver());
 	}
 
 	@Test
 	public void testGetAndSetGameValidator() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when GameValidator is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac.getGameManager().getGameValidator());
+		
+		GameValidator oldgv = sac.getGameManager().getGameValidator() ;
+		GameValidator newgv = new SudokuGameValidator() ;
+		sac.getGameManager().setGameValidator(newgv);
+		assertNotSame(oldgv, sac.getGameManager().getGameValidator());
 	}
 
 	@Test
 	public void testGetAndSetStorageManager() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when StorageManager is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac.getGameManager().getStorageManager());
+		
+		StorageManager oldsm = sac.getGameManager().getStorageManager();
+		StorageManager newsm = new SudokuStorageManager() ;
+		sac.getGameManager().setStorageManager(newsm);
+		assertNotSame(oldsm, sac.getGameManager().getGameValidator());
+		
 	}
 
 	@Test
 	public void testGetNewGame() {
+		//TODO update when NewGame is implemented
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game sudokuGame = ApplicationController.getUniqueInstance().getGameManager().getNewGame(constraint);
 		assertNotNull(sudokuGame);
@@ -101,6 +129,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testValidateGame() {
+		//TODO update when ValidateGame is implemented
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game game = new SudokuGame(constraint, new SudokuMatrix());
 		boolean validation = true;
@@ -110,6 +139,7 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testSolveGame() {
+		//TODO update when SolveGame is implemented
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game game = new SudokuGame(constraint, new SudokuMatrix());
 		Game solvedGame = ApplicationController.getUniqueInstance().getGameManager().getGameSolver().solveGame(game);
@@ -121,22 +151,41 @@ public class SudokuGameManagerTest {
 
 	@Test
 	public void testSaveGame() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when StorageManager SaveSoFile is implemented
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
+		Game game = new SudokuGame(constraint, new SudokuMatrix());
+		
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		sac.getGameManager().getStorageManager().saveToFile(game);
+		
 	}
 
 	@Test
 	public void testLoadGame() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when StorageManager loadFromFile is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		sac.getGameManager().getStorageManager().loadFromFile(null);	
+	
 	}
 
 	@Test
 	public void testGetStatistics() {
-		fail("Not yet implemented"); // TODO
+		//TODO update when StatisticsManager is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac.getGameManager().getStatistics());	
 	}
 
 	@Test
-	public void testGetStatisticsManager() {
-		fail("Not yet implemented"); // TODO
+	public void testGetAndSetStatisticsManager() {
+		//TODO update when StatisticsManager is implemented
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac.getGameManager().getStatisticsManager());
+		
+		StatisticsManager oldsm = sac.getGameManager().getStatisticsManager();
+		StatisticsManager newsm = new SudokuStatisticsManager();
+		sac.getGameManager().setStatisticsManager(newsm);
+		assertNotSame(oldsm, sac.getGameManager().getStatisticsManager());
+		
 	}
 
 }
