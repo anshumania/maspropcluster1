@@ -72,7 +72,7 @@ public class HidatoMatrix implements Matrix {
     }
 
     /**
-     * Only for testing
+     * Only for testing.
      */
     public void write() {
         for (int i=0;i<this.getHeight();i++) {

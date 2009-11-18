@@ -7,11 +7,17 @@ import biz.karms.hidato.storage.manager.impl.HidatoStorageManager;
 import com.masprop.cluster1.shared.controller.GameManager;
 
 /**
- * 
- * @author
+ * Provides the management operations on a <tt>Game</tt>.
+ *
+ * @see Game
+ *
+ * @author Matus Pleva
  */
 public class HidatoGameManager extends GameManager {
 
+    /**
+     * Class constructor.
+     */
     public HidatoGameManager() {
         super();
         this.gameGenerator = new HidatoGenerator();

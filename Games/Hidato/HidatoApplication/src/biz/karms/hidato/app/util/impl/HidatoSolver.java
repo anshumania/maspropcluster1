@@ -41,9 +41,10 @@ public class HidatoSolver implements GameSolver {
     private Map<Integer, Coordinates> path = new HashMap<Integer, Coordinates>();
 
     /**
-     * 
-     * @param game
-     * @return
+     * Solve given game.
+     *
+     * @param game game which will be solved
+     * @return game with solved matrix
      */
     public Game solveGame(Game game) {
         HidatoGame hidatoGame = (HidatoGame) game;
