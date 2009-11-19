@@ -12,17 +12,20 @@ public class HidatoGUI extends GUI {
     public HidatoGUI() {
         setGuiManager(new HidatoGUIManager(this));
     }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+
+    public static void init() {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
                 new HidatoGUI().setVisible(true);
             }
         });
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+ 
 
         //TODO:remove
         /*HidatoGameManager hgm = new HidatoGameManager();
@@ -31,4 +34,4 @@ public class HidatoGUI extends GUI {
         hg = (HidatoGame) hgm.solveGame(hg);
         ((HidatoMatrix) hg.getGameMatrix()).write();*/
     }
-}
+
