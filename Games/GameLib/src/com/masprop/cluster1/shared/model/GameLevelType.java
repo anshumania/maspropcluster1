@@ -1,9 +1,5 @@
 package com.masprop.cluster1.shared.model;
 
-// TODO: Auto-generated Javadoc
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.F98804FA-41BC-61F0-E6C8-951689D118F3]
-// </editor-fold> 
 /**
  * These are different Levels possible for any <tt>Game</tt>.
  * 

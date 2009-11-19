@@ -3,6 +3,7 @@ package com.masprop.cluster1.shared.view;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -49,6 +50,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         buttonGameIsDone1 = new javax.swing.JButton();
         fileChooser = new javax.swing.JFileChooser();
+        wizardWindow = new javax.swing.JFrame();
+        wizardOptionsPanel = new javax.swing.JPanel();
+        wizzardDoneButton = new javax.swing.JButton();
+        wizardDismissButton = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         sidebar = new javax.swing.JPanel();
         buttonGameIsDone = new javax.swing.JButton();
@@ -196,6 +201,56 @@ public class GUI extends javax.swing.JFrame {
                 fileChooserActionPerformed(evt);
             }
         });
+
+        wizardWindow.setTitle("Settings");
+        wizardWindow.setBackground(new java.awt.Color(228, 219, 206));
+
+        wizardOptionsPanel.setBackground(new java.awt.Color(239, 227, 209));
+
+        wizzardDoneButton.setBackground(new java.awt.Color(196, 186, 166));
+        wizzardDoneButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/button_ok.png"))); // NOI18N
+        wizzardDoneButton.setText("Done");
+        wizzardDoneButton.setToolTipText("Click if you are done.");
+        wizzardDoneButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        wizzardDoneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wizzardDoneButtonActionPerformed(evt);
+            }
+        });
+
+        wizardDismissButton.setBackground(new java.awt.Color(196, 186, 166));
+        wizardDismissButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/menu_exit.png"))); // NOI18N
+        wizardDismissButton.setText("Dismiss");
+        wizardDismissButton.setToolTipText("Click if you are done.");
+        wizardDismissButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        wizardDismissButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wizardDismissButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout wizardWindowLayout = new javax.swing.GroupLayout(wizardWindow.getContentPane());
+        wizardWindow.getContentPane().setLayout(wizardWindowLayout);
+        wizardWindowLayout.setHorizontalGroup(
+            wizardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wizardWindowLayout.createSequentialGroup()
+                .addContainerGap(373, Short.MAX_VALUE)
+                .addComponent(wizardDismissButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(wizzardDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(wizardOptionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+        );
+        wizardWindowLayout.setVerticalGroup(
+            wizardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(wizardWindowLayout.createSequentialGroup()
+                .addComponent(wizardOptionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(wizardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(wizzardDoneButton)
+                    .addComponent(wizardDismissButton))
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
@@ -381,6 +436,14 @@ public class GUI extends javax.swing.JFrame {
         guiManager.getNewGame(null);
     }//GEN-LAST:event_newGameMenuItemActionPerformed
 
+    private void wizzardDoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wizzardDoneButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wizzardDoneButtonActionPerformed
+
+    private void wizardDismissButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wizardDismissButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wizardDismissButtonActionPerformed
+
     /**
      * MAIN METHOD WAS DEPRECATED, if you want to run the GUI, you should extend it in your own class.
      * 
@@ -434,6 +497,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel sidebar;
     private javax.swing.JPanel statusBar;
     private javax.swing.JLabel statusText;
+    private javax.swing.JButton wizardDismissButton;
+    private javax.swing.JPanel wizardOptionsPanel;
+    private javax.swing.JFrame wizardWindow;
+    private javax.swing.JButton wizzardDoneButton;
     // End of variables declaration//GEN-END:variables
 
     /*Getters and Setters*/
@@ -694,4 +761,37 @@ public class GUI extends javax.swing.JFrame {
     public void setStatusBar(JPanel statusBar) {
         this.statusBar = statusBar;
     }
+
+    public JButton getWizardDismissButton() {
+        return wizardDismissButton;
+    }
+
+    public void setWizardDismissButton(JButton wizardDismissButton) {
+        this.wizardDismissButton = wizardDismissButton;
+    }
+
+    public JPanel getWizardOptionsPanel() {
+        return wizardOptionsPanel;
+    }
+
+    public void setWizardOptionsPanel(JPanel wizardOptionsPanel) {
+        this.wizardOptionsPanel = wizardOptionsPanel;
+    }
+
+    public JFrame getWizardWindow() {
+        return wizardWindow;
+    }
+
+    public void setWizardWindow(JFrame wizardWindow) {
+        this.wizardWindow = wizardWindow;
+    }
+
+    public JButton getWizzardDoneButton() {
+        return wizzardDoneButton;
+    }
+
+    public void setWizzardDoneButton(JButton wizzardDoneButton) {
+        this.wizzardDoneButton = wizzardDoneButton;
+    }
+    
 }
