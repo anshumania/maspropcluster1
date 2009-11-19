@@ -23,6 +23,7 @@ import com.masprop.cluster1.shared.view.GUIManager;
  * @see GameManager
  * @see Game
  * @see GameType
+ * @author Anshuman Mehta
  * @since 1.0
  * @version 1.0
  */

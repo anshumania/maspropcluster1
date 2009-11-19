@@ -27,7 +27,7 @@ import java.io.File;
  * @see GameSolver
  * @see GameValidator
  * @see StorageManager
- * 
+ * @author Anshuman Mehta
  * @version 1.0
  * @since 1.0
  */
@@ -130,9 +130,10 @@ public abstract class GameManager {
      * 
      * @param game the game
      */
-    public void saveGame(Game game)
+    public void saveGame(Game game, File file)
     {
-    	getStorageManager().saveToFile(game);
+    	
+    	getStorageManager().saveToFile(game,file,ApplicationController.getGameToPlay());
     }
 
      
@@ -143,7 +144,7 @@ public abstract class GameManager {
      */
     public Game loadGame(File file)
     {
-    	return getStorageManager().loadFromFile(file);
+    	return getStorageManager().loadFromFile(file,ApplicationController.getGameToPlay());
     }
 
      
