@@ -9,6 +9,11 @@ import com.masprop.cluster1.shared.model.Game;
  */
 public class HidatoValidator implements GameValidator {
 
+    public HidatoValidator() {
+    }
+
+
+
     /**
      * 
      * @param game

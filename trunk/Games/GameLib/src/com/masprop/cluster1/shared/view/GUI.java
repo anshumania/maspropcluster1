@@ -1,11 +1,14 @@
 package com.masprop.cluster1.shared.view;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -22,10 +25,7 @@ public class GUI extends javax.swing.JFrame {
      * Initialization of all the components included in this JFrame.
      */
     public GUI() {
-        guiManager = new GUIManager(this) {
-        };
         initComponents();
-        guiManager.initializeCells();
     }
 
     @SuppressWarnings("unchecked")
@@ -257,6 +257,11 @@ public class GUI extends javax.swing.JFrame {
         newGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newGameMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/menu_new_game.png"))); // NOI18N
         newGameMenuItem.setText("New game");
+        newGameMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newGameMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(newGameMenuItem);
 
         loadGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
@@ -372,18 +377,29 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fileChooserActionPerformed
 
+    private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
+        guiManager.getNewGame(null);
+    }//GEN-LAST:event_newGameMenuItemActionPerformed
+
+    /**
+     * MAIN METHOD WAS DEPRECATED, if you want to run the GUI, you should extend it in your own class.
+     * 
+     */
+
     /**
      * Run the main thread.
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
                 new GUI().setVisible(true);
             }
         });
-    }
+    }*/
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog aboutDialog;
     private javax.swing.JMenuItem aboutMenuItem;
@@ -603,4 +619,79 @@ public class GUI extends javax.swing.JFrame {
         this.statusText = statusText;
     }
 
+    public JDialog getAboutDialog() {
+        return aboutDialog;
+    }
+
+    public void setAboutDialog(JDialog aboutDialog) {
+        this.aboutDialog = aboutDialog;
+    }
+
+    public JButton getButtonGameIsDone() {
+        return buttonGameIsDone;
+    }
+
+    public void setButtonGameIsDone(JButton buttonGameIsDone) {
+        this.buttonGameIsDone = buttonGameIsDone;
+    }
+
+    public JButton getButtonGameIsDone1() {
+        return buttonGameIsDone1;
+    }
+
+    public void setButtonGameIsDone1(JButton buttonGameIsDone1) {
+        this.buttonGameIsDone1 = buttonGameIsDone1;
+    }
+
+    public JFileChooser getFileChooser() {
+        return fileChooser;
+    }
+
+    public void setFileChooser(JFileChooser fileChooser) {
+        this.fileChooser = fileChooser;
+    }
+
+    public GUIManager getGuiManager() {
+        return guiManager;
+    }
+
+    public void setGuiManager(GUIManager guiManager) {
+        this.guiManager = guiManager;
+    }
+
+    public JSplitPane getjSplitPane1() {
+        return jSplitPane1;
+    }
+
+    public void setjSplitPane1(JSplitPane jSplitPane1) {
+        this.jSplitPane1 = jSplitPane1;
+    }
+
+    public void setMenuBar(JMenuBar menuBar) {
+        this.menuBar = menuBar;
+    }
+
+    public JMenuItem getSaveGameMenuItem() {
+        return saveGameMenuItem;
+    }
+
+    public void setSaveGameMenuItem(JMenuItem saveGameMenuItem) {
+        this.saveGameMenuItem = saveGameMenuItem;
+    }
+
+    public JPanel getSidebar() {
+        return sidebar;
+    }
+
+    public void setSidebar(JPanel sidebar) {
+        this.sidebar = sidebar;
+    }
+
+    public JPanel getStatusBar() {
+        return statusBar;
+    }
+
+    public void setStatusBar(JPanel statusBar) {
+        this.statusBar = statusBar;
+    }
 }

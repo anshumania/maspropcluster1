@@ -6,6 +6,7 @@ import biz.karms.hidato.app.util.impl.HidatoValidator;
 import biz.karms.hidato.storage.manager.impl.HidatoStorageManager;
 import com.masprop.cluster1.shared.controller.GameManager;
 
+
 /**
  * Provides the management operations on a <tt>Game</tt>.
  *

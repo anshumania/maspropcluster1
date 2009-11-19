@@ -35,14 +35,14 @@ public abstract class Game {
         this.constraint = constraint;
         this.gameMatrix = gameMatrix;
     }
- 
+
     /**
      * @return constraint that describes game
      */
     public Constraint getConstraint() {
         return constraint;
     }
- 
+
     /**
      * @param constraint describes the game
      */
