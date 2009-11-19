@@ -2,6 +2,7 @@ package com.masprop.cluster1.shared.controller;
 
 
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.GameType;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
@@ -35,7 +36,7 @@ public class StorageManager {
      *
      * @param game the game
      */
-    public void saveToFile(Game game) {
+    public void saveToFile(Game game, File file, GameType gameType) {
         // Serialize the object using XStream library
         XStream xs = new XStream();
         // Write to a XML file
@@ -54,17 +55,18 @@ public class StorageManager {
     /**
      * Load game from a XML file.
      */
-     public Game loadFromFile(File file) {
-          XStream xs = new XStream(new DomDriver());
-          Game game = new Game();
-          // Open XML File and Deserialize from XML to a game object
+     public Game loadFromFile(File file, GameType gameType) {
+          //XStream xs = new XStream(new DomDriver());
+          //Game game = new Game();
+          //Open XML File and Deserialize from XML to a game object
           try {
               FileInputStream fileinputstream = new FileInputStream(file);
-              game = (Game)xs.fromXML(fileinputstream, game);
-              return game;
+              //game = (Game)xs.fromXML(fileinputstream, game);
+              //return game;
           } catch (FileNotFoundException e) {
               e.printStackTrace();
           }
+          return null;
     }
 
 }

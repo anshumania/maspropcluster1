@@ -3,8 +3,9 @@ package biz.karms.hidato.app.controller.impl;
 import biz.karms.hidato.app.util.impl.HidatoGenerator;
 import biz.karms.hidato.app.util.impl.HidatoSolver;
 import biz.karms.hidato.app.util.impl.HidatoValidator;
-import biz.karms.hidato.storage.manager.impl.HidatoStorageManager;
 import com.masprop.cluster1.shared.controller.GameManager;
+import com.masprop.cluster1.shared.controller.StorageManager;
+import com.masprop.cluster1.shared.model.Game;
 
 
 /**
@@ -25,6 +26,6 @@ public class HidatoGameManager extends GameManager {
         this.gameSolver = new HidatoSolver();
         this.gameValidator = new HidatoValidator();
         this.statisticsManager = new HidatoStatisticsManager();
-        this.storageManager = new HidatoStorageManager();
+        this.storageManager = new StorageManager();
     }
 }
