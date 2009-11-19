@@ -1,0 +1,7 @@
+GROUP: Classes programmed by the group.
+
+This folder contains:
+
+- SOURCE Folder: Source code of the classes implemented so far.
+- EXE Folder: Executable files to test the implemented classes or functionalities and test sets.
+
