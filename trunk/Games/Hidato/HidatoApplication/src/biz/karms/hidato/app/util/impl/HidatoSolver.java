@@ -6,7 +6,9 @@ import biz.karms.hidato.app.game.matrix.impl.Direction;
 import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
 import com.masprop.cluster1.shared.controller.GameSolver;
 import com.masprop.cluster1.shared.model.Game;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,9 +30,13 @@ public class HidatoSolver implements GameSolver {
      */
     private HidatoMatrix matrix;
     /**
-     * Collection contains predefined values.
+     * Collection contains predefined values and non-active cells.
      */
     private Map<Integer, Coordinates> predefined = new HashMap<Integer, Coordinates>();
+    /**
+     * Collection contains coordinates of non-active cells.
+     */
+    private List<Coordinates> nonActive = new ArrayList<Coordinates>();
     /**
      * Contains each value already in matrix (not predefined) with his last movement from previous value.
      */
@@ -55,12 +61,17 @@ public class HidatoSolver implements GameSolver {
         this.matrix = (HidatoMatrix) hidatoGame.getGameMatrix();
         //set current value to 1
         this.currentVal = 1;
-        //fill collections predefined and path width predefined values
+        //inicialize collections
         for (int i = this.matrix.getHeight()-1;i >= 0;i--) {
             for (int j = 0;j < this.matrix.getWidth();j++) {
+                //fill collections predefined and path widh predefined values
                 if (!this.matrix.getCell(new Coordinates(j, i)).isEditable()) {
                     this.predefined.put(this.matrix.getCell(new Coordinates(j, i)).getCurrentValue(), new Coordinates(j, i));
                     this.path.put(this.matrix.getCell(new Coordinates(j, i)).getCurrentValue(), new Coordinates(j, i));
+                }
+                //fill collection nonActive with non-active cells
+                if (!this.matrix.getCell(new Coordinates(j, i)).isActive()) {
+                    this.nonActive.add(new Coordinates(j, i));
                 }
             }
         }
@@ -80,7 +91,7 @@ public class HidatoSolver implements GameSolver {
     public boolean putNext() {
         currentVal++;
         //check if solution is finished
-        if (currentVal < (matrix.getHeight() * matrix.getWidth())+1) {
+        if (currentVal < ((matrix.getHeight() * matrix.getWidth()) - nonActive.size() + 1)) {
             //check if value is in predefined
             if (predefined.containsKey(currentVal)) {
                 //check if currentCoo is consecutive with coordinates of predefined value
@@ -123,6 +134,9 @@ public class HidatoSolver implements GameSolver {
                     while (predefined.containsKey(currentVal-(i+1))) {
                         i++;
                     }
+                    //if there is no other possibility to replace number
+                    //and we need to replace starting value then exit
+                    if (currentVal-(i+1)<1) return true;
                     //remove value from lastDir
                     lastDir.remove(currentVal);
                     //remove from matrix and path

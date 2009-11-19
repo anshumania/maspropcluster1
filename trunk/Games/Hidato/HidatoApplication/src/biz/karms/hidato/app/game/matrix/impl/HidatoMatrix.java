@@ -83,7 +83,7 @@ public class HidatoMatrix implements Matrix {
     public void write() {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
-                if (matrix[i][j].getCurrentValue() < 10) {
+                if ((matrix[i][j].getCurrentValue() < 10) && (matrix[i][j].getCurrentValue() > -1)) {
                     System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
                 } else {
                     System.out.print(matrix[i][j].getCurrentValue() + " ");
