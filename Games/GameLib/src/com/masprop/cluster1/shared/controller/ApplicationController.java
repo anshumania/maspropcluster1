@@ -157,7 +157,7 @@ public abstract class ApplicationController {
 	 * @param guiManager
 	 *            the new gui manager
 	 */
-	void setGuiManager(GUIManager guiManager) {
+	public void setGuiManager(GUIManager guiManager) {
 		this.guiManager = guiManager;
 	}
 	
