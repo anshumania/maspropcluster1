@@ -14,7 +14,9 @@ public class HidatoMatrix implements Matrix {
     /**
      * Represents game grid.
      */
-    private Cell[][] matrix;
+    private Cell[][] matrix = null;
+    private int width = 0;
+    private int height = 0;
 
     /**
      * Class constructor.
@@ -24,24 +26,28 @@ public class HidatoMatrix implements Matrix {
      * @param values array of cell values
      */
     public HidatoMatrix(int width, int height, int[] values) {
+        this.width = width;
+        this.height = height;
+
         matrix = new Cell[width][height];
-        int k = 0;
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
+
+        int positionInArray = 0;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 boolean editable;
                 boolean active;
-                if (values[k] == 0) {
+                if (values[positionInArray] == 0) {
                     editable = true;
                 } else {
                     editable = false;
                 }
-                if (values[k] == -1) {
+                if (values[positionInArray] == -1) {
                     active = false;
                 } else {
                     active = true;
                 }
-                this.matrix[i][j] = new Cell(values[k], editable, active);
-                k++;
+                matrix[x][y] = new Cell(values[positionInArray], editable, active);
+                positionInArray++;
             }
         }
     }
@@ -51,7 +57,11 @@ public class HidatoMatrix implements Matrix {
      * @return cell at the given coordinates
      */
     public Cell getCell(Coordinates coordinates) {
-        return this.matrix[coordinates.getX()][coordinates.getY()];
+        //System.out.println("Coord X: "+coordinates.getX());
+        //System.out.println("Coord Y: "+coordinates.getY());
+        //System.out.println("Matrix dim X: "+width);
+        //System.out.println("Matrix dim Y: "+height);
+        return matrix[coordinates.getX()][coordinates.getY()];
     }
 
     /**
@@ -60,21 +70,21 @@ public class HidatoMatrix implements Matrix {
      * @param value value of cell
      */
     public void setCellValue(Coordinates coordinates, int value) {
-        this.matrix[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
+        matrix[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
     }
 
     /**
      * @return width of the matrix
      */
     public int getWidth() {
-        return this.matrix.length;
+        return width;
     }
 
     /**
      * @return height of the matrix
      */
     public int getHeight() {
-        return this.matrix[0].length;
+        return height;
     }
 
     /**

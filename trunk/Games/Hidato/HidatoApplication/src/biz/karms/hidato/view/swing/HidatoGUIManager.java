@@ -12,6 +12,7 @@ import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -20,15 +21,15 @@ import javax.swing.border.LineBorder;
  * @author Michal "Karm" Babacek
  */
 public class HidatoGUIManager extends GUIManager {
+
     /**
-    * JUST TESTING
-    */
-   
+     * JUST TESTING
+     */
     HidatoGame hidatoGame = null;
 
     public HidatoGUIManager(GUI gui) {
-       super(gui);
-       this.setGameManager(new HidatoGameManager());
+        super(gui);
+        this.setGameManager(new HidatoGameManager());
     }
 
     /**
@@ -49,15 +50,17 @@ public class HidatoGUIManager extends GUIManager {
     @Override
     public void initializeCells() {
         super.initializeCells();
-                System.out.println("Hidato game"+hidatoGame.toString());
+        System.out.println("Hidato game" + hidatoGame.toString());
 
         int height = ((HidatoMatrix) hidatoGame.getGameMatrix()).getHeight();
         int width = ((HidatoMatrix) hidatoGame.getGameMatrix()).getWidth();
         Cell matrixCell = null;
-                System.out.println("initializing cells");
+        System.out.println("initializing cells");
+        ((GridLayout) ((HidatoGUI) getGui()).getGameBoard().getLayout()).setColumns(width);
+        ((GridLayout) ((HidatoGUI) getGui()).getGameBoard().getLayout()).setRows(height);
 
-        for(int y = 0; y < height; y++) {
-            for(int x = 0; x < height; x++) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 matrixCell = ((HidatoMatrix) hidatoGame.getGameMatrix()).getCell(new Coordinates(x, y));
 
                 setCell(new JTextField());
@@ -72,24 +75,24 @@ public class HidatoGUIManager extends GUIManager {
                 getCell().addFocusListener(getCellFocusListener());
                 getCell().addKeyListener(getCellKeyListener());
 
-                if(matrixCell.getCurrentValue() != 0) {
+                if (matrixCell.getCurrentValue() != 0) {
                     getCell().setText(String.valueOf(matrixCell.getCurrentValue()));
                 }
-                if(matrixCell.isActive()) {
+                if (matrixCell.isActive()) {
                     getCell().setVisible(true);
                 } else {
                     getCell().setVisible(false);
                 }
 
-                if(matrixCell.isEditable()) {
+                if (matrixCell.isEditable()) {
                     getCell().setEnabled(true);
                 } else {
                     getCell().setEnabled(false);
                 }
-                ((HidatoGUI)getGui()).getGameBoard().add(getCell());
+                ((HidatoGUI) getGui()).getGameBoard().add(getCell());
                 getCells().add(getCell());
             }
         }
-                ((HidatoGUI)getGui()).getGameBoard().validate();
+        ((HidatoGUI) getGui()).getGameBoard().validate();
     }
 }
