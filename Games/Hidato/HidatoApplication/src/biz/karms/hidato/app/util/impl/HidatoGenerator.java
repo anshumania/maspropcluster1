@@ -23,8 +23,15 @@ public class HidatoGenerator implements GameGenerator {
      * @return instance of game with generated matrix
      */
     public Game generateGame(Constraint constraint) {
-        int[] array = {0,0,20,21,16,17,0,24,0,0,0,0,0,28,0,5,14,0,0,0,0,0,12,10,2,0,7,8,0,-1,1,0,0,0,0,35};
-        HidatoMatrix matrix = new HidatoMatrix(6, 6, array);
+        int[] array = { -1, 0,  20, 21, 16, 17,
+                        24, -1, 0,  0,  0,  0,
+                        0,  28, -1, 5,  14, 0,
+                        0,  0,  0,  -1, 12, 10,
+                        0,  0,  36, 0,  -1, 0,
+                        2,  0,  7,  8,  0,  -1,
+                        1,  0,  0,  0,  0,  35};
+        //int[] array = {0,0,20,21,16,17,0,24,0,0,0,0,0,28,0,5,14,0,0,0,0,0,12,10,2,0,7,8,0,-1,1,0,0,0,0,35};
+        HidatoMatrix matrix = new HidatoMatrix(6, 7, array);
         HidatoGame game = new HidatoGame(constraint, matrix);
         return game;
     }
