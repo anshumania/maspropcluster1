@@ -5,6 +5,7 @@ package com.masprop.cluster1.shared.model;
  * variants of a <tt>Game</tt>.
  * 
  * @see Game
+ * @autho Matteo de Martino
  * @version 1.0
  * @since 1.0
  * 

@@ -12,7 +12,7 @@ import com.masprop.cluster1.shared.model.Game;
  *  
  * @see Game
  * @see GameManager
- * 
+ * @author Andrea Gritti
  * @version 1.0
  * @since 1.0
  */

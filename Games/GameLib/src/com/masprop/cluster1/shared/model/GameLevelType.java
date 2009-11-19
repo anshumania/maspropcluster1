@@ -4,6 +4,7 @@ package com.masprop.cluster1.shared.model;
  * These are different Levels possible for any <tt>Game</tt>.
  * 
  * @see Game
+ * @author Matteo de Martino
  * @version 1.0
  * @since 1.0
  */
