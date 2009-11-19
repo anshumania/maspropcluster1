@@ -13,6 +13,9 @@ import com.masprop.cluster1.shared.model.Game;
  */
 public class HidatoGenerator implements GameGenerator {
 
+    public HidatoGenerator() {
+    }
+
     /**
      * Generate game.
      * 
@@ -20,7 +23,7 @@ public class HidatoGenerator implements GameGenerator {
      * @return instance of game with generated matrix
      */
     public Game generateGame(Constraint constraint) {
-        int[] array = {0,0,20,21,16,17,0,24,0,0,0,0,0,28,0,5,14,0,0,0,0,0,12,10,2,0,7,8,0,35,1,0,0,0,0,36};
+        int[] array = {0,0,20,21,16,17,0,24,-1,-1,0,0,-1,-1,0,5,14,0,0,0,0,0,12,10,2,0,7,8,0,35,1,0,0,0,0,36};
         HidatoMatrix matrix = new HidatoMatrix(6, 6, array);
         HidatoGame game = new HidatoGame(constraint, matrix);
         return game;

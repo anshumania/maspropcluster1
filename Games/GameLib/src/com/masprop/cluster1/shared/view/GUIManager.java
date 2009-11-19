@@ -6,8 +6,6 @@ import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -24,7 +22,7 @@ import javax.swing.border.LineBorder;
  * operations invoked from the GUI. GUIManager calls operations on the
  * GameManager in order to carry out the desired user demands.
  * 
- * @author
+ * @author Michal Karm Babacek
  */
 public abstract class GUIManager {
 
@@ -40,11 +38,18 @@ public abstract class GUIManager {
      * GameManager - game business logic handler.
      */
     private GameManager gameManager = null;
-
     /**
      * JFrame definitions, GUI elements, action listener
      */
     private GUI gui = null;
+    /**
+     * The collection of cells
+     */
+    List<JTextField> cells = null;
+    CellActionListener cellActionListener = null;
+    CellFocusListener cellFocusListener = null;
+    CellKeyListener cellKeyListener = null;
+    JTextField cell = null;
 
     /**
      * GUIManager handles all the GUI actions.
@@ -54,45 +59,21 @@ public abstract class GUIManager {
         this.gui = gui;
     }
 
+    /**
+     * This is more or less for testing purposes and as a demonstration of the
+     * game board concept and abilities.
+     */
     public void initializeCells() {
-        CellActionListener cellActionListener = new CellActionListener();
-        CellFocusListener cellFocusListener = new CellFocusListener();
-        CellKeyListener cellKeyListener = new CellKeyListener();
-        JTextField cell = null;
-        List<JTextField> cells = new ArrayList<JTextField>();
-
-        for (int i = 0; i < 100; i++) {
-
-            cell = new JTextField();
-            cell.setBackground(new Color(239, 227, 209));
-            cell.setColumns(2);
-            cell.setFont(new Font("DejaVu Sans", 1, 31));
-            cell.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-            cell.setMaximumSize(new Dimension(2, 2));
-            cell.setMinimumSize(new Dimension(2, 2));
-
-            cell.addActionListener(cellActionListener);
-            cell.addFocusListener(cellFocusListener);
-            cell.addKeyListener(cellKeyListener);
-            //cell.setText(""+i);
-            gui.getGameBoard().add(cell);
-            cells.add(cell);
-        }
-        cells.get(13).setVisible(false);
-        cells.get(14).setVisible(false);
-        cells.get(15).setVisible(false);
-        cells.get(16).setVisible(false);
-
-        cells.get(22).setVisible(false);
-        cells.get(27).setVisible(false);
-        cells.get(32).setVisible(false);
-        cells.get(43).setVisible(false);
-
-        cells.get(97).setVisible(false);
-        cells.get(88).setVisible(false);
-        cells.get(79).setVisible(false);
+        cellActionListener = new CellActionListener();
+        cellFocusListener = new CellFocusListener();
+        cellKeyListener = new CellKeyListener();
+        cell = null;
+        cells = new ArrayList<JTextField>();
     }
 
+    /**
+     * Cell Key Listener listens to the key strokes :-)
+     */
     class CellKeyListener implements KeyListener {
 
         public void keyTyped(KeyEvent e) {
@@ -129,6 +110,9 @@ public abstract class GUIManager {
         }
     }
 
+    /**
+     * Listens to the actions on cell. (Might not be necessary)
+     */
     class CellActionListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -140,6 +124,7 @@ public abstract class GUIManager {
      * Just fancy color changing so as we can determine whether the particular cell is focused on or not.
      */
     class CellFocusListener implements FocusListener {
+
         /**
          * Change the color
          * @param e event
@@ -149,6 +134,7 @@ public abstract class GUIManager {
                 ((JTextField) e.getSource()).setBackground(new Color(236, 184, 21));
             }
         }
+
         /**
          * Change the color
          * @param e event
@@ -195,8 +181,14 @@ public abstract class GUIManager {
         return null;
     }
 
+    /**
+     * This method should iterate over all cells in the GUI and update
+     * actual cells in the Game object matrix.
+     *
+     * Maybe it would be best to overwrite this method, because it is Hidato/Sudoku dependent.
+     */
     private void updateGameObject() {
-//TODO: DO :-)
+        //TODO: DO :-)
     }
 
     /**
@@ -222,6 +214,7 @@ public abstract class GUIManager {
      * display the correct UI for the player.
      */
     public void displayGame() {
+        //TODO: Implement or remove and replace with initializeCells()
     }
 
     /**
@@ -264,12 +257,67 @@ public abstract class GUIManager {
         return null;
     }
 
+    public List<JTextField> getCells() {
+        return cells;
+    }
+
+    public void setCells(List<JTextField> cells) {
+        this.cells = cells;
+    }
+
+    public GameManager getGameManager() {
+        return gameManager;
+    }
+
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
+    }
+
+    public GUI getGui() {
+        return gui;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
+
+    public JTextField getCell() {
+        return cell;
+    }
+
+    public void setCell(JTextField cell) {
+        this.cell = cell;
+    }
+
+    public CellActionListener getCellActionListener() {
+        return cellActionListener;
+    }
+
+    public void setCellActionListener(CellActionListener cellActionListener) {
+        this.cellActionListener = cellActionListener;
+    }
+
+    public CellFocusListener getCellFocusListener() {
+        return cellFocusListener;
+    }
+
+    public void setCellFocusListener(CellFocusListener cellFocusListener) {
+        this.cellFocusListener = cellFocusListener;
+    }
+
+    public CellKeyListener getCellKeyListener() {
+        return cellKeyListener;
+    }
+
+    public void setCellKeyListener(CellKeyListener cellKeyListener) {
+        this.cellKeyListener = cellKeyListener;
+    }
+
     /**
      * Notify the controller that the user wishes to exit the application.
      * Exit then...
      */
     public void exit() {
-
     }
 }
 

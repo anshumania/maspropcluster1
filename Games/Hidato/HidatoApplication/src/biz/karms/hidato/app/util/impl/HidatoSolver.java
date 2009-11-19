@@ -40,6 +40,10 @@ public class HidatoSolver implements GameSolver {
      */
     private Map<Integer, Coordinates> path = new HashMap<Integer, Coordinates>();
 
+    public HidatoSolver() {
+
+    }
+    
     /**
      * Solve given game.
      *

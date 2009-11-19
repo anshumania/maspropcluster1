@@ -1,6 +1,5 @@
 package biz.karms.hidato.app.game.matrix.impl;
 
-
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Matrix;
 
@@ -27,15 +26,21 @@ public class HidatoMatrix implements Matrix {
     public HidatoMatrix(int width, int height, int[] values) {
         matrix = new Cell[width][height];
         int k = 0;
-        for (int i=0;i<this.getHeight();i++) {
-            for (int j=0;j<this.getWidth();j++) {
+        for (int i = 0; i < this.getHeight(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
                 boolean editable;
-                if (values[k]==0) {
+                boolean active;
+                if (values[k] == 0) {
                     editable = true;
                 } else {
                     editable = false;
                 }
-                this.matrix[i][j] = new Cell(values[k], editable, true);
+                if (values[k] == -1) {
+                    active = false;
+                } else {
+                    active = true;
+                }
+                this.matrix[i][j] = new Cell(values[k], editable, active);
                 k++;
             }
         }
@@ -64,6 +69,7 @@ public class HidatoMatrix implements Matrix {
     public int getWidth() {
         return this.matrix.length;
     }
+
     /**
      * @return height of the matrix
      */
@@ -75,10 +81,13 @@ public class HidatoMatrix implements Matrix {
      * Only for testing.
      */
     public void write() {
-        for (int i=0;i<this.getHeight();i++) {
-            for (int j=0;j<this.getWidth();j++) {
-                if (matrix[i][j].getCurrentValue()<10) System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
-                else System.out.print(matrix[i][j].getCurrentValue() + " ");
+        for (int i = 0; i < this.getHeight(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
+                if (matrix[i][j].getCurrentValue() < 10) {
+                    System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
+                } else {
+                    System.out.print(matrix[i][j].getCurrentValue() + " ");
+                }
             }
             System.out.println();
         }
