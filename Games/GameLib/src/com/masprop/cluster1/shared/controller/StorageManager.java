@@ -3,6 +3,11 @@ package com.masprop.cluster1.shared.controller;
 
 import com.masprop.cluster1.shared.model.Game;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import com.thoughtworks.xstream.*;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.878F01D5-7373-FE1B-BF53-79E3DCE4A0A7]
@@ -31,6 +36,16 @@ public class StorageManager {
      * @param game the game
      */
     public void saveToFile(Game game) {
+        // Serialize the object using XStream library
+        XStream xs = new XStream();
+        // Write to a XML file
+        // TODO: Replace "file.xml" by a variable made of Game's attributs
+        try {
+            FileOutputStream fileoutputstream = new FileOutputStream("file.xml");
+            xs.toXML(game, fileoutputstream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -40,8 +55,16 @@ public class StorageManager {
      * Load game from a XML file.
      */
      public Game loadFromFile(File file) {
-         //TODO: Implement the code for reading properties and re-creating Game object.
-        return null;
+          XStream xs = new XStream(new DomDriver());
+          Game game = new Game();
+          // Open XML File and Deserialize from XML to a game object
+          try {
+              FileInputStream fileinputstream = new FileInputStream(file);
+              game = (Game)xs.fromXML(fileinputstream, game);
+              return game;
+          } catch (FileNotFoundException e) {
+              e.printStackTrace();
+          }
     }
 
 }
