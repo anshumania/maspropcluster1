@@ -9,6 +9,10 @@ package com.masprop.cluster1.shared.model;
 public class Constraint {
 
     /**
+     * Game type. Actually whether it is a Sudoku or an Hidato game.
+     */
+    private GameType gameType;
+    /**
      * Game difficulty level.
      */
     private GameLevelType gameLevelType;
@@ -32,6 +36,14 @@ public class Constraint {
         this.gameLevelType = gameLevelType;
         this.gameVariant = gameVariant;
         this.noOfFilledCells = noOfFilledCells;
+    }
+
+    /**
+     * An empty constructor for those, who doesn't know all the attributes by the time
+     * of creating the Constraint object.
+     */
+    public Constraint() {
+
     }
 
     /**
@@ -75,4 +87,13 @@ public class Constraint {
     public void setNoOfFilledCells(int noOfFilledCells) {
         this.noOfFilledCells = noOfFilledCells;
     }
+    
+    public GameType getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
+    }
+
 }

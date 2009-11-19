@@ -43,6 +43,11 @@ public abstract class GUIManager {
      */
     private GUI gui = null;
     /**
+     * The maximal allowed cell value.
+     * This is game dependent and should be set in either Sudoku or Hidato implementation.
+     */
+    private int maximalAllowedCellValue = 0;
+    /**
      * The collection of cells
      */
     List<JTextField> cells = null;
@@ -86,19 +91,30 @@ public abstract class GUIManager {
 
         /**
          * Validator for user imput in cells.
+         *
+         * - Only numbers are allowed.
+         * - String in the field can not begin with 0
+         * - Number must be less than maximalAllowedValue
+         *
          * @param e enent
          */
         public void keyReleased(KeyEvent e) {
             if (e.getSource() instanceof JTextField) {
                 try {
                     if (!((JTextField) e.getSource()).getText().isEmpty()) {
-                        if (Integer.parseInt(((JTextField) e.getSource()).getText()) > 100) {
+                        if (!((JTextField) e.getSource()).getText().startsWith("0")) {
+                            if (Integer.parseInt(((JTextField) e.getSource()).getText()) > maximalAllowedCellValue) {
+                                ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
+                                ((JTextField) e.getSource()).setText("");
+                                gui.getStatusText().setText("Max allowed number you can fill in is " + maximalAllowedCellValue + "...");
+                            } else {
+                                gui.getStatusText().setText("");
+                                ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+                            }
+                        } else {
                             ((JTextField) e.getSource()).setBorder(new LineBorder(Color.RED, 1, true));
                             ((JTextField) e.getSource()).setText("");
-                            gui.getStatusText().setText("Max allowed number you can fill in is 100...");
-                        } else {
-                            gui.getStatusText().setText("");
-                            ((JTextField) e.getSource()).setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+                            gui.getStatusText().setText("Zero is not allowed here.");
                         }
                     }
                 } catch (NumberFormatException ex) {
@@ -289,6 +305,14 @@ public abstract class GUIManager {
         this.cell = cell;
     }
 
+    public int getMaximalAllowedCellValue() {
+        return maximalAllowedCellValue;
+    }
+
+    public void setMaximalAllowedCellValue(int maximalAllowedCellValue) {
+        this.maximalAllowedCellValue = maximalAllowedCellValue;
+    }
+
     public CellActionListener getCellActionListener() {
         return cellActionListener;
     }
@@ -296,7 +320,6 @@ public abstract class GUIManager {
     public void setCellActionListener(CellActionListener cellActionListener) {
         this.cellActionListener = cellActionListener;
     }
-
     public CellFocusListener getCellFocusListener() {
         return cellFocusListener;
     }
@@ -318,6 +341,7 @@ public abstract class GUIManager {
      * Exit then...
      */
     public void exit() {
+        //TODO Save the score lists etc...
     }
 }
 

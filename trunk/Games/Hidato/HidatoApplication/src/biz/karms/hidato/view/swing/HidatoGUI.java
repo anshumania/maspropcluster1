@@ -1,8 +1,5 @@
 package biz.karms.hidato.view.swing;
 
-import biz.karms.hidato.app.controller.impl.HidatoGameManager;
-import biz.karms.hidato.app.game.impl.HidatoGame;
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
 import com.masprop.cluster1.shared.view.GUI;
 
 /**
@@ -26,6 +23,8 @@ public class HidatoGUI extends GUI {
                 new HidatoGUI().setVisible(true);
             }
         });
+
+        //TODO:remove
         /*HidatoGameManager hgm = new HidatoGameManager();
         HidatoGame hg = (HidatoGame) hgm.getNewGame(null);
         ((HidatoMatrix) hg.getGameMatrix()).write();
