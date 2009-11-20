@@ -1,0 +1,10 @@
+SCREENS Folder: Design of all screens.
+
+This folder contains:
+- dimension-settings.jpg - This will be the screen where the user will be able to set his cosntraints
+- menu-options.jpg       - The menu options that will be available
+- welcome-screen.jpg     - The blank screen at welcome at present. In the future this will probably 
+                           be loaded with a default sudoku.
+- sudoku-gui-currentAndProposed.jpg - This screen shows the current state of the sudokuGUI i.e. a proper
+                                       9x9 sudoku with givens and hidden cells. The proposed part shows
+                                       that the zones and cells will have clear demarcations.

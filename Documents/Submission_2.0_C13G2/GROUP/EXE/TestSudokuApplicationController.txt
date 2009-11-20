@@ -1,0 +1,49 @@
+Test Cases for SudokuApplicationController implementation of Abstract class ApplicationController
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuApplicationControllerTest
+
+1. Tests the initialization of all the components of an ApplicationController.
+   Goal : To initialize the ApplicationController
+   Effect : All components in the ApplicationController should 
+	           have been instantiated
+	 
+	 @Test
+	 public void testInitalizeComponents() 
+
+2. Tests whether the ApplicationController is infact a SudokuApplicationController
+	 
+	@Test
+	public void testGetSudokuApplicationController() {
+	
+3. Tests whether getInstance returns always the same instance for the particular GameType.
+	 
+	@Test
+	public void testGetInstance() 
+	
+4. Tests the operation of the set and get for GameManager
+
+	@Test
+	public void testGetAndSetGameManager() 
+
+	
+5. Test the operation of the set and get for GameToPlay
+
+	@Test
+	public void testGetAndSetGameToPlay() 
+			
+6. Test whether the getUniqueInstance always returns the unique Singleton instance
+	
+	@Test
+	public void testGetUniqueInstance() 
+
+7. Tests whether the GUI is generated 	  
+	 
+	@Test
+	public void testGenerateGUI() 
+
+	
+8. Tests the operation of the set and get for GuiManager
+
+	@Test
+	public void testGetGuiManager() 
+	
+

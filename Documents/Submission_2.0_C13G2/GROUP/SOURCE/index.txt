@@ -3,3 +3,11 @@ SOURCE: Source code of the classes implemented so fa
 This folder contains:
 
 
+
+1. The exported executable jar of the Sudoku implementation so far.Double click to run.
+   This jar also contains the source of both the GameLib and Sudoku.
+   The executable file is SudokuApplicationController
+2. The junit 4 jar to execute the test cases in the EXE folder
+3. The source files :
+    GAMELIB which is common for the cluster in the folder GameLib
+    SUDOKU  our implementation of shared classes in GAMELIB in the folder Sudoku
