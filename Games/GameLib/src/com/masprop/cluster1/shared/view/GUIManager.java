@@ -336,6 +336,14 @@ public abstract class GUIManager {
     }
 
     /**
+     * Notify to initialize itself !
+     */
+    public void init()
+    {
+    	getGui().init();
+    }
+    
+    /**
      * Notify the controller that the user wishes to exit the application.
      * Exit then...
      */
