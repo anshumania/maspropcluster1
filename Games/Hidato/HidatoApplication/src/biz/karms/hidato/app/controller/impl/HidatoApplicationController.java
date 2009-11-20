@@ -54,4 +54,15 @@ public class HidatoApplicationController extends ApplicationController {
 
         setGuiManager(new HidatoGUIManager((HidatoGameManager)getGameManager()));
     }
+
+    	public static void main(String args[])
+	{
+		ApplicationController.setGameToPlay(GameType.HIDATO);
+		ApplicationController sac = ApplicationController.getInstance(GameType.HIDATO);
+		//Initialize the components
+		//Have to typeCast to get access to the protected method in the same package
+		if(sac instanceof HidatoApplicationController)
+			((HidatoApplicationController)sac).initalizeComponents();
+
+	}
 }

@@ -42,7 +42,7 @@ public abstract class ApplicationController {
      * The GameType for which the singleton instance would be returned. To be
      * read from a system file, system property or constant file.
      * */
-    private static GameType gameToPlay = GameType.HIDATO;
+    private static GameType gameToPlay = null;
     /** The reference to the GUIManager for the Game Application. */
     private GUIManager guiManager;
 
@@ -171,10 +171,5 @@ public abstract class ApplicationController {
 
     public static void setGameToPlay(GameType gameToPlay) {
         ApplicationController.gameToPlay = gameToPlay;
-    }
-
-    public static void main( String[] args) {
-        setUniqueInstance(getInstance(gameToPlay));
-        uniqueInstance.initalizeComponents();
     }
 }
