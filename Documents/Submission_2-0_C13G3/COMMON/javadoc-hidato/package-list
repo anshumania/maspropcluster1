@@ -1,0 +1,5 @@
+biz.karms.hidato.app.controller.impl
+biz.karms.hidato.app.game.impl
+biz.karms.hidato.app.game.matrix.impl
+biz.karms.hidato.app.util.impl
+biz.karms.hidato.view.swing
