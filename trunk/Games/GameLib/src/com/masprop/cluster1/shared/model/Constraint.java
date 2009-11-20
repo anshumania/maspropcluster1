@@ -4,7 +4,7 @@ package com.masprop.cluster1.shared.model;
  * Class handles game parameters such as difficulty level,
  * number of cells already filled and game variant.
  *
- * @author Andrea Gritti
+ * @author Matus Pleva
  */
 public class Constraint {
 
@@ -87,11 +87,17 @@ public class Constraint {
     public void setNoOfFilledCells(int noOfFilledCells) {
         this.noOfFilledCells = noOfFilledCells;
     }
-    
+
+    /**
+     * @return type of the game
+     */
     public GameType getGameType() {
         return gameType;
     }
 
+    /**
+     * @param gameType type of the game
+     */
     public void setGameType(GameType gameType) {
         this.gameType = gameType;
     }
