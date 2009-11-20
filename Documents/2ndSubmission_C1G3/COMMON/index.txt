@@ -1,3 +1,4 @@
 COMMON: Specification of the cluster shared classes, and assignment of responsibilities among the groups for each of these classes.
 
 This folder contains:
+assignmentOfResponsibilities.txt
