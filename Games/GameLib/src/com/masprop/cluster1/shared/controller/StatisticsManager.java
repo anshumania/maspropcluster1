@@ -12,6 +12,7 @@ import com.masprop.cluster1.shared.model.Game;
  * It permits to get and set a score to a specific game
  * and to return a top10 list of scores
  *
+ * @author Adrien Daunou
  */
 public interface StatisticsManager {
 

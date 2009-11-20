@@ -3,19 +3,22 @@ package com.masprop.cluster1.shared.controller;
 
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameType;
+import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import com.thoughtworks.xstream.*;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.878F01D5-7373-FE1B-BF53-79E3DCE4A0A7]
 // </editor-fold> 
 /**
  * This class handles storage of Game objects to XML files
- * @author
+ *
+ * @author Adrien Daunou
  */
 public class StorageManager {
 
@@ -33,16 +36,17 @@ public class StorageManager {
     // </editor-fold>
     /**
      * Save game to a XML file.
-     *
+     * Serialize the object using XStream library
+     * 
      * @param game the game
+     * @param file Filepath
+     * @param gameType Type of Game
      */
     public void saveToFile(Game game, File file, GameType gameType) {
-        // Serialize the object using XStream library
+        // Game gameTest = ApplicationController.getUniqueInstance().getGameManager().getNewGame(null);
         XStream xs = new XStream();
-        // Write to a XML file
-        // TODO: Replace "file.xml" by a variable made of Game's attributs
         try {
-            FileOutputStream fileoutputstream = new FileOutputStream("file.xml");
+            FileOutputStream fileoutputstream = new FileOutputStream(file);
             xs.toXML(game, fileoutputstream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -54,19 +58,36 @@ public class StorageManager {
     // </editor-fold>
     /**
      * Load game from a XML file.
+     * Unserialize the object using XStream library
+     *
+     * @param game the game
+     * @param file Filepath
+     * @param gameType Type of Game
      */
      public Game loadFromFile(File file, GameType gameType) {
-          //XStream xs = new XStream(new DomDriver());
-          //Game game = new Game();
-          //Open XML File and Deserialize from XML to a game object
-          try {
-              FileInputStream fileinputstream = new FileInputStream(file);
-              //game = (Game)xs.fromXML(fileinputstream, game);
-              //return game;
-          } catch (FileNotFoundException e) {
-              e.printStackTrace();
-          }
-          return null;
+        XStream xs = new XStream(new DomDriver());
+         Class game = null; //= new Game();
+         try {
+             if (gameType == GameType.SUDOKU) {
+                 game = Class.forName("com.masprop.cluster1.sudoku.model.SudokuGame");
+                 FileInputStream fileinputstream = new FileInputStream(file);
+                 Game y = (Game)game.cast(xs.fromXML(fileinputstream, game));
+                 return y;
+             }
+             if (gameType == GameType.HIDATO) {
+                 game = Class.forName("biz.karms.hidato.app.game.impl.HidatoGame");
+                 FileInputStream fileinputstream = new FileInputStream(file);
+                 Object y = (xs.fromXML(fileinputstream, game));
+                 Game z = (Game)game.cast(xs.fromXML(fileinputstream, game));
+                 return z;
+             }
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(StorageManager.class.getName()).log(Level.SEVERE, null, ex);
+         }catch (FileNotFoundException e) {
+             e.printStackTrace();
+         }
+       return null;
+
     }
 
 }
