@@ -776,4 +776,9 @@ public class GUI extends javax.swing.JFrame {
         this.wizzardDoneButton = wizzardDoneButton;
     }
     
+    public  void init()
+    {
+    	
+    }
+    
 }
