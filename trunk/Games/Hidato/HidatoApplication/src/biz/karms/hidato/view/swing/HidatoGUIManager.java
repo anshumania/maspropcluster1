@@ -32,7 +32,8 @@ public class HidatoGUIManager extends GUIManager {
         hidatoGUIManager = this;
         init();
     }
-
+    
+    @Override
     public void init() {
         java.awt.EventQueue.invokeLater(
                 new Runnable() {
