@@ -437,7 +437,8 @@ public class GUIManagerTest {
     public class GUIManagerImpl extends GUIManager {
 
         public GUIManagerImpl() {
-            super(null);
+        	//TODO why is this here ?!?
+            //super(null);
         }
     }
 
