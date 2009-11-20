@@ -1,8 +1,8 @@
 package com.masprop.cluster1.shared.model;
 
 /**
- * Class represents game with a current game <tt>matrix</tt> and all necessary
- * information for generating, solving, validating
+ * Class represents game with a current game <tt>matrix</tt>
+ * and all necessary information for generating, solving, validating
  * or for handling the score of this game.
  *
  * @see Matrix
@@ -34,6 +34,18 @@ public abstract class Game {
     public Game(Constraint constraint, Matrix gameMatrix) {
         this.constraint = constraint;
         this.gameMatrix = gameMatrix;
+    }
+
+    /**
+     *
+     * @param constraint informations that describe game
+     * @param gameMatrix game grid
+     * @param time time spent on playing game
+     */
+    public Game(Constraint constraint, Matrix gameMatrix, long time) {
+        this.constraint = constraint;
+        this.gameMatrix = gameMatrix;
+        this.time = time;
     }
 
     /**

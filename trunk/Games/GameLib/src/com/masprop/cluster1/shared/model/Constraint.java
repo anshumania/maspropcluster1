@@ -32,18 +32,20 @@ public class Constraint {
      * @param gameVariant information about board shape and size
      * @param noOfFilledCells number of cells already filled
      */
-    public Constraint(GameLevelType gameLevelType, GameVariant gameVariant, int noOfFilledCells) {
+    public Constraint(GameLevelType gameLevelType, GameVariant gameVariant,
+            int noOfFilledCells, GameType gameType) {
         this.gameLevelType = gameLevelType;
         this.gameVariant = gameVariant;
         this.noOfFilledCells = noOfFilledCells;
+        this.gameType = gameType;
     }
 
     /**
-     * An empty constructor for those, who doesn't know all the attributes by the time
+     * An empty constructor for those, who doesn't know all the attributes
+     * by the time
      * of creating the Constraint object.
      */
     public Constraint() {
-
     }
 
     /**
@@ -102,4 +104,40 @@ public class Constraint {
         this.gameType = gameType;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Constraint)) {
+            return false;
+        }
+        Constraint constraint = (Constraint) object;
+        return (this.getGameType() == null
+                ? constraint.getGameType() == null
+                : this.getGameType().equals(constraint.getGameType()))
+                    && (this.getGameLevelType() == null
+                ? constraint.getGameLevelType() == null
+                : this.getGameLevelType().equals(constraint.getGameLevelType()))
+                    && (this.getGameVariant() == null
+                ? constraint.getGameVariant() == null
+                : this.getGameVariant().equals(constraint.getGameVariant()))
+                    && this.getNoOfFilledCells() == constraint.getNoOfFilledCells();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + (this.getGameType() == null 
+                ? 0
+                : this.getGameType().hashCode());
+        hash = 31 * hash + (this.getGameLevelType() == null
+                ? 0
+                : this.getGameLevelType().hashCode());
+        hash = 31 * hash + (this.getGameVariant() == null 
+                ? 0
+                : this.getGameVariant().hashCode());
+        hash = 31 * hash + this.getNoOfFilledCells();
+        return hash;
+    }
 }

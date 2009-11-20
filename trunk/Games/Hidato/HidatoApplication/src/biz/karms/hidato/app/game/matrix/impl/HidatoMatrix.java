@@ -46,7 +46,8 @@ public class HidatoMatrix implements Matrix {
                 } else {
                     active = true;
                 }
-                matrix[x][y] = new Cell(values[positionInArray], editable, active);
+                matrix[x][y] = new Cell(values[positionInArray], editable,
+                        active);
                 positionInArray++;
             }
         }
@@ -82,21 +83,5 @@ public class HidatoMatrix implements Matrix {
      */
     public int getHeight() {
         return height;
-    }
-
-    /**
-     * Only for testing.
-     */
-    public void write() {
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
-                if ((matrix[j][i].getCurrentValue() < 10) && (matrix[i][j].getCurrentValue() > -1)) {
-                    System.out.print(" " + matrix[j][i].getCurrentValue() + " ");
-                } else {
-                    System.out.print(matrix[j][i].getCurrentValue() + " ");
-                }
-            }
-            System.out.println();
-        }
     }
 }
