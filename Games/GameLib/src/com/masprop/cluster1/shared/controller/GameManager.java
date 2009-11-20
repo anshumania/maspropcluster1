@@ -40,9 +40,6 @@ public abstract class GameManager {
     protected StorageManager storageManager;
     protected StatisticsManager statisticsManager;
 
-    //To be set in implementation...
-    private GameType gameType = null;
-
     /**
      * Gets the game generator.
      *
@@ -118,7 +115,7 @@ public abstract class GameManager {
      * @param game the game
      */
     public void saveGame(Game game, File file) {
-        getStorageManager().saveToFile(game, file, gameType);
+        getStorageManager().saveToFile(game, file, ApplicationController.getGameToPlay());
     }
 
     /**
@@ -127,7 +124,7 @@ public abstract class GameManager {
      * @return the game
      */
     public Game loadGame(File file) {
-        return getStorageManager().loadFromFile(file, gameType);
+        return getStorageManager().loadFromFile(file, ApplicationController.getGameToPlay());
     }
 
     /**
@@ -163,12 +160,5 @@ public abstract class GameManager {
         return statisticsManager;
     }
 
-    public GameType getGameType() {
-        return gameType;
-    }
-
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
-    }
-}
+  }
 
