@@ -60,8 +60,7 @@ public abstract class GUIManager {
      * GUIManager handles all the GUI actions.
      * @param gui actual GUI
      */
-    public GUIManager(GUI gui) {
-        this.gui = gui;
+    public GUIManager() {
     }
 
     /**
@@ -168,7 +167,7 @@ public abstract class GUIManager {
 
     /**
      * Retrieves a new game object from the
-     * GameManager.
+     * GameManager
      *
      * @param constraint
      * @return a new game instance
@@ -211,9 +210,9 @@ public abstract class GUIManager {
      * Asks the GameManager to persist the current Game object.
      * @param game to be saved
      */
-    public void saveGame() {
+    public void saveGame(File file) {
         updateGameObject();
-        gameManager.saveGame(game);
+        gameManager.saveGame(game, file);
     }
 
     /**
