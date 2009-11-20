@@ -155,7 +155,7 @@ public abstract class GameManager {
      */
     public List<String> getStatistics()
     {
-    	return new java.util.ArrayList<String>();
+    	return getStatisticsManager().getStatistics();
     }
     
     
