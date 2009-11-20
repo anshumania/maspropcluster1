@@ -22,21 +22,6 @@ public class StorageManagerTest {
     public StorageManagerTest() {
     }
 
-    @org.junit.BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @org.junit.AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @org.junit.Before
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.After
-    public void tearDown() throws Exception {
-    }
 
     @Before
     public void setUp() {
@@ -48,11 +33,13 @@ public class StorageManagerTest {
 
     /**
      * Test of saveToFile method, of class StorageManager.
+     *
+     * //TODO: Update TestCase when bug with XStream will be resolved
      */
     @org.junit.Test
     public void testSaveToFile() {
         System.out.println("saveToFile");
-        Game game = null;
+        Game game =  ApplicationController.getUniqueInstance().getGameManager().getNewGame(null);
         File file = null;
         GameType gameType = null;
         StorageManager instance = new StorageManager();
@@ -63,6 +50,8 @@ public class StorageManagerTest {
 
     /**
      * Test of loadFromFile method, of class StorageManager.
+     *
+     * //TODO: Update TestCase when bug with XStream will be resolved
      */
     @org.junit.Test
     public void testLoadFromFile() {
