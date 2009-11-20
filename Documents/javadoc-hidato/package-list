@@ -1,12 +1,5 @@
-biz.karms.hidato.app
-biz.karms.hidato.app.controller
 biz.karms.hidato.app.controller.impl
-biz.karms.hidato.app.game
 biz.karms.hidato.app.game.impl
-biz.karms.hidato.app.game.matrix
 biz.karms.hidato.app.game.matrix.impl
-biz.karms.hidato.app.util
 biz.karms.hidato.app.util.impl
-biz.karms.hidato.storage.manager
-biz.karms.hidato.storage.manager.impl
 biz.karms.hidato.view.swing
