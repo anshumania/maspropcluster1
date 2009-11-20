@@ -11,7 +11,7 @@ import com.masprop.cluster1.shared.model.Game;
  * instance is solvable.
  *  
  * @see Game
- * @author Andrea Gritti
+ * @author Matteo De Martino
  * @version 1.0
  * @since 1.0	
  */

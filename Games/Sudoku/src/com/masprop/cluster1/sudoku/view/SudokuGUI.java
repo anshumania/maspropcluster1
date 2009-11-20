@@ -4,7 +4,7 @@ import com.masprop.cluster1.shared.view.GUI;
 
 /**
  *
- * @author Matteo de Martino
+ * @author Matteo De Martino
  */
 public class SudokuGUI extends GUI {
 

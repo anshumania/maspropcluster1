@@ -6,7 +6,7 @@ import com.masprop.cluster1.shared.model.Matrix;
 
 /**
  * 
- * @author Matteo de Martini
+ * @author Andrea Gritti
  *
  */
 public class SudokuGame extends Game {

@@ -23,7 +23,7 @@ import javax.swing.border.LineBorder;
 
 /**
  *
- * @author Matteo de Martino
+ * @author Matteo De Martino
  */
 public class SudokuGUIManager extends GUIManager {
 
