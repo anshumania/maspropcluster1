@@ -1,0 +1,6 @@
+SCREENS Folder: Design of all screens.
+
+This folder contains:
+- screen1.jpg - main screen
+- screen2.jpg
+- screen3.jpg - settings before game, not finished
