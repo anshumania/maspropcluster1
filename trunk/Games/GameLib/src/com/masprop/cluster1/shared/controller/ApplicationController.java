@@ -18,7 +18,7 @@ import com.masprop.cluster1.shared.view.GUIManager;
  * an application level scope. It serves as the necessary delegation layer
  * between the <tt>GUIManager</tt> and <tt>GameManager</tt>
  * </p>
- *
+ * 
  * @see GUIManager
  * @see GameManager
  * @see Game
@@ -29,147 +29,153 @@ import com.masprop.cluster1.shared.view.GUIManager;
  */
 public abstract class ApplicationController {
 
-    /**
-     * The singleton handler for the Game Application.
-     *
-     */
-    private static ApplicationController uniqueInstance;
-    /**
-     * The reference to the GameManager.
-     * */
-    private GameManager gameManager;
-    /**
-     * The GameType for which the singleton instance would be returned. To be
-     * read from a system file, system property or constant file.
-     * */
-    private static GameType gameToPlay = null;
-    /** The reference to the GUIManager for the Game Application. */
-    private GUIManager guiManager;
+	/**
+	 * The singleton handler for the Game Application.
+	 * 
+	 */
+	private static ApplicationController uniqueInstance;
+	/**
+	 * The reference to the GameManager.
+	 * */
+	private GameManager gameManager;
+	/**
+	 * The GameType for which the singleton instance would be returned. To be
+	 * read from a system file, system property or constant file.
+	 * */
+	private static GameType gameToPlay;
+	/** The reference to the GUIManager for the Game Application. */
+	private GUIManager guiManager;
+	
+	/**
+	 * Gets the single instance of ApplicationController.
+	 * 
+	 * @param gameType
+	 *            the game type
+	 * 
+	 * @return single instance of ApplicationController
+	 */
+	public static ApplicationController getInstance(GameType gameType) {
 
-    /**
-     * Gets the single instance of ApplicationController.
-     *
-     * @param gameType
-     *            the game type
-     *
-     * @return single instance of ApplicationController
-     */
-    public static ApplicationController getInstance(GameType gameType) {
+	//TODO : Should the names for the classes be read from a property file ?
+	//TODO : Maybe this can be a switch construct with the addition of a new group to the cluster	
+		try {
+			Class<?> gameController;
+			if (gameType == GameType.SUDOKU) {
 
-        //TODO : Should the names for the classes be read from a property file ?
-        //TODO : Maybe this can be a switch construct with the addition of a new group to the cluster
-        try {
-            Class<?> gameController;
-            if (gameType == GameType.SUDOKU) {
+				gameController = Class
+						.forName("com.masprop.cluster1.sudoku.controller.SudokuApplicationController");
+				return (ApplicationController) gameController.getMethod(
+						"getSudokuApplicationController", null).invoke(
+						gameController, null);
+			}
+			if (gameType == GameType.HIDATO) {
+				gameController = Class
+						.forName("biz.karms.hidato.app.controller.impl.HidatoApplicationController");
+				return (ApplicationController) gameController.getMethod(
+						"getHidatoApplicationController", null).invoke(
+						gameController, null);
+			}
 
-                gameController = Class.forName("com.masprop.cluster1.sudoku.controller.SudokuApplicationController");
-                return (ApplicationController) gameController.getMethod("getSudokuApplicationController", null).invoke(gameController, null);
-            }
-            if (gameType == GameType.HIDATO) {
-                gameController = Class.forName("biz.karms.hidato.app.controller.impl.HidatoApplicationController");
-                return (ApplicationController) gameController.getMethod("getHidatoApplicationController", null).invoke(gameController, null);
-            }
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		throw new IllegalArgumentException(
+				"Cannot Create a Game Controller for " + gameType);
 
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        throw new IllegalArgumentException(
-                "Cannot Create a Game Controller for " + gameType);
+	}
 
-    }
+	/**
+	 * Gets the game manager.
+	 * 
+	 * @return the game manager
+	 */
+	public GameManager getGameManager() {
+		return gameManager;
+	}
 
-    /**
-     * Gets the game manager.
-     *
-     * @return the game manager
-     */
-    public GameManager getGameManager() {
-        return gameManager;
-    }
+	/**
+	 * Sets the game manager.
+	 * 
+	 * @param val
+	 *            the new game manager
+	 */
+	public void setGameManager(GameManager val) {
+		this.gameManager = val;
+	}
 
-    /**
-     * Sets the game manager.
-     *
-     * @param val
-     *            the new game manager
-     */
-    public void setGameManager(GameManager val) {
-        this.gameManager = val;
-    }
+	/**
+	 * Gets the game to play.
+	 * 
+	 * @return the game to play
+	 */
+	public static GameType getGameToPlay() {
+		return gameToPlay;
+	}
 
-    /**
-     * Gets the game to play.
-     *
-     * @return the game to play
-     */
-    public static GameType getGameToPlay() {
-        return gameToPlay;
-    }
+	/**
+	 * Gets the gui manager.
+	 * 
+	 * @return the gui manager
+	 */
+	public GUIManager getGuiManager() {
+		return guiManager;
+	}
 
-    /**
-     * Gets the gui manager.
-     *
-     * @return the gui manager
-     */
-    public GUIManager getGuiManager() {
-        return guiManager;
-    }
+	/**
+	 * This is an internal delegation operation which signal the GUIManager to
+	 * create the necessary components for the view.
+	 */
+	protected abstract void generateGUI();
 
-    /**
-     * This is an internal delegation operation which signal the GUIManager to
-     * create the necessary components for the view.
-     */
-    protected void generateGUI() {
-    }
+	/**
+	 * This is an internal delegation operation to initialize all the components
+	 * related to start a Game Application.
+	 * Each implementation of ApplicationController should override this
+	 */
+	protected abstract void initalizeComponents();
 
-    /**
-     * This is an internal delegation operation to initialize all the components
-     * related to start a Game Application.
-     * Each implementation of ApplicationController should override this
-     */
-    protected abstract void initalizeComponents();
+	/**
+	 * Sets the gui manager.
+	 * 
+	 * @param guiManager
+	 *            the new gui manager
+	 */
+	public void setGuiManager(GUIManager guiManager) {
+		this.guiManager = guiManager;
+	}
+	
+	
+  /**
+   * This instance should be used by client applications which are aware that
+   * that their ApplicationController has been instantiated.
+   * The null checks have to be handled by the client.
+   * @return
+   */
+	public static ApplicationController getUniqueInstance() {
+		return uniqueInstance;
+	}
 
-    /**
-     * Sets the gui manager.
-     *
-     * @param guiManager
-     *            the new gui manager
-     */
-    public void setGuiManager(GUIManager guiManager) {
-        this.guiManager = guiManager;
-    }
+	public static void setUniqueInstance(ApplicationController uniqueInstance) {
+		ApplicationController.uniqueInstance = uniqueInstance;
+	}
 
-    /**
-     * This instance should be used by client applications which are aware that
-     * that their ApplicationController has been instantiated.
-     * The null checks have to be handled by the client.
-     * @return
-     */
-    public static ApplicationController getUniqueInstance() {
-        return uniqueInstance;
-    }
-
-    public static void setUniqueInstance(ApplicationController uniqueInstance) {
-        ApplicationController.uniqueInstance = uniqueInstance;
-    }
-
-    public static void setGameToPlay(GameType gameToPlay) {
-        ApplicationController.gameToPlay = gameToPlay;
-    }
+	public static void setGameToPlay(GameType gameToPlay) {
+		ApplicationController.gameToPlay = gameToPlay;
+	}
 }
