@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author
+ * @author Matus Pleva
  */
 public class HidatoMatrixTest {
 
@@ -39,13 +39,14 @@ public class HidatoMatrixTest {
     @Test
     public void testGetCell() {
         System.out.println("getCell");
-        Coordinates coordinates = null;
-        HidatoMatrix instance = null;
-        Cell expResult = null;
-        Cell result = instance.getCell(coordinates);
+        Coordinates coordinates = new Coordinates(0, 2);
+        int[] values = {6, 7, 9,
+                        0, 5, 8,
+                        1, 0, 0};
+        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Cell expResult = new Cell(1, false, true);
+        Cell result = matrix.getCell(coordinates);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -54,12 +55,14 @@ public class HidatoMatrixTest {
     @Test
     public void testSetCellValue() {
         System.out.println("setCellValue");
-        Coordinates coordinates = null;
-        int value = 0;
-        HidatoMatrix instance = null;
-        instance.setCellValue(coordinates, value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coordinates coordinates = new Coordinates(2, 0);
+        int[] values = {1, 2, 3,
+                        4, 5, 6,
+                        7, 8, 9};
+        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        int value = 5;
+        matrix.setCellValue(coordinates, value);
+        assertEquals(value, matrix.getCell(coordinates).getCurrentValue());
     }
 
     /**
@@ -68,12 +71,13 @@ public class HidatoMatrixTest {
     @Test
     public void testGetWidth() {
         System.out.println("getWidth");
-        HidatoMatrix instance = null;
-        int expResult = 0;
-        int result = instance.getWidth();
+        int[] values = {1, 2, 3, 10,
+                        4, 5, 6, 12,
+                        7, 8, 11, 9};
+        HidatoMatrix matrix = new HidatoMatrix(4, 3, values);
+        int expResult = 4;
+        int result = matrix.getWidth();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -82,24 +86,14 @@ public class HidatoMatrixTest {
     @Test
     public void testGetHeight() {
         System.out.println("getHeight");
-        HidatoMatrix instance = null;
-        int expResult = 0;
-        int result = instance.getHeight();
+        System.out.println("getWidth");
+        int[] values = {1, 2, 3, 10,
+                        4, 5, 6, 12,
+                        7, 8, 11, 9};
+        HidatoMatrix matrix = new HidatoMatrix(4, 3, values);
+        int expResult = 3;
+        int result = matrix.getHeight();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of write method, of class HidatoMatrix.
-     */
-    @Test
-    public void testWrite() {
-        System.out.println("write");
-        HidatoMatrix instance = null;
-        instance.write();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }

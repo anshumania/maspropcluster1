@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author
+ * @author Matus Pleva
  */
 public class CoordinatesTest {
 
@@ -38,12 +38,10 @@ public class CoordinatesTest {
     @Test
     public void testGetX() {
         System.out.println("getX");
-        Coordinates instance = null;
-        int expResult = 0;
+        Coordinates instance = new Coordinates(2, 3);
+        int expResult = 2;
         int result = instance.getX();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -52,11 +50,10 @@ public class CoordinatesTest {
     @Test
     public void testSetX() {
         System.out.println("setX");
-        int x = 0;
-        Coordinates instance = null;
+        int x = 2;
+        Coordinates instance = new Coordinates(1, 3);
         instance.setX(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(x, instance.getX());
     }
 
     /**
@@ -65,12 +62,10 @@ public class CoordinatesTest {
     @Test
     public void testGetY() {
         System.out.println("getY");
-        Coordinates instance = null;
-        int expResult = 0;
+        Coordinates instance = new Coordinates(2, 3);
+        int expResult = 3;
         int result = instance.getY();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -80,10 +75,9 @@ public class CoordinatesTest {
     public void testSetY() {
         System.out.println("setY");
         int y = 0;
-        Coordinates instance = null;
-        instance.setY(y);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coordinates instance = new Coordinates(1, 3);
+        instance.setX(y);
+        assertEquals(y, instance.getX());
     }
 
     /**
@@ -92,13 +86,11 @@ public class CoordinatesTest {
     @Test
     public void testIsConsecutive() {
         System.out.println("isConsecutive");
-        Coordinates coordinates = null;
-        Coordinates instance = null;
-        boolean expResult = false;
-        boolean result = instance.isConsecutive(coordinates);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coordinates coordinates = new Coordinates(1, 3);
+        Coordinates instance = new Coordinates(1, 2);
+        assertTrue(instance.isConsecutive(coordinates));
+        instance = new Coordinates(1, 1);
+        assertFalse(instance.isConsecutive(coordinates));
     }
 
     /**
@@ -107,25 +99,10 @@ public class CoordinatesTest {
     @Test
     public void testSetCoordinates() {
         System.out.println("setCoordinates");
-        Direction direction = null;
-        Coordinates instance = null;
+        Direction direction = Direction.TOP;
+        Coordinates instance = new Coordinates(1, 3);
         instance.setCoordinates(direction);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Coordinates.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Coordinates instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(new Coordinates(1, 4), instance);
     }
 
     /**
@@ -134,13 +111,15 @@ public class CoordinatesTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object object = null;
-        Coordinates instance = null;
-        boolean expResult = false;
-        boolean result = instance.equals(object);
+        Coordinates coordinates = new Coordinates(2, 1);
+        Coordinates instance = new Coordinates(2, 1);
+        boolean expResult = true;
+        boolean result = instance.equals(coordinates);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        coordinates = new Coordinates(3, 1);
+        expResult = false;
+        result = instance.equals(coordinates);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -149,12 +128,10 @@ public class CoordinatesTest {
     @Test
     public void testHashCode() {
         System.out.println("hashCode");
-        Coordinates instance = null;
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Coordinates coordinates1 = new Coordinates(2, 1);
+        Coordinates coordinates2 = new Coordinates(2, 1);
+        int hash1 = coordinates1.hashCode();
+        int hash2 = coordinates2.hashCode();
+        assertEquals(hash1, hash2);
     }
-
 }
