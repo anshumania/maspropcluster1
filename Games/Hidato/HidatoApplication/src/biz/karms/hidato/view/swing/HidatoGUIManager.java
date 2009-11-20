@@ -25,7 +25,7 @@ public class HidatoGUIManager extends GUIManager {
 
     private HidatoGame hidatoGame = null;
     private HidatoGUIManager hidatoGUIManager = null;
-    private volatile HidatoGUI hidatoGUI = null;
+    private HidatoGUI hidatoGUI = null;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
         setGameManager(hidatoGameManager);

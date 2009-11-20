@@ -55,6 +55,7 @@ public class HidatoApplicationController extends ApplicationController {
         setGuiManager(new HidatoGUIManager((HidatoGameManager)getGameManager()));
     }
 
+
     	public static void main(String args[])
 	{
 		ApplicationController.setGameToPlay(GameType.HIDATO);
@@ -65,4 +66,9 @@ public class HidatoApplicationController extends ApplicationController {
 			((HidatoApplicationController)sac).initalizeComponents();
 
 	}
+
+    @Override
+    protected void generateGUI() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
