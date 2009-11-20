@@ -1,5 +1,6 @@
 package com.masprop.cluster1.sudoku.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.masprop.cluster1.shared.controller.StatisticsManager;
@@ -20,7 +21,7 @@ public class SudokuStatisticsManager implements StatisticsManager {
 	@Override
 	public List<String> getStatistics() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<String>();
 	}
 
 	@Override

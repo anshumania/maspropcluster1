@@ -10,10 +10,11 @@ public class SudokuGUI extends GUI {
 
     /** Creates new form HidatoGUI */
     public SudokuGUI() {
-        setGuiManager(new SudokuGUIManager(this));
+        setGuiManager(new SudokuGUIManager());
+        getGuiManager().setGui(this);
     }
-    
-    public static void init()
+    @Override
+    public void init()
     {
     	java.awt.EventQueue.invokeLater(new Runnable() {
 

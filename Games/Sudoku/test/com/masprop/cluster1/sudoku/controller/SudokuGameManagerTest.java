@@ -72,6 +72,10 @@ public class SudokuGameManagerTest {
 		assertEquals(null, ApplicationController.getGameToPlay());
 	}
 
+	
+	/**
+	 * Tests the operation of the set and get of a GameGenerator
+	 */
 	@Test
 	public void testGetAndSetGameGenerator() {
 		//TODO update when GameGenerator is implemented
@@ -86,6 +90,9 @@ public class SudokuGameManagerTest {
 		
 	}
 
+	/**
+	 * Tests the operation of the set and get of a GameSolver
+	 */
 	@Test
 	public void testGetAndSetGameSolver() {
 		//TODO update when GameSolver is implemented
@@ -98,6 +105,9 @@ public class SudokuGameManagerTest {
 		assertNotSame(oldgs, sac.getGameManager().getGameSolver());
 	}
 
+	/**
+	 * Test the operation of the set and get of a GameValidator
+	 */
 	@Test
 	public void testGetAndSetGameValidator() {
 		//TODO update when GameValidator is implemented
@@ -110,6 +120,9 @@ public class SudokuGameManagerTest {
 		assertNotSame(oldgv, sac.getGameManager().getGameValidator());
 	}
 
+	/**
+	 * Tests the operation of the set and get of a StorageManager
+	 */
 	@Test
 	public void testGetAndSetStorageManager() {
 		//TODO update when StorageManager is implemented
@@ -123,6 +136,9 @@ public class SudokuGameManagerTest {
 		
 	}
 
+	/**
+	 * Test the operation of getting a new game
+	 */
 	@Test
 	public void testGetNewGame() {
 		//TODO update when NewGame is implemented
@@ -133,7 +149,10 @@ public class SudokuGameManagerTest {
 		
 
 	}
-
+    
+	/**
+	 * Test the operation of validation of a game
+	 */
 	@Test
 	public void testValidateGame() {
 		//TODO update when ValidateGame is implemented
@@ -144,6 +163,9 @@ public class SudokuGameManagerTest {
 		assertFalse(validation);
 	}
 
+	/**
+	 * Test the operation of solving a game
+	 */
 	@Test
 	public void testSolveGame() {
 		//TODO update when SolveGame is implemented
@@ -156,6 +178,9 @@ public class SudokuGameManagerTest {
 		
 	}
 
+	/**
+	 * Test the operation of saving a game
+	 */
 	@Test
 	public void testSaveGame() {
 		//TODO update when StorageManager SaveSoFile is implemented
@@ -167,6 +192,9 @@ public class SudokuGameManagerTest {
 		
 	}
 
+	/**
+	 * Tests the operation of loading a game
+	 */
 	@Test
 	public void testLoadGame() {
 		//TODO update when StorageManager loadFromFile is implemented
@@ -175,6 +203,9 @@ public class SudokuGameManagerTest {
 	
 	}
 
+	/**
+	 * Tests the operation of getting the statistics for a game
+	 */
 	@Test
 	public void testGetStatistics() {
 		//TODO update when StatisticsManager is implemented
@@ -182,6 +213,9 @@ public class SudokuGameManagerTest {
 		assertNotNull(sac.getGameManager().getStatistics());	
 	}
 
+	/**
+	 * Tests the operation of a get and set of a StatisticsManager
+	 */
 	@Test
 	public void testGetAndSetStatisticsManager() {
 		//TODO update when StatisticsManager is implemented
