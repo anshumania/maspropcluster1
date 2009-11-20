@@ -1,3 +1,5 @@
+The common code can be found in the folder SOURCE/GameLib
+
 GUI - Michal Babacek
 GUIManager - Michal Babacek
 
