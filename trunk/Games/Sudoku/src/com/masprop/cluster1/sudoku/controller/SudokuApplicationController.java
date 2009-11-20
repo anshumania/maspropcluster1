@@ -1,7 +1,5 @@
 package com.masprop.cluster1.sudoku.controller;
 
-import static org.junit.Assert.assertNotNull;
-
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.shared.view.GUI;
@@ -56,7 +54,7 @@ public class SudokuApplicationController extends ApplicationController {
 	{
 		ApplicationController.setGameToPlay(GameType.SUDOKU);
 		ApplicationController sac = ApplicationController.getInstance(GameType.SUDOKU);
-		assertNotNull(sac);
+		assert sac!=null;
 		//Initialize the components
 		//Have to typeCast to get access to the protected method in the same package
 		if(sac instanceof SudokuApplicationController)
