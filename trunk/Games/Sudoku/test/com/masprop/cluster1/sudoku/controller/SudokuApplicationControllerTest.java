@@ -9,13 +9,18 @@ import org.junit.Test;
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.model.GameType;
 
+/**
+ * 
+ * @author Matteo de Martino
+ *
+ */
 public class SudokuApplicationControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
 				
 		if(ApplicationController.getGameToPlay() == null)
-			ApplicationController.setGameToPlay(GameType.SUDOKU);
+			ApplicationController.setGameToPlay(GameType.HIDATO);
 			
 		assertFalse(ApplicationController.getGameToPlay() == null);
 	}
@@ -37,6 +42,7 @@ public class SudokuApplicationControllerTest {
 		//GameGenerator should not be null
 		assertNotNull(sac.getGameManager().getGameGenerator());
 		//GameSolver should not be null
+		
 		assertNotNull(sac.getGameManager().getGameSolver());
 		//GameValidator should not be null
 		assertNotNull(sac.getGameManager().getGameValidator());

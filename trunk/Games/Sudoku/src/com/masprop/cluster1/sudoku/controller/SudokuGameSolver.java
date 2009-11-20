@@ -3,7 +3,11 @@ package com.masprop.cluster1.sudoku.controller;
 import com.masprop.cluster1.shared.controller.GameSolver;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
-
+/**
+ * 
+ * @author Matteo de Martino
+ *
+ */
 public class SudokuGameSolver implements GameSolver {
 
 	@Override

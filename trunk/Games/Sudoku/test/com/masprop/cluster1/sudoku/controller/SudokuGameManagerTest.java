@@ -2,6 +2,8 @@ package com.masprop.cluster1.sudoku.controller;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,11 @@ import com.masprop.cluster1.sudoku.model.SudokuGame;
 import com.masprop.cluster1.sudoku.model.SudokuGameVariant;
 import com.masprop.cluster1.sudoku.model.SudokuMatrix;
 
+/**
+ * 
+ * @author Andrea Gritti
+ *
+ */
 public class SudokuGameManagerTest {
 	
 	boolean isInitialized = false;
@@ -156,7 +163,7 @@ public class SudokuGameManagerTest {
 		Game game = new SudokuGame(constraint, new SudokuMatrix());
 		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
-		sac.getGameManager().getStorageManager().saveToFile(game);
+		sac.getGameManager().saveGame(game,new File("x"));
 		
 	}
 
@@ -164,7 +171,7 @@ public class SudokuGameManagerTest {
 	public void testLoadGame() {
 		//TODO update when StorageManager loadFromFile is implemented
 		ApplicationController sac = ApplicationController.getUniqueInstance();
-		sac.getGameManager().getStorageManager().loadFromFile(null);	
+		sac.getGameManager().loadGame(new File("x"));	
 	
 	}
 
