@@ -5,7 +5,7 @@ import com.masprop.cluster1.shared.model.Matrix;
 
 /**
  * 
- * @author Matteo de Martino
+ * @author Andrea Gritti
  *
  */
 public class SudokuMatrix implements Matrix {

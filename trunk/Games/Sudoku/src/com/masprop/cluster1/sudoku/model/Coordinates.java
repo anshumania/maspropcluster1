@@ -5,7 +5,7 @@ package com.masprop.cluster1.sudoku.model;
  * But we use it because of our GUI dependence
  * and also because our algorithm is not yet complete.
  * 
- * @author Matteo de Martino
+ * @author Andrea Gritti
  */
 public class Coordinates {
 
