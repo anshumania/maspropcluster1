@@ -1,6 +1,6 @@
 GROUP: Classes programmed by the group.
 
 This folder contains:
-- SOURCE Folder: Source code of the classes implemented so far.
+- SOURCE Folder: Source code of the classes implemented so far in GameLib (commoncode) and Sudoku(our 	code)
 - EXE Folder: Executable files to test the implemented classes or functionalities and test sets.
 - SCREENS Folder: Design of all screens.
