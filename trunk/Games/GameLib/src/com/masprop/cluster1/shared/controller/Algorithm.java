@@ -16,6 +16,7 @@ import com.masprop.cluster1.shared.model.Game;
  * @see GameSolver
  * @see GameValidator
  * @see GameManager
+ * @author Anshuman Mehta
  * @version 1.0
  * @since 1.0
  */
