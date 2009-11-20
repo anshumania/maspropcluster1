@@ -2,6 +2,7 @@ package biz.karms.hidato.app.util.impl;
 
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.GameLevelType;
+import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.shared.model.GameVariant;
 
 /**
@@ -23,9 +24,10 @@ public class HidatoConstraint extends Constraint {
     /**
      * Class constructor.
      */
-    public HidatoConstraint(GameLevelType gameLevelType, GameVariant gameVariant,
-            int noOfFilledCells, int xDimension, int yDimension) {
-        super(gameLevelType, gameVariant, noOfFilledCells);
+    public HidatoConstraint(GameLevelType gameLevelType,
+            GameVariant gameVariant, int noOfFilledCells, GameType gameType,
+            int xDimension, int yDimension) {
+        super(gameLevelType, gameVariant, noOfFilledCells, gameType);
         this.xDimension = xDimension;
         this.yDimension = yDimension;
     }
@@ -33,28 +35,28 @@ public class HidatoConstraint extends Constraint {
     /**
      * @return dimension x
      */
-    public int getxDimension() {
+    public int getXDimension() {
         return xDimension;
     }
 
     /**
      * @param xDimension dimension x
      */
-    public void setxDimension(int xDimension) {
+    public void setXDimension(int xDimension) {
         this.xDimension = xDimension;
     }
 
     /**
      * @return dimension y
      */
-    public int getyDimension() {
+    public int getYDimension() {
         return yDimension;
     }
 
     /**
      * @param yDimension dimension y
      */
-    public void setyDimension(int yDimension) {
+    public void setYDimension(int yDimension) {
         this.yDimension = yDimension;
     }
 }

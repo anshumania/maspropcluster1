@@ -105,11 +105,6 @@ public class Coordinates {
     }
 
     @Override
-    public String toString() {
-        return this.getX() + "," + this.getY();
-    }
-
-    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;

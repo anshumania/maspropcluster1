@@ -80,8 +80,12 @@ public class Cell {
 
     @Override
     public boolean equals(Object object) {
-        if ( this == object ) return true;
-        if ( !(object instanceof Cell) ) return false;
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Cell)) {
+            return false;
+        }
         Cell cell = (Cell) object;
         return (this.getCurrentValue() == cell.getCurrentValue())
                 && (this.isEditable() == cell.isEditable())
@@ -95,7 +99,6 @@ public class Cell {
         hash = 31 * hash + (this.isEditable() == true ? 1 : 0);
         hash = 31 * hash + (this.isActive() == true ? 1 : 0);
         return hash;
-
     }
 }
 
