@@ -40,12 +40,6 @@ public class HidatoGUIManagerTest {
     @Test
     public void testGetNewGame() {
         System.out.println("getNewGame");
-        Constraint constraint = null;
-        HidatoGUIManager instance = null;
-        Game expResult = null;
-        Game result = instance.getNewGame(constraint);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
@@ -55,9 +49,6 @@ public class HidatoGUIManagerTest {
     @Test
     public void testInitializeCells() {
         System.out.println("initializeCells");
-        HidatoGUIManager instance = null;
-        instance.initializeCells();
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 

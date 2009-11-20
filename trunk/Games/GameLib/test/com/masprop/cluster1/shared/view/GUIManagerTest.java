@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Michal "Karm" Babacek
+ * @author
  */
 public class GUIManagerTest {
 
@@ -435,11 +435,5 @@ public class GUIManagerTest {
     }
 
     public class GUIManagerImpl extends GUIManager {
-
-        public GUIManagerImpl() {
-        	//TODO why is this here ?!?
-            //super(null);
-        }
     }
-
 }
