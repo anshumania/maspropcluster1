@@ -1,4 +1,4 @@
-SOURCE: Source code of the classes implemented so fa
+SOURCE: Source code of the classes implemented so far
 
 This folder contains:
 src
@@ -35,4 +35,39 @@ src/biz/karms/hidato/view/swing/HidatoGUI.java
 src/biz/karms/hidato/storage
 src/biz/karms/hidato/storage/manager
 src/biz/karms/hidato/storage/manager/impl
-
+src/com
+src/com/masprop
+src/com/masprop/cluster1
+src/com/masprop/cluster1/shared
+src/com/masprop/cluster1/shared/model
+src/com/masprop/cluster1/shared/model/Cell.java
+src/com/masprop/cluster1/shared/model/Constraint.java
+src/com/masprop/cluster1/shared/model/Game.java
+src/com/masprop/cluster1/shared/model/Matrix.java
+src/com/masprop/cluster1/shared/model/GameLevelType.java
+src/com/masprop/cluster1/shared/model/GameType.java
+src/com/masprop/cluster1/shared/model/GameVariant.java
+src/com/masprop/cluster1/shared/view
+src/com/masprop/cluster1/shared/view/GUIManager.java
+src/com/masprop/cluster1/shared/view/graphics
+src/com/masprop/cluster1/shared/view/graphics/menu_about.png
+src/com/masprop/cluster1/shared/view/graphics/menu_new_game.png
+src/com/masprop/cluster1/shared/view/graphics/menu_load_game.png
+src/com/masprop/cluster1/shared/view/graphics/button_done.png
+src/com/masprop/cluster1/shared/view/graphics/menu_exit.png
+src/com/masprop/cluster1/shared/view/graphics/menu_save_game.png
+src/com/masprop/cluster1/shared/view/graphics/button_ok.png
+src/com/masprop/cluster1/shared/view/graphics/menu_manual.png
+src/com/masprop/cluster1/shared/view/graphics/menu_scores.png
+src/com/masprop/cluster1/shared/view/graphics/settings_icon.png
+src/com/masprop/cluster1/shared/view/GUI.java
+src/com/masprop/cluster1/shared/view/GUI.form
+src/com/masprop/cluster1/shared/controller
+src/com/masprop/cluster1/shared/controller/StatisticsManager.java
+src/com/masprop/cluster1/shared/controller/GameValidator.java
+src/com/masprop/cluster1/shared/controller/GameGenerator.java
+src/com/masprop/cluster1/shared/controller/ApplicationController.java
+src/com/masprop/cluster1/shared/controller/GameSolver.java
+src/com/masprop/cluster1/shared/controller/Algorithm.java
+src/com/masprop/cluster1/shared/controller/GameManager.java
+src/com/masprop/cluster1/shared/controller/StorageManager.java
