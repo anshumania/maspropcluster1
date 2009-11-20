@@ -1,3 +1,11 @@
 EXE: Executable files to test the implemented classes or functionalities and test sets.
 
+
 This folder contains:
+
+The test cases for SudokuAppplicationController
+The test cases for SudokuGameManager
+The test cases for the implementation of Dr. Knuth's Dancing Links algorithm for solving exact cover problems.
+
+
+Double click the bat files to run
