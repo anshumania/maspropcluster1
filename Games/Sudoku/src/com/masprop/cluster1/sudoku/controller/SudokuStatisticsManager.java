@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.masprop.cluster1.shared.controller.StatisticsManager;
 import com.masprop.cluster1.shared.model.Game;
-
+/**
+ * 
+ * @author Andrea Gritti
+ *
+ */
 public class SudokuStatisticsManager implements StatisticsManager {
 
 	@Override

@@ -4,6 +4,11 @@ import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.Matrix;
 
+/**
+ * 
+ * @author Matteo de Martini
+ *
+ */
 public class SudokuGame extends Game {
 	
 
