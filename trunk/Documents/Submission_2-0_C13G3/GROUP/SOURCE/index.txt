@@ -1,5 +1,38 @@
 SOURCE: Source code of the classes implemented so fa
 
 This folder contains:
-
+src
+src/biz
+src/biz/karms
+src/biz/karms/hidato
+src/biz/karms/hidato/app
+src/biz/karms/hidato/app/util
+src/biz/karms/hidato/app/util/impl
+src/biz/karms/hidato/app/util/impl/HidatoConstraint.java
+src/biz/karms/hidato/app/util/impl/HidatoValidator.java
+src/biz/karms/hidato/app/util/impl/GameVariantImpl.java
+src/biz/karms/hidato/app/util/impl/HidatoSolver.java
+src/biz/karms/hidato/app/util/impl/HidatoGenerator.java
+src/biz/karms/hidato/app/game
+src/biz/karms/hidato/app/game/impl
+src/biz/karms/hidato/app/game/impl/HidatoGame.java
+src/biz/karms/hidato/app/game/impl/HidatoStatisticManager.java
+src/biz/karms/hidato/app/game/matrix
+src/biz/karms/hidato/app/game/matrix/impl
+src/biz/karms/hidato/app/game/matrix/impl/HidatoMatrix.java
+src/biz/karms/hidato/app/game/matrix/impl/Direction.java
+src/biz/karms/hidato/app/game/matrix/impl/Coordinates.java
+src/biz/karms/hidato/app/controller
+src/biz/karms/hidato/app/controller/impl
+src/biz/karms/hidato/app/controller/impl/HidatoApplicationController.java
+src/biz/karms/hidato/app/controller/impl/HidatoGameManager.java
+src/biz/karms/hidato/app/controller/impl/HidatoStatisticsManager.java
+src/biz/karms/hidato/view
+src/biz/karms/hidato/view/graphics
+src/biz/karms/hidato/view/swing
+src/biz/karms/hidato/view/swing/HidatoGUIManager.java
+src/biz/karms/hidato/view/swing/HidatoGUI.java
+src/biz/karms/hidato/storage
+src/biz/karms/hidato/storage/manager
+src/biz/karms/hidato/storage/manager/impl
 
