@@ -1,0 +1,22 @@
+GUI - Michal Babacek
+GUIManager - Michal Babacek
+
+Algorithm - Anshuman Mehta
+ApplicationController - Anshuman Mehta
+GameManager - Anshuman Mehta
+
+GameGenerator - Andrea Gritti
+GameSolver - Andrea Gritti
+GameValidator - Andrea Gritti
+Matrix - Andrea Gritti
+
+GameType - Matteo de Martino
+GameLevelType - Matteo de Martino
+GameVariant - Matteo de Martino
+
+StatisticsManager - Adrien Daunou
+StorageManager - Adrien Daunou
+
+Game - Matus Pleva
+Cell - Matus Pleva
+Constraint - Matus Pleva
