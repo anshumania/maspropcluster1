@@ -8,8 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author
+ * @author Matus Pleva
  */
 public class CellTest {
 
@@ -38,12 +37,10 @@ public class CellTest {
     @Test
     public void testIsActive() {
         System.out.println("isActive");
-        Cell instance = null;
-        boolean expResult = false;
+        Cell instance = new Cell(5, true, true);
+        boolean expResult = true;
         boolean result = instance.isActive();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -52,11 +49,10 @@ public class CellTest {
     @Test
     public void testSetActive() {
         System.out.println("setActive");
+        Cell instance = new Cell(5, true, true);
         boolean active = false;
-        Cell instance = null;
         instance.setActive(active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(active, instance.isActive());
     }
 
     /**
@@ -65,12 +61,10 @@ public class CellTest {
     @Test
     public void testGetCurrentValue() {
         System.out.println("getCurrentValue");
-        Cell instance = null;
-        int expResult = 0;
+        Cell instance = new Cell(5, true, true);
+        int expResult = 5;
         int result = instance.getCurrentValue();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -79,11 +73,10 @@ public class CellTest {
     @Test
     public void testSetCurrentValue() {
         System.out.println("setCurrentValue");
-        int currentValue = 0;
-        Cell instance = null;
+        Cell instance = new Cell(5, true, true);
+        int currentValue = 5;
         instance.setCurrentValue(currentValue);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(currentValue, instance.getCurrentValue());
     }
 
     /**
@@ -92,12 +85,10 @@ public class CellTest {
     @Test
     public void testIsEditable() {
         System.out.println("isEditable");
-        Cell instance = null;
-        boolean expResult = false;
+        Cell instance = new Cell(5, true, true);
+        boolean expResult = true;
         boolean result = instance.isEditable();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -106,11 +97,35 @@ public class CellTest {
     @Test
     public void testSetEditable() {
         System.out.println("setEditable");
+        Cell instance = new Cell(5, true, true);
         boolean editable = false;
-        Cell instance = null;
         instance.setEditable(editable);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(editable, instance.isEditable());
     }
 
+    /**
+     * Test of equals method, of class Cell.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Cell cell1 = new Cell(6, true, false);
+        Cell cell2 = new Cell(6, true, false);
+        assertTrue(cell1.equals(cell2));
+        cell1 = new Cell(6, true, true);
+        assertFalse(cell1.equals(cell2));
+    }
+
+    /**
+     * Test of hashCode method, of class Cell.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        Cell cell1 = new Cell(6, true, false);
+        Cell cell2 = new Cell(6, true, false);
+        int hash1 = cell1.hashCode();
+        int hash2 = cell2.hashCode();
+        assertEquals(hash1, hash2);
+    }
 }
