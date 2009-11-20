@@ -57,14 +57,11 @@ public class HidatoMatrix implements Matrix {
      * @return cell at the given coordinates
      */
     public Cell getCell(Coordinates coordinates) {
-        //System.out.println("Coord X: "+coordinates.getX());
-        //System.out.println("Coord Y: "+coordinates.getY());
-        //System.out.println("Matrix dim X: "+width);
-        //System.out.println("Matrix dim Y: "+height);
         return matrix[coordinates.getX()][coordinates.getY()];
     }
 
     /**
+     * Set value to cell identified by coordinates.
      *
      * @param coordinates which indicate cell position
      * @param value value of cell
@@ -93,10 +90,10 @@ public class HidatoMatrix implements Matrix {
     public void write() {
         for (int i = 0; i < this.getHeight(); i++) {
             for (int j = 0; j < this.getWidth(); j++) {
-                if ((matrix[i][j].getCurrentValue() < 10) && (matrix[i][j].getCurrentValue() > -1)) {
-                    System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
+                if ((matrix[j][i].getCurrentValue() < 10) && (matrix[i][j].getCurrentValue() > -1)) {
+                    System.out.print(" " + matrix[j][i].getCurrentValue() + " ");
                 } else {
-                    System.out.print(matrix[i][j].getCurrentValue() + " ");
+                    System.out.print(matrix[j][i].getCurrentValue() + " ");
                 }
             }
             System.out.println();
