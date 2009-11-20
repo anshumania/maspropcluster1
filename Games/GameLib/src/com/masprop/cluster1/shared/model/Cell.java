@@ -77,5 +77,25 @@ public class Cell {
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if ( this == object ) return true;
+        if ( !(object instanceof Cell) ) return false;
+        Cell cell = (Cell) object;
+        return (this.getCurrentValue() == cell.getCurrentValue())
+                && (this.isEditable() == cell.isEditable())
+                && (this.isActive() == cell.isActive());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + this.getCurrentValue();
+        hash = 31 * hash + (this.isEditable() == true ? 1 : 0);
+        hash = 31 * hash + (this.isActive() == true ? 1 : 0);
+        return hash;
+
+    }
 }
 
