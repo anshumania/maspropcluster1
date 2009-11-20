@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 /**
- *
+ * GUI :-)
  * @author Michal Karm Babacek
  */
 public class GUI extends javax.swing.JFrame {
@@ -426,13 +426,14 @@ public class GUI extends javax.swing.JFrame {
         if (fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
             guiManager.loadGame(fileChooser.getSelectedFile());
         } else if (fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
-            guiManager.saveGame();
+            guiManager.saveGame(fileChooser.getSelectedFile());
         } else {
             throw new IllegalArgumentException("illegal fileChooser state");
         }
     }//GEN-LAST:event_fileChooserActionPerformed
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
+        System.out.println("GUIMANAGER:"+guiManager);
         guiManager.getNewGame(null);
     }//GEN-LAST:event_newGameMenuItemActionPerformed
 
@@ -443,25 +444,6 @@ public class GUI extends javax.swing.JFrame {
     private void wizardDismissButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wizardDismissButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_wizardDismissButtonActionPerformed
-
-    /**
-     * MAIN METHOD WAS DEPRECATED, if you want to run the GUI, you should extend it in your own class.
-     * 
-     */
-
-    /**
-     * Run the main thread.
-     * @param args the command line arguments
-     */
-    /*public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
-    }*/
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog aboutDialog;

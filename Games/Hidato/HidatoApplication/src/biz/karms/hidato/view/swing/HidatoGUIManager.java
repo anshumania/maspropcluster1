@@ -4,10 +4,10 @@ import biz.karms.hidato.app.controller.impl.HidatoGameManager;
 import biz.karms.hidato.app.game.impl.HidatoGame;
 import biz.karms.hidato.app.game.matrix.impl.Coordinates;
 import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
+import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
-import com.masprop.cluster1.shared.view.GUI;
 import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,11 +23,24 @@ import javax.swing.border.LineBorder;
  */
 public class HidatoGUIManager extends GUIManager {
 
-    HidatoGame hidatoGame = null;
+    private HidatoGame hidatoGame = null;
+    private HidatoGUIManager hidatoGUIManager = null;
+    private volatile HidatoGUI hidatoGUI = null;
 
-    public HidatoGUIManager(GUI gui) {
-        super(gui);
-        this.setGameManager(new HidatoGameManager());
+    public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
+        setGameManager(hidatoGameManager);
+        hidatoGUIManager = this;
+        init();
+    }
+
+    public void init() {
+        java.awt.EventQueue.invokeLater(
+                new Runnable() {
+                    public void run() {
+                        hidatoGUI = new HidatoGUI(hidatoGUIManager);
+                        hidatoGUI.setVisible(true);
+                    }
+                });
     }
 
     /**
@@ -37,7 +50,7 @@ public class HidatoGUIManager extends GUIManager {
      */
     @Override
     public Game getNewGame(Constraint constraint) {
-        hidatoGame = (HidatoGame) getGameManager().getNewGame(null);
+        hidatoGame = (HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(null);
         showGameWizard();
         initializeCells();
         //((HidatoMatrix) hg.getGameMatrix()).write();

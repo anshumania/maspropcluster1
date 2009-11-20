@@ -6,6 +6,7 @@ import com.masprop.cluster1.shared.model.GameVariant;
 
 /**
  * Extending the default Constraint
+ * @see Constraint
  * @author Michal "Karm" Babacek
  */
 public class HidatoConstraint extends Constraint {

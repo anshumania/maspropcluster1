@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.GameType;
 import java.io.File;
 
 /**
@@ -16,7 +17,7 @@ import java.io.File;
  * to the developer.</p>
  * 
  * <p>The interface provides for retrieving the specific Controllers of
- * a game, the <tt>GameGenerator</tt>, the <tt>GameValidator</tt> and 
+ * a game, the <tt>GameGenerator</tt>, the <tt>GameValidator</tt> and
  * the <tt>GameSolver</tt> and delegating the client's requests to them</p>
  *
  * <p>Also this interface provides the handle for the <tt>StorageManager</tt><p>
@@ -33,25 +34,22 @@ import java.io.File;
  */
 public abstract class GameManager {
 
-	
-	protected GameGenerator gameGenerator;
-	
-	protected GameSolver gameSolver;
-	
-	protected GameValidator gameValidator;
-	
-	protected StorageManager storageManager;
-	
-	protected StatisticsManager statisticsManager;
-	
+    protected GameGenerator gameGenerator;
+    protected GameSolver gameSolver;
+    protected GameValidator gameValidator;
+    protected StorageManager storageManager;
+    protected StatisticsManager statisticsManager;
+
+    //To be set in implementation...
+    private GameType gameType = null;
+
     /**
      * Gets the game generator.
      *
      * @return the game generator
      */
-    public GameGenerator getGameGenerator()
-    {
-    	return gameGenerator;
+    public GameGenerator getGameGenerator() {
+        return gameGenerator;
     }
 
     /**
@@ -59,20 +57,17 @@ public abstract class GameManager {
      * 
      * @return the game solver
      */
-    public GameSolver getGameSolver()
-    {
-    	return gameSolver;
+    public GameSolver getGameSolver() {
+        return gameSolver;
     }
 
-     
     /**
      * Gets the game validator.
      * 
      * @return the game validator
      */
-    public GameValidator getGameValidator()
-    {
-    	return gameValidator;
+    public GameValidator getGameValidator() {
+        return gameValidator;
     }
 
     /**
@@ -80,12 +75,10 @@ public abstract class GameManager {
      *
      * @return the storage manager
      */
-    public StorageManager getStorageManager()
-    {
-    	return storageManager;
+    public StorageManager getStorageManager() {
+        return storageManager;
     }
 
-     
     /**
      * Gets the new game.
      * 
@@ -93,12 +86,10 @@ public abstract class GameManager {
      * 
      * @return the new game
      */
-    public Game getNewGame(Constraint constraint)
-    {
-    	return getGameGenerator().generateGame(constraint);
+    public Game getNewGame(Constraint constraint) {
+        return getGameGenerator().generateGame(constraint);
     }
 
-     
     /**
      * Validate game.
      * 
@@ -106,12 +97,10 @@ public abstract class GameManager {
      * 
      * @return true, if successful
      */
-    public boolean validateGame(Game game)
-    {
-    	return getGameValidator().validateGame(game);
+    public boolean validateGame(Game game) {
+        return getGameValidator().validateGame(game);
     }
 
-     
     /**
      * Solve game.
      * 
@@ -119,69 +108,67 @@ public abstract class GameManager {
      * 
      * @return the game
      */
-    public Game solveGame(Game game)
-    {
-    	return getGameSolver().solveGame(game);
+    public Game solveGame(Game game) {
+        return getGameSolver().solveGame(game);
     }
 
-     
     /**
      * Save game.
      * 
      * @param game the game
      */
-    public void saveGame(Game game, File file)
-    {
-    	
-    	getStorageManager().saveToFile(game,file,ApplicationController.getGameToPlay());
+    public void saveGame(Game game, File file) {
+        getStorageManager().saveToFile(game, file, gameType);
     }
 
-     
     /**
      * Load game.
      * 
      * @return the game
      */
-    public Game loadGame(File file)
-    {
-    	return getStorageManager().loadFromFile(file,ApplicationController.getGameToPlay());
+    public Game loadGame(File file) {
+        return getStorageManager().loadFromFile(file, gameType);
     }
 
-     
     /**
      * Gets the statistics.
      * 
      * @return the statistics
      */
-    public List<String> getStatistics()
-    {
-    	return getStatisticsManager().getStatistics();
+    public List<String> getStatistics() {
+        return new java.util.ArrayList<String>();
     }
-    
-    
-	public void setGameGenerator(GameGenerator gameGenerator) {
-		this.gameGenerator = gameGenerator;
-	}
 
-	public void setGameSolver(GameSolver gameSolver) {
-		this.gameSolver = gameSolver;
-	}
+    public void setGameGenerator(GameGenerator gameGenerator) {
+        this.gameGenerator = gameGenerator;
+    }
 
-	public void setGameValidator(GameValidator gameValidator) {
-		this.gameValidator = gameValidator;
-	}
+    public void setGameSolver(GameSolver gameSolver) {
+        this.gameSolver = gameSolver;
+    }
 
-	public void setStorageManager(StorageManager storageManager) {
-		this.storageManager = storageManager;
-	}
+    public void setGameValidator(GameValidator gameValidator) {
+        this.gameValidator = gameValidator;
+    }
 
-	public void setStatisticsManager(StatisticsManager statisticsManager) {
-		this.statisticsManager = statisticsManager;
-	}
+    public void setStorageManager(StorageManager storageManager) {
+        this.storageManager = storageManager;
+    }
 
-	public StatisticsManager getStatisticsManager() {
-		return statisticsManager;
-	}
+    public void setStatisticsManager(StatisticsManager statisticsManager) {
+        this.statisticsManager = statisticsManager;
+    }
 
+    public StatisticsManager getStatisticsManager() {
+        return statisticsManager;
+    }
+
+    public GameType getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
+    }
 }
 
