@@ -1,12 +1,15 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.masprop.cluster1.shared.controller;
 
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameType;
 import java.io.File;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,12 +22,20 @@ public class StorageManagerTest {
     public StorageManagerTest() {
     }
 
-    @BeforeClass
+    @org.junit.BeforeClass
     public static void setUpClass() throws Exception {
     }
 
-    @AfterClass
+    @org.junit.AfterClass
     public static void tearDownClass() throws Exception {
+    }
+
+    @org.junit.Before
+    public void setUp() throws Exception {
+    }
+
+    @org.junit.After
+    public void tearDown() throws Exception {
     }
 
     @Before
@@ -38,7 +49,7 @@ public class StorageManagerTest {
     /**
      * Test of saveToFile method, of class StorageManager.
      */
-    @Test
+    @org.junit.Test
     public void testSaveToFile() {
         System.out.println("saveToFile");
         Game game = null;
@@ -53,7 +64,7 @@ public class StorageManagerTest {
     /**
      * Test of loadFromFile method, of class StorageManager.
      */
-    @Test
+    @org.junit.Test
     public void testLoadFromFile() {
         System.out.println("loadFromFile");
         File file = null;
