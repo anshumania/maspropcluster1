@@ -29,8 +29,8 @@ public class SudokuGUIManager extends GUIManager {
 
     Game sudokuGame = null;
 
-    public SudokuGUIManager(GUI gui) {
-        super(gui);
+    public SudokuGUIManager() {
+//        super(gui);
        // this.setGameManager(new SudokuGUIManager());
     }
     

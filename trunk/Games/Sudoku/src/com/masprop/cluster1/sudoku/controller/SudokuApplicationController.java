@@ -16,6 +16,7 @@ import com.masprop.cluster1.sudoku.view.SudokuGUIManager;
  */
 public class SudokuApplicationController extends ApplicationController {
 	
+	//Singleton
 	private SudokuApplicationController()
 	{
 		// defeat instantiation
@@ -36,10 +37,10 @@ public class SudokuApplicationController extends ApplicationController {
 	public void initalizeComponents()
 	{
 	    GUI sudokuGui = new SudokuGUI();
-		GUIManager guiManager = new SudokuGUIManager(sudokuGui);
-	    setGuiManager(guiManager);
-	    ((SudokuGUIManager)getGuiManager()).initGuiManager();
-		setGameManager(new SudokuGameManager());
+		//GUIManager guiManager = new SudokuGUIManager(sudokuGui);
+	    setGuiManager(sudokuGui.getGuiManager());
+	    
+	    setGameManager(new SudokuGameManager());
 		
 		assert getGameManager()!=null;
 		
@@ -48,6 +49,7 @@ public class SudokuApplicationController extends ApplicationController {
 		getGameManager().setGameValidator(new SudokuGameValidator());
 		getGameManager().setStorageManager(new SudokuStorageManager());
 		getGameManager().setStatisticsManager(new SudokuStatisticsManager());
+		
 	}
 	
 	public static void main(String args[])
@@ -58,8 +60,17 @@ public class SudokuApplicationController extends ApplicationController {
 		//Initialize the components
 		//Have to typeCast to get access to the protected method in the same package
 		if(sac instanceof SudokuApplicationController)
+		{
 			((SudokuApplicationController)sac).initalizeComponents();
+			((SudokuApplicationController)sac).generateGUI();
+		}
 
+	}
+
+	@Override
+	protected void generateGUI() {
+		getGuiManager().getGui().init();
+		
 	}
 }	
 

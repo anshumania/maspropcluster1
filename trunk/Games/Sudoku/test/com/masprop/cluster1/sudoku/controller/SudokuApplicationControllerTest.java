@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.model.GameType;
+import com.masprop.cluster1.sudoku.view.SudokuGUIManager;
 
 /**
  * 
@@ -16,11 +17,13 @@ import com.masprop.cluster1.shared.model.GameType;
  */
 public class SudokuApplicationControllerTest {
 
+	
+	
 	@Before
 	public void setUp() throws Exception {
 				
 		if(ApplicationController.getGameToPlay() == null)
-			ApplicationController.setGameToPlay(GameType.HIDATO);
+			ApplicationController.setGameToPlay(GameType.SUDOKU);
 			
 		assertFalse(ApplicationController.getGameToPlay() == null);
 	}
@@ -29,6 +32,15 @@ public class SudokuApplicationControllerTest {
 	public void tearDown() throws Exception {
 	}
 
+	
+	/**
+	 * Tests the initialization of all the components 
+	 * of an ApplicationController.
+	 * Goal : To initialize the ApplicationController
+	 * Effect : All components in the ApplicationController should 
+	 *          have been instantiated
+	 */
+	
 	@Test
 	public void testInitalizeComponents() {
 		//Create the ApplicationController
@@ -37,7 +49,10 @@ public class SudokuApplicationControllerTest {
 		//Initialize the components
 		//Have to typeCast to get access to the protected method in the same package
 		if(sac instanceof SudokuApplicationController)
+		{
 			((SudokuApplicationController)sac).initalizeComponents();
+			}
+			 
 		
 		//GameGenerator should not be null
 		assertNotNull(sac.getGameManager().getGameGenerator());
@@ -52,13 +67,21 @@ public class SudokuApplicationControllerTest {
 		assertNotNull(sac.getGameManager().getStorageManager());
 	}
 
+	/**
+	 * Tests whether the ApplicationController is
+	 * infact a SudokuApplicationController
+	 */
 	@Test
 	public void testGetSudokuApplicationController() {
 		ApplicationController sac = SudokuApplicationController.getSudokuApplicationController();
 		assertNotNull(sac);
 		
 	}
-
+	
+	/**
+	 * Tests whether getInstance returns always the same instance
+	 * for the particular GameType.
+	 */
 	@Test
 	public void testGetInstance() {
 		ApplicationController sac = ApplicationController.getInstance(GameType.SUDOKU);
@@ -69,7 +92,10 @@ public class SudokuApplicationControllerTest {
 		
 		assertEquals(sac,sac2);
 	}
-
+	
+	/**
+	 * Tests the operation of the set and get for GameManager
+	 */
 	@Test
 	public void testGetAndSetGameManager() {
 		//Create the ApplicationController
@@ -78,14 +104,16 @@ public class SudokuApplicationControllerTest {
 
 		//GameManager is not initialized 
 		//Test get
-		assertNull(sac.getGameManager());
+		assertNotNull(sac.getGameManager());
 		//Test set
 		sac.setGameManager(new SudokuGameManager());
 		//Test set and get
 		assertNotNull(sac.getGameManager());
 	}
 
-
+	/**
+	 * Test the operation of the set and get for GameToPlay
+	 */
 	@Test
 	public void testGetAndSetGameToPlay() {
 		
@@ -98,21 +126,11 @@ public class SudokuApplicationControllerTest {
 		
 	}
 
-	@Test
-	public void testGetGuiManager() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testGenerateGUI() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testSetGuiManager() {
-		fail("Not yet implemented"); // TODO
-	}
-
+	
+	/**
+	 * Test whether the getUniqueInstance always 
+	 * returns the unique Singleton instance
+	 */
 	@Test
 	public void testGetUniqueInstance() {
 		//	Get the ApplicationController -> This method assumes the Controller has been created
@@ -126,15 +144,45 @@ public class SudokuApplicationControllerTest {
 		assertEquals(sac, sac2);
 	}
 	
-
+	
+	/**
+	 * Tests whether the GUI is generated 
+	 * 
+	 */
 	@Test
-	public void testSetUniqueInstance() {
-		fail("Not yet implemented"); // TODO
+	public void testGenerateGUI() {
+		//	Get the ApplicationController -> This method assumes the Controller has been created
+		
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac);
+		
+		assertNotNull(sac.getGuiManager());
+		assertNotNull(sac.getGuiManager().getGui());
+		if(sac instanceof SudokuApplicationController)
+			((SudokuApplicationController)sac).generateGUI();
+		
+		//Test both the instances are the same
+//		assertEquals(sac, sac2);
 	}
+	
 
+	/**
+	 * Tests the operation of the set and get for GuiManager
+	 *//*
 	@Test
-	public void testSetGameToPlay() {
-		fail("Not yet implemented"); // TODO
-	}
+	public void testGetGuiManager() {
+		
+		ApplicationController sac = ApplicationController.getUniqueInstance();
+		assertNotNull(sac);
 
-}
+		//GameManager is not initialized 
+		//Test get
+		assertNotNull(sac.getGuiManager());
+		//Test set
+		sac.setGuiManager(new SudokuGUIManager(null));
+		//Test set and get
+		assertNotNull(sac.getGameManager());
+
+	}*/
+	
+	}
