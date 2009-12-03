@@ -1,10 +1,10 @@
 package biz.karms.hidato.app.util.impl;
 
 import biz.karms.hidato.app.game.impl.HidatoGame;
-import biz.karms.hidato.app.game.matrix.impl.Coordinates;
-import biz.karms.hidato.app.game.matrix.impl.Direction;
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
+import com.masprop.cluster1.shared.model.Coordinates;
+import com.masprop.cluster1.shared.model.Direction;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.Matrix;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -69,7 +69,7 @@ public class HidatoSolverTest {
         int[] values = {6, 0, 9,
                         0, 4, 0,
                         1, 0, 0};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         HidatoSolver instance = new HidatoSolver();
         instance.setMatrix(matrix);
         int[] result = new int[9];
@@ -94,7 +94,7 @@ public class HidatoSolverTest {
         int[] values = {6, 0, 9,
                         0, 4, 0,
                         1, 0, 0};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         HidatoSolver solver = new HidatoSolver();
         solver.setMatrix(matrix);
         solver.setCurrentCoo(new Coordinates(0, 0));
@@ -112,13 +112,13 @@ public class HidatoSolverTest {
         int[] values = {6, 0, 9,
                         0, 0, 0,
                         1, 0, 0};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         HidatoSolver solver = new HidatoSolver();
         solver.setMatrix(matrix);
         solver.setCurrentVal(1);
         solver.setCurrentCoo(new Coordinates(0, 0));
         solver.putNext();
-        HidatoMatrix matrixResult = solver.getMatrix();
+        Matrix matrixResult = solver.getMatrix();
         int[] result = new int[9];
         int k = 0;
         //parse matrix to one dimensional array
@@ -144,11 +144,10 @@ public class HidatoSolverTest {
         int[] values = {6, 0, 9,
                         0, 0, 0,
                         1, 0, 0};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         Game game = new HidatoGame(new HidatoConstraint(), matrix);
         HidatoSolver solver = new HidatoSolver();
-        HidatoMatrix matrixResult =
-                (HidatoMatrix) solver.solveGame(game).getGameMatrix();
+        Matrix matrixResult = solver.solveGame(game).getGameMatrix();
         int[] result = new int[9];
         int k = 0;
         //parse matrix to one dimensional array

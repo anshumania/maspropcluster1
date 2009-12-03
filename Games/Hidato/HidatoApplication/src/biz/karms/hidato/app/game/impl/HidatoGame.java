@@ -1,6 +1,5 @@
 package biz.karms.hidato.app.game.impl;
 
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.Matrix;
@@ -16,14 +15,14 @@ public class HidatoGame extends Game {
     /**
      * List of all possible solutions.
      */
-    private List<HidatoMatrix> solutions;
+    private List<Matrix> solutions;
 
     /**
      *
      * @param constraint informations that describe game
      * @param gameMatrix game grid
      */
-    public HidatoGame(Constraint constraint, HidatoMatrix gameMatrix) {
+    public HidatoGame(Constraint constraint, Matrix gameMatrix) {
         super(constraint, gameMatrix);
     }
 
@@ -35,7 +34,7 @@ public class HidatoGame extends Game {
      * @param solutions list of all possible solutions
      */
     public HidatoGame(Constraint constraint, Matrix gameMatrix, long time,
-            List<HidatoMatrix> solutions) {
+            List<Matrix> solutions) {
         super(constraint, gameMatrix, time);
         this.solutions = solutions;
     }
@@ -43,14 +42,14 @@ public class HidatoGame extends Game {
     /**
      * @return List of possible solutions
      */
-    public List<HidatoMatrix> getSolutions() {
+    public List<Matrix> getSolutions() {
         return this.solutions;
     }
 
     /**
      * @param solutions list of possible solutions
      */
-    public void setSolutions(List<HidatoMatrix> solutions) {
+    public void setSolutions(List<Matrix> solutions) {
         this.solutions = solutions;
     }
 }

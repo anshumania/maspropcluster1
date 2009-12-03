@@ -1,11 +1,11 @@
 package biz.karms.hidato.app.util.impl;
 
 import biz.karms.hidato.app.game.impl.HidatoGame;
-import biz.karms.hidato.app.game.matrix.impl.Coordinates;
-import biz.karms.hidato.app.game.matrix.impl.Direction;
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
 import com.masprop.cluster1.shared.controller.GameSolver;
+import com.masprop.cluster1.shared.model.Coordinates;
+import com.masprop.cluster1.shared.model.Direction;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.Matrix;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +28,7 @@ public class HidatoSolver implements GameSolver {
     /**
      * Current matrix.
      */
-    private HidatoMatrix matrix;
+    private Matrix matrix;
     /**
      * Collection contains predefined values and non-active cells.
      */
@@ -61,7 +61,7 @@ public class HidatoSolver implements GameSolver {
      */
     public Game solveGame(Game game) {
         HidatoGame hidatoGame = (HidatoGame) game;
-        this.matrix = (HidatoMatrix) hidatoGame.getGameMatrix();
+        this.matrix = hidatoGame.getGameMatrix();
         //set current value to 1
         this.currentVal = 1;
         //inicialize collections
@@ -302,14 +302,14 @@ public class HidatoSolver implements GameSolver {
     /**
      * @return current matrix
      */
-    public HidatoMatrix getMatrix() {
+    public Matrix getMatrix() {
         return matrix;
     }
 
     /**
      * @param matrix current matrix
      */
-    public void setMatrix(HidatoMatrix matrix) {
+    public void setMatrix(Matrix matrix) {
         this.matrix = matrix;
     }
 }

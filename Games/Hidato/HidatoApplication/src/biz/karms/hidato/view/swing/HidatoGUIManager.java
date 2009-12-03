@@ -2,11 +2,9 @@ package biz.karms.hidato.view.swing;
 
 import biz.karms.hidato.app.controller.impl.HidatoGameManager;
 import biz.karms.hidato.app.game.impl.HidatoGame;
-import biz.karms.hidato.app.game.matrix.impl.Coordinates;
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
-import com.masprop.cluster1.shared.controller.GameManager;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
+import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
@@ -64,8 +62,8 @@ public class HidatoGUIManager extends GUIManager {
     public void initializeCells() {
         super.initializeCells();
 
-        int height = ((HidatoMatrix) hidatoGame.getGameMatrix()).getHeight();
-        int width = ((HidatoMatrix) hidatoGame.getGameMatrix()).getWidth();
+        int height = hidatoGame.getGameMatrix().getHeight();
+        int width = hidatoGame.getGameMatrix().getWidth();
         Cell matrixCell = null;
 
         /**
@@ -86,7 +84,7 @@ public class HidatoGUIManager extends GUIManager {
                 /**
                  * Retrieve the cell from the matrix.
                  */
-                matrixCell = ((HidatoMatrix) hidatoGame.getGameMatrix()).getCell(new Coordinates(x, y));
+                matrixCell = hidatoGame.getGameMatrix().getCell(new Coordinates(x, y));
 
                 /**
                  * JTextField customization

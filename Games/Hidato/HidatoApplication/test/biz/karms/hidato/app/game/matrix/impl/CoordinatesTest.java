@@ -1,5 +1,7 @@
 package biz.karms.hidato.app.game.matrix.impl;
 
+import com.masprop.cluster1.shared.model.Coordinates;
+import com.masprop.cluster1.shared.model.Direction;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -99,10 +101,46 @@ public class CoordinatesTest {
     @Test
     public void testSetCoordinates() {
         System.out.println("setCoordinates");
+        //test top
         Direction direction = Direction.TOP;
-        Coordinates instance = new Coordinates(1, 3);
+        Coordinates instance = new Coordinates(1, 1);
         instance.setCoordinates(direction);
-        assertEquals(new Coordinates(1, 4), instance);
+        assertEquals(new Coordinates(1, 0), instance);
+        //test rightTop
+        direction = Direction.RIGHTTOP;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(2, 0), instance);
+        //test right
+        direction = Direction.RIGHT;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(2, 1), instance);
+        //test rightBottom
+        direction = Direction.RIGHTBOTTOM;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(2, 2), instance);
+        //test bottom
+        direction = Direction.BOTTOM;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(1, 2), instance);
+        //test leftBottom
+        direction = Direction.LEFTBOTTOM;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(0, 2), instance);
+        //test left
+        direction = Direction.LEFT;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(0, 1), instance);
+        //test leftTop
+        direction = Direction.LEFTTOP;
+        instance = new Coordinates(1, 1);
+        instance.setCoordinates(direction);
+        assertEquals(new Coordinates(0, 0), instance);
     }
 
     /**
