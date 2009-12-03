@@ -1,6 +1,8 @@
 package biz.karms.hidato.app.game.matrix.impl;
 
 import com.masprop.cluster1.shared.model.Cell;
+import com.masprop.cluster1.shared.model.Coordinates;
+import com.masprop.cluster1.shared.model.Matrix;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,9 +14,9 @@ import static org.junit.Assert.*;
  *
  * @author Matus Pleva
  */
-public class HidatoMatrixTest {
+public class MatrixTest {
 
-    public HidatoMatrixTest() {
+    public MatrixTest() {
     }
 
     @BeforeClass
@@ -43,7 +45,7 @@ public class HidatoMatrixTest {
         int[] values = {6, 7, 9,
                         0, 5, 8,
                         1, 0, 0};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         Cell expResult = new Cell(1, false, true);
         Cell result = matrix.getCell(coordinates);
         assertEquals(expResult, result);
@@ -59,7 +61,7 @@ public class HidatoMatrixTest {
         int[] values = {1, 2, 3,
                         4, 5, 6,
                         7, 8, 9};
-        HidatoMatrix matrix = new HidatoMatrix(3, 3, values);
+        Matrix matrix = new Matrix(3, 3, values);
         int value = 5;
         matrix.setCellValue(coordinates, value);
         assertEquals(value, matrix.getCell(coordinates).getCurrentValue());
@@ -74,7 +76,7 @@ public class HidatoMatrixTest {
         int[] values = {1, 2, 3, 10,
                         4, 5, 6, 12,
                         7, 8, 11, 9};
-        HidatoMatrix matrix = new HidatoMatrix(4, 3, values);
+        Matrix matrix = new Matrix(4, 3, values);
         int expResult = 4;
         int result = matrix.getWidth();
         assertEquals(expResult, result);
@@ -90,7 +92,7 @@ public class HidatoMatrixTest {
         int[] values = {1, 2, 3, 10,
                         4, 5, 6, 12,
                         7, 8, 11, 9};
-        HidatoMatrix matrix = new HidatoMatrix(4, 3, values);
+        Matrix matrix = new Matrix(4, 3, values);
         int expResult = 3;
         int result = matrix.getHeight();
         assertEquals(expResult, result);

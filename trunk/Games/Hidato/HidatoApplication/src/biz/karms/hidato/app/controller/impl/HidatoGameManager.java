@@ -21,7 +21,6 @@ public class HidatoGameManager extends GameManager {
      * Class constructor.
      */
     public HidatoGameManager() {
-        super();
         this.gameGenerator = new HidatoGenerator();
         this.gameSolver = new HidatoSolver();
         this.gameValidator = new HidatoValidator();

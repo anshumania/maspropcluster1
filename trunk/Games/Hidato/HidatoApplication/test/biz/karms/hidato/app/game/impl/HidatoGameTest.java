@@ -1,7 +1,7 @@
 package biz.karms.hidato.app.game.impl;
 
-import biz.karms.hidato.app.game.matrix.impl.HidatoMatrix;
 import com.masprop.cluster1.shared.model.Constraint;
+import com.masprop.cluster1.shared.model.Matrix;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -44,17 +44,17 @@ public class HidatoGameTest {
         int[] values1 = {6, 7, 9,
             0, 5, 8,
             1, 0, 0};
-        HidatoMatrix matrix1 = new HidatoMatrix(3, 3, values1);
+        Matrix matrix1 = new Matrix(3, 3, values1);
         int[] values2 = {6, 7, 9,
             4, 5, 8,
             1, 9, 11};
-        HidatoMatrix matrix2 = new HidatoMatrix(3, 3, values2);
-        List<HidatoMatrix> list = new ArrayList<HidatoMatrix>();
+        Matrix matrix2 = new Matrix(3, 3, values2);
+        List<Matrix> list = new ArrayList<Matrix>();
         list.add(matrix1);
         list.add(matrix2);
         HidatoGame game = new HidatoGame(new Constraint(), null, 264,
                 list);
-        List expResult = new ArrayList<HidatoMatrix>();
+        List expResult = new ArrayList<Matrix>();
         expResult.add(matrix1);
         expResult.add(matrix2);
         List result = game.getSolutions();
@@ -76,12 +76,12 @@ public class HidatoGameTest {
         int[] values1 = {6, 7, 9,
             0, 5, 8,
             1, 0, 0};
-        HidatoMatrix matrix1 = new HidatoMatrix(3, 3, values1);
+        Matrix matrix1 = new Matrix(3, 3, values1);
         int[] values2 = {6, 7, 9,
             4, 5, 8,
             1, 9, 11};
-        HidatoMatrix matrix2 = new HidatoMatrix(3, 3, values2);
-        List<HidatoMatrix> list = new ArrayList<HidatoMatrix>();
+        Matrix matrix2 = new Matrix(3, 3, values2);
+        List<Matrix> list = new ArrayList<Matrix>();
         list.add(matrix1);
         list.add(matrix2);
         game.setSolutions(list);
