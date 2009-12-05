@@ -12,8 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Provides methods needed to solve a <tt>game</tt>.
  *
- * @author
+ * @see Game
+ * @author Matus Pleva
  */
 public class HidatoSolver implements GameSolver {
 
@@ -154,7 +156,7 @@ public class HidatoSolver implements GameSolver {
                     //if there is no other possibility to replace number
                     //and we need to replace starting value then exit
                     if (currentVal - (i + 1) < 1) {
-                        return true;
+                        throw new IllegalArgumentException("game is not solvable");
                     }
                     //remove value from lastDir
                     lastDir.remove(currentVal);
@@ -186,8 +188,8 @@ public class HidatoSolver implements GameSolver {
         int width = this.matrix.getWidth() - 1;
         int height = this.matrix.getHeight() - 1;
         if (lastDir == null) {
-            temp = new Coordinates(currentCoo.getX(), currentCoo.getY() - 1);
-            if (currentCoo.getY() > 0
+            temp = new Coordinates(currentCoo.getX(), currentCoo.getY() + 1);
+            if (currentCoo.getY() < height
                     && matrix.getCell(temp).getCurrentValue() == 0) {
                 nextDir = Direction.BOTTOM;
             } else {
@@ -197,8 +199,8 @@ public class HidatoSolver implements GameSolver {
         if (lastDir != null) {
             if (lastDir.equals(Direction.BOTTOM)) {
                 temp = new Coordinates(currentCoo.getX() - 1,
-                        currentCoo.getY() - 1);
-                if (currentCoo.getX() > 0 && currentCoo.getY() > 0
+                        currentCoo.getY() + 1);
+                if (currentCoo.getX() > 0 && currentCoo.getY() < height
                         && matrix.getCell(temp).getCurrentValue() == 0) {
                     nextDir = Direction.LEFTBOTTOM;
                 } else {
@@ -217,8 +219,8 @@ public class HidatoSolver implements GameSolver {
             }
             if (lastDir.equals(Direction.LEFT)) {
                 temp = new Coordinates(currentCoo.getX() - 1,
-                        currentCoo.getY() + 1);
-                if (currentCoo.getX() > 0 && currentCoo.getY() < height
+                        currentCoo.getY() - 1);
+                if (currentCoo.getX() > 0 && currentCoo.getY() > 0
                         && matrix.getCell(temp).getCurrentValue() == 0) {
                     nextDir = Direction.LEFTTOP;
                 } else {
@@ -227,8 +229,8 @@ public class HidatoSolver implements GameSolver {
             }
             if (lastDir.equals(Direction.LEFTTOP)) {
                 temp = new Coordinates(currentCoo.getX(),
-                        currentCoo.getY() + 1);
-                if (currentCoo.getY() < height
+                        currentCoo.getY() - 1);
+                if (currentCoo.getY() > 0
                         && matrix.getCell(temp).getCurrentValue() == 0) {
                     nextDir = Direction.TOP;
                 } else {
@@ -237,9 +239,9 @@ public class HidatoSolver implements GameSolver {
             }
             if (lastDir.equals(Direction.TOP)) {
                 temp = new Coordinates(currentCoo.getX() + 1,
-                        currentCoo.getY() + 1);
+                        currentCoo.getY() - 1);
                 if (currentCoo.getX() < width 
-                        && currentCoo.getY() < height
+                        && currentCoo.getY() > 0
                         && matrix.getCell(temp).getCurrentValue() == 0) {
                     nextDir = Direction.RIGHTTOP;
                 } else {
@@ -258,8 +260,8 @@ public class HidatoSolver implements GameSolver {
             }
             if (lastDir.equals(Direction.RIGHT)) {
                 temp = new Coordinates(currentCoo.getX() + 1,
-                        currentCoo.getY() - 1);
-                if (currentCoo.getX() < width && currentCoo.getY() > 0
+                        currentCoo.getY() + 1);
+                if (currentCoo.getX() < width && currentCoo.getY() < height
                         && matrix.getCell(temp).getCurrentValue() == 0) {
                     nextDir = Direction.RIGHTBOTTOM;
                 } else {
