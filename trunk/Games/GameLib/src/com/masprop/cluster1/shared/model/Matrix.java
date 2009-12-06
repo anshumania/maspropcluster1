@@ -59,13 +59,22 @@ public class Matrix {
     }
 
     /**
-     * Set value to cell identified by coordinates.
+     * Set value to cell identified by coordinates,
+     * if cell is active. Set editable to true if new value is 0,
+     * else set editable to false.
      *
      * @param coordinates which indicate cell position
      * @param value value of cell
      */
     public void setCellValue(Coordinates coordinates, int value) {
-        matrix[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
+        if (matrix[coordinates.getX()][coordinates.getY()].isActive()) {
+            matrix[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
+            if (value == 0) {
+                matrix[coordinates.getX()][coordinates.getY()].setEditable(true);
+            } else {
+                matrix[coordinates.getX()][coordinates.getY()].setEditable(false);
+            }
+        }
     }
 
     /**
@@ -80,5 +89,23 @@ public class Matrix {
      */
     public int getHeight() {
         return height;
+    }
+
+    /**
+     * Only for testing.
+     */
+    public void write() {
+        for (int y = 0; y < this.getHeight(); y++) {
+            for (int x = 0; x < this.getWidth(); x++) {
+                if ((matrix[x][y].getCurrentValue() < 10)
+                        && (matrix[x][y].getCurrentValue() > -1)) {
+                    System.out.print(" " + matrix[x][y].getCurrentValue()
+                            + " ");
+                } else {
+                    System.out.print(matrix[x][y].getCurrentValue() + " ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
