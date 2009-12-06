@@ -32,7 +32,7 @@ public class HidatoSolver implements GameSolver {
      */
     private Matrix matrix;
     /**
-     * Collection contains predefined values and non-active cells.
+     * Collection contains predefined values.
      */
     private Map<Integer, Coordinates> predefined
             = new HashMap<Integer, Coordinates>();
@@ -63,7 +63,18 @@ public class HidatoSolver implements GameSolver {
      */
     public Game solveGame(Game game) {
         HidatoGame hidatoGame = (HidatoGame) game;
-        this.matrix = hidatoGame.getGameMatrix();
+        //create copy of metrix
+        Matrix tmpMatrix = hidatoGame.getGameMatrix();
+        int numOfValues = tmpMatrix.getHeight() * tmpMatrix.getWidth();
+        int[] values = new int[numOfValues];
+        int value = 0;
+        for (int y = 0; y < tmpMatrix.getHeight(); y++) {
+            for (int x = 0; x < tmpMatrix.getWidth(); x++) {
+                values[value] = tmpMatrix.getCell(new Coordinates(x, y)).getCurrentValue();
+                value++;
+            }
+        }
+        this.matrix = new Matrix(tmpMatrix.getWidth(), tmpMatrix.getHeight(), values);
         //set current value to 1
         this.currentVal = 1;
         //inicialize collections
@@ -74,7 +85,8 @@ public class HidatoSolver implements GameSolver {
         for (int i = this.matrix.getHeight() - 1; i >= 0; i--) {
             for (int j = 0; j < this.matrix.getWidth(); j++) {
                 //fill collections predefined and path widh predefined values
-                if (!this.matrix.getCell(new Coordinates(j, i)).isEditable()) {
+                if (!this.matrix.getCell(new Coordinates(j, i)).isEditable()
+                        && this.matrix.getCell(new Coordinates(j, i)).isActive()) {
                     this.predefined.put(this.matrix.getCell(
                             new Coordinates(j, i)).getCurrentValue(),
                             new Coordinates(j, i));
@@ -92,8 +104,12 @@ public class HidatoSolver implements GameSolver {
         this.currentCoo = new Coordinates(predefined.get(currentVal).getX(),
                 predefined.get(currentVal).getY());
 
+        //int i = 0;
         while (!this.putNext()) {
+            //i++;
         }
+        //System.out.println(i);
+        hidatoGame.setGameMatrix(this.matrix);
         return hidatoGame;
     }
 
