@@ -1,6 +1,8 @@
 package com.masprop.cluster1.sudoku.controller;
 
 import com.masprop.cluster1.shared.controller.ApplicationController;
+import com.masprop.cluster1.shared.controller.StorageManager;
+import com.masprop.cluster1.shared.controller.StorageManager2;
 import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.shared.view.GUI;
 import com.masprop.cluster1.shared.view.GUIManager;
@@ -45,7 +47,7 @@ public class SudokuApplicationController extends ApplicationController {
 		getGameManager().setGameGenerator(new SudokuGameGenerator());
 		getGameManager().setGameSolver(new SudokuGameSolver());
 		getGameManager().setGameValidator(new SudokuGameValidator());
-		getGameManager().setStorageManager(new SudokuStorageManager());
+		getGameManager().setStorageManager(new StorageManager2());
 		getGameManager().setStatisticsManager(new SudokuStatisticsManager());
 		
 	}

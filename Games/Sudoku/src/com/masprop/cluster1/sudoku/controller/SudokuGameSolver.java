@@ -13,8 +13,20 @@ public class SudokuGameSolver implements GameSolver {
 	@Override
 	public Game solveGame(Game game) {
 		// TODO Auto-generated method stub
+		SudokuAlgorithm sdka = new SudokuAlgorithm();
+		if(game instanceof SudokuGame)
+		{
+			SudokuGame sdkGame = (SudokuGame)game;
+			int[][] puzzle = sdkGame.getGameMatrix().getSdkPuzzle();
+			int[][] solution = sdka.solveASudokuGame(puzzle);
+			if(null == solution)
+				return null;
+			sdkGame.getGameMatrix().setSdkPuzzle(solution);
+			sdkGame.getGameMatrix().createSdkCells(); //required for the UI
+			return sdkGame;
+		}
 		
-		return new SudokuGame();
+		return null;
 	}
 
 }

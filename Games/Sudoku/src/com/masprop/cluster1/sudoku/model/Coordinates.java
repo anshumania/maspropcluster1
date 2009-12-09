@@ -17,8 +17,21 @@ public class Coordinates {
      * Value on the vertical axis.
      */
     private int y;
-
+    
     /**
+     * The zone the cell belongs to.
+     */
+    private int z;
+
+    public int getZ() {
+		return z;
+	}
+
+	public void setZ(int z) {
+		this.z = z;
+	}
+
+	/**
      * Class constructor.
      * @param x value on the horizontal axis
      * @param y value on the vertical axis
@@ -26,6 +39,18 @@ public class Coordinates {
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+    
+	/**
+     * Class constructor.
+     * @param x value on the horizontal axis
+     * @param y value on the vertical axis
+     * @param z the zone the cell belongs to
+     */
+    public Coordinates(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     /**
