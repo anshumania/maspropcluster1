@@ -38,7 +38,7 @@ public class ConstraintTest {
     public void testGetGameLevelType() {
         System.out.println("getGameLevelType");
         Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         GameLevelType expResult = GameLevelType.DIFFICULT;
         GameLevelType result = constraint.getGameLevelType();
         assertEquals(expResult, result);
@@ -51,7 +51,7 @@ public class ConstraintTest {
     public void testSetGameLevelType() {
         System.out.println("setGameLevelType");
         Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         GameLevelType gameLevelType = GameLevelType.EASY;
         constraint.setGameLevelType(gameLevelType);
         assertEquals(gameLevelType, constraint.getGameLevelType());
@@ -64,7 +64,7 @@ public class ConstraintTest {
     public void testGetNoOfFilledCells() {
         System.out.println("getNoOfFilledCells");
         Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         int expResult = 9;
         int result = constraint.getNoOfFilledCells();
         assertEquals(expResult, result);
@@ -77,37 +77,15 @@ public class ConstraintTest {
     public void testSetNoOfFilledCells() {
         System.out.println("setNoOfFilledCells");
         Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         int noOfFilledCells = 4;
         constraint.setNoOfFilledCells(noOfFilledCells);
         assertEquals(noOfFilledCells, constraint.getNoOfFilledCells());
     }
 
-    /**
-     * Test of getGameType method, of class Constraint.
-     */
-    @Test
-    public void testGetGameType() {
-        System.out.println("getGameType");
-        Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
-        GameType expResult = GameType.HIDATO;
-        GameType result = constraint.getGameType();
-        assertEquals(expResult, result);
-    }
+    
 
-    /**
-     * Test of setGameType method, of class Constraint.
-     */
-    @Test
-    public void testSetGameType() {
-        System.out.println("setGameType");
-        Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
-        GameType gameType = GameType.SUDOKU;
-        constraint.setGameType(gameType);
-        assertEquals(gameType, constraint.getGameType());
-    }
+   
 
     /**
      * Test of equals method, of class Constraint.
@@ -116,12 +94,12 @@ public class ConstraintTest {
     public void testEquals() {
         System.out.println("equals");
         Constraint constraint = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         Constraint instance = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         assertTrue(instance.equals(constraint));
-        constraint = new Constraint(GameLevelType.EASY, null, 4,
-                GameType.HIDATO);
+        constraint = new Constraint(GameLevelType.EASY, null, 4
+                );
         assertFalse(instance.equals(constraint));
     }
 
@@ -132,9 +110,9 @@ public class ConstraintTest {
     public void testHashCode() {
         System.out.println("hashCode");
         Constraint constraint1 = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         Constraint constraint2 = new Constraint(GameLevelType.DIFFICULT, null,
-                9, GameType.HIDATO);
+                9);
         int hash1 = constraint1.hashCode();
         int hash2 = constraint2.hashCode();
         assertEquals(hash1, hash2);
