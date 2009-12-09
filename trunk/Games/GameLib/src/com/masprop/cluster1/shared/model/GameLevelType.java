@@ -24,6 +24,8 @@ public enum GameLevelType {
     // #[regen=yes,id=DCE.C60AAD51-9D3C-F054-F2A9-F0C0EE881844]
     // </editor-fold> 
     /** Game of type DIFFICULT. */
-    DIFFICULT;
+    DIFFICULT,
+    
+    EXTREME;
 }
 
