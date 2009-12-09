@@ -341,6 +341,12 @@ public abstract class GUIManager {
     {
     	getGui().init();
     }
+
+    /**
+     *  Notification by the user to finish off current game
+     */
+    public abstract void gameOver();
+
     
     /**
      * Notify the controller that the user wishes to exit the application.
