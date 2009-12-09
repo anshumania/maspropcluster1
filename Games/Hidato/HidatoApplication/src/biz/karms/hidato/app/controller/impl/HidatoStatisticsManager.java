@@ -18,7 +18,7 @@ class HidatoStatisticsManager implements StatisticsManager {
     public HidatoStatisticsManager() {
     }
 
-    public void getScoreFor(Game game) {
+    public double getScoreFor(Game game) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

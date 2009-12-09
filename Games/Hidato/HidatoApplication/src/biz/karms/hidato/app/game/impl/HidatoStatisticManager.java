@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class HidatoStatisticManager implements StatisticsManager {
 
-    public void getScoreFor(Game game) {
+    public double getScoreFor(Game game) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
