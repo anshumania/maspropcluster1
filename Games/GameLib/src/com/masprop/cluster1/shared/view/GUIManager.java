@@ -213,7 +213,7 @@ public abstract class GUIManager {
      */
     public void saveGame(File file) {
         updateGameObject();
-        ApplicationController.getUniqueInstance().getGameManager().saveGame(game, file);
+        getGameManager().saveGame(game, file);
     }
 
     /**
@@ -222,7 +222,7 @@ public abstract class GUIManager {
      * @return
      */
     public Game loadGame(File file) {
-        return ApplicationController.getUniqueInstance().getGameManager().loadGame(file);
+        return getGameManager().loadGame(file);
     }
 
     /**
