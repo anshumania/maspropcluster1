@@ -27,7 +27,8 @@ public class HidatoConstraint extends Constraint {
     public HidatoConstraint(GameLevelType gameLevelType,
             GameVariant gameVariant, int noOfFilledCells, GameType gameType,
             int xDimension, int yDimension) {
-        super(gameLevelType, gameVariant, noOfFilledCells, gameType);
+    	super(gameLevelType, gameVariant, noOfFilledCells);
+        //super(gameLevelType, gameVariant, noOfFilledCells, gameType);
         this.xDimension = xDimension;
         this.yDimension = yDimension;
     }
