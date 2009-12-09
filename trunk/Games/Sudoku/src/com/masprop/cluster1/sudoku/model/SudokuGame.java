@@ -16,13 +16,7 @@ import com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuDancingLinks;
 public class SudokuGame extends Game {
 	
 
-	public SudokuGame()
-	{
 		
-		super(new Constraint(null, null, 0),new SudokuMatrix());
-		//TODO dummy implementation
-	}
-	
 	public SudokuGame(Constraint constraint, Matrix matrix)
 	{
 		super(constraint, matrix);

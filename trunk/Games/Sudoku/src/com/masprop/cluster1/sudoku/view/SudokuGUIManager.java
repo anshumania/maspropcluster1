@@ -258,7 +258,7 @@ import javax.swing.JFrame;
             for(int j=0; j< N ; j++)
             {
 
-                SudokuCell cell = (SudokuCell)((SudokuMatrix)sudokuGame.getGameMatrix()).getCell(new Coordinates(i, j));
+                SudokuCell cell = (SudokuCell)((SudokuMatrix)sudokuGame.getGameMatrix()).getCell(i, j);
 
      
 //                	System.out.println("value should be set " + cell.getGivenValue());
