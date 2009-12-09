@@ -156,8 +156,12 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testValidateGame() {
 		//TODO update when ValidateGame is implemented
-		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
-		Game game = new SudokuGame(constraint, new SudokuMatrix());
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.FOURcrossFOUR,10);
+		int[][] aSudoku = new int[4][4];
+		for(int i=0;i<4;i++)
+			for(int j=0;j<4;j++)
+				aSudoku[i][j]=0;
+		Game game = new SudokuGame(constraint, new SudokuMatrix(4,aSudoku));
 		boolean validation = true;
 		validation = ApplicationController.getUniqueInstance().getGameManager().getGameValidator().validateGame(game);
 		assertFalse(validation);
@@ -169,8 +173,12 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testSolveGame() {
 		//TODO update when SolveGame is implemented
-		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
-		Game game = new SudokuGame(constraint, new SudokuMatrix());
+		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.FOURcrossFOUR,10);
+		int[][] aSudoku = new int[4][4];
+		for(int i=0;i<4;i++)
+			for(int j=0;j<4;j++)
+				aSudoku[i][j]=0;
+		Game game = new SudokuGame(constraint, new SudokuMatrix(4,aSudoku));
 		Game solvedGame = ApplicationController.getUniqueInstance().getGameManager().getGameSolver().solveGame(game);
 		
 		//assuming that we will return a new instance of a solved game
@@ -185,7 +193,11 @@ public class SudokuGameManagerTest {
 	public void testSaveGame() {
 		//TODO update when StorageManager SaveSoFile is implemented
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
-		Game game = new SudokuGame(constraint, new SudokuMatrix());
+		int[][] aSudoku = new int[4][4];
+		for(int i=0;i<4;i++)
+			for(int j=0;j<4;j++)
+				aSudoku[i][j]=0;
+		Game game = new SudokuGame(constraint, new SudokuMatrix(4,aSudoku));
 		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		sac.getGameManager().saveGame(game,new File("x"));
