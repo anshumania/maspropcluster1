@@ -2,8 +2,11 @@ package com.masprop.cluster1.sudoku.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.RandomAccessFile;
+import java.net.URL;
 import java.util.Random;
+import java.util.Scanner;
 
 import com.masprop.cluster1.sudoku.controller.dancingLinks.Sudoku;
 
@@ -11,7 +14,8 @@ public class SudokuHardRFA {
 
 	
 	//TODO : CHANGE !!!
-	public static String FILE_NAME="C://test//17Sud.txt";
+	public static String FILE_NAME;
+	public static String RESOURCE_LOCATION="resources/ExtremeSudokus17.sdk";
 	
 	public static int FILE_SIZE= 48825;
 	
@@ -19,9 +23,15 @@ public class SudokuHardRFA {
 	public static int LINE_LENGTH=81;
 	public static int OFFSET_FOR_EOF=2; 
 	
+	//load at fileresource at startup
+	static
+	{
+		SudokuHardRFA.FILE_NAME = SudokuHardRFA.class.getResource(RESOURCE_LOCATION).getFile();
+	}
 	
 	private static int[][]convertToSudokuNinePuzzle(String sudoku)
 	{
+		System.out.println(sudoku);
 		int[][] sdkPuzzle = null;
 		if(sudoku!=null)
 		{
@@ -64,9 +74,9 @@ public class SudokuHardRFA {
 		        RandomAccessFile randomAccessFile = null;
 		        try {
 		            
-		           	            
+		           	
 		            //Create RandomAccessFile instance with read / write permissions
-		            randomAccessFile = new RandomAccessFile(FILE_NAME, "rw");
+		            randomAccessFile = new RandomAccessFile(FILE_NAME, "r");
 		            
 //		            System.out.println(randomAccessFile.getFilePointer());
 		            //Fetch a random index into the file consisting of FILE_SIZE records 
@@ -128,7 +138,25 @@ public class SudokuHardRFA {
 //		System.out.println("after" +sudoku.length());
 //		int[][] sdkPuzzle = SudokuHardRFA.convertToSudokuNinePuzzle(sudoku);
 		
-		int[][] sdkPuzzle = SudokuHardRFA.getAnExtremeSudoku();
+//		int[][] sdkPuzzle = SudokuHardRFA.getAnExtremeSudoku();
+//		SudokuHardRFA.printSdkPuzzle(sdkPuzzle);
+		
+	/*	String RESOURCE_LOCATION = "resources/17Sud.txt";
+
+		InputStream  instream = SudokuHardRFA.class.getResourceAsStream(RESOURCE_LOCATION);
+		
+		Scanner in = new Scanner(instream);
+		String initial_board = in.nextLine();
+		System.out.println(initial_board);
+		in.close();
+		
+		URL url = SudokuHardRFA.class.getResource(RESOURCE_LOCATION);
+		
+		System.out.println(url.getFile());
+		System.out.println(url.getPath());
+		
+		SudokuHardRFA.FILE_NAME = url.getFile();
+*/		int[][] sdkPuzzle = SudokuHardRFA.getAnExtremeSudoku();
 		SudokuHardRFA.printSdkPuzzle(sdkPuzzle);
 		
 	}
