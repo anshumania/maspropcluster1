@@ -10,14 +10,46 @@ import com.masprop.cluster1.shared.model.Matrix;
  */
 public class SudokuMatrix implements Matrix {
 
-    private Cell[][] matrix = null;
-    private int width = 0;
-    private int height = 0;
+    private SudokuCell[][] sdkCells = null;
+    public SudokuCell[][] getSdkCells() {
+		return sdkCells;
+	}
+
+	private int[][] sdkPuzzle;
+   /* private int width = 0;
+    private int height = 0;*/
+    private int dim;
 
     
-    public SudokuMatrix()
+    public int getDim() {
+		return dim;
+	}
+
+	public SudokuMatrix()
     {
     	
+    }
+    
+    public SudokuMatrix(int dimension, int[][] sudokuPuzzle)
+    {
+    	this.dim = dimension;
+    	this.sdkPuzzle = new int[dim][dim];
+    	setSdkPuzzle(sudokuPuzzle);
+    	this.sdkCells = new SudokuCell[dim][dim];
+    	createSdkCells();
+    
+    	
+    	
+    }
+    
+    public void createSdkCells()
+    {
+    	int n = (int) Math.sqrt(dim);
+    	
+    	for(int r=0 ; r<dim ; r++)
+    		for(int c=0; c<dim ; c++)
+    			sdkCells[r][c] = new SudokuCell(sdkPuzzle[r][c],sdkPuzzle[r][c] > 0,true,new Coordinates(r,c, n * (r/n) + (c/n)));
+    		
     }
     
     /**
@@ -27,11 +59,11 @@ public class SudokuMatrix implements Matrix {
      * @param height height of the game metrix
      * @param values array of cell values
      */
-    public SudokuMatrix(int width, int height, int[] values) {
-        this.width = width;
-        this.height = height;
+/*    public SudokuMatrix(int width, int height, int[] values) {
+        this.dim = width;
+        
 
-        matrix = new Cell[width][height];
+        sdkCells = new Cell[width][height];
 
         int positionInArray = 0;
         for (int y = 0; y < height; y++) {
@@ -48,11 +80,11 @@ public class SudokuMatrix implements Matrix {
                 } else {
                     active = true;
                 }
-                matrix[x][y] = new Cell(values[positionInArray], editable, active);
+                sdkCells[x][y] = new Cell(values[positionInArray], editable, active);
                 positionInArray++;
             }
         }
-    }
+    }*/
 
     /**
      * @param coordinates which indicate cell position
@@ -63,45 +95,82 @@ public class SudokuMatrix implements Matrix {
         //System.out.println("Coord Y: "+coordinates.getY());
         //System.out.println("Matrix dim X: "+width);
         //System.out.println("Matrix dim Y: "+height);
-        return matrix[coordinates.getX()][coordinates.getY()];
+        return sdkCells[coordinates.getX()][coordinates.getY()];
     }
 
+    /**
+     * @param coordinates which indicate cell position
+     * @return cell at the given coordinates
+     */
+    public Cell getCell(int x, int y) {
+        //System.out.println("Coord X: "+coordinates.getX());
+        //System.out.println("Coord Y: "+coordinates.getY());
+        //System.out.println("Matrix dim X: "+width);
+        //System.out.println("Matrix dim Y: "+height);
+        return sdkCells[x][y];
+    }
+    
     /**
      *
      * @param coordinates which indicate cell position
      * @param value value of cell
      */
     public void setCellValue(Coordinates coordinates, int value) {
-        matrix[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
+        sdkCells[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
     }
 
-    /**
-     * @return width of the matrix
-     */
-    public int getWidth() {
-        return width;
-    }
 
-    /**
-     * @return height of the matrix
-     */
-    public int getHeight() {
-        return height;
-    }
 
     /**
      * Only for testing.
      */
     public void write() {
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
-                if ((matrix[i][j].getCurrentValue() < 10) && (matrix[i][j].getCurrentValue() > -1)) {
-                    System.out.print(" " + matrix[i][j].getCurrentValue() + " ");
+        for (int i = 0; i < this.dim; i++) {
+            for (int j = 0; j < this.dim; j++) {
+                if ((sdkCells[i][j].getCurrentValue() < 10) && (sdkCells[i][j].getCurrentValue() > -1)) {
+                    System.out.print(" " + sdkCells[i][j].getCurrentValue() + " ");
                 } else {
-                    System.out.print(matrix[i][j].getCurrentValue() + " ");
+                    System.out.print(sdkCells[i][j].getCurrentValue() + " ");
                 }
             }
             System.out.println();
         }
     }
+  
+  
+  
+
+	public void setSdkPuzzle(int[][] puzzle) {
+		for(int r=0 ; r < puzzle.length ; r++)
+			for(int c=0 ; c < puzzle.length ; c++)
+				sdkPuzzle[r][c] = puzzle[r][c];
+	}
+
+	public int[][] getSdkPuzzle() {
+		return sdkPuzzle;
+	}
+	
+	public String toStringz()
+	{
+		StringBuffer str = new StringBuffer();
+		for(int r=0 ; r<dim ; r++)
+		{
+			for(int c=0 ; c<dim ; c++)
+				str.append(sdkPuzzle[r][c]+",");
+			str.append("\n");
+		}
+		return str.toString();
+	}
+	public String toString()
+	{
+		System.out.println("sdkCells !!!");
+		StringBuffer str = new StringBuffer();
+		for(int r=0 ; r<dim ; r++)
+		{
+			for(int c=0 ; c<dim ; c++)
+				str.append(sdkCells[r][c].getCurrentValue()+",");
+			str.append("\n");
+		}
+		return str.toString();
+	}
 }

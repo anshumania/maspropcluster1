@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -20,8 +22,10 @@ public class DancingLinksPseudoImpl {
 
 	ColumnHeader rootNode;
 	Stack partialSolution = new Stack();
-	List<Node> columns  = new java.util.ArrayList<Node>();
-	Map<Integer,List<Node>> rows = new java.util.HashMap<Integer,List<Node>>();
+	List<Node> columnsList  = new java.util.ArrayList<Node>();
+	List<Node> rowsList = new ArrayList<Node>();
+	Map<Integer,List<Node>> rowsMap = new java.util.HashMap<Integer,List<Node>>();
+	public static Map<Integer,List<Integer>> solutionsMap = new HashMap<Integer,List<Integer>>();
 	
 	static int numberOfSolutions;
 	
@@ -36,6 +40,14 @@ public class DancingLinksPseudoImpl {
 		int value;
 		int rIndex;
 		
+		Node()
+		{
+			
+		}
+		Node(int row)
+		{
+			this.rIndex=row;
+		}
 		public String toString()
 		{
 //			return "[N{r="+rIndex+",c="+id+"}{v="+value+"}]";
@@ -90,7 +102,15 @@ public class DancingLinksPseudoImpl {
 			 
 		    } catch (IOException e) {
 		    }*/
-//		    System.out.println(partialSolution.toString());
+		List<Integer> partialSolutionsList = new ArrayList<Integer>();
+		for(Iterator iter = partialSolution.iterator();iter.hasNext();)
+		{
+			Node node = (Node)iter.next();
+			Integer row = node.rIndex;
+			partialSolutionsList.add(row);
+		}
+		solutionsMap.put(numberOfSolutions, partialSolutionsList);
+//		    System.out.println("Solution"+partialSolution.toString());
 	}
 	
 	//Algo to Solve
@@ -142,7 +162,7 @@ public class DancingLinksPseudoImpl {
 	            //Node rem = (Node)
 	            r = (Node)partialSolution.pop();
 	            //remove(partialSolution.size()-1);
-//	            System.out.println("removed " + rem.columnHeader.name + " " + r.value);
+//	            System.out.println("removed " + r.columnHeader.name + " " + r.value);
 	            columnHeader = r.columnHeader;
 	            for (Node j = r.left; j != r; j = j.left) {
 	                unCover(j.columnHeader);
@@ -203,13 +223,8 @@ public class DancingLinksPseudoImpl {
 		 cHeader.left.right = cHeader;
 		
 	}
-	
-	public void createAndLinkColumnHeader()
-	{
-		
-	}
-	
-	public static void createDlxAndSolve(int[][] matrixRow)
+
+	public static DancingLinksPseudoImpl createDlxAndSolve(int[][] matrixRow)
 	{
 		//Create an exact cover problem
 		// r ch1 ch2 .. ch3
@@ -228,7 +243,7 @@ public class DancingLinksPseudoImpl {
 //		int[][] matrixRow = {{0,0,1},{0,1,0},{1,0,0}}; // 3x3
 		
 		
-		for (int i = 0; i < matrixRow.length; i++) {
+		for (int i = 0; i < matrixRow[0].length; i++) {
             ColumnHeader columnHeader = test.new ColumnHeader();
             columnHeader.id=i;
             columnHeader.name = "c"+i;
@@ -236,7 +251,7 @@ public class DancingLinksPseudoImpl {
             columnHeader.right = test.rootNode;
             test.rootNode.left.right = columnHeader;
             test.rootNode.left = columnHeader;
-            test.columns.add(columnHeader);
+            test.columnsList.add(columnHeader);
             
 		}
 		
@@ -247,7 +262,7 @@ public class DancingLinksPseudoImpl {
 			{
 				if(matrixRow[i][j]==1)
 				{
-				cHeader = (ColumnHeader)test.columns.get(j);
+				cHeader = (ColumnHeader)test.columnsList.get(j);
 		
 				
 				Node crNode = test.new Node();
@@ -256,9 +271,9 @@ public class DancingLinksPseudoImpl {
 				crNode.value=matrixRow[i][j];
 				cHeader.addNode(crNode);
 				// attach new node to its row
-				if(test.rows.containsKey(new Integer(i)))
+				if(test.rowsMap.containsKey(new Integer(i)))
 				{
-					List<Node> nodesInThisRow = test.rows.get(new Integer(i));
+					List<Node> nodesInThisRow = test.rowsMap.get(new Integer(i));
 					lastNodeInRow = nodesInThisRow.get(nodesInThisRow.size()-1);
 					crNode.left = lastNodeInRow.left;
 					crNode.right = lastNodeInRow;
@@ -270,118 +285,76 @@ public class DancingLinksPseudoImpl {
 				{
 					List<Node> newList = new ArrayList<Node>();
 					newList.add(crNode);
-					test.rows.put(new Integer(i), newList);
+					test.rowsMap.put(new Integer(i), newList);
 				}
 				}
 			}
 		}
-//		for(Integer key : test.rows.keySet())
+		
+//		for(Integer key : test.rowsMap.keySet())
 //		{
-//			List<Node> rows = test.rows.get(key);
+//			List<Node> rows = test.rowsMap.get(key);
 //			for(Node nod : rows)
 //			{
 //				System.out.print(nod.toString());
 //			}
 //			System.out.println();
 //		}
-//				
-//		}
-//            
-//            if(i==0)
-//            {
-//            	Node newNode = test.new Node();
-//            	newNode.value=1;
-//            	newNode.index="00";
-//            	columnHeader.addNode(newNode);
-//            	newNode = test.new Node();
-//            	newNode.value=0;
-//            	newNode.index="10";
-//            	columnHeader.addNode(newNode);
-////            	newNode = test.new Node();
-////            	newNode.value=1;
-////            	newNode.index="10";
-////            	columnHeader.addNode(newNode);
-//            }
-//            if(i==1)
-//            {
-//            	Node newNode = test.new Node();
-//            	newNode.value=1;
-//            	newNode.index="11";
-//            	columnHeader.addNode(newNode);
-//            	newNode = test.new Node();
-////            	newNode.value=0;
-////            	newNode.index="11";
-////            	columnHeader.addNode(newNode);
-////            	newNode = test.new Node();
-//            	newNode.value=1;
-//            	newNode.index="21";
-//            	columnHeader.addNode(newNode);
-//            }
-//		}
-//		
-//	/*	 for (int i = 0; i < 3; i++) {
-//	            ColumnHeader columnHeader = test.new ColumnHeader();
-//	            columnHeader.name = "c"+i;
-//	            columnHeader.left = test.rootNode.left;
-//	            columnHeader.right = test.rootNode;
-//	            test.rootNode.left.right = columnHeader;
-//	            test.rootNode.left = columnHeader;
-//	            
-//	            if(i==0)
-//	            {
-//	            	Node newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="00";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="10";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="20";
-//	            	columnHeader.addNode(newNode);
-//	            }
-//	            if(i==1)
-//	            {
-//	            	Node newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="01";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=0;
-//	            	newNode.index="11";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="21";
-//	            	columnHeader.addNode(newNode);
-//	            }
-//	            if(i==2)
-//	            {
-//	            	Node newNode = test.new Node();
-//	            	newNode.value=0;
-//	            	newNode.index="02";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=1;
-//	            	newNode.index="12";
-//	            	columnHeader.addNode(newNode);
-//	            	newNode = test.new Node();
-//	            	newNode.value=0;
-//	            	newNode.index="22";
-//	            	columnHeader.addNode(newNode);
-//	            }
-//		 }*/
-//		 
-//		
-		 test.solve();		
+				
+		
+//  
+		return test;
+		// test.solve();		
 //		 System.out.println(test.partialSolution.toString());
 
 	}
+	
+	
+	
+	public void buildSparseMatrix(DancingLinksPseudoImpl test,int rows , int cols) {
+		
+		test.rootNode = test.new ColumnHeader();
+		test.rootNode.columnHeader = test.rootNode;
+
+
+		ColumnHeader cHeader = test.new ColumnHeader();
+		Node lastNodeInRow = test.new Node();
+		
+//		int[][] matrixRow = {{0,0,1},{0,1,0},{1,0,0}}; // 3x3
+		
+		
+		for (int i = 0; i <cols; i++) {
+            ColumnHeader columnHeader = test.new ColumnHeader();
+            columnHeader.id=i;
+            columnHeader.name = "c"+i;
+            columnHeader.left = test.rootNode.left;
+            columnHeader.right = test.rootNode;
+            test.rootNode.left.right = columnHeader;
+            test.rootNode.left = columnHeader;
+            test.columnsList.add(columnHeader);
+            
+		}
+		
+		// rows
+		for (int i=0; i<rows; i++) {
+			Node rowNode = new Node();
+			test.rowsList.add(rowNode);
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+
 	public static void main(String args[])
 	{
 		int [][] matrixRow = { {1,0,1,0}, {1,1,0,1} , {0,1,0,1} , { 0,0,1,0} };
-		DancingLinksPseudoImpl.createDlxAndSolve(matrixRow);
+		DancingLinksPseudoImpl.createDlxAndSolve(matrixRow).solve();
+		System.out.println(DancingLinksPseudoImpl.solutionsMap);
 	}
 }

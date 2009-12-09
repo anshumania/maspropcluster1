@@ -1,6 +1,7 @@
 package com.masprop.cluster1.sudoku.view;
 
 import com.masprop.cluster1.shared.view.GUI;
+import java.awt.Color;
 
 /**
  *
@@ -12,10 +13,12 @@ public class SudokuGUI extends GUI {
     public SudokuGUI() {
         setGuiManager(new SudokuGUIManager());
         getGuiManager().setGui(this);
+        this.getGameBoard().setBackground(new Color(240,240,240));
     }
     @Override
     public void init()
     {
+        
     	java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
