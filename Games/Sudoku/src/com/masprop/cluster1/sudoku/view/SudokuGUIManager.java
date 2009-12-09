@@ -304,23 +304,68 @@ import javax.swing.JFrame;
         private void handleValueEntered(KeyEvent event)
     {
         JButton jb = (JButton)event.getSource(); // get the source
-        char val = event.getKeyChar(); // get the value
-
-//        if(val<=0 && val<=)
-
-        //get the cell for which this has happened
-        SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
-        //set its current value to the new value
-        cell.setCurrentValue(Integer.parseInt(String.valueOf(val)));
-        //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
-        ((SudokuGame)sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()]
-                                                                                              =cell.getCurrentValue();
-
-        if(getGui().getSudokuHints().isSelected())
-            jb.setForeground(checkValueIsAllowedInCell(cell));
-        jb.setText(String.valueOf(val)); // set the value
+        //handle the delete cases first
+        // backspace , space , delete
+        int kVal = event.getKeyCode();
+        
+        if(kVal == 8 || kVal == 127 || kVal == 32)
+        {
+        	jb.setText("");
         jb.validate();
         jb.repaint();
+        }
+        else
+        {
+        char val = event.getKeyChar(); // get the value
+
+//        System.out.println(" del - " + event.getKeyChar() + " code "  + event.getKeyCode());
+        //handle non valid inputs 
+        
+        int N = ((SudokuMatrix)sudokuGame.getGameMatrix()).getDim();
+        int value = 0;
+        try
+        {
+        
+        	value = Integer.parseInt(String.valueOf(val));
+        	if(value<0 || value > N)
+        		throw new Exception("Not in allowed range");
+        	
+        	if(!("".equals(jb.getText())))
+        			{
+        		//forward checking for value appending 
+        		String temp = jb.getText()+val;
+        		value = Integer.parseInt(String.valueOf(temp));
+        	 	if( value > N)
+            		throw new Exception("Not in allowed range");
+        			}
+        	
+        	
+        	
+            //get the cell for which this has happened
+            SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
+            //set its current value to the new value
+            cell.setCurrentValue(Integer.parseInt(String.valueOf(val)));
+            //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
+            ((SudokuGame)sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()]
+                                                                                                  =cell.getCurrentValue();
+
+            if(getGui().getSudokuHints().isSelected())
+                jb.setForeground(checkValueIsAllowedInCell(cell));
+            jb.setText(jb.getText()+String.valueOf(val)); // set the value
+            jb.validate();
+            jb.repaint();
+        	
+        }
+       catch(NumberFormatException e)
+       {
+    	   JOptionPane.showMessageDialog(null,val + " is not in the allowed range from 1 to " + N,"Invalid Input",JOptionPane.ERROR_MESSAGE);
+       }
+       catch(Exception e)
+       {
+    	   JOptionPane.showMessageDialog(null,value + " is not in the allowed range from 1 to " + N,"Invalid Input",JOptionPane.ERROR_MESSAGE);
+       }
+
+     }
 
     }
     private Color checkValueIsAllowedInCell(SudokuCell sdkCell)
