@@ -1,6 +1,7 @@
 package biz.karms.hidato.app.util.impl;
 
 import biz.karms.hidato.app.game.impl.HidatoGame;
+import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.Matrix;
 import org.junit.After;
@@ -90,13 +91,23 @@ public class HidatoValidatorTest {
         Matrix matrix6 = new Matrix(3, 3, values6);
         Game game6 = new HidatoGame(new HidatoConstraint(), matrix6);
         assertFalse(validator.validateGame(game6));
+        //not filled, 22 and 24 are not 2-consecutive
+        int[] values9 = {0, 0, 0,36, 2, 1,
+                         0,24, 0, 0, 0, 0,
+                         0, 0, 0, 0, 0,30,
+                         0, 0, 0, 0, 0, 0,
+                         0,22, 0, 0, 0, 0,
+                         8, 0, 0, 0, 0, 0};
+        Matrix matrix9 = new Matrix(6, 6, values9);
+        Game game9 = new HidatoGame(new HidatoConstraint(), matrix9);
+        assertFalse(validator.validateGame(game9));
         //not filled, not solveable
-        int[] values7 = {5, 0, 8,
+        /*int[] values7 = {5, 0, 8,
                          2, 3, 0,
                          1, 0, -1};
         Matrix matrix7 = new Matrix(3, 3, values7);
         Game game7 = new HidatoGame(new HidatoConstraint(), matrix7);
-        assertFalse(validator.validateGame(game7));
+        assertFalse(validator.validateGame(game7));*/
         //valid
         int[] values8 = {5, 0, 8,
                          0, 3, 0,

@@ -106,6 +106,16 @@ public class HidatoValidator implements GameValidator {
                         return false;
                     }
                 }
+                if (path.containsKey(value+2)) {
+                    if (!path.get(value).isConsecutive2(path.get(value+2))) {
+                        return false;
+                    }
+                }
+                if (path.containsKey(value+3)) {
+                    if (!path.get(value).isConsecutive3(path.get(value+3))) {
+                        return false;
+                    }
+                }
             }
             //try to solve matrix
             Game tempGame = new HidatoGame(game.getConstraint(), matrix);

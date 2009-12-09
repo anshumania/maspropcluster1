@@ -68,40 +68,56 @@ public class Coordinates {
         return (diffX >= -1) && (diffX <= 1) && (diffY >= -1) && (diffY <= 1);
     }
 
+    public boolean isConsecutive2(Coordinates coordinates) {
+        int diffX = this.getX() - coordinates.getX();
+        int diffY = this.getY() - coordinates.getY();
+        return (diffX >= -2) && (diffX <= 2) && (diffY >= -2) && (diffY <= 2);
+    }
+
+    public boolean isConsecutive3(Coordinates coordinates) {
+        int diffX = this.getX() - coordinates.getX();
+        int diffY = this.getY() - coordinates.getY();
+        return (diffX >= -3) && (diffX <= 3) && (diffY >= -3) && (diffY <= 3);
+    }
+
     /**
-     * Set new coordinates according direction of the movement.
+     * Get new coordinates according direction of the movement.
      *
      * @param direction direction of the movement
+     * @return coordinates coordinates after move
      */
-    public void setCoordinates(Direction direction) {
+    public Coordinates getNewCoordinates(Direction direction) {
+        int tmpX = this.getX();
+        int tmpY = this.getY();
         if (direction.equals(Direction.BOTTOM)) {
-            this.setY(this.getY() + 1);
+            tmpY++;
         }
         if (direction.equals(Direction.LEFTBOTTOM)) {
-            this.setX(this.getX() - 1);
-            this.setY(this.getY() + 1);
+            tmpX--;
+            tmpY++;
         }
         if (direction.equals(Direction.LEFT)) {
-            this.setX(this.getX() - 1);
+            tmpX--;
         }
         if (direction.equals(Direction.LEFTTOP)) {
-            this.setX(this.getX() - 1);
-            this.setY(this.getY() - 1);
+            tmpX--;
+            tmpY--;
         }
         if (direction.equals(Direction.TOP)) {
-            this.setY(this.getY() - 1);
+            tmpY--;
         }
         if (direction.equals(Direction.RIGHTTOP)) {
-            this.setX(this.getX() + 1);
-            this.setY(this.getY() - 1);
+            tmpX++;
+            tmpY--;
         }
         if (direction.equals(Direction.RIGHT)) {
-            this.setX(this.getX() + 1);
+            tmpX++;
         }
         if (direction.equals(Direction.RIGHTBOTTOM)) {
-            this.setX(this.getX() + 1);
-            this.setY(this.getY() + 1);
+            tmpX++;
+            tmpY++;
         }
+        return new Coordinates(tmpX, tmpY);
     }
 
     @Override

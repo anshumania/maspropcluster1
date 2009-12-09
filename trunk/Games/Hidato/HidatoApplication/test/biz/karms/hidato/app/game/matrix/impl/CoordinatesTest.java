@@ -96,7 +96,7 @@ public class CoordinatesTest {
     }
 
     /**
-     * Test of setCoordinates method, of class Coordinates.
+     * Test of getNewCoordinates method, of class Coordinates.
      */
     @Test
     public void testSetCoordinates() {
@@ -104,42 +104,42 @@ public class CoordinatesTest {
         //test top
         Direction direction = Direction.TOP;
         Coordinates instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(1, 0), instance);
         //test rightTop
         direction = Direction.RIGHTTOP;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 0), instance);
         //test right
         direction = Direction.RIGHT;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 1), instance);
         //test rightBottom
         direction = Direction.RIGHTBOTTOM;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 2), instance);
         //test bottom
         direction = Direction.BOTTOM;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(1, 2), instance);
         //test leftBottom
         direction = Direction.LEFTBOTTOM;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 2), instance);
         //test left
         direction = Direction.LEFT;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 1), instance);
         //test leftTop
         direction = Direction.LEFTTOP;
         instance = new Coordinates(1, 1);
-        instance.setCoordinates(direction);
+        instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 0), instance);
     }
 

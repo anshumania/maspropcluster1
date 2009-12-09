@@ -151,13 +151,40 @@ public class HidatoSolver implements GameSolver {
             } else {
                 //compute next direction and coordinates
                 Direction nextDir;
-                nextDir = nextDir(lastDir.get(currentVal));
+                boolean consecutive;
+                do {
+                    consecutive = true;
+                    nextDir = nextDir(lastDir.get(currentVal));
+                    if (nextDir == null) {
+                        break;
+                    }
+                    Coordinates tmp;
+                    tmp = currentCoo.getNewCoordinates(nextDir);
+                    if (predefined.containsKey(currentVal+1)) {
+                        if (!tmp.isConsecutive(predefined.get(currentVal+1))) {
+                            lastDir.put(currentVal, nextDir);
+                            consecutive = false;
+                        }
+                    }
+                    if (predefined.containsKey(currentVal+2)) {
+                        if (!tmp.isConsecutive2(predefined.get(currentVal+2))) {
+                            lastDir.put(currentVal, nextDir);
+                            consecutive = false;
+                        }
+                    }
+                    if (predefined.containsKey(currentVal+3)) {
+                        if (!tmp.isConsecutive3(predefined.get(currentVal+3))) {
+                            lastDir.put(currentVal, nextDir);
+                            consecutive = false;
+                        }
+                    }
+                } while (!consecutive);
                 //check if it is possible to place value
                 if (nextDir != null) {
                     //put new value to lastDir
                     lastDir.put(currentVal, nextDir);
                     //update currentCoo according to nextDir
-                    currentCoo.setCoordinates(nextDir);
+                    currentCoo = currentCoo.getNewCoordinates(nextDir);
                     //put new value to matrix and path
                     matrix.setCellValue(currentCoo, currentVal);
                     path.put(currentVal, new Coordinates(currentCoo.getX(),
