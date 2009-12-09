@@ -138,31 +138,43 @@ public class HidatoGenerator implements GameGenerator {
         
         //add some random numbers
         HashSet<Integer> filledValues = new HashSet<Integer>();
-        int num;
-        for (int i=0;i<hidatoConstraint.getNoOfFilledCells()-2;i++) {
+        int numOfcell = 1;
+        int[] randX1 = new int[numOfcell];
+        int[] randY1 = new int[numOfcell];
+        int[] num = new int[numOfcell];
+        //hidatoConstraint.getNoOfFilledCells()-2
+        for (int i=0;i<6;i++) {
             //generate number to be filled
-            do {
-                num = random.nextInt(width * height - nonActive - 2) + 2;
-            } while (filledValues.contains(num));
-            filledValues.add(num);
-            randX = 0;
-            randY = 0;
+            for (int j=0;j<numOfcell;j++) {
+                do {
+                    num[j] = random.nextInt(width * height - nonActive - 2) + 2;
+                } while (filledValues.contains(num[j]));
+                filledValues.add(num[j]);
+            }
+            for (int j=0;j<numOfcell;j++) {
+                randX1[j] = 0;
+                randY1[j] = 0;
+            }
             first = true;
             do {
                 //generate position of number
                 if (!first) {
-                    matrix.setCellValue(new Coordinates(randX, randY), 0);
+                    for (int j=0;j<numOfcell;j++) {
+                        matrix.setCellValue(new Coordinates(randX1[j], randY1[j]), 0);
+                    }
                 }
                 first = false;
-                do {
-                    randX = random.nextInt(width);
-                    randY = random.nextInt(height);
-                } while (matrix.getCell(new Coordinates(randX, randY)).getCurrentValue() != 0);
+                for (int j=0;j<numOfcell;j++) {
+                    do {
+                        randX1[j] = random.nextInt(width);
+                        randY1[j] = random.nextInt(height);
+                    } while (matrix.getCell(new Coordinates(randX1[j], randY1[j])).getCurrentValue() != 0);
+                    matrix.setCellValue(new Coordinates(randX1[j], randY1[j]), num[j]);
+                }
                 //game must be valid
-                matrix.setCellValue(new Coordinates(randX, randY), num);
             } while (!validator.validateGame(new HidatoGame(constraint, matrix)));
         }
-        
+
         matrix.write();
         HidatoGame game = new HidatoGame(constraint, matrix);
         return game;
