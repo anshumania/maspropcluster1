@@ -8,16 +8,15 @@ import com.masprop.cluster1.shared.model.Matrix;
  * @author Andrea Gritti
  *
  */
-public class SudokuMatrix implements Matrix {
+public class SudokuMatrix extends Matrix {
 
-    private SudokuCell[][] sdkCells = null;
+   // private SudokuCell[][] sdkCells = null;
     public SudokuCell[][] getSdkCells() {
-		return sdkCells;
+		return (SudokuCell[][]) matrix;
 	}
 
 	private int[][] sdkPuzzle;
-   /* private int width = 0;
-    private int height = 0;*/
+   
     private int dim;
 
     
@@ -25,17 +24,15 @@ public class SudokuMatrix implements Matrix {
 		return dim;
 	}
 
-	public SudokuMatrix()
-    {
-    	
-    }
+
     
     public SudokuMatrix(int dimension, int[][] sudokuPuzzle)
     {
+    	
     	this.dim = dimension;
     	this.sdkPuzzle = new int[dim][dim];
     	setSdkPuzzle(sudokuPuzzle);
-    	this.sdkCells = new SudokuCell[dim][dim];
+    	this.matrix = new SudokuCell[dim][dim];
     	createSdkCells();
     
     	
@@ -48,7 +45,7 @@ public class SudokuMatrix implements Matrix {
     	
     	for(int r=0 ; r<dim ; r++)
     		for(int c=0; c<dim ; c++)
-    			sdkCells[r][c] = new SudokuCell(sdkPuzzle[r][c],sdkPuzzle[r][c] > 0,true,new Coordinates(r,c, n * (r/n) + (c/n)));
+    			matrix[r][c] = new SudokuCell(sdkPuzzle[r][c],sdkPuzzle[r][c] > 0,true,new Coordinates(r,c, n * (r/n) + (c/n)));
     		
     }
     
@@ -86,17 +83,6 @@ public class SudokuMatrix implements Matrix {
         }
     }*/
 
-    /**
-     * @param coordinates which indicate cell position
-     * @return cell at the given coordinates
-     */
-    public Cell getCell(Coordinates coordinates) {
-        //System.out.println("Coord X: "+coordinates.getX());
-        //System.out.println("Coord Y: "+coordinates.getY());
-        //System.out.println("Matrix dim X: "+width);
-        //System.out.println("Matrix dim Y: "+height);
-        return sdkCells[coordinates.getX()][coordinates.getY()];
-    }
 
     /**
      * @param coordinates which indicate cell position
@@ -107,35 +93,12 @@ public class SudokuMatrix implements Matrix {
         //System.out.println("Coord Y: "+coordinates.getY());
         //System.out.println("Matrix dim X: "+width);
         //System.out.println("Matrix dim Y: "+height);
-        return sdkCells[x][y];
+        return matrix[x][y];
     }
     
-    /**
-     *
-     * @param coordinates which indicate cell position
-     * @param value value of cell
-     */
-    public void setCellValue(Coordinates coordinates, int value) {
-        sdkCells[coordinates.getX()][coordinates.getY()].setCurrentValue(value);
-    }
 
 
 
-    /**
-     * Only for testing.
-     */
-    public void write() {
-        for (int i = 0; i < this.dim; i++) {
-            for (int j = 0; j < this.dim; j++) {
-                if ((sdkCells[i][j].getCurrentValue() < 10) && (sdkCells[i][j].getCurrentValue() > -1)) {
-                    System.out.print(" " + sdkCells[i][j].getCurrentValue() + " ");
-                } else {
-                    System.out.print(sdkCells[i][j].getCurrentValue() + " ");
-                }
-            }
-            System.out.println();
-        }
-    }
   
   
   
@@ -168,7 +131,7 @@ public class SudokuMatrix implements Matrix {
 		for(int r=0 ; r<dim ; r++)
 		{
 			for(int c=0 ; c<dim ; c++)
-				str.append(sdkCells[r][c].getCurrentValue()+",");
+				str.append(matrix[r][c].getCurrentValue()+",");
 			str.append("\n");
 		}
 		return str.toString();
