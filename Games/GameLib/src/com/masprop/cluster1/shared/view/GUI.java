@@ -255,7 +255,7 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(720, 520));
 
         jSplitPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jSplitPane1.setDividerLocation(120);
@@ -264,34 +264,21 @@ public class GUI extends javax.swing.JFrame {
         jSplitPane1.setMinimumSize(new java.awt.Dimension(200, 1));
 
         sidebar.setBackground(new java.awt.Color(254, 197, 111));
+        sidebar.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
 
         buttonGameIsDone.setBackground(new java.awt.Color(196, 186, 166));
         buttonGameIsDone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/button_done.png"))); // NOI18N
         buttonGameIsDone.setText("Done");
         buttonGameIsDone.setToolTipText("Click if you are done.");
         buttonGameIsDone.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonGameIsDone.setMaximumSize(new java.awt.Dimension(70, 35));
+        buttonGameIsDone.setMinimumSize(new java.awt.Dimension(70, 35));
         buttonGameIsDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGameIsDoneActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
-        sidebar.setLayout(sidebarLayout);
-        sidebarLayout.setHorizontalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonGameIsDone, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        sidebarLayout.setVerticalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonGameIsDone)
-                .addContainerGap(346, Short.MAX_VALUE))
-        );
+        sidebar.add(buttonGameIsDone);
 
         jSplitPane1.setLeftComponent(sidebar);
 
