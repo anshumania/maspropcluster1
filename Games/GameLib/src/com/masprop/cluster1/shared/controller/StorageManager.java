@@ -43,7 +43,7 @@ public class StorageManager {
      * @param file Filepath
      * @param gameType Type of Game
      */
-    public void saveToFile(Game game, File file, GameType gameType) throws IOException {
+    public void saveToFile(Game game, File file, GameType gameType) {
         XStream xs = new XStream();
         try {
             FileOutputStream fileoutputstream = new FileOutputStream(file);
@@ -65,7 +65,7 @@ public class StorageManager {
      * @param file Filepath
      * @param gameType Type of Game
      */
-     public Game loadFromFile(File file, GameType gameType) throws IOException {
+     public Game loadFromFile(File file, GameType gameType) {
         XStream xs = new XStream(new DomDriver());
         Class game = null;
          try {
