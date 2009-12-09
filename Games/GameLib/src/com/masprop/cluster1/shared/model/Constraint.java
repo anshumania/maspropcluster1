@@ -1,5 +1,7 @@
 package com.masprop.cluster1.shared.model;
 
+import com.masprop.cluster1.shared.controller.ApplicationController;
+
 /**
  * Class handles game parameters such as difficulty level,
  * number of cells already filled and game variant.
@@ -8,11 +10,7 @@ package com.masprop.cluster1.shared.model;
  */
 public class Constraint {
 
-    /**
-     * Game type. Actually whether it is a Sudoku or an Hidato game.
-     */
-    private GameType gameType;
-    /**
+     /**
      * Game difficulty level.
      */
     private GameLevelType gameLevelType;
@@ -33,11 +31,11 @@ public class Constraint {
      * @param noOfFilledCells number of cells already filled
      */
     public Constraint(GameLevelType gameLevelType, GameVariant gameVariant,
-            int noOfFilledCells, GameType gameType) {
+            int noOfFilledCells) {
         this.gameLevelType = gameLevelType;
         this.gameVariant = gameVariant;
         this.noOfFilledCells = noOfFilledCells;
-        this.gameType = gameType;
+//        this.gameType = ApplicationController.getGameToPlay();
     }
 
     /**
@@ -90,19 +88,7 @@ public class Constraint {
         this.noOfFilledCells = noOfFilledCells;
     }
 
-    /**
-     * @return type of the game
-     */
-    public GameType getGameType() {
-        return gameType;
-    }
 
-    /**
-     * @param gameType type of the game
-     */
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
-    }
 
     @Override
     public boolean equals(Object object) {
@@ -113,10 +99,7 @@ public class Constraint {
             return false;
         }
         Constraint constraint = (Constraint) object;
-        return (this.getGameType() == null
-                ? constraint.getGameType() == null
-                : this.getGameType().equals(constraint.getGameType()))
-                    && (this.getGameLevelType() == null
+        return (this.getGameLevelType() == null
                 ? constraint.getGameLevelType() == null
                 : this.getGameLevelType().equals(constraint.getGameLevelType()))
                     && (this.getGameVariant() == null
@@ -128,9 +111,7 @@ public class Constraint {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + (this.getGameType() == null 
-                ? 0
-                : this.getGameType().hashCode());
+    
         hash = 31 * hash + (this.getGameLevelType() == null
                 ? 0
                 : this.getGameLevelType().hashCode());
@@ -139,5 +120,10 @@ public class Constraint {
                 : this.getGameVariant().hashCode());
         hash = 31 * hash + this.getNoOfFilledCells();
         return hash;
+    }
+    
+    public String toString()
+    {
+    	return "GameLevelType="+getGameLevelType()+",GameVariant="+getGameVariant()+",FilledCells="+getNoOfFilledCells();
     }
 }
