@@ -38,9 +38,9 @@ public class GameTest {
     public void testGetConstraint() {
         System.out.println("getConstraint");
         Game game = new Game(new Constraint(GameLevelType.DIFFICULT, null,
-                4, GameType.HIDATO), null) {};
+                4), null) {};
         Constraint expResult = new Constraint(GameLevelType.DIFFICULT, null,
-                4, GameType.HIDATO);
+                4);
         Constraint result = game.getConstraint();
         assertEquals(expResult, result);
     }
@@ -52,9 +52,9 @@ public class GameTest {
     public void testSetConstraint() {
         System.out.println("setConstraint");
         Game game = new Game(new Constraint(GameLevelType.DIFFICULT, null,
-                4, GameType.HIDATO), null) {};
+                4), null) {};
         Constraint constraint = new Constraint(GameLevelType.EASY, null,
-                8, GameType.HIDATO);
+                8);
         game.setConstraint(constraint);
         assertEquals(constraint, game.getConstraint());
     }

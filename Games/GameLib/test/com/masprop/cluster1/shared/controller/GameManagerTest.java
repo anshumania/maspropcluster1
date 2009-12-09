@@ -3,7 +3,10 @@ package com.masprop.cluster1.shared.controller;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static org.junit.Assert.*;
 
 /**
@@ -141,7 +144,9 @@ public class GameManagerTest {
         Game game = null;
         File file = null;
         GameManager instance = new GameManagerImpl();
-        instance.saveGame(game, file);
+
+            instance.saveGame(game, file);
+
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -155,8 +160,11 @@ public class GameManagerTest {
         File file = null;
         GameManager instance = new GameManagerImpl();
         Game expResult = null;
-        Game result = instance.loadGame(file);
-        assertEquals(expResult, result);
+        Game result;
+
+            result = instance.loadGame(file);
+                    assertEquals(expResult, result);
+
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

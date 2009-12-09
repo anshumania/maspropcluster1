@@ -8,6 +8,9 @@ package com.masprop.cluster1.shared.controller;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameType;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +46,9 @@ public class StorageManagerTest {
         File file = null;
         GameType gameType = null;
         StorageManager instance = new StorageManager();
-        instance.saveToFile(game, file, gameType);
+     
+            instance.saveToFile(game, file, gameType);
+     
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -60,8 +65,12 @@ public class StorageManagerTest {
         GameType gameType = null;
         StorageManager instance = new StorageManager();
         Game expResult = null;
-        Game result = instance.loadFromFile(file, gameType);
-        assertEquals(expResult, result);
+        Game result;
+     
+            result = instance.loadFromFile(file, gameType);
+            assertEquals(expResult, result);
+     
+        
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
