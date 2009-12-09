@@ -24,7 +24,7 @@ public interface StatisticsManager {
      *
      * @param game the game
      */
-    public void getScoreFor(Game game);
+    public double getScoreFor(Game game);
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.878445D4-4946-A1D0-75B2-835CE40D8427]
