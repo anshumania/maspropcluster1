@@ -38,7 +38,7 @@ public abstract class GUIManager {
     /**
      * GameManager - game business logic handler.
      */
-    private GameManager gameManager = null;
+//    private GameManager gameManager = null;
     /**
      * JFrame definitions, GUI elements, action listener
      */
@@ -282,12 +282,10 @@ public abstract class GUIManager {
     }
 
     public GameManager getGameManager() {
-        return gameManager;
+        return ApplicationController.getUniqueInstance().getGameManager();
     }
 
-    public void setGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
-    }
+    
 
     public GUI getGui() {
         return gui;
