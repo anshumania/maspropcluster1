@@ -1,5 +1,6 @@
 package com.masprop.cluster1.shared.view;
 
+import com.masprop.cluster1.shared.controller.ApplicationController;
 import java.util.List;
 
 import com.masprop.cluster1.shared.controller.GameManager;
@@ -212,7 +213,7 @@ public abstract class GUIManager {
      */
     public void saveGame(File file) {
         updateGameObject();
-        gameManager.saveGame(game, file);
+        ApplicationController.getUniqueInstance().getGameManager().saveGame(game, file);
     }
 
     /**
@@ -221,7 +222,7 @@ public abstract class GUIManager {
      * @return
      */
     public Game loadGame(File file) {
-        return gameManager.loadGame(file);
+        return ApplicationController.getUniqueInstance().getGameManager().loadGame(file);
     }
 
     /**
