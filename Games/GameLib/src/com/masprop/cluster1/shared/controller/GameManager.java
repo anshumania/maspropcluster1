@@ -7,6 +7,7 @@ import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameType;
 import java.io.File;
+import java.util.Properties;
 
 /**
  * This Interface provides the management operations on a <tt>Game</tt>
@@ -132,8 +133,8 @@ public abstract class GameManager {
      * 
      * @return the statistics
      */
-    public List<String> getStatistics() {
-        return new java.util.ArrayList<String>();
+    public Properties getStatistics() {
+        return getStatisticsManager().getStatistics();
     }
 
     public void setGameGenerator(GameGenerator gameGenerator) {
