@@ -329,6 +329,11 @@ public class GUI extends javax.swing.JFrame {
         scoresMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         scoresMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/menu_scores.png"))); // NOI18N
         scoresMenuItem.setText("Scores");
+        scoresMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scoresMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(scoresMenuItem);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
@@ -391,6 +396,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void buttonGameIsDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGameIsDoneActionPerformed
         // TODO add your handling code here:
+        guiManager.gameOver();
     }//GEN-LAST:event_buttonGameIsDoneActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
@@ -431,6 +437,12 @@ public class GUI extends javax.swing.JFrame {
     private void wizardDismissButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wizardDismissButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_wizardDismissButtonActionPerformed
+
+    private void scoresMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoresMenuItemActionPerformed
+        // TODO add your handling code here:
+
+        getGuiManager().getStatistics();
+    }//GEN-LAST:event_scoresMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog aboutDialog;
