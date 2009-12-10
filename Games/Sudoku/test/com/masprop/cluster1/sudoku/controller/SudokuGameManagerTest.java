@@ -130,7 +130,7 @@ public class SudokuGameManagerTest {
 		assertNotNull(sac.getGameManager().getStorageManager());
 		
 		StorageManager oldsm = sac.getGameManager().getStorageManager();
-		StorageManager newsm = new SudokuStorageManager() ;
+		StorageManager newsm = new StorageManager() ;
 		sac.getGameManager().setStorageManager(newsm);
 		assertNotSame(oldsm, sac.getGameManager().getGameValidator());
 		

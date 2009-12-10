@@ -136,4 +136,16 @@ public class SudokuMatrix extends Matrix {
 		}
 		return str.toString();
 	}
+
+        public boolean isFinished()
+        {
+            boolean finished = false;
+            for(int r=0 ; r < getDim() ; r++)
+			for(int c=0 ; c < getDim() ; c++)
+                        {
+				finished = matrix[r][c].getCurrentValue() > 0 ? true : false ;
+                                if(!finished) return finished;
+                        }
+            return finished; // should always be true if done
+        }
 }
