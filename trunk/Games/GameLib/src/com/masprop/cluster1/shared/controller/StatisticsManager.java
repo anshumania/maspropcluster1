@@ -3,6 +3,7 @@ package com.masprop.cluster1.shared.controller;
 import java.util.List;
 
 import com.masprop.cluster1.shared.model.Game;
+import java.util.Properties;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.B8E2A051-949E-9900-E575-F43603649F43]
@@ -54,7 +55,7 @@ public interface StatisticsManager {
      * @param game the game
      *
      */
-    public void saveGame(Game game);
+    public void addHighScore(Double score,String name);
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D6F0BAE3-BB45-33E5-AA4E-E6EE031092EB]
@@ -63,6 +64,8 @@ public interface StatisticsManager {
      * Get statistics
      * @return top 10 of games scores
      */
-    public List<String> getStatistics();
+    public Properties getStatistics();
+
+    public boolean isAHighScore(double score);
 }
 
