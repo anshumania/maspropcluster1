@@ -16,7 +16,6 @@ import com.masprop.cluster1.sudoku.model.SudokuGame;
 import com.masprop.cluster1.sudoku.model.SudokuGameVariant;
 import com.masprop.cluster1.sudoku.model.SudokuMatrix;
 
-import com.masprop.cluster1.sudoku.view.SudokuGUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -31,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
+import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,21 +40,20 @@ import javax.swing.border.LineBorder;
 import java.util.Observable;
 import javax.sound.midi.Soundbank;
 import javax.swing.JFrame;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
  * @author Matteo De Martino
  */
- public class SudokuGUIManager extends GUIManager implements Observer 
- {
-	 Game sudokuGame = null;
+public class SudokuGUIManager extends GUIManager implements Observer {
 
-         List<SudokuCell> activeCells = new ArrayList<SudokuCell>();
-         boolean threadRunner = false;
-         boolean sdkGenerated = false;
-         boolean updaterThrdCreated = false;
-
-         static Integer generatedSudokus = 0;
+    Game sudokuGame = null;
+    List<SudokuCell> activeCells = new ArrayList<SudokuCell>();
+    boolean threadRunner = false;
+    boolean sdkGenerated = false;
+    boolean updaterThrdCreated = false;
+    static Integer generatedSudokus = 0;
 
     public Integer getGeneratedSudokus() {
         return generatedSudokus;
@@ -64,21 +63,19 @@ import javax.swing.JFrame;
         this.generatedSudokus = generatedSudokus;
     }
 
-
     public SudokuGUIManager() {
 //        super(gui);
-       // this.setGameManager(new SudokuGUIManager());
-    }
-    
-    public void initGuiManager()
-    {
-    	((SudokuGUI)getGui()).init();
+        // this.setGameManager(new SudokuGUIManager());
     }
 
-    	public void updateTime(long startTime) {
-            try {
-            if(threadRunner)
-            {
+    public void initGuiManager() {
+        ((SudokuGUI) getGui()).init();
+    }
+
+    public void updateTime(long startTime) {
+        
+        try {
+            if (threadRunner) {
                 threadRunner = false;
                 Thread.currentThread().sleep(1001);
             }
@@ -86,39 +83,43 @@ import javax.swing.JFrame;
 
             //set it to true for this thread
             //if threadRunner is true wait for 1.1 sec
-            
-		
-			while (threadRunner) {
-				// geting Time in desire format
-				getGui().getTimerForGame().setText(getTimeElapsed(startTime));
-				// Thread sleeping for 1 sec
-				Thread.currentThread().sleep(1000);
-			}
-		} catch (Exception e) {
-			System.out.println("Exception in Thread Sleep : " + e);
-		}
-	}
 
-    	public String getTimeElapsed(long startTime) {
-		long elapsedTime = System.currentTimeMillis() - startTime;
-		elapsedTime = elapsedTime / 1000;
 
-		String seconds = Integer.toString((int) (elapsedTime % 60));
-		String minutes = Integer.toString((int) ((elapsedTime % 3600) / 60));
-		String hours = Integer.toString((int) (elapsedTime / 3600));
+            while (threadRunner) {
+                // geting Time in desire format
+                getGui().getTimerForGame().setText(getTimeElapsed(startTime));
+                // Thread sleeping for 1 sec
+                Thread.currentThread().sleep(1000);
+            }
+        } catch (Exception e) {
+            System.out.println("Exception in Thread Sleep : " + e);
+        }
+    }
 
-		if (seconds.length() < 2)
-			seconds = "0" + seconds;
+    public String getTimeElapsed(long startTime) {
 
-		if (minutes.length() < 2)
-			minutes = "0" + minutes;
+        long elapsedTime = System.currentTimeMillis() - startTime;
+        
+        elapsedTime = elapsedTime / 1000;
 
-		if (hours.length() < 2)
-			hours = "0" + hours;
+        String seconds = Integer.toString((int) (elapsedTime % 60));
+        String minutes = Integer.toString((int) ((elapsedTime % 3600) / 60));
+        String hours = Integer.toString((int) (elapsedTime / 3600));
 
-		return hours + ":" + minutes + ":" + seconds;
-	}
+        if (seconds.length() < 2) {
+            seconds = "0" + seconds;
+        }
 
+        if (minutes.length() < 2) {
+            minutes = "0" + minutes;
+        }
+
+        if (hours.length() < 2) {
+            hours = "0" + hours;
+        }
+
+        return hours + ":" + minutes + ":" + seconds;
+    }
 
     /**
      * Get a new game
@@ -128,55 +129,49 @@ import javax.swing.JFrame;
     @Override
     public Game getNewGame(Constraint constraint) {
 
-        //reset teh sdkGeneratedVariable
-        sdkGenerated = false;
-        updaterThrdCreated = false;
-        setGeneratedSudokus(0);
-
-        //TODO adjustment for constraints !!! - change this dummy setting !!!
-//        Constraint cons = new Constraint(GameLevelType.EXTREME,SudokuGameVariant.NINEcrossNINE,24);
-        sudokuGame =  ApplicationController.getUniqueInstance().getGameManager().getNewGame(constraint);
-     /*   SudokuCell[][] xyz = ((SudokuMatrix)sudokuGame.getGameMatrix()).getSdkCells();
-        for(SudokuCell[] x : xyz)
-        {
-        	for(SudokuCell y : x)
-        		System.out.print(y.getCurrentValue());
-        	System.out.println();
+        //there is no constraint -> implies game generation mode
+        // and the user has not chosen his options.
+        // give him is options
+        if (null == constraint) {
+            return showSudokuGameWizard();
         }
-        System.out.println("----check----");*/
-//        showGameWizard();
 
-
-        System.out.println(getGeneratedSudokus() + " invalid sudokus discarded ");
-         getGui().getGameGenerationText().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
-
-        initializeCells();
-        //((HidatoMatrix) hg.getGameMatrix()).write();
-        //hg = (HidatoGame) hgm.solveGame(hg);
-        //((HidatoMatrix) hg.getGameMatrix()).write();
-
-    //    getGui().getGameGenerationBar().setIndeterminate(false);
-
-        	// starting new Thread which will update time
-        
-
-        
-		new Thread(new Runnable() {
-			public void run() {
-				try {
-					updateTime(System.currentTimeMillis());
-				} catch (Exception ie) {
-				}
-			}
-		}).start();
-
-        //flip the sudokugenerated
-                sdkGenerated = true;
+          sudokuGame = getGameManager().getNewGame(constraint);
+          displayGame();
 
         return sudokuGame;
     }
 
-   /**
+    @Override
+    public void displayGame()
+    {
+ //reset teh sdkGeneratedVariable
+        sdkGenerated = false;
+        updaterThrdCreated = false;
+        setGeneratedSudokus(0);
+
+        System.out.println(getGeneratedSudokus() + " invalid sudokus discarded ");
+        getGui().getGameGenerationText().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
+
+        initializeCells();
+
+        // starting new Thread which will update time
+        new Thread(new Runnable() {
+
+            public void run() {
+                try {
+               
+                    updateTime(System.currentTimeMillis()- sudokuGame.getTime());
+                } catch (Exception ie) {
+                }
+            }
+        }).start();
+
+        //flip the sudokugenerated
+        sdkGenerated = true;
+    }
+
+    /**
      * Asks the GameManager to validate the Game.
      *
      * @param game
@@ -187,11 +182,12 @@ import javax.swing.JFrame;
 
         boolean valid = ApplicationController.getUniqueInstance().getGameManager().validateGame(sudokuGame);
 
-        if(valid)
-            JOptionPane.showMessageDialog(null,"This SudokuGame is valid","SudokuGame",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null,"This SudokuGame is invalid","Not a Sudoku",JOptionPane.ERROR_MESSAGE);
-    
+        if (valid) {
+            JOptionPane.showMessageDialog(null, "This SudokuGame is valid", "SudokuGame", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "This SudokuGame is invalid", "Not a Sudoku", JOptionPane.ERROR_MESSAGE);
+        }
+
 
 
         System.out.println("The game is ??" + valid);
@@ -208,41 +204,43 @@ import javax.swing.JFrame;
         //NOTE: The above game attribute is never used ! we use the game object
         // set in the guiManager
 
-    	 boolean valid = ApplicationController.getUniqueInstance().getGameManager().validateGame(sudokuGame);
-    	 if(!valid)
-    		 JOptionPane.showMessageDialog(null,"Invalid Sudoku: Perhaps has more than one unique solution or is in violation of the" +
-    		 		"Sudoku game rules.","Not a Sudoku",JOptionPane.ERROR_MESSAGE);
-    	 sudokuGame  =  ApplicationController.getUniqueInstance().getGameManager().solveGame(sudokuGame);
-    	 
-    	 if(null == sudokuGame)
-    		 JOptionPane.showMessageDialog(null,"There are no solutions","Sudoku",JOptionPane.ERROR_MESSAGE);
-    	 else
-    		 initializeCells();
-    	 
+        boolean valid = ApplicationController.getUniqueInstance().getGameManager().validateGame(sudokuGame);
+        if (!valid) {
+            JOptionPane.showMessageDialog(null, "Invalid Sudoku: Perhaps has more than one unique solution or is in violation of the" +
+                    "Sudoku game rules.", "Not a Sudoku", JOptionPane.ERROR_MESSAGE);
+        }
+        Game previousSudoku = sudokuGame;
+        sudokuGame = ApplicationController.getUniqueInstance().getGameManager().solveGame(sudokuGame);
+
+        if (null == sudokuGame) {
+            JOptionPane.showMessageDialog(null, "There are no solutions", "Sudoku", JOptionPane.ERROR_MESSAGE);
+            sudokuGame = previousSudoku;
+        } else {
+            initializeCells();
+        }
+
         return sudokuGame;
     }
-
 
     @Override
     public void initializeCells() {
         super.initializeCells();
 
         getGui().getGameBoard().removeAll();
-        
+
         int N = ((SudokuMatrix) sudokuGame.getGameMatrix()).getDim(); //the dimension
-        int n = (int)Math.sqrt(N); // the square root of the dimension
+        int n = (int) Math.sqrt(N); // the square root of the dimension
 
         //beginning of customization for sudoku
-        this.getGui().getGameBoard().setLayout(new GridLayout(n,n,5,5));
+        this.getGui().getGameBoard().setLayout(new GridLayout(n, n, 5, 5));
         //TODO add buttons to GUI - as a member variable
         JButton buttons[][] = new JButton[N][N];
         //TODO add zonePanel to GUI - as a member variable
         JPanel zonePanel[] = new JPanel[N];
 
-        for(int i=0; i<N ; i++)
-        {
+        for (int i = 0; i < N; i++) {
             zonePanel[i] = new JPanel();
-            zonePanel[i].setLayout(new GridLayout(n,n));
+            zonePanel[i].setLayout(new GridLayout(n, n));
             zonePanel[i].setBorder(null);
         }
 
@@ -253,36 +251,34 @@ import javax.swing.JFrame;
         activeCells.clear();
 
 
-       for(int i=0; i< N ; i++)
-        {
-            for(int j=0; j< N ; j++)
-            {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
 
-                SudokuCell cell = (SudokuCell)((SudokuMatrix)sudokuGame.getGameMatrix()).getCell(i, j);
+                SudokuCell cell = (SudokuCell) ((SudokuMatrix) sudokuGame.getGameMatrix()).getCell(i, j);
 
-     
+
 //                	System.out.println("value should be set " + cell.getGivenValue());
                 buttons[i][j] = new JButton(cell.getGivenValue() > 0 ? String.valueOf(cell.getGivenValue()) : "");
 //                buttons[i][j] = new JButton(puzzle[i][j] > 0 ? String.valueOf(puzzle[i][j]) : "");
 
 
-                buttons[i][j].setName(String.valueOf((i*N)+j));
-                cell.setSudokuId((i*N+j));
+                buttons[i][j].setName(String.valueOf((i * N) + j));
+                cell.setSudokuId((i * N + j));
                 activeCells.add(cell);
 
 
-                buttons[i][j].addMouseListener(new MouseAdapter(){
-                    public void mouseClicked(MouseEvent event)
-                    {
-                        JButton jb = (JButton)event.getSource();
+                buttons[i][j].addMouseListener(new MouseAdapter() {
+
+                    public void mouseClicked(MouseEvent event) {
+                        JButton jb = (JButton) event.getSource();
                         System.out.println(jb.getText());
                     }
                 });
 
-                buttons[i][j].addKeyListener(new KeyAdapter(){
-                    public void  keyPressed(KeyEvent event)
-                    {
-                       handleValueEntered(event);
+                buttons[i][j].addKeyListener(new KeyAdapter() {
+
+                    public void keyPressed(KeyEvent event) {
+                        handleValueEntered(event);
                     }
                 });
 
@@ -293,155 +289,226 @@ import javax.swing.JFrame;
 
         }
 
-                this.getGui().getGameBoard().setBackground(Color.black);
-                for(int i=0;i<N;i++)
-                    this.getGui().getGameBoard().add(zonePanel[i]);
-                this.getGui().getGameBoard().validate();
-                this.getGui().getGameBoard().repaint();
+        this.getGui().getGameBoard().setBackground(Color.black);
+        for (int i = 0; i < N; i++) {
+            this.getGui().getGameBoard().add(zonePanel[i]);
+        }
+        this.getGui().getGameBoard().validate();
+        this.getGui().getGameBoard().repaint();
 
     }
 
-        private void handleValueEntered(KeyEvent event)
-    {
-        JButton jb = (JButton)event.getSource(); // get the source
+    private void handleValueEntered(KeyEvent event) {
+        JButton jb = (JButton) event.getSource(); // get the source
         //handle the delete cases first
         // backspace , space , delete
         int kVal = event.getKeyCode();
-        
-        if(kVal == 8 || kVal == 127 || kVal == 32)
-        {
-        	jb.setText("");
-        jb.validate();
-        jb.repaint();
-        }
-        else
-        {
-        char val = event.getKeyChar(); // get the value
 
-//        System.out.println(" del - " + event.getKeyChar() + " code "  + event.getKeyCode());
-        //handle non valid inputs 
-        
-        int N = ((SudokuMatrix)sudokuGame.getGameMatrix()).getDim();
-        int value = 0;
-        try
-        {
-        
-        	value = Integer.parseInt(String.valueOf(val));
-        	if(value<0 || value > N)
-        		throw new Exception("Not in allowed range");
-        	
-        	if(!("".equals(jb.getText())))
-        			{
-        		//forward checking for value appending 
-        		String temp = jb.getText()+val;
-        		value = Integer.parseInt(String.valueOf(temp));
-        	 	if( value > N)
-            		throw new Exception("Not in allowed range");
-        			}
-        	
-        	
-        	
-            //get the cell for which this has happened
-            SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
-            //set its current value to the new value
-            cell.setCurrentValue(Integer.parseInt(String.valueOf(val)));
-            //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
-            ((SudokuGame)sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()]
-                                                                                                  =cell.getCurrentValue();
-
-            if(getGui().getSudokuHints().isSelected())
-                jb.setForeground(checkValueIsAllowedInCell(cell));
-            jb.setText(jb.getText()+String.valueOf(val)); // set the value
+        if (kVal == 8 || kVal == 127 || kVal == 32) {
+            jb.setText("");
             jb.validate();
             jb.repaint();
-        	
+        } else {
+            char val = event.getKeyChar(); // get the value
+
+//        System.out.println(" del - " + event.getKeyChar() + " code "  + event.getKeyCode());
+            //handle non valid inputs
+
+            int N = ((SudokuMatrix) sudokuGame.getGameMatrix()).getDim();
+            int value = 0;
+            try {
+
+                value = Integer.parseInt(String.valueOf(val));
+                if (value < 0 || value > N) {
+                    throw new Exception("Not in allowed range");
+                }
+
+                if (!("".equals(jb.getText()))) {
+                    //forward checking for value appending
+                    String temp = jb.getText() + val;
+                    value = Integer.parseInt(String.valueOf(temp));
+                    if (value > N) {
+                        throw new Exception("Not in allowed range");
+                    }
+                }
+
+
+
+                //get the cell for which this has happened
+                SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
+                //set its current value to the new value
+                cell.setCurrentValue(Integer.parseInt(String.valueOf(val)));
+                //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
+                ((SudokuGame) sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()] = cell.getCurrentValue();
+
+                if (getGui().getSudokuHints().isSelected()) {
+                    jb.setForeground(checkValueIsAllowedInCell(cell));
+                }
+                jb.setText(jb.getText() + String.valueOf(val)); // set the value
+                jb.validate();
+                jb.repaint();
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, val + " is not in the allowed range from 1 to " + N, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, value + " is not in the allowed range from 1 to " + N, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
-       catch(NumberFormatException e)
-       {
-    	   JOptionPane.showMessageDialog(null,val + " is not in the allowed range from 1 to " + N,"Invalid Input",JOptionPane.ERROR_MESSAGE);
-       }
-       catch(Exception e)
-       {
-    	   JOptionPane.showMessageDialog(null,value + " is not in the allowed range from 1 to " + N,"Invalid Input",JOptionPane.ERROR_MESSAGE);
-       }
-
-     }
 
     }
-    private Color checkValueIsAllowedInCell(SudokuCell sdkCell)
-    {
-    	for(SudokuCell iCell : activeCells)
-    	{
-    		//check only for givenCells or which have a value
-    		//and obviously excluding this cell itself!!
-    		if(!(iCell.equals(sdkCell)) && !(iCell.getCurrentValue()==0))
-    		{
-    		//check row
-    		if(iCell.getCoordinates().getX() == sdkCell.getCoordinates().getX() &&
-        				iCell.getCurrentValue() == sdkCell.getCurrentValue())
-    		{
-    			System.out.println("CheckingX " + iCell.getSudokuId() + "icellx " + iCell.getCoordinates().getX() + " sdkcellx " + sdkCell.getCoordinates().getY());
-    			System.out.println("CheckingV " + iCell.getSudokuId() + "icellV " + iCell.getCurrentValue() + " sdkcellV " + sdkCell.getCurrentValue());
-    			return Color.RED;
-    		}
-    		
-    		//check col
-    		if(iCell.getCoordinates().getY() == sdkCell.getCoordinates().getY() &&
-    				    				iCell.getCurrentValue() == sdkCell.getCurrentValue())
-    			return Color.RED;
-    		
-    		//check zone
-    		
-    		if(iCell.getCoordinates().getZ() == sdkCell.getCoordinates().getZ()
-    		   				&& iCell.getCurrentValue() == sdkCell.getCurrentValue())
-    			return Color.RED;
-    		}	
-    	}
-    	return Color.GREEN;
+
+    private Color checkValueIsAllowedInCell(SudokuCell sdkCell) {
+        for (SudokuCell iCell : activeCells) {
+            //check only for givenCells or which have a value
+            //and obviously excluding this cell itself!!
+            if (!(iCell.equals(sdkCell)) && !(iCell.getCurrentValue() == 0)) {
+                //check row
+                if (iCell.getCoordinates().getX() == sdkCell.getCoordinates().getX() &&
+                        iCell.getCurrentValue() == sdkCell.getCurrentValue()) {
+                    System.out.println("CheckingX " + iCell.getSudokuId() + "icellx " + iCell.getCoordinates().getX() + " sdkcellx " + sdkCell.getCoordinates().getY());
+                    System.out.println("CheckingV " + iCell.getSudokuId() + "icellV " + iCell.getCurrentValue() + " sdkcellV " + sdkCell.getCurrentValue());
+                    return Color.RED;
+                }
+
+                //check col
+                if (iCell.getCoordinates().getY() == sdkCell.getCoordinates().getY() &&
+                        iCell.getCurrentValue() == sdkCell.getCurrentValue()) {
+                    return Color.RED;
+                }
+
+                //check zone
+
+                if (iCell.getCoordinates().getZ() == sdkCell.getCoordinates().getZ() && iCell.getCurrentValue() == sdkCell.getCurrentValue()) {
+                    return Color.RED;
+                }
+            }
+        }
+        return Color.GREEN;
     }
-        
-        
+
     private void showGameWizard() {
-        //((HidatoGUI) getGui()).getWizardOptionsPanel().setSize(200,30);
-//        JLabel label1 = new JLabel("Dimension X");
-//        label1.setSize(100, 20);
-//        ((SudokuGUI) getGui()).getWizardOptionsPanel().add(label1);
-//
-//        JTextField textField1 = new JTextField("6");
-//        textField1.setSize(100, 20);
-//        ((SudokuGUI) getGui()).getWizardOptionsPanel().add(textField1);
-//        ((SudokuGUI) getGui()).getWizardWindow().setSize(500, 400);
-//        ((SudokuGUI) getGui()).getWizardWindow().validate();
 
-        ((SudokuGUI) getGui()).getSudokuNewGameWizard().setVisible(true);
+        getGui().getSudokuGameWizard().setVisible(true);
     }
 
     private void closeGameWizard() {
         throw new UnsupportedOperationException("Coming soon!");
     }
 
-
     @Override
-	public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg) {
 
         setGeneratedSudokus((Integer) arg);
 //        this.generatedSudokus = (Integer)arg;
-        System.out.println("arg " + arg + " :  gensdks " + getGeneratedSudokus() );
+        System.out.println("arg " + arg + " :  gensdks " + getGeneratedSudokus());
+         getGui().getTimerForGame().setText("arg " + arg + " :  gensdks " + getGeneratedSudokus());
+
 
     }
 
     @Override
-     public Game getGame() {
-        threadRunner = false ; //hack to stop the timer
+    public Game getGame() {
+        //call only when 'game over'
+        threadRunner = false; //hack to stop the timer
         return sudokuGame;
     }
-    
+
     @Override
     public void saveGame(File file) {
         //super.updateGameObject();
-        ApplicationController.getUniqueInstance().getGameManager().saveGame(sudokuGame, file);
+        sudokuGame.setTime(getTimeSpentInGame());
+        getGameManager().saveGame(sudokuGame, file);
+    }
+
+    @Override
+    public Game loadGame(File file) {
+        //super.updateGameObject();
+        Game previousGame = sudokuGame;
+        sudokuGame = getGameManager().loadGame(file);
+        if(!(null==sudokuGame))
+            displayGame();
+        else
+            sudokuGame=previousGame;
+        
+        return sudokuGame;
+    }
+
+    @Override
+    public SudokuGUI getGui() {
+        return (SudokuGUI) super.getGui();
+    }
+
+    private Game showSudokuGameWizard() {
+
+        /*since the constraints are null
+         *thus u have to get the user to perform
+         * some action . This action is done via
+         * the sudokuGameWizard.
+         * just invoke the handling in the GUI and
+         * return null ; nothing else to do
+         */
+
+
+
+        getGui().newGameMenuItemActionPerformed(null);
+
+
+        return null;
     }
 
 
-    	
+    public long getTimeSpentInGame()
+    {
+        String time = getGui().getTimerForGame().getText();
+        String[] timeparts = time.split(":");
+        long hrs = Long.valueOf(timeparts[0])*3600;
+        long min = Long.valueOf(timeparts[1])*60;
+        long sec = Long.valueOf(timeparts[2]);
+        long totalTime = hrs+min+sec;
+        
+        return totalTime*1000;
+    }
+
+
+   public void gameOver()
+   {
+
+       if( ! ((SudokuMatrix) sudokuGame.getGameMatrix()).isFinished() )
+
+       {
+               JOptionPane.showMessageDialog(null, " You have not finished the game. Use the SudokuMenu to Solve or enable hints ", "Game Not Over", JOptionPane.ERROR_MESSAGE);
+       }
+       else
+       {
+        getGame().setTime(getTimeSpentInGame());
+
+        double score = getGameManager().getStatisticsManager().getScoreFor(getGame());
+
+        boolean highScore = getGameManager().getStatisticsManager().isAHighScore(score);
+
+        if(highScore)
+        {
+            String name = JOptionPane.showInputDialog("You are in the Sudoku Hall of Fame. Your Name : ");
+            getGameManager().getStatisticsManager().addHighScore(score, name);
+            getStatistics();
+        }
+        
+
+        System.out.println("score for the game = " + score);
+       }
+   }
+
+   @Override
+   public Properties getStatistics()
+   {
+       Properties score = super.getStatistics();
+
+       score.list(System.out);
+
+       getGui().scoresMenuItemActionPerformed(score);
+       return score;
+
+   }
+
 }
