@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.XStream;
 
@@ -67,26 +64,30 @@ public class StorageManager {
      */
      public Game loadFromFile(File file, GameType gameType) {
         XStream xs = new XStream(new DomDriver());
-        Class game = null;
+        
          try {
              if (gameType == GameType.SUDOKU) {
-                 game = Class.forName("com.masprop.cluster1.sudoku.model.SudokuGame");
+             
                  FileInputStream fileinputstream = new FileInputStream(file);
-                 Game sudokugame = (Game)game.cast(xs.fromXML(fileinputstream, game));
-                 return sudokugame;
+                 Game sudokugame = (Game)xs.fromXML(fileinputstream);
+                 return (Game)sudokugame;
              }
              if (gameType == GameType.HIDATO) {
-                 game = Class.forName("biz.karms.hidato.app.game.impl.HidatoGame");
                  FileInputStream fileinputstream = new FileInputStream(file);
                  Game hidatogame = (Game) xs.fromXML(fileinputstream);
                return hidatogame;
              }
-         } catch (ClassNotFoundException ex) {
-             Logger.getLogger(StorageManager.class.getName()).log(Level.SEVERE, null, ex);
-         }catch (FileNotFoundException e) {
+         } catch (FileNotFoundException e) {
              e.printStackTrace();
          }
        return null;
+     }
+
+     public static void main(String args[])
+     {
+         StorageManager stm = new StorageManager();
+         File f = new File("C:\\test\\s1234");
+         stm.loadFromFile(f, GameType.SUDOKU);
      }
 }
 
