@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Properties;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -269,8 +270,8 @@ public abstract class GUIManager {
      * Retrieve the statistics.
      * @return statistics
      */
-    public List<String> getStatistics() {
-        return null;
+    public Properties getStatistics() {
+        return getGameManager().getStatistics();
     }
 
     public List<JTextField> getCells() {
