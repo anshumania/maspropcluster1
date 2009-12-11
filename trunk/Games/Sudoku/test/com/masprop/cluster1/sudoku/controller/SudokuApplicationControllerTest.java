@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.model.GameType;
-import com.masprop.cluster1.sudoku.view.SudokuGUIManager;
+import com.masprop.cluster1.sudoku.view.SudokuGUIManagerSwingWorker;
 
 /**
  * 

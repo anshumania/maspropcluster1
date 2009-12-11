@@ -98,7 +98,7 @@ public class SudokuHardRFA {
 //		            System.out.println("length of buffer" + buffer.length);
 		            //Print out the buffer contents
 		            sudoku = new String(buffer);
-//		            System.out.println(sudoku);
+		            System.out.println(sudoku);
 		            
 		        } catch (FileNotFoundException ex) {
 		            ex.printStackTrace();
