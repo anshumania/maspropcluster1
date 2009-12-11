@@ -8,6 +8,8 @@ import com.masprop.cluster1.shared.view.GUIManager.CellFocusListener;
 import com.masprop.cluster1.shared.view.GUIManager.CellKeyListener;
 import java.io.File;
 import java.util.List;
+import java.util.Properties;
+
 import javax.swing.JTextField;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -200,7 +202,7 @@ public class GUIManagerTest {
         System.out.println("getStatistics");
         GUIManager instance = null;
         List expResult = null;
-        List result = instance.getStatistics();
+        Properties result = instance.getStatistics();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -247,19 +249,7 @@ public class GUIManagerTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of setGameManager method, of class GUIManager.
-     */
-    @Test
-    public void testSetGameManager() {
-        System.out.println("setGameManager");
-        GameManager gameManager = null;
-        GUIManager instance = null;
-        instance.setGameManager(gameManager);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of getGui method, of class GUIManager.
      */
@@ -434,6 +424,5 @@ public class GUIManagerTest {
         fail("The test case is a prototype.");
     }
 
-    public class GUIManagerImpl extends GUIManager {
-    }
+    
 }
