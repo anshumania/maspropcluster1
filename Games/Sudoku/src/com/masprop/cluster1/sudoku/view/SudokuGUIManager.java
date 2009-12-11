@@ -39,6 +39,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import java.util.Observable;
 import javax.sound.midi.Soundbank;
+import javax.sound.midi.SysexMessage;
 import javax.swing.JFrame;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
@@ -50,9 +51,9 @@ public class SudokuGUIManager extends GUIManager implements Observer {
 
     Game sudokuGame = null;
     List<SudokuCell> activeCells = new ArrayList<SudokuCell>();
-    boolean threadRunner = false;
+    boolean threadRunner = false; //for the timer
     boolean sdkGenerated = false;
-    boolean updaterThrdCreated = false;
+    boolean updaterThrdCreated = false; //for the gameGeneration
     static Integer generatedSudokus = 0;
 
     public Integer getGeneratedSudokus() {
@@ -137,6 +138,7 @@ public class SudokuGUIManager extends GUIManager implements Observer {
         }
 
           sudokuGame = getGameManager().getNewGame(constraint);
+          
           displayGame();
 
         return sudokuGame;
@@ -148,10 +150,13 @@ public class SudokuGUIManager extends GUIManager implements Observer {
  //reset teh sdkGeneratedVariable
         sdkGenerated = false;
         updaterThrdCreated = false;
-        setGeneratedSudokus(0);
+        //getGui().getGameGenerationText().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
+
 
         System.out.println(getGeneratedSudokus() + " invalid sudokus discarded ");
-        getGui().getGameGenerationText().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
+        setGeneratedSudokus(0);
+         
+
 
         initializeCells();
 
@@ -401,11 +406,61 @@ public class SudokuGUIManager extends GUIManager implements Observer {
 
         setGeneratedSudokus((Integer) arg);
 //        this.generatedSudokus = (Integer)arg;
-        System.out.println("arg " + arg + " :  gensdks " + getGeneratedSudokus());
-         getGui().getTimerForGame().setText("arg " + arg + " :  gensdks " + getGeneratedSudokus());
+     //   System.out.println("arg " + arg + " :  gensdks " + getGeneratedSudokus());
+
+         // starting new Thread which will update time
+
+        if(!updaterThrdCreated)
+        {
+
+        new Thread(new Runnable() {
+
+            public void run() {
+                try {
+
+                    updateGameGenerationText();
+                } catch (Exception ie) {
+                }
+            }
+        }).start();
+
+        }
 
 
     }
+
+    public void updateGameGenerationText()
+    {
+     try {
+           
+        
+               
+         
+         
+          {
+                updaterThrdCreated = true;
+            //set it to true for this thread
+            //if threadRunner is true wait for 1.1 sec
+
+            
+            while (!sdkGenerated) {
+
+                System.out.println("awoke at " + System.currentTimeMillis());
+
+                // geting Time in desire format
+//                 getGui().getGameGenerationText().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
+                getGui().getTimerForGame().setText(getGeneratedSudokus() + " invalid sudokus discarded ");
+                // Thread sleeping for 1 sec
+                Thread.currentThread().sleep(1000);
+            }
+        }
+     }catch (Exception e) {
+            System.out.println("Exception in Thread Sleep : " + e);
+        }
+
+    }
+
+
 
     @Override
     public Game getGame() {

@@ -4,7 +4,8 @@ import com.masprop.cluster1.shared.controller.Algorithm;
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.sudoku.controller.SudokuAlgorithm;
-import com.masprop.cluster1.sudoku.view.SudokuGUIManager;
+
+import com.masprop.cluster1.sudoku.view.SudokuGUIManagerSwingWorker;
 
 import java.util.Observable;
 
@@ -91,7 +92,7 @@ public class SudokuRandomizer extends Observable{
       private void setGUIObserver() {
 		
     	  if(!(null == ApplicationController.getUniqueInstance()))
-    	  		addObserver((SudokuGUIManager)ApplicationController.getUniqueInstance().getGuiManager());
+    	  		addObserver((SudokuGUIManagerSwingWorker)ApplicationController.getUniqueInstance().getGuiManager());
 		
 	}
 

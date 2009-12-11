@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -32,14 +33,31 @@ import javax.swing.table.TableModel;
  * @author ANSHUMAN
  */
 public class SudokuGUI extends GUI {
+	
+	static
+	{
+	   	try{
+//    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+	   		UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+//	   		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+	   		
+    		
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+	}
 
     /** Creates new form SudokuGUI */
     public SudokuGUI() {
+ 
         super();
-        setGuiManager(new SudokuGUIManager());
+        setGuiManager(new SudokuGUIManagerSwingWorker());
         getGuiManager().setGui(this);
+        
         this.getGameBoard().setBackground(new Color(240, 240, 240));
-        this.getSidebar().setBackground(Color.LIGHT_GRAY);
+        this.getSidebar().setBackground(new Color(240, 240, 240));
+        this.getStatusBar().setBackground(new Color(240, 240, 240));
         initComponents();
         addComponentsToParentGUI();
     }
@@ -70,7 +88,6 @@ public class SudokuGUI extends GUI {
         Hints = new javax.swing.JCheckBoxMenuItem();
         VariantBG = new javax.swing.ButtonGroup();
         DifficultyBG = new javax.swing.ButtonGroup();
-        gameGenerationText = new javax.swing.JTextField();
         timerForGame = new javax.swing.JLabel();
         sudokuGameWizard = new javax.swing.JFrame();
         tabs = new javax.swing.JTabbedPane();
@@ -96,6 +113,7 @@ public class SudokuGUI extends GUI {
         sudokuMenu.setLabel("Sudoku");
         sudokuMenu.setName("Sudoku"); // NOI18N
 
+        Create.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/sudoku/view/graphics/create_game.png"))); // NOI18N
         Create.setText("Create");
         Create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +122,7 @@ public class SudokuGUI extends GUI {
         });
         sudokuMenu.add(Create);
 
+        Solve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/sudoku/view/graphics/solve_game.png"))); // NOI18N
         Solve.setText("Solve");
         Solve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +131,7 @@ public class SudokuGUI extends GUI {
         });
         sudokuMenu.add(Solve);
 
+        Validate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/sudoku/view/graphics/validate_game.png"))); // NOI18N
         Validate.setText("Validate");
         Validate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,13 +148,6 @@ public class SudokuGUI extends GUI {
             }
         });
         sudokuMenu.add(Hints);
-
-        gameGenerationText.setText("CreationStatus");
-        gameGenerationText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gameGenerationTextActionPerformed(evt);
-            }
-        });
 
         timerForGame.setText("Sudoku Timer");
 
@@ -452,10 +465,6 @@ public class SudokuGUI extends GUI {
         return null;
     }
 
-    private void gameGenerationTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameGenerationTextActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_gameGenerationTextActionPerformed
-
     private void NinexNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NinexNineActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_NinexNineActionPerformed
@@ -532,12 +541,10 @@ public class SudokuGUI extends GUI {
     private void addComponentsToParentGUI() {
 
         //add to the SudokuMenu to the Main Menu Bar
-        getMainMenuBar().add(sudokuMenu);
+        getMainMenuBar().add(sudokuMenu,1);
         //add the timer to the SidePanel
         getSidebar().add(timerForGame);
         
-        //add the gameGenerationText to the StatusBar
-        getSidebar().add(gameGenerationText);
 
         //TODO: customise the fileChooser
 //        getFileChooser().addChoosableFileFilter(new FileFiler())setFileSelectionMode(JFileChooser.);
@@ -566,7 +573,6 @@ public class SudokuGUI extends GUI {
     private javax.swing.JMenuItem Validate;
     private javax.swing.JPanel Variant;
     private javax.swing.ButtonGroup VariantBG;
-    private javax.swing.JTextField gameGenerationText;
     private javax.swing.JFrame highScore;
     private javax.swing.JTable highScoreTable;
     private javax.swing.JLabel jLabel15;
@@ -588,9 +594,7 @@ public class SudokuGUI extends GUI {
     }
     // End of variables declaration
 
-    public JTextField getGameGenerationText() {
-        return gameGenerationText;
-    }
+  
     // End of variables declaration
 
     public JCheckBoxMenuItem getSudokuHints() {
@@ -649,30 +653,6 @@ public class SudokuGUI extends GUI {
 //                model.addRow(arg0)insertRow(i++,new Object[][]{ {score,name} });
             
         }
-
-//        highScoreTable.setModel(new javax.swing.table.DefaultTableModel(
-//            new Object [][] {
-//                {"1000000", "Anshuman"},
-//                {"999999", "Michal"},
-//                {"999998", "Matteo"},
-//                {"999997", "Matus"},
-//                {"999996", "Andrea"},
-//                {"999997", "Adrien"},
-//                {"0", "Antonio"},
-//                {"0", "Jack"},
-//                {"0", "Jill"},
-//                {"0", "Droid"}
-//            },
-//            new String [] {
-//                "HighScore", "Name"
-//            }
-//        ) {
-//            Class[] types = new Class [] {
-//                java.lang.String.class, java.lang.String.class
-//            };
-//            boolean[] canEdit = new boolean [] {
-//                false, false
-//            };
 
 
        highScore.setVisible(true);
