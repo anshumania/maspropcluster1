@@ -5,6 +5,7 @@ import com.masprop.cluster1.shared.model.Game;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.*;
@@ -177,7 +178,7 @@ public class GameManagerTest {
         System.out.println("getStatistics");
         GameManager instance = new GameManagerImpl();
         List expResult = null;
-        List result = instance.getStatistics();
+        Properties result = instance.getStatistics();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
