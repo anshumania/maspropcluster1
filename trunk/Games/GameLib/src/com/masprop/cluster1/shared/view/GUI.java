@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JSplitPane;
 
 /**
@@ -60,6 +61,7 @@ public class GUI extends javax.swing.JFrame {
         gameBoard = new javax.swing.JPanel();
         statusBar = new javax.swing.JPanel();
         statusText = new javax.swing.JLabel();
+        gameProgressBar = new javax.swing.JProgressBar();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newGameMenuItem = new javax.swing.JMenuItem();
@@ -292,6 +294,9 @@ public class GUI extends javax.swing.JFrame {
         statusText.setText("Welcome");
         statusBar.add(statusText, java.awt.BorderLayout.CENTER);
 
+        gameProgressBar.setName("gameProgressBar"); // NOI18N
+        statusBar.add(gameProgressBar, java.awt.BorderLayout.PAGE_START);
+
         menuBar.setBackground(new java.awt.Color(230, 215, 193));
 
         fileMenu.setText("File");
@@ -385,6 +390,9 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JProgressBar getGameProgressBar() {
+        return gameProgressBar;
+    }
     /**
      *
      * @param evt GUI Event
@@ -453,6 +461,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel gameBoard;
+    private javax.swing.JProgressBar gameProgressBar;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
