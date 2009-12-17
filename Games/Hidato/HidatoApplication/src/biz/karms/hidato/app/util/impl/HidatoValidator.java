@@ -28,6 +28,7 @@ public class HidatoValidator implements GameValidator {
      * @return true if game is valid
      */
     public boolean validateGame(Game game) {
+        System.out.println("validateGame()");
         //game matrix
         Matrix matrix = game.getGameMatrix();
 
