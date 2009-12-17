@@ -5,14 +5,15 @@
 package biz.karms.hidato.app.util.impl;
 
 import com.masprop.cluster1.shared.model.Constraint;
+import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.shared.model.GameType;
 import java.util.Random;
+import org.junit.Test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  *
@@ -42,18 +43,16 @@ public class HidatoGeneratorTest {
     /**
      * Test of generateGame method, of class HidatoGenerator.
      */
-    //@Test
+    @Test
     public void testGenerateGame() {
         System.out.println("generateGame");
-        Constraint constraint = new HidatoConstraint(GameLevelType.EASY, GameVariantImpl.RECTANGULAR_SHAPE, 3, GameType.HIDATO, 4, 4);
-        HidatoGenerator generator = new HidatoGenerator();
-        //Game result =
-        for (int i = 0; i < 1; i++) {
-            generator.generateGame(constraint);
-        }
+        Constraint constraint = new HidatoConstraint(GameLevelType.EASY, GameVariantImpl.RECTANGULAR_SHAPE, 3, GameType.HIDATO, 6, 6);
+        KarmHidatoGenerator generator = new KarmHidatoGenerator();
+        Game game = generator.generateGame(constraint);
+        game.getGameMatrix().write();
     }
 
-    @Test
+    //@Test
     public void testHamiltonGraph() {
         int k;
         int n = 7;
@@ -79,7 +78,7 @@ public class HidatoGeneratorTest {
         }
     }
 
-    @Test
+    //@Test
     public void testHamiltonCircle() {
         int n = 20, m = 30;
         int cycle[] = new int[n + 1];

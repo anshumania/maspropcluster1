@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.io.File;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -30,6 +31,13 @@ public class HidatoGUIManager extends GUIManager {
         hidatoGUIManager = this;
         init();
     }
+/*
+    @Override
+    public void saveGame(File file) {
+// System.out.println("Game: "+game.toString());
+        System.out.println("File: "+file.toString());
+        getGameManager().saveGame(getGame(), file);
+    }*/
     
     @Override
     public void init() {
