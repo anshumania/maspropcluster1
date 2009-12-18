@@ -74,17 +74,11 @@ public class SudokuStatisticsManagerTest {
 
 	@Test
 	public void testIsAHighScore() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetScoreFor() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLoadGame() {
-		fail("Not yet implemented");
+		
+		SudokuStatisticsManager ssm = new SudokuStatisticsManager();
+		assertTrue(ssm.isAHighScore(9999999.00));
+		assertFalse(ssm.isAHighScore(-1.0));
+		
 	}
 
 }
