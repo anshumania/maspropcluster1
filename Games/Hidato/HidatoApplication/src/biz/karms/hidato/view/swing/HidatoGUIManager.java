@@ -27,7 +27,7 @@ public class HidatoGUIManager extends GUIManager {
     private HidatoGUI hidatoGUI = null;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
-        setGameManager(hidatoGameManager);
+       // setGameManager(hidatoGameManager);
         hidatoGUIManager = this;
         init();
     }
@@ -188,4 +188,16 @@ public class HidatoGUIManager extends GUIManager {
     private void closeGameWizard() {
         throw new UnsupportedOperationException("Coming soon!");
     }
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getHelp() {
+		// TODO Auto-generated method stub
+		
+	}
 }
