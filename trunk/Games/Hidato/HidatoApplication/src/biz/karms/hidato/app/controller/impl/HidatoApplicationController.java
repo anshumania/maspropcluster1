@@ -51,9 +51,6 @@ public class HidatoApplicationController extends ApplicationController {
          * Tell the GameManager which game we gonna play...
          */
         ApplicationController.setGameToPlay(GameType.HIDATO);
-        // You dont need to do the below !
-//        getGameManager().setGameType(ApplicationController.getGameToPlay());
-
         setGuiManager(new HidatoGUIManager((HidatoGameManager)getGameManager()));
     }
 

@@ -2,6 +2,7 @@ package biz.karms.hidato.app.util.impl;
 
 import biz.karms.hidato.app.game.impl.HidatoGame;
 import com.masprop.cluster1.shared.controller.GameGenerator;
+import com.masprop.cluster1.shared.controller.GameValidator;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Direction;
 import com.masprop.cluster1.shared.model.Game;
@@ -20,15 +21,24 @@ import java.util.logging.Logger;
  */
 public class KarmHidatoGenerator implements GameGenerator {
 
+    /**
+     * Generating random numbers.
+     */
     private final Random randomGenerator = new Random(System.currentTimeMillis());
+    /**
+     * Navigating in the matrix, coordinates.
+     */
     private final KarmCoordinates coordinates = new KarmCoordinates();
+    /**
+     * Pool of available directions.
+     */
     private final List<Direction> randomDirectionChooser = new ArrayList<Direction>();
     //Matrix
     private int[][] matrix = null;
-    private int width = 0;
-    private int height = 0;
+    private int width;
+    private int height;
     //Cell value in the matrix
-    private int maxValue = 0;
+    private int maxValue;
     private int currentValue = 1;
     /**
      * This algorithm is (in most cases) not able to fill the whole matrix,
@@ -42,19 +52,25 @@ public class KarmHidatoGenerator implements GameGenerator {
     /**
      * Rollbacks  - should be initialized according the scale of the matrix
      */
-    private long howDeepRollback;
+    private int howDeepRollback;
     private int maxAllowedNumberOfRollbacks;
     private int rollBackCounter = 0;
-    //We want to refresh the seed sometimes...
-    private int randomGeneratorCounter = 1;
+    /**
+     * We want to refresh the seed sometimes, so we have to
+     * keep track of the randomGenerator.  
+     */
+    private int randomGeneratorCounter = 0;
+    /**
+     * Keep track of the movements in order to be able to perform the rollback.
+     */
     private final LinkedList<KarmCoordinates> coordinatesTracker = new LinkedList<KarmCoordinates>();
     private final LinkedList<Direction> directionTracker = new LinkedList<Direction>();
     /**
-     * Statistic, monitoring
+     * Statistic, monitoring.
      */
     private int iterationsCounter = 0;
     //Directions
-    //Possible not bocked/blocked directions
+    //Possible not blocked/blocked directions.
     private boolean freeBOTTOM = true;
     private boolean freeLEFT = true;
     private boolean freeLEFTBOTTOM = true;
@@ -67,15 +83,12 @@ public class KarmHidatoGenerator implements GameGenerator {
     private final LogManager logManager = LogManager.getLogManager();
     private final Logger logger = Logger.getLogger("biz.karms.hidato.app.util.impl.KarmHidatoGenerator");
 
-    /**
-     * The idea of dividing a matrix to 4 sectors.
-     */
-    //int sectorBorderX = 0;
-    //int sectorBorderY = 0;
     public Game generateGame(Constraint constraint) {
+        /**
+         * Setup the logger.
+         */
         logManager.addLogger(logger);
         logger.setLevel(Level.OFF);
-
         logger.log(Level.FINEST, "Entering generateGame() method.");
 
         if (!(constraint instanceof HidatoConstraint)) {
@@ -92,9 +105,9 @@ public class KarmHidatoGenerator implements GameGenerator {
         matrix = new int[width][height];
         maxValue = width * height;
         //This is maybe too many...
-        desiredNumberOfFilledCells = maxValue-3;
-        maxAllowedNumberOfRollbacks = 3;
-        howDeepRollback = width + height;
+        desiredNumberOfFilledCells = (maxValue/4)*3;
+        maxAllowedNumberOfRollbacks = 100;
+        howDeepRollback = (width + height) - 2;
         System.out.println("Rollback settings: width:" + width + ", height:" + height + ", maxValue:" + maxValue + ", desiredNumberOfFilledCells:" + desiredNumberOfFilledCells + ", maxAllowedNumberOfRollbacks:" + maxAllowedNumberOfRollbacks + ", howDeepRollback:" + howDeepRollback);
         logger.log(Level.SEVERE, "Rollback settings: width:" + width + ", height:" + height + ", maxValue:" + maxValue + ", desiredNumberOfFilledCells:" + desiredNumberOfFilledCells + ", maxAllowedNumberOfRollbacks:" + maxAllowedNumberOfRollbacks + ", howDeepRollback:" + howDeepRollback);
 
@@ -124,29 +137,36 @@ public class KarmHidatoGenerator implements GameGenerator {
              * And write there starting current value (should be 1)
              */
             matrix[coordinates.getCurrentX()][coordinates.getCurrentY()] = currentValue;
-            coordinatesTracker.add(coordinates);
+
+            //TRACKER
+            coordinatesTracker.push(new KarmCoordinates(coordinates.getCurrentX(), coordinates.getCurrentY()));
             //This is just for easier work with the rollback. 
             //Let's say that the initial value : 1 was put there by TOP move.
-            directionTracker.add(Direction.TOP);
+            directionTracker.push(Direction.TOP);
 
             /**
              * Indicates that there is no way to continue.
              */
             boolean noWayOut = false;
+
             logger.log(Level.FINEST, "Everything is setUp (starting point is [" + coordinates.getCurrentX() + "][" + coordinates.getCurrentY() + "]), we are entering the loop...");
+
             /**
              * MAIN LOOP
              */
             while (!noWayOut && currentValue < desiredNumberOfFilledCells) {
                 iterationsCounter++;
+                //Check whether we have somewhere to go...
                 if (!freeBOTTOM && !freeLEFT && !freeLEFTBOTTOM && !freeLEFTTOP && !freeRIGHT && !freeRIGHTBOTTOM && !freeRIGHTTOP && !freeTOP) {
+                    //This is a dead end. Can we perform another rollback?
                     if (rollBackCounter < maxAllowedNumberOfRollbacks) {
                         rollback();
                         rollBackCounter++;
+                        //break;
                     } else {
                         logger.log(Level.FINEST, "No way out and we have enough cells, so I'm breaking the loop.");
                         noWayOut = true;
-                        break;
+                        //break;
                     }
                 } else {
 
@@ -201,8 +221,9 @@ public class KarmHidatoGenerator implements GameGenerator {
                         coordinates.setCurrentX(coordinates.getNextX());
                         coordinates.setCurrentY(coordinates.getNextY());
                         matrix[coordinates.getCurrentX()][coordinates.getCurrentY()] = currentValue;
-                        coordinatesTracker.add(new KarmCoordinates(coordinates.getCurrentX(), coordinates.getCurrentY()));
-                        directionTracker.add(nextMove);
+                        //TRACKER
+                        coordinatesTracker.push(new KarmCoordinates(coordinates.getCurrentX(), coordinates.getCurrentY()));
+                        directionTracker.push(nextMove);
                     } else {
                         if (nextMove == Direction.BOTTOM) {
                             freeBOTTOM = false;
@@ -239,8 +260,8 @@ public class KarmHidatoGenerator implements GameGenerator {
 
         //TEST DEBUG BEGIN
         System.out.println("Tracker Final:");
-        for (int j = 0; j < coordinatesTracker.size(); j++) {
-            KarmCoordinates coordinate = coordinatesTracker.poll();
+        while (coordinatesTracker.size() > 0) {
+            KarmCoordinates coordinate = coordinatesTracker.pop();
             System.out.print("[" + coordinate.getCurrentX() + "," + coordinate.getCurrentY() + "]");
 
         }
@@ -253,14 +274,21 @@ public class KarmHidatoGenerator implements GameGenerator {
         int valuesPointer = 0;
         for (int iY = 0; iY < height; iY++) {
             for (int iX = 0; iX < width; iX++) {
-                values[valuesPointer] = matrix[iX][iY];
+                if (matrix[iX][iY] == 0) {
+                    values[valuesPointer] = -1;
+                } else {
+                    values[valuesPointer] = matrix[iX][iY];
+                }
                 valuesPointer++;
             }
         }
 
-        //Return new game object
-        System.out.println("STATISTIC: Number of iterations:" + iterationsCounter);
-        return new HidatoGame(constraint, new Matrix(width, height, values));
+        Game game = new HidatoGame(constraint, new Matrix(width, height, values));
+        GameValidator validator = new HidatoValidator();
+        System.out.println("STATISTIC:Number of iterations:" + iterationsCounter);
+        System.out.println("STATISTIC:Valid:"+validator.validateGame(game));
+
+        return game;
     }
 
     /**
@@ -285,6 +313,9 @@ public class KarmHidatoGenerator implements GameGenerator {
     }
 
     private Direction nextMove() {
+        /**
+         * Lets try to get hint before we do blind shot...
+         */
         Direction hint = giveMeHint();
         if (hint != null) {
             System.out.println("HINT:" + hint.name());
@@ -350,8 +381,9 @@ public class KarmHidatoGenerator implements GameGenerator {
      * @return random number within range, min and max included
      */
     private int getRandNumberWithinRange(int min, int max) {
+        //Refresh seed every n iterations
         randomGeneratorCounter++;
-        if (randomGeneratorCounter == 5) {
+        if (randomGeneratorCounter == 100) {
             randomGenerator.setSeed(System.currentTimeMillis() / iterationsCounter);
             randomGeneratorCounter = 0;
         }
@@ -361,12 +393,13 @@ public class KarmHidatoGenerator implements GameGenerator {
     private void rollback() {
         logger.log(Level.SEVERE, "ROLLBACK: CALLING--------");
 
+        //Consistency check
         if (coordinatesTracker.size() != directionTracker.size() || coordinatesTracker.size() != currentValue) {
             throw new IllegalArgumentException("Something is wrong with the tracking...");
         }
 
         //TEST DEBUG BEGIN
-        System.out.println("Tracker(value:"+currentValue+":");
+        System.out.println("Tracker(value:" + currentValue + ":");
         for (int j = 0; j < coordinatesTracker.size(); j++) {
             KarmCoordinates coordinate = coordinatesTracker.get(j);
             System.out.print("[" + coordinate.getCurrentX() + "," + coordinate.getCurrentY() + "]");
@@ -374,17 +407,15 @@ public class KarmHidatoGenerator implements GameGenerator {
         System.out.println("");
         //TEST DEBUG END
 
-
-
         for (int i = 0; i < howDeepRollback; i++) {
-            if(coordinatesTracker.size() > 1) {
-            KarmCoordinates coordinate = coordinatesTracker.poll();
-            coordinates.setCurrentX(coordinate.getCurrentX());
-            coordinates.setCurrentY(coordinate.getCurrentY());
-            logger.log(Level.SEVERE, "ROLLBACK from position: [" + coordinates.getCurrentX() + "][" + coordinates.getCurrentY() + "], howDeepRollback:" + howDeepRollback + ",currentValue:" + currentValue + ", pointer: pointer , coordinatesTracker.size():" + coordinatesTracker.size() + ", directionTracker.size():" + directionTracker.size());
-            matrix[coordinates.getCurrentX()][coordinates.getCurrentY()] = 0;
-            nextMove = directionTracker.poll();
-            currentValue--;
+            if (coordinatesTracker.size() > 1) {
+                KarmCoordinates coordinate = coordinatesTracker.pop();
+                coordinates.setCurrentX(coordinate.getCurrentX());
+                coordinates.setCurrentY(coordinate.getCurrentY());
+                logger.log(Level.SEVERE, "ROLLBACK from position: [" + coordinates.getCurrentX() + "][" + coordinates.getCurrentY() + "], howDeepRollback:" + howDeepRollback + ",currentValue:" + currentValue + " , coordinatesTracker.size():" + coordinatesTracker.size() + ", directionTracker.size():" + directionTracker.size());
+                matrix[coordinates.getCurrentX()][coordinates.getCurrentY()] = 0;
+                nextMove = directionTracker.pop();
+                currentValue--;
             }
         }
 
