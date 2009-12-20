@@ -348,7 +348,12 @@ public abstract class GUIManager {
      */
     public abstract void gameOver();
 
+    /**
+     *  Fetch the help for the game
+     */
     
+    public abstract void getHelp();
+
     /**
      * Notify the controller that the user wishes to exit the application.
      * Exit then...
