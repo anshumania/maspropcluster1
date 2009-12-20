@@ -644,6 +644,7 @@ public class SudokuGUIManagerSwingWorker extends GUIManager implements Observer 
         if(highScore)
         {
             String name = JOptionPane.showInputDialog("You are in the Sudoku Hall of Fame. Your Name : ");
+            name = (null == name || "".equals(name.trim())) ? "anonymous" : name;
             getGameManager().getStatisticsManager().addHighScore(score, name);
             getStatistics();
         }

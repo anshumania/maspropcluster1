@@ -54,6 +54,7 @@ public class SudokuGUI extends GUI {
                 UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
                 //	   		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
             } catch (IllegalAccessException ex) {
+                
                 Logger.getLogger(SudokuGUI.class.getName()).log(Level.SEVERE, null, ex);
             } catch (UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(SudokuGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,6 +83,7 @@ public class SudokuGUI extends GUI {
         this.getStatusBar().setBackground(new Color(240, 240, 240));
         initComponents();
         addComponentsToParentGUI();
+        this.setLocationRelativeTo(null);
     }
 
     @Override
@@ -269,7 +271,7 @@ public class SudokuGUI extends GUI {
 
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMaximum(70);
-        jSlider1.setMinorTickSpacing(1);
+        jSlider1.setMinorTickSpacing(5);
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
         jSlider1.setValue(35);
@@ -279,20 +281,18 @@ public class SudokuGUI extends GUI {
         CreationSettingsLayout.setHorizontalGroup(
             CreationSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreationSettingsLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CreationSettingsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CreationSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         CreationSettingsLayout.setVerticalGroup(
             CreationSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CreationSettingsLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -417,6 +417,7 @@ public class SudokuGUI extends GUI {
         helpFrame.getContentPane().add(helpScrollPane);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sudoku");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
