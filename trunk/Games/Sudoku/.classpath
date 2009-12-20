@@ -5,7 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/GameLib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/projects-MAS/PROP-MAS/GamLibndHidato/Games/JTattoo.jar"/>
-	<classpathentry kind="lib" path="C:/projects-MAS/PROP-MAS/GamLibndHidato/Games/seaglasslookandfeel-0.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jtatoo"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
