@@ -11,6 +11,8 @@ import java.util.List;
 import com.masprop.cluster1.shared.controller.StatisticsManager;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameLevelType;
+import com.masprop.cluster1.sudoku.model.SudokuGame;
+
 import java.io.FileOutputStream;
 import java.util.Properties;
 import java.util.Set;
@@ -19,6 +21,8 @@ import java.util.TreeSet;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 /**
  * 
@@ -41,9 +45,9 @@ public class SudokuStatisticsManager implements StatisticsManager {
 
         // a score is a function of the time taken and the difficulty
 
-        double gLfact = .33; // the weightage to the gamelevel
-        double tTaken = .52; // the weightage to the time taken to solve the game
-        double nGivens = .15; // the number of the givens in teh sudoku
+        double gLfact = .25; // the weightage to the gamelevel
+        double tTaken = .85; // the weightage to the time taken to solve the game
+        double nGivens = .10; // the number of the givens in teh sudoku
 
         //time = 3600+60
 
@@ -140,18 +144,39 @@ public class SudokuStatisticsManager implements StatisticsManager {
 
     public static void main(String args[]) {
 
-        SudokuStatisticsManager ssm = new SudokuStatisticsManager();
-        ssm.highScores.list(System.out);
-        if (ssm.isAHighScore(100)) {
-            ssm.addHighScore(13.0, "mmm");
-        }
-        try {
-            FileOutputStream fos = new FileOutputStream(FILE_NAME);
-            ssm.highScores.store(fos, null);
-            fos.close();
-        } catch (IOException ex) {
-            Logger.getLogger(SudokuStatisticsManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        SudokuStatisticsManager ssm = new SudokuStatisticsManager();
+//        ssm.highScores.list(System.out);
+//        if (ssm.isAHighScore(100)) {
+//            ssm.addHighScore(13.0, "mmm");
+//        }
+//        try {
+//            FileOutputStream fos = new FileOutputStream(FILE_NAME);
+//            ssm.highScores.store(fos, null);
+//            fos.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(SudokuStatisticsManager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        
+     	try
+    	{
+    	SudokuStatisticsManager ssm = new SudokuStatisticsManager();
+    	SudokuGame test = SudokuGame.getSampleSudokuGame();
+    	test.getConstraint().setGameLevelType(GameLevelType.EASY);
+//    	test.getConstraint().setGameLevelType(GameLevelType.EXTREME);
+//    	test.getConstraint().setGameLevelType(GameLevelType.DIFFICULT);
+//    	test.getConstraint().setGameLevelType(GameLevelType.MEDIUM);
+    	test.setTime(15+36*60+1*60*60);
+    	System.out.println(ssm.getScoreFor(test));
+    	}
+    	catch(Exception e)
+    	{
+    		
+    	}
+        
+        
+        
+        
 
     }
 }
@@ -172,5 +197,8 @@ class SortedProperties extends Properties {
         }
         return keySList.elements();
     }
+    
+
+    
 }
 

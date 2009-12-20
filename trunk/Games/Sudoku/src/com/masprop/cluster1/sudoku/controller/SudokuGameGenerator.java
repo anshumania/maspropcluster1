@@ -51,7 +51,8 @@ public class SudokuGameGenerator implements GameGenerator {
 		//the number of indices
 		int N= constraint.getGameVariant() == SudokuGameVariant.NINEcrossNINE ?
 			9 : constraint.getGameVariant() == SudokuGameVariant.FOURcrossFOUR ?
-			4 : -1;
+			4 : constraint.getGameVariant() == SudokuGameVariant.SIXTEENcrossSIXTEEN ?
+			16 : -1		;
 		System.out.println("This is the value of N ----> " + N);
 		if(N == -1) System.err.println("GAME VARIANT DOES NOT EXIST !!");
 		
