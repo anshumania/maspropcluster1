@@ -448,6 +448,7 @@ public class SudokuGUIManagerSwingWorker extends GUIManager implements Observer 
                 if (getGui().getSudokuHints().isSelected()) {
                     jb.setForeground(checkValueIsAllowedInCell(cell));
                 }
+                else jb.setForeground(Color.BLACK);
                 jb.setText(jb.getText() + String.valueOf(val)); // set the value
                 jb.validate();
                 jb.repaint();

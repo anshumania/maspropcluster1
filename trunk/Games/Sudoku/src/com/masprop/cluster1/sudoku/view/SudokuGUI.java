@@ -460,6 +460,7 @@ public class SudokuGUI extends GUI {
         sudokuGameWizard.setSize(250, 300);
         sudokuGameWizard.validate();
         sudokuGameWizard.repaint();
+        sudokuGameWizard.setLocationRelativeTo(this);
         sudokuGameWizard.setVisible(true);
 
 
@@ -579,6 +580,8 @@ public class SudokuGUI extends GUI {
         getMainMenuBar().add(sudokuMenu,1);
         //add the timer to the SidePanel
         getSidebar().add(timerForGame);
+        //set the about dialog to the center
+        getAboutDialog().setLocationRelativeTo(this);
         
 
         //TODO: customise the fileChooser
@@ -664,6 +667,7 @@ public class SudokuGUI extends GUI {
              }
             sudokuGameWizard.validate();
             sudokuGameWizard.repaint();
+            sudokuGameWizard.setLocationRelativeTo(this);
             sudokuGameWizard.setVisible(true);
 
 
