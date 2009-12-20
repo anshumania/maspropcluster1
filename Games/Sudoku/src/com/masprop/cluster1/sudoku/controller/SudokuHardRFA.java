@@ -2,13 +2,10 @@ package com.masprop.cluster1.sudoku.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.net.URL;
-import java.util.Random;
-import java.util.Scanner;
 
-import com.masprop.cluster1.sudoku.controller.dancingLinks.Sudoku;
+
+
 
 public class SudokuHardRFA {
 

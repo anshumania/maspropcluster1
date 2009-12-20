@@ -308,9 +308,18 @@ public class SudokuGUIManager extends GUIManager implements Observer {
         //handle the delete cases first
         // backspace , space , delete
         int kVal = event.getKeyCode();
-
+        System.out.println("kvVal " + kVal);
         if (kVal == 8 || kVal == 127 || kVal == 32) {
-            jb.setText("");
+            jb.setText(jb.getText()+"0");
+            
+            System.out.println("setting 0 in cell");
+            //get the cell for which this has happened
+            SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
+            //set its current value to the new value
+            cell.setCurrentValue(Integer.parseInt(String.valueOf("0")));
+            //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
+            ((SudokuGame) sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()] = cell.getCurrentValue();
+            
             jb.validate();
             jb.repaint();
         } else {
@@ -564,6 +573,11 @@ public class SudokuGUIManager extends GUIManager implements Observer {
        getGui().scoresMenuItemActionPerformed(score);
        return score;
 
+   }
+
+   public void getHelp()
+   {
+       
    }
 
 }
