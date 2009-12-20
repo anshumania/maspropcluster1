@@ -357,6 +357,11 @@ public class GUI extends javax.swing.JFrame {
 
         manualMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/menu_manual.png"))); // NOI18N
         manualMenuItem.setText("Manual");
+        manualMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manualMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(manualMenuItem);
 
         aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/masprop/cluster1/shared/view/graphics/menu_about.png"))); // NOI18N
@@ -451,6 +456,12 @@ public class GUI extends javax.swing.JFrame {
 
         getGuiManager().getStatistics();
     }//GEN-LAST:event_scoresMenuItemActionPerformed
+
+    private void manualMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualMenuItemActionPerformed
+        // TODO add your handling code here:
+
+        getGuiManager().getHelp();
+    }//GEN-LAST:event_manualMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog aboutDialog;
