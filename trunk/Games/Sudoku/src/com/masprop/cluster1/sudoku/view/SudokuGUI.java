@@ -16,17 +16,29 @@ import com.masprop.cluster1.shared.view.GUI;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
 import com.masprop.cluster1.sudoku.model.SudokuGameVariant;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.html.HTMLEditorKit;
 
 /**
  *
@@ -37,15 +49,25 @@ public class SudokuGUI extends GUI {
 	static
 	{
 	   	try{
-//    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-	   		UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-//	   		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+
+                //    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+                //	   		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(SudokuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(SudokuGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	   		
     		
-    	}catch(Exception e)
+    	catch(InstantiationException e)
     	{
-    		e.printStackTrace();
+            
+    		//e.printStackTrace();
     	}
+                catch(ClassNotFoundException ex)
+                {
+                }
 	}
 
     /** Creates new form SudokuGUI */
@@ -109,6 +131,9 @@ public class SudokuGUI extends GUI {
         jScrollPane1 = new javax.swing.JScrollPane();
         highScoreTable = new javax.swing.JTable();
         OKHighScore = new javax.swing.JButton();
+        helpFrame = new javax.swing.JFrame();
+        helpScrollPane = new javax.swing.JScrollPane();
+        helpEditorPane = new javax.swing.JEditorPane();
 
         sudokuMenu.setLabel("Sudoku");
         sudokuMenu.setName("Sudoku"); // NOI18N
@@ -382,6 +407,15 @@ public class SudokuGUI extends GUI {
                 .addContainerGap())
         );
 
+        helpFrame.setTitle("Sudoku Help");
+        helpFrame.setMinimumSize(new java.awt.Dimension(400, 500));
+        helpFrame.getContentPane().setLayout(new java.awt.GridLayout(1, 0));
+
+        helpEditorPane.setMinimumSize(new java.awt.Dimension(300, 300));
+        helpScrollPane.setViewportView(helpEditorPane);
+
+        helpFrame.getContentPane().add(helpScrollPane);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -573,6 +607,9 @@ public class SudokuGUI extends GUI {
     private javax.swing.JMenuItem Validate;
     private javax.swing.JPanel Variant;
     private javax.swing.ButtonGroup VariantBG;
+    private javax.swing.JEditorPane helpEditorPane;
+    private javax.swing.JFrame helpFrame;
+    private javax.swing.JScrollPane helpScrollPane;
     private javax.swing.JFrame highScore;
     private javax.swing.JTable highScoreTable;
     private javax.swing.JLabel jLabel15;
@@ -656,6 +693,31 @@ public class SudokuGUI extends GUI {
 
 
        highScore.setVisible(true);
+    }
+
+    public void manualMenuItemActionPerformed()
+    {
+        try {
+//            URL url = SudokuGUI.class.getResource("resources/help.html");
+//        	helpEditorPane.setContentType("text/html");
+            InputStream helpIns = new FileInputStream(SudokuGUI.class.getResource("resources/help.html").getFile());
+//            InputStream helpIns = new FileInputStream();
+            
+       
+            helpEditorPane.setEditable(false);
+
+            helpEditorPane.setEditorKit(new HTMLEditorKit());
+            
+            helpEditorPane.read(helpIns, null);
+
+            
+        } catch (IOException ex) {
+              helpEditorPane.setContentType("text/html");
+              helpEditorPane.setText("<html>Could not load resources/help.html </html>");
+            Logger.getLogger(SudokuGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        helpFrame.setVisible(true);
+        helpFrame.setExtendedState(MAXIMIZED_BOTH);
     }
 
    

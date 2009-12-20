@@ -140,6 +140,15 @@ public class SudokuDancingLinks  extends Observable implements Observer {
     				{7,0,6,0,0,0,0,0,0},
     				{0,0,0,4,0,0,2,0,0}
     		            };
+    		
+    	case 7 :
+    		return new int[][]
+    		                 {
+    				{0,0,4,0},
+					{0,0,2,1},
+					{0,3,1,0},
+					{4,0,3,2}
+    		                 };
     	
     	default : throw new Exception("puzzleId does not exist");
     	}

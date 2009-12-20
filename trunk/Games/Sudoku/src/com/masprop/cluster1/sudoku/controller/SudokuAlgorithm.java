@@ -14,7 +14,7 @@ import com.masprop.cluster1.shared.controller.Algorithm;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.sudoku.controller.dancingLinks.Node;
-import com.masprop.cluster1.sudoku.controller.dancingLinks.Sudoku;
+
 import com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuDancingLinks;
 import com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuRandomizer;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
@@ -37,6 +37,31 @@ import com.masprop.cluster1.sudoku.model.SudokuGame;
 public class SudokuAlgorithm implements Algorithm{
 
 	public enum modeDlx { GENERATOR , VALIDATOR , SOLVER };
+	
+	public enum GivensPerGameLevelPerGameVariant{
+		fourxfourEasy, fourxfourMedium, fourxfourDifficult, fourxfourExtreme,
+		ninexnineEasy, ninexnineMedium, ninexnineDifficult,
+		sixteenxsixteenEasy, sixteenxsixteenMedium, sixteenxsixteenDifficult, sixteenxsixteenExtreme ;
+		
+	static public int evaluate(GivensPerGameLevelPerGameVariant z)
+		{
+			switch(z)
+			{
+			case fourxfourEasy : return 10 ; 
+			case fourxfourMedium : return 7 ;
+			case fourxfourDifficult : return 5 ;
+			case fourxfourExtreme : return 4 ;
+			case ninexnineEasy : return 45 ; 
+			case ninexnineMedium : return 40 ;
+			case ninexnineDifficult : return 34 ;
+			case sixteenxsixteenEasy : return 200 ;
+			case sixteenxsixteenMedium : return 200 ;
+			case sixteenxsixteenDifficult : return 200 ;
+			case sixteenxsixteenExtreme  : return 200 ;
+			default : return -1;
+			}
+		}
+	}
 	
 	SudokuDancingLinks sdlx;
 	boolean working;
@@ -99,37 +124,37 @@ public class SudokuAlgorithm implements Algorithm{
 		
 		switch(level)
 		{
-		case DIFFICULT :    if(dim == 4)
-					genSudoku = sdkRandomizer.createSudoku(5);
+		case DIFFICULT :    		if(dim == 4)
+										genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.fourxfourDifficult));
                                     if(dim == 9)
-                                        genSudoku = sdkRandomizer.createSudoku(34);
+                                        genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.ninexnineDifficult));
                                     if(dim == 16)
-                                        genSudoku = sdkRandomizer.createSudoku(180);
+                                        genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.sixteenxsixteenDifficult));
                                     break;
 		case MEDIUM	   :
                                         if(dim == 4)
-                                            genSudoku = sdkRandomizer.createSudoku(7);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.fourxfourMedium));
                                         if(dim == 9)
-                                            genSudoku = sdkRandomizer.createSudoku(40);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.ninexnineMedium));
                                         if(dim == 16)
-                                            genSudoku = sdkRandomizer.createSudoku(200);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.sixteenxsixteenMedium));
                                     break;
 		case EASY	   :
                                         if(dim == 4)
-                                            genSudoku = sdkRandomizer.createSudoku(10);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.fourxfourEasy));
                                         if(dim == 9)
-                                            genSudoku = sdkRandomizer.createSudoku(45);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.ninexnineEasy));
                                         if(dim == 16)
-                                            genSudoku = sdkRandomizer.createSudoku(200);
+                                            genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.sixteenxsixteenEasy));
                                     break;
         
 		case EXTREME	   :  //EXTREME for 9x9 have already been handled 
 										if(dim == 4)
-							                genSudoku = sdkRandomizer.createSudoku(4);
+							                genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.fourxfourExtreme));
 							            /*if(dim == 9)
 							                genSudoku = sdkRandomizer.createSudoku(45);*/
 							            if(dim == 16)
-							                genSudoku = sdkRandomizer.createSudoku(200);
+							                genSudoku = sdkRandomizer.createSudoku(GivensPerGameLevelPerGameVariant.evaluate(GivensPerGameLevelPerGameVariant.sixteenxsixteenExtreme));
 							            break;
 		default   :
 						genSudoku = null;
@@ -177,7 +202,7 @@ public class SudokuAlgorithm implements Algorithm{
 	public static void main(String args[])
 	{
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
-		int[][] sudokuPuzzle = sdkAlgo.generateASudokuGame(4, 0, GameLevelType.EXTREME);
+		int[][] sudokuPuzzle = sdkAlgo.generateASudokuGame(9, 0, GameLevelType.EASY);
 		//test for invalidity and solving an invalid sudoku
 		/*int[][] sudokuPuzzle = 
 		{

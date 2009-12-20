@@ -398,7 +398,18 @@ public class SudokuGUIManagerSwingWorker extends GUIManager implements Observer 
         int kVal = event.getKeyCode();
 
         if (kVal == 8 || kVal == 127 || kVal == 32) {
+        	
+        	
+        	
             jb.setText("");
+            
+          //get the cell for which this has happened
+            SudokuCell cell = activeCells.get(Integer.parseInt(jb.getName()));
+            //set its current value to the new value
+            cell.setCurrentValue(Integer.parseInt(String.valueOf("0")));
+            //set the value input by the user into the sdkpuzzle (the 2d representation of the actual sdkdlxpuzzle)
+            ((SudokuGame) sudokuGame).getGameMatrix().getSdkPuzzle()[cell.getCoordinates().getX()][cell.getCoordinates().getY()] = cell.getCurrentValue();
+            
             jb.validate();
             jb.repaint();
         } else {
@@ -652,6 +663,13 @@ public class SudokuGUIManagerSwingWorker extends GUIManager implements Observer 
        getGui().scoresMenuItemActionPerformed(score);
        return score;
 
+   }
+
+   public void getHelp()
+   { 
+
+     getGui().manualMenuItemActionPerformed();
+    
    }
 
 }
