@@ -1,18 +1,15 @@
 package com.masprop.cluster1.shared.controller;
 
-
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameType;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker ">
-// #[regen=yes,id=DCE.878F01D5-7373-FE1B-BF53-79E3DCE4A0A7]
-// </editor-fold>
+
 /**
  * This class handles storage of Game objects to XML files
  *
@@ -20,18 +17,12 @@ import com.thoughtworks.xstream.XStream;
  */
 public class StorageManager {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
-    // #[regen=yes,id=DCE.A2118DC1-83B3-370A-CEA1-FD9A7FCCB486]
-    // </editor-fold>
     /**
      * Class constructor.
      */
     public StorageManager() {
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
-    // #[regen=yes,id=DCE.49ACEC12-CEF8-0A0E-0C32-26CCB71B08C1]
-    // </editor-fold>
     /**
      * Save game to a XML file.
      * Serialize the object using XStream library
@@ -50,10 +41,6 @@ public class StorageManager {
         }
     }
    
-    
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
-    // #[regen=yes,id=DCE.C2D22A47-457D-70F9-F7A6-49A2F1FAB7C9]
-    // </editor-fold>
     /**
      * Load game from a XML file.
      * Unserialize the object using XStream library
@@ -75,19 +62,19 @@ public class StorageManager {
              if (gameType == GameType.HIDATO) {
                  FileInputStream fileinputstream = new FileInputStream(file);
                  Game hidatogame = (Game) xs.fromXML(fileinputstream);
-               return hidatogame;
+                 return (Game)hidatogame;
              }
          } catch (FileNotFoundException e) {
              e.printStackTrace();
          }
        return null;
      }
-
+/*
      public static void main(String args[])
      {
          StorageManager stm = new StorageManager();
          File f = new File("C:\\test\\s1234");
          stm.loadFromFile(f, GameType.SUDOKU);
-     }
+     }*/
 }
 
