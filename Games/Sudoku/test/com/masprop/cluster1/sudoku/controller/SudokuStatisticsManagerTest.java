@@ -55,13 +55,14 @@ public class SudokuStatisticsManagerTest {
 		assertTrue(listHighScore.containsKey(new String("10000")));
 		assertTrue("Android".equals((String)listHighScore.get(new String("10000"))));
 		
-	 	listHighScore.remove(new Double(10000));
+	 	listHighScore.remove("10000");
 		assertTrue(listHighScore.size() == 9);
 		listHighScore.put("0", "MrX");
 		assertTrue(listHighScore.size() == 10);
 		
+		
         try {
-            FileOutputStream fos = new FileOutputStream(SudokuStatisticsManager.FILE_NAME);
+            FileOutputStream fos = new FileOutputStream(SudokuStatisticsManager.HIGH_SCORE_FILE_NAME);
             listHighScore.store(fos, null);
             fos.close();
         } catch (IOException ex) {
