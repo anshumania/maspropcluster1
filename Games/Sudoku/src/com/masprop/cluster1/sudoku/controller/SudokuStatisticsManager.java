@@ -1,7 +1,10 @@
 package com.masprop.cluster1.sudoku.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -31,14 +34,73 @@ import javax.swing.JOptionPane;
  */
 public class SudokuStatisticsManager implements StatisticsManager {
 
-    public static String FILE_NAME;
-    public static String RESOURCE_LOCATION = "resources/HighScores.datum";
+	public static String HIGH_SCORE_FILE_NAME;
+    public static String RESOURCE_LOCATION = "/com/masprop/cluster1/sudoku/controller/resources/HighScores.datum";
     private static SortedProperties highScores;
 
     static {
-        FILE_NAME = SudokuStatisticsManager.class.getResource(RESOURCE_LOCATION).getFile();
-        loadHighScores();
+    	
+//        FILE_NAME =  SudokuStatisticsManager.class.getResource(RESOURCE_LOCATION).getFile();
+    	 loadHighScores();	
+    	createHighScoreFile();
+    	
+     
     }
+    
+    private static void createHighScoreFile()
+    {
+    	/* boolean exists = (new File("filename")).exists();
+    	    if (exists) {
+    	        // File or directory exists
+    	    } else {
+    	        // File or directory does not exist
+    	    }*/
+    	
+    	File file = new File("HighScores.datum");
+        
+    	
+    	OutputStream fos = null;
+    	
+        // Create file if it does not exist
+        boolean success = false;
+		try {
+			success = file.createNewFile();
+		
+			// TODO Auto-generated catch block
+		
+		
+		
+        if (success) {
+            // File did not exist and was created
+        	HIGH_SCORE_FILE_NAME = file.getAbsolutePath();
+        	
+            	fos = new FileOutputStream(HIGH_SCORE_FILE_NAME);
+                
+                highScores.store(fos, null);
+//                fos.close();
+            }
+        else {
+            // File already exists
+        	HIGH_SCORE_FILE_NAME = file.getAbsolutePath();
+        //	System.out.println("File Exists : " + file.getAbsolutePath());
+		}
+		}
+		catch (IOException ex) {
+				System.out.println("No permissions to store HighScores on this system");
+                Logger.getLogger(SudokuStatisticsManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+		finally
+		{
+			file  = null;
+			
+		}
+        	        	
+       
+        } 
+       
+        
+        
+    
 
     @Override
     public double getScoreFor(Game game) {
@@ -64,7 +126,7 @@ public class SudokuStatisticsManager implements StatisticsManager {
     private static void loadHighScores() {
         highScores = new SortedProperties();
         try {
-            FileInputStream fs = new FileInputStream(FILE_NAME);
+            InputStream fs =  SudokuStatisticsManager.class.getResourceAsStream(RESOURCE_LOCATION);//new FileInputStream(FILE_NAME);
             highScores.load(fs);//new FileInputStream(FILE_NAME));
 
             fs.close();
@@ -108,14 +170,18 @@ public class SudokuStatisticsManager implements StatisticsManager {
         highScores.put(String.valueOf(score.intValue()), name);
 
 
+//         outside the jar file to work
+        if(null != HIGH_SCORE_FILE_NAME)  // check for no permissions
+        {
         try {
-            FileOutputStream fos = new FileOutputStream(FILE_NAME);
+        	OutputStream fos = new FileOutputStream(HIGH_SCORE_FILE_NAME);
+            
             highScores.store(fos, null);
             fos.close();
         } catch (IOException ex) {
             Logger.getLogger(SudokuStatisticsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        }
 
     }
 
