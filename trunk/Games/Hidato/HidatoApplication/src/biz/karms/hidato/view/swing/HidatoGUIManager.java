@@ -2,10 +2,15 @@ package biz.karms.hidato.view.swing;
 
 import biz.karms.hidato.app.controller.impl.HidatoGameManager;
 import biz.karms.hidato.app.game.impl.HidatoGame;
+import biz.karms.hidato.app.util.impl.GameVariantImpl;
+import biz.karms.hidato.app.util.impl.HidatoConstraint;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.GameLevelType;
+import com.masprop.cluster1.shared.model.GameType;
+import com.masprop.cluster1.shared.model.GameVariant;
 import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -174,6 +179,7 @@ public class HidatoGUIManager extends GUIManager {
     }
 
     private void showGameWizard() {
+ 
     }
 
     private void closeGameWizard() {
