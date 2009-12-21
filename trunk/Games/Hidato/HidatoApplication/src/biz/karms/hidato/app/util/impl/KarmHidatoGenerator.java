@@ -285,7 +285,7 @@ public class KarmHidatoGenerator implements GameGenerator {
             }
         }
 
-        int[] valuesWithHiddenOnes = hideSomeValues(values, hidatoConstraint, currentValue);
+        int[] valuesWithHiddenOnes = hideSomeValues(values, hidatoConstraint);
 
         Game game = new HidatoGame(constraint, new Matrix(width, height, valuesWithHiddenOnes));
 
@@ -517,19 +517,23 @@ public class KarmHidatoGenerator implements GameGenerator {
         return null;
     }
 
-    private int[] hideSomeValues(int[] values, HidatoConstraint constraint, int maximumValue) {
+    private int[] hideSomeValues(int[] values, HidatoConstraint constraint) {
         if (constraint.getNoOfFilledCells() != 0) {
             return values;
         } else {
             //We have to count how many non-zero values are there
             int howManyActualValues = 0;
             int howManyToDelete = 0;
+            int maximumValue = 0;
             Set<Integer> indexesToBeDeleted = new HashSet<Integer>();
-            
+
             //How many non-zero values do we have?
             for (int i : values) {
-                if (i != 0) {
+                if (i != -1) {
                     howManyActualValues++;
+                }
+                if (i > maximumValue) {
+                    maximumValue = i;
                 }
             }
 
@@ -545,14 +549,15 @@ public class KarmHidatoGenerator implements GameGenerator {
             }
             long t1 = System.currentTimeMillis();
             //Decide some random indexes to be deleted and continue until we have enough of them
+            indexesToBeDeleted.clear();
             while (indexesToBeDeleted.size() < howManyToDelete) {
                 int randIndex = getRandNumberWithinRange(0, values.length - 1);
                 //We don't want to delete the start nor the end of the game!
-                if (values[randIndex] != 1 && values[randIndex] != maximumValue) {
+                if (values[randIndex] != 1 && values[randIndex] != maximumValue && values[randIndex] != -1) {
                     indexesToBeDeleted.add(randIndex);
                 }
-                if(System.currentTimeMillis()-t1 > 6000) {
-                break;
+                if (System.currentTimeMillis() - t1 > 6000) {
+                    break;
                 }
             }
 
