@@ -234,23 +234,30 @@ public class HidatoGUIManager extends GUIManager {
     public void gameOver() {
         long gameDuration = System.currentTimeMillis() - gameStartedTimestamp;
         gameIsRunning = false;
+        boolean winner = false;
 
-        Matrix matrix = getGame().getGameMatrix();
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                Coordinates coordinates = new Coordinates(x, y);
-                if (getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
-                    getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
+        try {
+            Matrix matrix = getGame().getGameMatrix();
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    Coordinates coordinates = new Coordinates(x, y);
+                    if (getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
+                        getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
+                    }
+                    cellsEditedByUser[x][y].setEditable(false);
                 }
-                cellsEditedByUser[x][y].setEditable(false);
             }
+            winner = getGameManager().getGameValidator().validateGame(getGame());
+        } catch (NumberFormatException ex) {
+            winner = false;
         }
+
 
         winnerFrame = new JFrame("Winner or looser?");
         winnerFrame.setBounds(250, 250, 357, 225);
         winnerFrame.add(((HidatoGUI) getGui()).getWinnerPanel());
 
-        if (getGameManager().getGameValidator().validateGame(getGame())) {
+        if (winner) {
             ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.GREEN);
             ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60));
             ((HidatoGUI) getGui()).getWinnersName().setText("Your name please...");
@@ -261,6 +268,9 @@ public class HidatoGUIManager extends GUIManager {
         }
         winnerFrame.setVisible(true);
         winnerFrame.validate();
+        getGame().setTime(gameDuration);
+        double score = getGameManager().getStatisticsManager().getScoreFor(getGame());
+        System.out.println("Skore:" + score);
 
     }
 
