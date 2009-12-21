@@ -1,0 +1,46 @@
+Test Cases for SudokuGameGenerator implementation of abstract class GameGenerator
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuGameGeneratorTest
+	
+1. Tests the operation of the set and get of a GameGenerator
+	@Test
+	public void testGetAndSetGameGenerator() {
+
+2. Tests the operation of the set and get of a GameSolver
+	@Test
+	public void testGetAndSetGameSolver() {
+
+3. Test the operation of the set and get of a GameValidator
+	@Test
+	public void testGetAndSetGameValidator() {
+	
+4. Tests the operation of the set and get of a StorageManager
+	@Test
+	public void testGetAndSetStorageManager() {
+
+5. Test the operation of getting a new game
+	@Test
+	public void testGetNewGame() {
+
+6. Test the operation of validation of a game
+	@Test
+	public void testValidateGame() {
+
+7. Test the operation of solving a game
+	@Test
+	public void testSolveGame() {
+
+8. Test the operation of saving a game
+	@Test
+	public void testSaveGame() {
+
+9. Tests the operation of loading a game
+	@Test
+	public void testLoadGame() {
+
+10. Tests the operation of getting the statistics for a game
+	@Test
+	public void testGetStatistics() {
+	
+11. Tests the operation of a get and set of a StatisticsManager
+	@Test
+	public void testGetAndSetStatisticsManager() {
