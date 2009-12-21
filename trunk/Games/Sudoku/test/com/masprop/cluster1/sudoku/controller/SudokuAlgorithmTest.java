@@ -8,8 +8,15 @@ import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuDancingLinks;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SudokuAlgorithmTest.
+ */
 public class SudokuAlgorithmTest {
 
+	/**
+	 * Tests the validation of an invalid fourxfour sudoku game.
+	 */
 	@Test
 	public void testValidateASudokuGameFourxFourInvalid() {
 		 System.out.println("-------testValidateASudokuGameFourxFourInvalid--------");
@@ -32,6 +39,9 @@ public class SudokuAlgorithmTest {
 
 	}
 	
+	/**
+	 * Tests the validation of a valid fourxfour sudoku game.
+	 */
 	@Test
 	public void testValidateASudokuGameFourxFourValid() {
 		System.out.println("-------testValidateASudokuGameFourxFourValid--------");
@@ -47,6 +57,9 @@ public class SudokuAlgorithmTest {
 		System.out.println("-------test ended--------");
 	}	
 	
+	/**
+	 * Test the validation of a valid ninexnine sudoku game.
+	 */
 	@Test
 	public void testValidateASudokuGameNinexNineValid() {
 		System.out.println("-------testValidateASudokuGameNinexNineValid--------");
@@ -62,6 +75,9 @@ public class SudokuAlgorithmTest {
 		System.out.println("-------test ended--------");
 	}
 	
+	/**
+	 * Test the validation of an invalid ninexnine sudoku game.
+	 */
 	@Test
 	public void testValidateASudokuGameNinexNineInValid() {
 		System.out.println("-------testValidateASudokuGameNinexNineInValid--------");
@@ -79,6 +95,9 @@ public class SudokuAlgorithmTest {
 		
 	}
 
+	/**
+	 * Test the generation a ninexnine sudoku game.
+	 */
 	@Test
 	public void testGenerateASudokuGame() {
 		System.out.println("-------testGenerateASudokuGame--------");
@@ -91,6 +110,9 @@ public class SudokuAlgorithmTest {
 	
 	}
 
+	/**
+	 * Test whether the algorithm has solved the sudoku game.
+	 */
 	@Test
 	public void testSolveASudokuGame() {
 		System.out.println("-------testSolveASudokuGame--------");

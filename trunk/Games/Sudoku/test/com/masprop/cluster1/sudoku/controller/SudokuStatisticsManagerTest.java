@@ -12,8 +12,15 @@ import org.junit.Test;
 
 import com.masprop.cluster1.sudoku.model.SudokuGame;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SudokuStatisticsManagerTest.
+ */
 public class SudokuStatisticsManagerTest {
 
+	/**
+	 * Tests calculation of a score for a game.
+	 */
 	@Test
 	public void testGetScoreFor() {
 		System.out.println("--------testGetScoreFor---------");
@@ -37,6 +44,9 @@ public class SudokuStatisticsManagerTest {
 
 	}
 
+	/**
+	 * Test get statistics for the Sudoku Application.
+	 */
 	@Test
 	public void testGetStatistics() {
 		System.out.println("--------testGetStatistics---------");
@@ -48,6 +58,9 @@ public class SudokuStatisticsManagerTest {
 		System.out.println("--------test ended---------");
 	}
 
+	/**
+	 * Test that high score is addded to the high score file.
+	 */
 	@Test
 	public void testAddHighScore() {
 		System.out.println("--------testAddHighScore---------");
@@ -77,6 +90,9 @@ public class SudokuStatisticsManagerTest {
 //		fail("Not yet implemented");
 	}
 
+	/**
+	 * Tests whether a score is a high score.
+	 */
 	@Test
 	public void testIsAHighScore() {
 		System.out.println("--------testIsAHighScore---------");

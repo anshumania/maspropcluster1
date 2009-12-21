@@ -10,8 +10,15 @@ import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
 import com.masprop.cluster1.sudoku.model.SudokuGameVariant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SudokuGameGeneratorTest.
+ */
 public class SudokuGameGeneratorTest {
 
+	/**
+	 * Test generate game.
+	 */
 	@Test
 	public void testGenerateGame() {
 		
@@ -27,6 +34,9 @@ public class SudokuGameGeneratorTest {
 		System.out.println("*************testEnded***********");
 	}
 
+	/**
+	 * Test create a game.
+	 */
 	@Test
 	public void testCreateAGame() {
 		System.out.println("----------testCreateAGame-----------");

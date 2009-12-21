@@ -7,8 +7,15 @@ import org.junit.Test;
 import com.masprop.cluster1.shared.controller.GameValidator;
 import com.masprop.cluster1.sudoku.model.SudokuGame;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SudokuGameValidatorTest.
+ */
 public class SudokuGameValidatorTest {
 
+	/**
+	 * Tests the validation of a Sudoku game.
+	 */
 	@Test
 	public void testValidateGame() {
 		
