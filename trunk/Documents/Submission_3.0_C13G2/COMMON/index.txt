@@ -2,3 +2,8 @@ COMMON: Specification of the cluster shared classes, and assignment of responsib
 
 This folder contains:
 assignmentOfResponsibilities.txt
+
+Game-Lib       : which is the source of the shared classes
+Game-Lib Model : which is the NetBeans UML project
+GameLib.png    : The UML specification in png derived from the Game-LibModel
+ChangesAndJustifications.txt : The list of changes made in the Game-Lib and justification

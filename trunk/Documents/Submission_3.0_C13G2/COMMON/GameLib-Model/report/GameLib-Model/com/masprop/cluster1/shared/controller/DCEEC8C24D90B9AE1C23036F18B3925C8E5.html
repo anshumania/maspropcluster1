@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Class</TITLE>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style"></HEAD>
+<BODY BGCOLOR="white">
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+<HR>
+<H2>
+<FONT SIZE="-1">com::masprop::cluster1::shared::controller</FONT>
+<BR>
+Class ApplicationController</H2>
+<PRE>
+<B>com::masprop::cluster1::shared::controller::ApplicationController</B>
+</PRE>
+<DL>
+<DT><B>All Known Associations: </B><DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE45F8E588027661D16F51D630191BDA4C.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html" title="association in com::masprop::cluster1::shared::controller">ApplicationController</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE8166C59ECD22890DB205675F8C65B11C.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html" title="association in com::masprop::cluster1::shared::controller">GameManager</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE237207A5905F8B67DE474D7CDC50C046.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html" title="association in com::masprop::cluster1::shared::model">GameType</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE4D0E4563AE81D5E2C7D554C916E0E094.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/view/DCEACA2ABDE1E2DBD432E4BC4034C89F813.html" title="association in com::masprop::cluster1::shared::view">GUIManager</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public class <B>ApplicationController</B></DT></DL>
+</PRE>
+
+<P>
+This class provides the skeleton implementation for any <tt>Game</tt>
+ Application Controller.
+ <p>
+ It provides a singleton handle reference to itself based on a
+ <tt>GameType</tt> for any client application to get access to the different
+ controllers for a <tt>Game</tt>
+ </p>
+ <p>
+ It is composed of a <tt>GUIManager</tt> and a <tt>GameManager</tt> and it has
+ an application level scope. It serves as the necessary delegation layer
+ between the <tt>GUIManager</tt> and <tt>GameManager</tt>
+ </p>
+ 
+ @see GUIManager
+ @see GameManager
+ @see Game
+ @see GameType
+ @author Anshuman Mehta
+ @since 1.0
+ @version 1.0</P><HR>
+<!-- =========== PROPERTY SUMMARY =========== -->
+<A NAME="property_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Properties</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Alias</B></TD>
+<TD>ApplicationController</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Visibility</B></TD>
+<TD>public</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Final</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Transient</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Abstract</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Leaf</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION SUMMARY =========== -->
+<A NAME="operation_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Operation Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getInstance">getInstance</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A>&nbsp;gameType)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Gets the single instance of ApplicationController.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html">GameManager</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGameManager">getGameManager</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Gets the game manager.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGameManager">setGameManager</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html">GameManager</A>&nbsp;val)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Sets the game manager.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGameToPlay">getGameToPlay</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Gets the game to play.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/view/DCEACA2ABDE1E2DBD432E4BC4034C89F813.html">GUIManager</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGuiManager">getGuiManager</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Gets the gui manager.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#generateGUI">generateGUI</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 This is an internal delegation operation which signal the GUIManager to
+	 create the necessary components for the view.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#initalizeComponents">initalizeComponents</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 This is an internal delegation operation to initialize all the components
+	 related to start a Game Application.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGuiManager">setGuiManager</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/view/DCEACA2ABDE1E2DBD432E4BC4034C89F813.html">GUIManager</A>&nbsp;guiManager)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 Sets the gui manager.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getUniqueInstance">getUniqueInstance</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   This instance should be used by client applications which are aware that
+   that their ApplicationController has been instantiated.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setUniqueInstance">setUniqueInstance</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A>&nbsp;uniqueInstance)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGameToPlay">setGameToPlay</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A>&nbsp;gameToPlay)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION DETAIL =========== -->
+
+<A NAME="operationr_detail"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Operation Detail</B></FONT></TH>
+</TR>
+</TABLE>
+<A NAME="getInstance"></A><H3>getInstance</H3>
+<PRE>
+public static <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A> <B>getInstance</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A>&nbsp;gameType)</PRE>
+<DL>
+<DD>	 Gets the single instance of ApplicationController.
+	 
+	 @param gameType
+	            the game type
+	 
+	 @return single instance of ApplicationController
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="getGameManager"></A><H3>getGameManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html">GameManager</A> <B>getGameManager</B>()</PRE>
+<DL>
+<DD>	 Gets the game manager.
+	 
+	 @return the game manager
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGameManager"></A><H3>setGameManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGameManager</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html">GameManager</A>&nbsp;val)</PRE>
+<DL>
+<DD>	 Sets the game manager.
+	 
+	 @param val
+	            the new game manager
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="getGameToPlay"></A><H3>getGameToPlay</H3>
+<PRE>
+public static <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A> <B>getGameToPlay</B>()</PRE>
+<DL>
+<DD>	 Gets the game to play.
+	 
+	 @return the game to play
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="getGuiManager"></A><H3>getGuiManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/view/DCEACA2ABDE1E2DBD432E4BC4034C89F813.html">GUIManager</A> <B>getGuiManager</B>()</PRE>
+<DL>
+<DD>	 Gets the gui manager.
+	 
+	 @return the gui manager
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="generateGUI"></A><H3>generateGUI</H3>
+<PRE>
+protected abstract <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>generateGUI</B>()</PRE>
+<DL>
+<DD>	 This is an internal delegation operation which signal the GUIManager to
+	 create the necessary components for the view.
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="initalizeComponents"></A><H3>initalizeComponents</H3>
+<PRE>
+protected abstract <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>initalizeComponents</B>()</PRE>
+<DL>
+<DD>	 This is an internal delegation operation to initialize all the components
+	 related to start a Game Application.
+	 Each implementation of ApplicationController should override this
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGuiManager"></A><H3>setGuiManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGuiManager</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/view/DCEACA2ABDE1E2DBD432E4BC4034C89F813.html">GUIManager</A>&nbsp;guiManager)</PRE>
+<DL>
+<DD>	 Sets the gui manager.
+	 
+	 @param guiManager
+	            the new gui manager
+	 
+<P>
+</DD></DL>
+<HR>
+<A NAME="getUniqueInstance"></A><H3>getUniqueInstance</H3>
+<PRE>
+public static <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A> <B>getUniqueInstance</B>()</PRE>
+<DL>
+<DD>   This instance should be used by client applications which are aware that
+   that their ApplicationController has been instantiated.
+   The null checks have to be handled by the client.
+   @return
+   
+<P>
+</DD></DL>
+<HR>
+<A NAME="setUniqueInstance"></A><H3>setUniqueInstance</H3>
+<PRE>
+public static <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setUniqueInstance</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html">ApplicationController</A>&nbsp;uniqueInstance)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGameToPlay"></A><H3>setGameToPlay</H3>
+<PRE>
+public static <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGameToPlay</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE3D44808514FA1F5D8343302B4C31CFDE.html">GameType</A>&nbsp;gameToPlay)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+
+<HR>
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+</BODY>
+</HTML>

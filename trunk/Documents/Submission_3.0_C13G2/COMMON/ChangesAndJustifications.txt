@@ -1,0 +1,24 @@
+1. Matrix is now a shared class
+   Previously the SudokuApplication was considering using only a doubly-linked list to implement their alogrithm and Hidato a double dimensional array. However as it turns out , the SudokuAlgorithm works fine also with a double dimensional array and hence the design decision was taken to move the Matrix up to a shared level.
+
+2. StatisticsManager
+   changed getStatistics to return java.util.Properties instead of List<String>
+   - The scores and names are key value pairs and java.util.Properties provides the appropriate functions to stream to and load directly from a property file and no need to add another layer to manage scores. We re-use the inbuilt functionality provided by the JDK.
+   
+   added getScoreFor(Game game)
+   - execution functionality to calculate and fetch the score for a game
+
+   added isAHighScore(Double score)
+   - to check whether the score scored by the user is actually a highScore
+
+   added addAHighScore(Double score, String name)
+   - to add a particular user withn name : name who has got a highScore : score
+
+   
+
+3. GUIManager
+ - added abstract method gameOver function
+   execution functionality when a game gets over. The exit() method is used for clean up operations when the Application exits and a control was required at a game level.
+ 
+ - added getHelp()
+   functionality to execute when user requests the manual
