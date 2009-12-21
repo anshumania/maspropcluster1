@@ -45,7 +45,7 @@ public class SudokuRandomizerTest {
 	 */
 	@Test
 	public void testCreateSudoku() {
-		
+		System.out.println("-------testCreateSudoku--------");
 
 		int givens = 34;
 		N = 9;
@@ -70,7 +70,7 @@ public class SudokuRandomizerTest {
     	System.out.println("done!");
     	assertNotNull(aSudoku);   // the sudoku generated is not null
     	assertTrue(fGivens > 0 );  //there should be some givens in the generated sudoku
-		
+    	System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -82,6 +82,7 @@ public class SudokuRandomizerTest {
 	@Test
 	public void testCreateRandomPartialSudoku() {
 		
+		System.out.println("-------testCreateRandomPartialSudoku--------");
 		N = 9;
     	int[][] genSudoku = new int[N][N];
     	for(int i=0;i<N;i++)
@@ -103,7 +104,7 @@ public class SudokuRandomizerTest {
     	System.out.println("no. of givens finally " + fGivens);
     	assertNotNull(genSudoku); // the sudoku generated is not null
     	assertTrue(fGivens > 0); // the number of final givens is greater than 0
-		
+    	System.out.println("-------test ended--------");	
 	}
 
 }

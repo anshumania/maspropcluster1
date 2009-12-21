@@ -15,6 +15,7 @@ public class SudokuGameGeneratorTest {
 	@Test
 	public void testGenerateGame() {
 		
+		System.out.println("--------testGenerateGame---------");
 		Constraint cons = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,45);
 		//Constraint consEx = new Constraint(GameLevelType.EXTREME,SudokuGameVariant.NINEcrossNINE,24);
 		SudokuGameGenerator sgg = new SudokuGameGenerator();
@@ -23,12 +24,12 @@ public class SudokuGameGeneratorTest {
 		assertNotNull(sg.getConstraint());
 		assertNotNull(sg.getGameMatrix());
 		assertNotNull(sg.getTime());
-		
+		System.out.println("*************testEnded***********");
 	}
 
 	@Test
 	public void testCreateAGame() {
-		
+		System.out.println("----------testCreateAGame-----------");
 		Constraint cons = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,24);
 		//Constraint consEx = new Constraint(GameLevelType.EXTREME,SudokuGameVariant.NINEcrossNINE,24);
 		SudokuGameGenerator sgg = new SudokuGameGenerator();
@@ -37,6 +38,7 @@ public class SudokuGameGeneratorTest {
 		assertNotNull(sg.getConstraint());
 		assertNotNull(sg.getGameMatrix());
 		assertNotNull(sg.getTime());
+		System.out.println("*************testEnded***********");
 
 		
 

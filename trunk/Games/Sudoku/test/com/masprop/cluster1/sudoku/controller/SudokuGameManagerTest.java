@@ -79,6 +79,9 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testGetAndSetGameGenerator() {
 		//TODO update when GameGenerator is implemented
+		 System.out.println("-------testGetAndSetGameGenerator--------");
+		
+		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac.getGameManager().getGameGenerator());
 		
@@ -88,6 +91,8 @@ public class SudokuGameManagerTest {
 		
 		assertNotSame(oldGameManager, sac.getGameManager() );
 		
+		System.out.println("-------test ended--------");
+		
 	}
 
 	/**
@@ -96,6 +101,9 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testGetAndSetGameSolver() {
 		//TODO update when GameSolver is implemented
+		
+		 System.out.println("-------testGetAndSetGameSolver--------");
+		 
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac.getGameManager().getGameSolver());
 		
@@ -103,6 +111,7 @@ public class SudokuGameManagerTest {
 		GameSolver newgs = new SudokuGameSolver();
 		sac.getGameManager().setGameSolver(newgs);
 		assertNotSame(oldgs, sac.getGameManager().getGameSolver());
+		System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -118,6 +127,7 @@ public class SudokuGameManagerTest {
 		GameValidator newgv = new SudokuGameValidator() ;
 		sac.getGameManager().setGameValidator(newgv);
 		assertNotSame(oldgv, sac.getGameManager().getGameValidator());
+		System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -126,6 +136,8 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testGetAndSetStorageManager() {
 		//TODO update when StorageManager is implemented
+		System.out.println("------ testGetAndSetStorageManager -------");
+
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac.getGameManager().getStorageManager());
 		
@@ -133,6 +145,7 @@ public class SudokuGameManagerTest {
 		StorageManager newsm = new StorageManager() ;
 		sac.getGameManager().setStorageManager(newsm);
 		assertNotSame(oldsm, sac.getGameManager().getGameValidator());
+		System.out.println("-------test ended--------");
 		
 	}
 
@@ -141,11 +154,15 @@ public class SudokuGameManagerTest {
 	 */
 	@Test
 	public void testGetNewGame() {
+		
 		//TODO update when NewGame is implemented
+		System.out.println("------ testGetNewGame -------");
+
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		Game sudokuGame = ApplicationController.getUniqueInstance().getGameManager().getNewGame(constraint);
 		assertNotNull(sudokuGame);
 		assertTrue(sudokuGame instanceof SudokuGame);
+		System.out.println("-------test ended--------");
 		
 
 	}
@@ -156,6 +173,7 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testValidateGame() {
 		//TODO update when ValidateGame is implemented
+		System.out.println("------ testValidateGame -------");
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.FOURcrossFOUR,10);
 		int[][] aSudoku = new int[4][4];
 		for(int i=0;i<4;i++)
@@ -165,6 +183,7 @@ public class SudokuGameManagerTest {
 		boolean validation = true;
 		validation = ApplicationController.getUniqueInstance().getGameManager().getGameValidator().validateGame(game);
 		assertFalse(validation);
+		System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -173,16 +192,28 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testSolveGame() {
 		//TODO update when SolveGame is implemented
+		System.out.println("------ testSolveGame -------");
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.FOURcrossFOUR,10);
 		int[][] aSudoku = new int[4][4];
 		for(int i=0;i<4;i++)
 			for(int j=0;j<4;j++)
 				aSudoku[i][j]=0;
-		Game game = new SudokuGame(constraint, new SudokuMatrix(4,aSudoku));
-		Game solvedGame = ApplicationController.getUniqueInstance().getGameManager().getGameSolver().solveGame(game);
+		SudokuGame game = new SudokuGame(constraint, new SudokuMatrix(4,aSudoku));
+		SudokuGame solvedGame = (SudokuGame)ApplicationController.getUniqueInstance().getGameManager().solveGame(game);
 		
 		//assuming that we will return a new instance of a solved game
-		assertNotSame(game, solvedGame);
+		try
+		{
+		assertArrayEquals(game.getGameMatrix().getSdkPuzzle(), solvedGame.getGameMatrix().getSdkPuzzle());
+		}
+		catch (AssertionError e)
+		{
+			// should not be equal ; do nothing
+			System.out.println("-------test ended--------");
+		}
+		
+		
+		
 		
 	}
 
@@ -192,6 +223,7 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testSaveGame() {
 		//TODO update when StorageManager SaveSoFile is implemented
+		System.out.println("------ testSaveGame -------");
 		Constraint constraint = new Constraint(GameLevelType.EASY,SudokuGameVariant.NINEcrossNINE,10);
 		int[][] aSudoku = new int[4][4];
 		for(int i=0;i<4;i++)
@@ -201,7 +233,7 @@ public class SudokuGameManagerTest {
 		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		sac.getGameManager().saveGame(game,new File("x"));
-		
+		System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -210,8 +242,10 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testLoadGame() {
 		//TODO update when StorageManager loadFromFile is implemented
+		System.out.println("------ testLoadGame -------");
 		ApplicationController sac = ApplicationController.getUniqueInstance();
-		sac.getGameManager().loadGame(new File("x"));	
+		sac.getGameManager().loadGame(new File("x"));
+		System.out.println("-------test ended--------");
 	
 	}
 
@@ -221,8 +255,10 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testGetStatistics() {
 		//TODO update when StatisticsManager is implemented
+		System.out.println("------ testGetStatistics -------");
 		ApplicationController sac = ApplicationController.getUniqueInstance();
-		assertNotNull(sac.getGameManager().getStatistics());	
+		assertNotNull(sac.getGameManager().getStatistics());
+		System.out.println("-------test ended--------");
 	}
 
 	/**
@@ -231,6 +267,7 @@ public class SudokuGameManagerTest {
 	@Test
 	public void testGetAndSetStatisticsManager() {
 		//TODO update when StatisticsManager is implemented
+		System.out.println("------ testGetAndSetStatisticsManager -------");
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac.getGameManager().getStatisticsManager());
 		
@@ -238,6 +275,7 @@ public class SudokuGameManagerTest {
 		StatisticsManager newsm = new SudokuStatisticsManager();
 		sac.getGameManager().setStatisticsManager(newsm);
 		assertNotSame(oldsm, sac.getGameManager().getStatisticsManager());
+		System.out.println("-------test ended--------");
 		
 	}
 

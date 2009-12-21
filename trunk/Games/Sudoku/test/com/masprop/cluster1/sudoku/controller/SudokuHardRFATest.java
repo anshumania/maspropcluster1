@@ -9,8 +9,12 @@ public class SudokuHardRFATest {
 	@Test
 	public void testGetAnExtremeSudoku() {
 		
+		System.out.println("-------testGetAnExtremeSudoku--------");
+
 		int[][] sdkPuzzle = SudokuHardRFA.getAnExtremeSudoku();
 		assertNotNull(sdkPuzzle);
+		System.out.println("-------test ended--------");
+
 	}
 
 }

@@ -12,7 +12,8 @@ public class SudokuAlgorithmTest {
 
 	@Test
 	public void testValidateASudokuGameFourxFourInvalid() {
-		
+		 System.out.println("-------testValidateASudokuGameFourxFourInvalid--------");
+
 		try
 		{
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
@@ -27,10 +28,13 @@ public class SudokuAlgorithmTest {
 			
 			
 		}
+		System.out.println("-------test ended--------");
+
 	}
 	
 	@Test
 	public void testValidateASudokuGameFourxFourValid() {
+		System.out.println("-------testValidateASudokuGameFourxFourValid--------");
 		try 
 		{
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
@@ -40,10 +44,12 @@ public class SudokuAlgorithmTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("-------test ended--------");
 	}	
 	
 	@Test
 	public void testValidateASudokuGameNinexNineValid() {
+		System.out.println("-------testValidateASudokuGameNinexNineValid--------");
 		try 
 		{
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
@@ -53,10 +59,12 @@ public class SudokuAlgorithmTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("-------test ended--------");
 	}
 	
 	@Test
 	public void testValidateASudokuGameNinexNineInValid() {
+		System.out.println("-------testValidateASudokuGameNinexNineInValid--------");
 	  try
 	  {
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
@@ -67,23 +75,25 @@ public class SudokuAlgorithmTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("-------test ended--------");
 		
 	}
 
 	@Test
 	public void testGenerateASudokuGame() {
+		System.out.println("-------testGenerateASudokuGame--------");
 		
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
 		int[][] sudokuPuzzle = sdkAlgo.generateASudokuGame(9, 0, GameLevelType.EASY);
 		assertNotNull(sudokuPuzzle);
 		assertTrue(sdkAlgo.validateASudokuGame(sudokuPuzzle));
-		
+		System.out.println("-------test ended--------");
 	
 	}
 
 	@Test
 	public void testSolveASudokuGame() {
+		System.out.println("-------testSolveASudokuGame--------");
 		try {
 		SudokuAlgorithm sdkAlgo = new SudokuAlgorithm();
 		int[][] sudokuPuzzle2 = SudokuDancingLinks.getSamplePuzzles(2);
@@ -103,7 +113,7 @@ public class SudokuAlgorithmTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("-------test ended--------");
 	}
 
 }
