@@ -13,6 +13,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -45,9 +46,10 @@ public class HidatoGeneratorTest {
     @Test
     public void testGenerateGame() {
         System.out.println("generateGame");
-        Constraint constraint = new HidatoConstraint(GameLevelType.EASY, GameVariantImpl.RECTANGULAR_SHAPE, 3, GameType.HIDATO, 10, 10);
+        Constraint constraint = new HidatoConstraint(GameLevelType.EASY, GameVariantImpl.RECTANGULAR_SHAPE, 3, GameType.HIDATO, 4, 4);
         KarmHidatoGenerator generator = new KarmHidatoGenerator();
         Game game = generator.generateGame(constraint);
-        game.getGameMatrix().write();
+        HidatoValidator validator = new HidatoValidator();
+        assertTrue(validator.validateGame(game));
     }
 }
