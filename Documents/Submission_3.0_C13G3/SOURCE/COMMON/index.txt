@@ -1,0 +1,4 @@
+COMMON: shared classes programmed by the other groups of the cluster
+
+This folder contains:
+- accept.txt - document in which members of the group explicitly accept that the shared classes programmed by the other groups comply with the agreed specifications and work fine.

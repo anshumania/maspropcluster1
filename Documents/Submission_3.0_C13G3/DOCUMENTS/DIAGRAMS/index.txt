@@ -1,0 +1,6 @@
+DIAGRAMS: images of the three diagrams.
+
+This folder contains:
+- viewsInterfaceControllers.png - Disk managers.
+- domainControllers.png - Domain and domain controllers.
+- viewsInterfaceControllers.png - Views and interface controllers.
