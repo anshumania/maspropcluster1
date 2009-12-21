@@ -68,7 +68,7 @@ public class HidatoGUI extends GUI {
 
         yDimensionSpinner.setModel(new javax.swing.SpinnerNumberModel(6, 4, 20, 1));
 
-        gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Easy", "Medium", "Difficult", "Test" }));
+        gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Test", "Easy", "Medium", "Difficult" }));
         gameLevelComboBox.setToolTipText("Game level means how many cells are empty for you to fill. Test generates complete game.");
 
         boardShapeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rectangular", "Oval", "Donut" }));
@@ -114,7 +114,7 @@ public class HidatoGUI extends GUI {
                             .addGroup(wizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(boardShapeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(gameLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         wizPanelLayout.setVerticalGroup(
             wizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,7 @@ public class HidatoGUI extends GUI {
                 .addGroup(wizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

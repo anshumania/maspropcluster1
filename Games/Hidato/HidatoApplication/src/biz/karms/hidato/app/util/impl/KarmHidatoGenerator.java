@@ -110,6 +110,7 @@ public class KarmHidatoGenerator implements GameGenerator {
         randomGeneratorCounter = 0;
         coordinatesTracker.clear();
         iterationsCounter = 0;
+        //At the start, all directions are set as free
         freeBOTTOM = true;
         freeLEFT = true;
         freeLEFTBOTTOM = true;
@@ -122,8 +123,8 @@ public class KarmHidatoGenerator implements GameGenerator {
         height = hidatoConstraint.getYDimension();
         matrix = new int[width][height];
         maxValue = width * height;
-        //This is maybe too many...
-        desiredNumberOfFilledCells = maxValue - ((width + height) / 2);
+        //How many cells we really want to have filled?
+        desiredNumberOfFilledCells = maxValue - ((width + height) / 2) + 1;
         maxAllowedNumberOfRollbacks = 1500;
         howDeepRollback = (width + height) - 1;
         //System.out.println("Rollback settings: width:" + width + ", height:" + height + ", maxValue:" + maxValue + ", desiredNumberOfFilledCells:" + desiredNumberOfFilledCells + ", maxAllowedNumberOfRollbacks:" + maxAllowedNumberOfRollbacks + ", howDeepRollback:" + howDeepRollback);
@@ -270,17 +271,6 @@ public class KarmHidatoGenerator implements GameGenerator {
 
         logger.log(Level.FINEST, "Converting matrix to array");
 
-        //TEST DEBUG BEGIN
-       /* System.out.println("Tracker Final:");
-        while (coordinatesTracker.size() > 0) {
-        KarmCoordinates coordinate = coordinatesTracker.pop();
-        System.out.print("[" + coordinate.getCurrentX() + "," + coordinate.getCurrentY() + "]");
-
-        }
-        System.out.println("");
-         *///TEST DEBUG END
-
-
         //Convert matrix to an array...
         int[] values = new int[maxValue];
         int valuesPointer = 0;
@@ -295,7 +285,7 @@ public class KarmHidatoGenerator implements GameGenerator {
             }
         }
 
-        int[] valuesWithHiddenOnes = hideSomeValues(values, hidatoConstraint);
+        int[] valuesWithHiddenOnes = hideSomeValues(values, hidatoConstraint, currentValue);
 
         Game game = new HidatoGame(constraint, new Matrix(width, height, valuesWithHiddenOnes));
 
@@ -398,7 +388,7 @@ public class KarmHidatoGenerator implements GameGenerator {
     private int getRandNumberWithinRange(int min, int max) {
         //Refresh seed every n iterations
         randomGeneratorCounter++;
-        if (randomGeneratorCounter == 100) {
+        if (randomGeneratorCounter == 300) {
             randomGenerator.setSeed(System.currentTimeMillis() / iterationsCounter);
             randomGeneratorCounter = 0;
         }
@@ -412,15 +402,6 @@ public class KarmHidatoGenerator implements GameGenerator {
         if (coordinatesTracker.size() != currentValue) {
             throw new IllegalArgumentException("Something is wrong with the tracking...");
         }
-
-        //TEST DEBUG BEGIN
-        /*System.out.println("Tracker(value:" + currentValue + ":");
-        for (int j = 0; j < coordinatesTracker.size(); j++) {
-        KarmCoordinates coordinate = coordinatesTracker.get(j);
-        System.out.print("[" + coordinate.getCurrentX() + "," + coordinate.getCurrentY() + "]");
-        }
-        System.out.println("");*/
-        //TEST DEBUG END
 
         for (int i = 0; i < howDeepRollback; i++) {
             if (coordinatesTracker.size() > 1) {
@@ -536,7 +517,7 @@ public class KarmHidatoGenerator implements GameGenerator {
         return null;
     }
 
-    private int[] hideSomeValues(int[] values, HidatoConstraint constraint) {
+    private int[] hideSomeValues(int[] values, HidatoConstraint constraint, int maximumValue) {
         if (constraint.getNoOfFilledCells() != 0) {
             return values;
         } else {
@@ -544,13 +525,15 @@ public class KarmHidatoGenerator implements GameGenerator {
             int howManyActualValues = 0;
             int howManyToDelete = 0;
             Set<Integer> indexesToBeDeleted = new HashSet<Integer>();
-
+            
+            //How many non-zero values do we have?
             for (int i : values) {
                 if (i != 0) {
                     howManyActualValues++;
                 }
             }
 
+            //Decide how many of them should be deleted
             if (constraint.getGameLevelType().equals(GameLevelType.DIFFICULT)) {
                 howManyToDelete = (howManyActualValues / 6) * 4;
             } else if (constraint.getGameLevelType().equals(GameLevelType.EASY)) {
@@ -560,13 +543,22 @@ public class KarmHidatoGenerator implements GameGenerator {
             } else {
                 throw new IllegalArgumentException("Unsupported GameLevel");
             }
-
-            while(indexesToBeDeleted.size() < howManyToDelete) {
-                indexesToBeDeleted.add(getRandNumberWithinRange(0, values.length-1));
+            long t1 = System.currentTimeMillis();
+            //Decide some random indexes to be deleted and continue until we have enough of them
+            while (indexesToBeDeleted.size() < howManyToDelete) {
+                int randIndex = getRandNumberWithinRange(0, values.length - 1);
+                //We don't want to delete the start nor the end of the game!
+                if (values[randIndex] != 1 && values[randIndex] != maximumValue) {
+                    indexesToBeDeleted.add(getRandNumberWithinRange(0, values.length - 1));
+                }
+                if(System.currentTimeMillis()-t1 > 6000) {
+                break;
+                }
             }
 
-            for(int i = 0; i < values.length; i++) {
-                if(indexesToBeDeleted.contains(i)) {
+            //Perform deleting
+            for (int i = 0; i < values.length; i++) {
+                if (indexesToBeDeleted.contains(i)) {
                     values[i] = 0;
                 }
             }
