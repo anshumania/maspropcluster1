@@ -5,7 +5,9 @@ import biz.karms.hidato.app.game.impl.HidatoGame;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Coordinates;
+import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.Matrix;
 import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,6 +25,9 @@ public class HidatoGUIManager extends GUIManager {
     //private HidatoGame hidatoGame = null;
     private HidatoGUIManager hidatoGUIManager = null;
     private HidatoGUI hidatoGUI = null;
+    private JTextField[][] cellsEditedByUser = null;
+    private int height = 0;
+    private int width = 0;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
         // setGameManager(hidatoGameManager);
@@ -71,8 +76,11 @@ public class HidatoGUIManager extends GUIManager {
         ((HidatoGUI) getGui()).getGameBoard().setVisible(true);
 
 
-        int height = getGame().getGameMatrix().getHeight();
-        int width = getGame().getGameMatrix().getWidth();
+        height = getGame().getGameMatrix().getHeight();
+        width = getGame().getGameMatrix().getWidth();
+
+        cellsEditedByUser = new JTextField[height][width];
+
         Cell matrixCell = null;
 
         /**
@@ -115,11 +123,11 @@ public class HidatoGUIManager extends GUIManager {
                  */
                 setCell(new JTextField());
                 if (matrixCell.getCurrentValue() == maximumValue) {
-                                    getCell().setBackground(new Color(244, 174, 174));
+                    getCell().setBackground(new Color(244, 174, 174));
                 } else if (matrixCell.getCurrentValue() == 1) {
-                                    getCell().setBackground(new Color(191, 244, 147));
+                    getCell().setBackground(new Color(191, 244, 147));
                 } else {
-                                    getCell().setBackground(new Color(239, 227, 209));
+                    getCell().setBackground(new Color(239, 227, 209));
                 }
                 getCell().setColumns(2);
                 getCell().setDisabledTextColor(new Color(66, 39, 0));
@@ -188,22 +196,25 @@ public class HidatoGUIManager extends GUIManager {
                 /**
                  * Just a collection of cells for further use...
                  */
-                getCells().add(getCell());
+                cellsEditedByUser[x][y] = getCell();
             }
         }
         ((HidatoGUI) getGui()).getGameBoard().validate();
     }
 
-    private void showGameWizard() {
-    }
-
-    private void closeGameWizard() {
-        throw new UnsupportedOperationException("Coming soon!");
-    }
-
     @Override
     public void gameOver() {
-        // TODO Auto-generated method stub
+        Matrix matrix = getGame().getGameMatrix();
+          for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Coordinates coordinates = new Coordinates(x, y);
+                if(getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
+                    getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
+                }
+               cellsEditedByUser[x][y].setEditable(false);
+            }
+        }
+        System.out.println("ARE YOU A WINNER?:"+getGameManager().getGameValidator().validateGame(getGame()));
     }
 
     @Override
