@@ -5,7 +5,6 @@ import biz.karms.hidato.app.game.impl.HidatoGame;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Coordinates;
-import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.Matrix;
 import com.masprop.cluster1.shared.view.GUIManager;
@@ -61,7 +60,6 @@ public class HidatoGUIManager extends GUIManager {
      */
     @Override
     public Game getNewGame(Constraint constraint) {
-        //showGameWizard();
         setGame((HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint));
         initializeCells();
         return getGame();
@@ -75,12 +73,10 @@ public class HidatoGUIManager extends GUIManager {
         ((HidatoGUI) getGui()).getGameBoard().validate();
         ((HidatoGUI) getGui()).getGameBoard().setVisible(true);
 
+        this.height = getGame().getGameMatrix().getHeight();
+        this.width = getGame().getGameMatrix().getWidth();
 
-        height = getGame().getGameMatrix().getHeight();
-        width = getGame().getGameMatrix().getWidth();
-
-        cellsEditedByUser = new JTextField[height][width];
-
+        cellsEditedByUser = new JTextField[width][height];
         Cell matrixCell = null;
 
         /**
