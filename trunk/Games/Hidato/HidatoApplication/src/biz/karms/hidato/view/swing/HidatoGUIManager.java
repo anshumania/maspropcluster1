@@ -12,6 +12,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Properties;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -201,20 +204,38 @@ public class HidatoGUIManager extends GUIManager {
     @Override
     public void gameOver() {
         Matrix matrix = getGame().getGameMatrix();
-          for (int y = 0; y < height; y++) {
+        for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Coordinates coordinates = new Coordinates(x, y);
-                if(getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
+                if (getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
                     getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
                 }
-               cellsEditedByUser[x][y].setEditable(false);
+                cellsEditedByUser[x][y].setEditable(false);
             }
         }
-        System.out.println("ARE YOU A WINNER?:"+getGameManager().getGameValidator().validateGame(getGame()));
+        System.out.println("ARE YOU A WINNER?:" + getGameManager().getGameValidator().validateGame(getGame()));
     }
 
     @Override
     public void getHelp() {
         ((HidatoGUI) getGui()).manualMenuItemActionPerformed();
+    }
+
+    @Override
+    public Properties getStatistics() {
+        JFrame statFrame = new JFrame("Scores");
+        statFrame.add(((HidatoGUI) getGui()).getStatPanel());
+        Properties properties = getGameManager().getStatistics();
+        ((GridLayout) ((HidatoGUI) getGui()).getStatPanelContainer().getLayout()).setRows(properties.keySet().size());
+
+        for (Object key : properties.keySet()) {
+            ((HidatoGUI) getGui()).getStatPanelContainer().add(new JLabel((String) key));
+            ((HidatoGUI) getGui()).getStatPanelContainer().add(new JLabel(properties.getProperty((String) key)));
+        }
+        ((HidatoGUI) getGui()).getStatPanelContainer().validate();
+statFrame.setVisible(true);
+        statFrame.validate();
+        System.out.println("SHIYTT");
+        return properties;
     }
 }
