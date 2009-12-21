@@ -1,0 +1,24 @@
+Test Cases for SudokuStatisticsManager implementation of class StatisticsManager
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuStatisticsManagerTest
+
+
+1.	 Tests calculation of a score for a game.
+	
+	@Test
+	public void testGetScoreFor() 
+
+2.	 Test get statistics for the Sudoku Application.
+	 
+	@Test
+	public void testGetStatistics() 
+
+3. 	Test that high score is addded to the high score file.
+	
+	@Test
+	public void testAddHighScore() 
+
+4.      Tests whether a score is a high score.
+	
+	@Test
+	public void testIsAHighScore() 
+

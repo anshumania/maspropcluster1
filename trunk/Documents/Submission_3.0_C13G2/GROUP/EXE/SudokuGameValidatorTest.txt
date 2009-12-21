@@ -1,0 +1,8 @@
+Test Cases for SudokuGameValidator implementation of class GameValidator
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuGameValidatorTest
+
+
+1.      Tests the validation of a Sudoku game.
+	
+	@Test
+	public void testValidateGame() {

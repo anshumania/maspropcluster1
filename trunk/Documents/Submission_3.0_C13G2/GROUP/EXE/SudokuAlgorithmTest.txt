@@ -1,0 +1,33 @@
+Test Cases for SudokuAlgorithm implementation of class Algorithm
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuAlgorithmTest
+
+1.	Tests the validation of an invalid fourxfour sudoku game.
+	
+	@Test
+	public void testValidateASudokuGameFourxFourInvalid() 
+
+2.	Tests the validation of a valid fourxfour sudoku game.
+	
+	@Test
+	public void testValidateASudokuGameFourxFourValid() 
+
+3.	Test the validation of a valid ninexnine sudoku game.
+	
+	@Test
+	public void testValidateASudokuGameNinexNineValid() 
+
+4.	Test the validation of an invalid ninexnine sudoku game.
+	
+	@Test
+	public void testValidateASudokuGameNinexNineInValid() 
+
+5.	Test the generation a ninexnine sudoku game.
+	
+	@Test
+	public void testGenerateASudokuGame() 
+
+
+6.	Test whether the algorithm has solved the sudoku game.
+		
+	@Test
+	public void testSolveASudokuGame() {
