@@ -215,6 +215,6 @@ public class HidatoGUIManager extends GUIManager {
 
     @Override
     public void getHelp() {
-        // TODO Auto-generated method stub
+        ((HidatoGUI) getGui()).manualMenuItemActionPerformed();
     }
 }

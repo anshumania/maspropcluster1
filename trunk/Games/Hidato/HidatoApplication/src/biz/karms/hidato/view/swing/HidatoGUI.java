@@ -18,8 +18,16 @@ import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.shared.model.GameVariant;
 import com.masprop.cluster1.shared.view.GUI;
 import com.masprop.cluster1.shared.view.GUIManager;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.text.html.HTMLEditorKit;
 
 /**
  *
@@ -301,5 +309,32 @@ public class HidatoGUI extends GUI {
         wizFrame.setVisible(true);
         wizPanel.validate();
         wizFrame.validate();
+    }
+
+    public void manualMenuItemActionPerformed()
+    {
+        JFrame helpFrame = new JFrame();
+        Container content = helpFrame.getContentPane();
+
+        JEditorPane helpEditorPane = new JEditorPane();
+        helpEditorPane.setEditable(false);
+
+        JScrollPane helpScrollPane = new JScrollPane(helpEditorPane);
+        content.add(helpScrollPane);
+
+        helpFrame.setTitle("Hidato Manual");
+        helpFrame.setSize(640, 480);
+        helpFrame.setMinimumSize(new Dimension(400, 500));
+
+
+        try {
+            InputStream helpIns = getClass().getResourceAsStream("resources/help.html");
+            helpEditorPane.setEditorKit(new HTMLEditorKit());
+            helpEditorPane.read(helpIns, null);
+        } catch (IOException ex) {
+              helpEditorPane.setContentType("text/html");
+              helpEditorPane.setText("<html>Could not load resources/help.html </html>");
+        }
+        helpFrame.setVisible(true);
     }
 }
