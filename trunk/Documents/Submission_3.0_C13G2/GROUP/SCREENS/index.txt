@@ -1,0 +1,15 @@
+SCREENS Folder: Design of all screens.
+
+This folder contains:
+common-aboutWindow                      : The common 'About' window.
+sudokuCreateGameWizard-CreationSettings : The Create Option and the CreationSettings Tab in the SudokuGameWizard
+sudokuCreateGameWizard-Variant          : The Create Option and the Variant Settings Tab in the SudokuGameWizard
+sudoku-FileMenuOptions			: The File Menu Options
+sudoku-FourXFour                        : An actual view of a 4x4 SudokuGame
+sudoku-GamePlayOptions                  : The Sudoku Menu game play options
+sudoku-Manual                           : The Sudoku Manual view
+sudokuNewGameWizard-Difficulty          : The New Option and the Difficulty Settings Tab in the SudokuGameWizard
+sudokuNewGameWizard-Variant             : The New Option and the Variant Settings Tabs in the SudokuGameWizard
+sudoku-NineXNine                        : An actual view of a 9x9 SudokuGame
+sudoku-TimerAndGenerationBar            : The SudokuTimer and Generation Progress Bar
+sudoku-WelcomeScreen                    : The Sudoku Application Welcome Screen
