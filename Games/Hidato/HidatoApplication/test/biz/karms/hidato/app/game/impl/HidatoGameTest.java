@@ -1,6 +1,8 @@
 package biz.karms.hidato.app.game.impl;
 
 import com.masprop.cluster1.shared.model.Constraint;
+import com.masprop.cluster1.shared.model.Game;
+import com.masprop.cluster1.shared.model.GameLevelType;
 import com.masprop.cluster1.shared.model.Matrix;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,58 @@ public class HidatoGameTest {
     }
 
     /**
+     * Test of getConstraint method, of class Game.
+     */
+    @Test
+    public void testGetConstraint() {
+        System.out.println("getConstraint");
+        Game game = new Game(new Constraint(GameLevelType.DIFFICULT, null,
+                4), null) {};
+        Constraint expResult = new Constraint(GameLevelType.DIFFICULT, null,
+                4);
+        Constraint result = game.getConstraint();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setConstraint method, of class Game.
+     */
+    @Test
+    public void testSetConstraint() {
+        System.out.println("setConstraint");
+        Game game = new Game(new Constraint(GameLevelType.DIFFICULT, null,
+                4), null) {};
+        Constraint constraint = new Constraint(GameLevelType.EASY, null,
+                8);
+        game.setConstraint(constraint);
+        assertEquals(constraint, game.getConstraint());
+    }
+
+    /**
+     * Test of getTime method, of class Game.
+     */
+    @Test
+    public void testGetTime() {
+        System.out.println("getTime");
+        Game game = new Game(new Constraint(), null, 265) {};
+        long expResult = 265;
+        long result = game.getTime();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setTime method, of class Game.
+     */
+    @Test
+    public void testSetTime() {
+        System.out.println("setTime");
+        Game game = new Game(new Constraint(), null, 265) {};
+        long time = 100;
+        game.setTime(time);
+        assertEquals(time, game.getTime());
+    }
+
+    /**
      * Test of getSolutions method, of class HidatoGame.
      */
     @Test
@@ -62,8 +116,6 @@ public class HidatoGameTest {
         for (int i = 0; i < result.size(); i++) {
             assertEquals(expResult.get(i), result.get(i));
         }
-
-
     }
 
     /**

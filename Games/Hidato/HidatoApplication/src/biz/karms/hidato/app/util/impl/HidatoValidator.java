@@ -28,7 +28,6 @@ public class HidatoValidator implements GameValidator {
      * @return true if game is valid
      */
     public boolean validateGame(Game game) {
-        System.out.println("validateGame()");
         //game matrix
         Matrix matrix = game.getGameMatrix();
 
@@ -56,7 +55,8 @@ public class HidatoValidator implements GameValidator {
                     if (matrix.getCell(new Coordinates(x, y)).getCurrentValue() == -1) {
                         nonActive++;
                     } else {
-                        path.put(matrix.getCell(new Coordinates(x, y)).getCurrentValue(), new Coordinates(x, y));
+                        path.put(matrix.getCell(new Coordinates(x, y)).getCurrentValue(),
+                                new Coordinates(x, y));
                     }
                 }
             }
@@ -64,7 +64,8 @@ public class HidatoValidator implements GameValidator {
         //if all cells filled
         if (filled) {
             //check if each number appears only once
-            if (path.size() != (matrix.getHeight() * matrix.getWidth()) - nonActive) {
+            if (path.size() != (matrix.getHeight() * matrix.getWidth())
+                    - nonActive) {
                 return false;
             }
             for(int i=1;i<=path.size();i++) {

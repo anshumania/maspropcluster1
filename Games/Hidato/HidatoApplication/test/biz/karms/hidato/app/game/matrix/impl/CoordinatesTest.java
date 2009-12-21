@@ -96,6 +96,32 @@ public class CoordinatesTest {
     }
 
     /**
+     * Test of isConsecutive2 method, of class Coordinates.
+     */
+    @Test
+    public void testIsConsecutive2() {
+        System.out.println("isConsecutive2");
+        Coordinates coordinates = new Coordinates(0, 0);
+        Coordinates instance = new Coordinates(0, 2);
+        assertTrue(instance.isConsecutive2(coordinates));
+        instance = new Coordinates(0, 3);
+        assertFalse(instance.isConsecutive(coordinates));
+    }
+
+    /**
+     * Test of isConsecutive2 method, of class Coordinates.
+     */
+    @Test
+    public void testIsConsecutive3() {
+        System.out.println("isConsecutive3");
+        Coordinates coordinates = new Coordinates(0, 0);
+        Coordinates instance = new Coordinates(0, 3);
+        assertTrue(instance.isConsecutive3(coordinates));
+        instance = new Coordinates(0, 4);
+        assertFalse(instance.isConsecutive(coordinates));
+    }
+
+    /**
      * Test of getNewCoordinates method, of class Coordinates.
      */
     @Test
@@ -104,42 +130,42 @@ public class CoordinatesTest {
         //test top
         Direction direction = Direction.TOP;
         Coordinates instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(1, 0), instance);
         //test rightTop
         direction = Direction.RIGHTTOP;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 0), instance);
         //test right
         direction = Direction.RIGHT;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 1), instance);
         //test rightBottom
         direction = Direction.RIGHTBOTTOM;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(2, 2), instance);
         //test bottom
         direction = Direction.BOTTOM;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(1, 2), instance);
         //test leftBottom
         direction = Direction.LEFTBOTTOM;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 2), instance);
         //test left
         direction = Direction.LEFT;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 1), instance);
         //test leftTop
         direction = Direction.LEFTTOP;
         instance = new Coordinates(1, 1);
-        instance.getNewCoordinates(direction);
+        instance = instance.getNewCoordinates(direction);
         assertEquals(new Coordinates(0, 0), instance);
     }
 

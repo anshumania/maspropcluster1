@@ -141,16 +141,14 @@ public class HidatoSolverTest {
     @Test
     public void testSolveGame() {
         System.out.println("solveGame");
-        /*int[] values = {6, 0, 9,
+        int[] values = {6, 0, 9,
                         0, 0, 0,
-                        1, 0, 0};*/
-        int[] values = {0,0,73,75,0,0,0,79,0,0,0,38,0,0,77,0,44,81,36,0,67,0,0,0,0,0,6,0,0,0,0,1,46,0,5,0,0,34,0,0,49,0,0,0,8,0,33,0,31,53,52,0,0,9,63,0,0,56,0,0,19,10,0,60,61,0,0,0,25,0,11,0,0,0,0,0,26,23,12,13,0};
-        Matrix matrix = new Matrix(9, 9, values);
-        matrix.write();
+                        1, 0, 0};
+        /*int[] values = {0,0,73,75,0,0,0,79,0,0,0,38,0,0,77,0,44,81,36,0,67,0,0,0,0,0,6,0,0,0,0,1,46,0,5,0,0,34,0,0,49,0,0,0,8,0,33,0,31,53,52,0,0,9,63,0,0,56,0,0,19,10,0,60,61,0,0,0,25,0,11,0,0,0,0,0,26,23,12,13,0};*/
+        Matrix matrix = new Matrix(3, 3, values);
         Game game = new HidatoGame(new HidatoConstraint(), matrix);
         HidatoSolver solver = new HidatoSolver();
         Matrix matrixResult = solver.solveGame(game).getGameMatrix();
-        matrixResult.write();
         int[] result = new int[9];
         int k = 0;
         //parse matrix to one dimensional array
