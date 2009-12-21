@@ -215,9 +215,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="winnerButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="winnersName" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                      <Component id="winnerText" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="winnerText" alignment="0" min="-2" pref="534" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="338" max="32767" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
