@@ -37,7 +37,7 @@ public class HidatoGUIManager extends GUIManager {
     private boolean gameIsRunning = false;
     private boolean winner = false;
     private double score = .0;
-    
+
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
         hidatoGUIManager = this;
         init();
@@ -228,16 +228,19 @@ public class HidatoGUIManager extends GUIManager {
         long gameDuration = System.currentTimeMillis() - gameStartedTimestamp;
         gameIsRunning = false;
         winner = false;
-
         try {
-            Matrix matrix = getGame().getGameMatrix();
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    cellsEditedByUser[x][y].setEditable(false);
+                }
+            }
+
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
                     Coordinates coordinates = new Coordinates(x, y);
                     if (getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
                         getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
                     }
-                    cellsEditedByUser[x][y].setEditable(false);
                 }
             }
             winner = getGameManager().getGameValidator().validateGame(getGame());
@@ -253,7 +256,7 @@ public class HidatoGUIManager extends GUIManager {
             getGame().setTime(gameDuration);
             score = getGameManager().getStatisticsManager().getScoreFor(getGame());
             ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.GREEN);
-            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60)+", Score:"+Math.round(score));
+            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60) + ", Score:" + Math.round(score));
             ((HidatoGUI) getGui()).getWinnersName().setText("Your name please...");
         } else {
             ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.RED);
@@ -296,10 +299,11 @@ public class HidatoGUIManager extends GUIManager {
     public void closeWinnerFrame() {
         winnerFrame.setVisible(false);
         winnerFrame.validate();
-        if(winner) {
-        if(getGameManager().getStatisticsManager().isAHighScore(score)) {
-        getGameManager().getStatisticsManager().addHighScore(score,((HidatoGUI) getGui()).getWinnerText().getText());
-        getStatistics();
-        }}
+        if (winner) {
+            if (getGameManager().getStatisticsManager().isAHighScore(score)) {
+                getGameManager().getStatisticsManager().addHighScore(score, ((HidatoGUI) getGui()).getWinnerText().getText());
+                getStatistics();
+            }
+        }
     }
 }
