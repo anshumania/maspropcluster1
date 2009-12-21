@@ -549,7 +549,7 @@ public class KarmHidatoGenerator implements GameGenerator {
                 int randIndex = getRandNumberWithinRange(0, values.length - 1);
                 //We don't want to delete the start nor the end of the game!
                 if (values[randIndex] != 1 && values[randIndex] != maximumValue) {
-                    indexesToBeDeleted.add(getRandNumberWithinRange(0, values.length - 1));
+                    indexesToBeDeleted.add(randIndex);
                 }
                 if(System.currentTimeMillis()-t1 > 6000) {
                 break;

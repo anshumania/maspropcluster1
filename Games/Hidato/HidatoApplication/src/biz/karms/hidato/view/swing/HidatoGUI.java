@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.text.html.HTMLEditorKit;
 
@@ -337,4 +338,13 @@ public class HidatoGUI extends GUI {
         }
         helpFrame.setVisible(true);
     }
+
+    public JPanel getStatPanelContainer() {
+        return statPanelContainer;
+    }
+
+    public JPanel getStatPanel() {
+        return statPanel;
+    }
+    
 }
