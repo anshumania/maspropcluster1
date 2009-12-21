@@ -1,0 +1,8 @@
+DOCUMENTS: Documents which should be printed.
+
+This folder contains:
+- DIAGRAMS - images of the three diagrams.
+- differencesFromSpecification.txt - List of the (justified) differences between what was proposed in the first submission and what has been finally developed.
+- listOfsharedClasses.txt - List of the cluster shared classes, indicating which group has implemented each one.
+- manual.pdf - user manual.
+

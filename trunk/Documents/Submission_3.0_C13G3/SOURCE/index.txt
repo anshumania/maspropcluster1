@@ -1,0 +1,7 @@
+SOURCE: Source code of the classes implemented
+
+This folder contains:
+- COMMON - shared classes programmed by the other groups of the cluster
+- PLEVA_MATUS - classes that he has
+- BABACEK_MICHAL - classes that he has
+- DAUNOU_ADRIEN - classes that he has
