@@ -306,4 +306,18 @@ public class HidatoGUIManager extends GUIManager {
             }
         }
     }
+
+    @Override
+    public void updateGameObject() {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Coordinates coordinates = new Coordinates(x, y);
+                if (getGame().getGameMatrix().getCell(coordinates).getCurrentValue() == 0) {
+                    if (!cellsEditedByUser[x][y].getText().isEmpty()) {
+                        getGame().getGameMatrix().getCell(coordinates).setCurrentValue(Integer.parseInt(cellsEditedByUser[x][y].getText()));
+                    }
+                }
+            }
+        }
+    }
 }

@@ -204,7 +204,7 @@ public abstract class GUIManager {
      *
      * Maybe it would be best to overwrite this method, because it is Hidato/Sudoku dependent.
      */
-    private void updateGameObject() {
+    public void updateGameObject() {
         //TODO: DO :-)
     }
 
