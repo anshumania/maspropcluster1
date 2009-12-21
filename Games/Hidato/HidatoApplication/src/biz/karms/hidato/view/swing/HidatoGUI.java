@@ -65,8 +65,28 @@ public class HidatoGUI extends GUI {
         jLabel4.setText("Board shape");
 
         xDimensionSpinner.setModel(new javax.swing.SpinnerNumberModel(6, 4, 20, 1));
+        xDimensionSpinner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                xDimensionSpinnerMouseClicked(evt);
+            }
+        });
+        xDimensionSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                xDimensionSpinnerStateChanged(evt);
+            }
+        });
 
         yDimensionSpinner.setModel(new javax.swing.SpinnerNumberModel(6, 4, 20, 1));
+        yDimensionSpinner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                yDimensionSpinnerMouseClicked(evt);
+            }
+        });
+        yDimensionSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                yDimensionSpinnerStateChanged(evt);
+            }
+        });
 
         gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Test", "Easy", "Medium", "Difficult" }));
         gameLevelComboBox.setToolTipText("Game level means how many cells are empty for you to fill. Test generates complete game.");
@@ -201,6 +221,35 @@ public class HidatoGUI extends GUI {
         wizFrame.setVisible(false);
         this.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void xDimensionSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xDimensionSpinnerMouseClicked
+
+    }//GEN-LAST:event_xDimensionSpinnerMouseClicked
+
+    private void yDimensionSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yDimensionSpinnerMouseClicked
+
+    }//GEN-LAST:event_yDimensionSpinnerMouseClicked
+
+    private void xDimensionSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_xDimensionSpinnerStateChanged
+                if((Integer)xDimensionSpinner.getValue() > (Integer)yDimensionSpinner.getValue()+4) {
+
+            yDimensionSpinner.setValue(new Integer((Integer)yDimensionSpinner.getValue()+1));
+        }
+        if((Integer)xDimensionSpinner.getValue()+4 < (Integer)yDimensionSpinner.getValue()) {
+            yDimensionSpinner.setValue(new Integer((Integer)yDimensionSpinner.getValue()-1));
+        }
+    }//GEN-LAST:event_xDimensionSpinnerStateChanged
+
+    private void yDimensionSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yDimensionSpinnerStateChanged
+                    if((Integer)yDimensionSpinner.getValue() > (Integer)xDimensionSpinner.getValue()+4) {
+
+            xDimensionSpinner.setValue(new Integer((Integer)xDimensionSpinner.getValue()+1));
+        }
+        if((Integer)yDimensionSpinner.getValue()+4 < (Integer)xDimensionSpinner.getValue()) {
+            xDimensionSpinner.setValue(new Integer((Integer)xDimensionSpinner.getValue()-1));
+        }
+    }//GEN-LAST:event_yDimensionSpinnerStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boardShapeComboBox;
     private javax.swing.JComboBox gameLevelComboBox;
