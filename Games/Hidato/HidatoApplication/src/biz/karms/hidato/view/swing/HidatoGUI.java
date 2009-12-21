@@ -67,7 +67,7 @@ public class HidatoGUI extends GUI {
         statPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         statPanelContainer = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        dismissStatsButton = new javax.swing.JButton();
 
         jLabel1.setText("X dimension");
 
@@ -177,7 +177,12 @@ public class HidatoGUI extends GUI {
         statPanelContainer.setLayout(new java.awt.GridLayout(1, 2));
         jScrollPane1.setViewportView(statPanelContainer);
 
-        jButton3.setText("Dismiss");
+        dismissStatsButton.setText("Dismiss");
+        dismissStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dismissStatsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout statPanelLayout = new javax.swing.GroupLayout(statPanel);
         statPanel.setLayout(statPanelLayout);
@@ -186,14 +191,14 @@ public class HidatoGUI extends GUI {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, statPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3))
+                .addComponent(dismissStatsButton))
         );
         statPanelLayout.setVerticalGroup(
             statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(dismissStatsButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -282,12 +287,17 @@ public class HidatoGUI extends GUI {
             xDimensionSpinner.setValue(new Integer((Integer) xDimensionSpinner.getValue() - 1));
         }
     }//GEN-LAST:event_yDimensionSpinnerStateChanged
+
+    private void dismissStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dismissStatsButtonActionPerformed
+       ((HidatoGUIManager)getGuiManager()).closeStatisctic();
+    }//GEN-LAST:event_dismissStatsButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boardShapeComboBox;
+    private javax.swing.JButton dismissStatsButton;
     private javax.swing.JComboBox gameLevelComboBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
