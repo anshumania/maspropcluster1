@@ -1,5 +1,6 @@
 package com.masprop.cluster1.shared.view;
 
+import com.masprop.cluster1.shared.model.Game;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -603,8 +604,11 @@ public class GUI extends javax.swing.JFrame {
 
 	private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_fileChooserActionPerformed
 		if (fileChooser.getDialogType() == JFileChooser.OPEN_DIALOG) {
-			if (null != fileChooser.getSelectedFile())
-				guiManager.loadGame(fileChooser.getSelectedFile());
+			if (null != fileChooser.getSelectedFile()) {
+				Game game = guiManager.loadGame(fileChooser.getSelectedFile());
+                                getGuiManager().setGame(game);
+                                getGuiManager().initializeCells();
+                        }
 		} else if (fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
 			guiManager.saveGame(fileChooser.getSelectedFile());
 		} else {
