@@ -228,8 +228,8 @@ public class HidatoGUI extends GUI {
                 .addGroup(winnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(winnerButton)
                     .addComponent(winnersName, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(winnerText))
-                .addContainerGap(338, Short.MAX_VALUE))
+                    .addComponent(winnerText, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         winnerPanelLayout.setVerticalGroup(
             winnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

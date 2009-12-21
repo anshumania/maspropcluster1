@@ -254,12 +254,14 @@ public class HidatoGUIManager extends GUIManager {
 
 
         winnerFrame = new JFrame("Winner or looser?");
-        winnerFrame.setBounds(250, 250, 357, 225);
+        winnerFrame.setBounds(250, 250, 450, 225);
         winnerFrame.add(((HidatoGUI) getGui()).getWinnerPanel());
 
         if (winner) {
+            getGame().setTime(gameDuration);
+            double score = getGameManager().getStatisticsManager().getScoreFor(getGame());
             ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.GREEN);
-            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60));
+            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60)+", Score:"+Math.round(score));
             ((HidatoGUI) getGui()).getWinnersName().setText("Your name please...");
         } else {
             ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.RED);
@@ -268,10 +270,6 @@ public class HidatoGUIManager extends GUIManager {
         }
         winnerFrame.setVisible(true);
         winnerFrame.validate();
-        getGame().setTime(gameDuration);
-        double score = getGameManager().getStatisticsManager().getScoreFor(getGame());
-        System.out.println("Skore:" + score);
-
     }
 
     @Override
