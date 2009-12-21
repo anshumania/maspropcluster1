@@ -26,8 +26,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.text.html.HTMLEditorKit;
 
 /**
@@ -68,6 +70,10 @@ public class HidatoGUI extends GUI {
         jScrollPane1 = new javax.swing.JScrollPane();
         statPanelContainer = new javax.swing.JPanel();
         dismissStatsButton = new javax.swing.JButton();
+        winnerPanel = new javax.swing.JPanel();
+        winnerText = new javax.swing.JLabel();
+        winnerButton = new javax.swing.JButton();
+        winnersName = new javax.swing.JTextField();
 
         jLabel1.setText("X dimension");
 
@@ -202,6 +208,41 @@ public class HidatoGUI extends GUI {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        winnerText.setText("jLabel5");
+
+        winnerButton.setText("Save & Close");
+        winnerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                winnerButtonActionPerformed(evt);
+            }
+        });
+
+        winnersName.setText("jTextField1");
+
+        javax.swing.GroupLayout winnerPanelLayout = new javax.swing.GroupLayout(winnerPanel);
+        winnerPanel.setLayout(winnerPanelLayout);
+        winnerPanelLayout.setHorizontalGroup(
+            winnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(winnerPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(winnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(winnerButton)
+                    .addComponent(winnersName, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(winnerText))
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        winnerPanelLayout.setVerticalGroup(
+            winnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(winnerPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(winnerText)
+                .addGap(29, 29, 29)
+                .addComponent(winnersName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(winnerButton)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,6 +333,10 @@ public class HidatoGUI extends GUI {
        ((HidatoGUIManager)getGuiManager()).closeStatisctic();
     }//GEN-LAST:event_dismissStatsButtonActionPerformed
 
+    private void winnerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winnerButtonActionPerformed
+       ((HidatoGUIManager)getGuiManager()).closeWinnerFrame();
+    }//GEN-LAST:event_winnerButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boardShapeComboBox;
     private javax.swing.JButton dismissStatsButton;
@@ -305,6 +350,10 @@ public class HidatoGUI extends GUI {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel statPanel;
     private javax.swing.JPanel statPanelContainer;
+    private javax.swing.JButton winnerButton;
+    private javax.swing.JPanel winnerPanel;
+    private javax.swing.JLabel winnerText;
+    private javax.swing.JTextField winnersName;
     private javax.swing.JPanel wizPanel;
     private javax.swing.JSpinner xDimensionSpinner;
     private javax.swing.JSpinner yDimensionSpinner;
@@ -355,6 +404,18 @@ public class HidatoGUI extends GUI {
 
     public JPanel getStatPanel() {
         return statPanel;
+    }
+
+    public JPanel getWinnerPanel() {
+        return winnerPanel;
+    }
+
+    public JLabel getWinnerText() {
+        return winnerText;
+    }
+
+    public JTextField getWinnersName() {
+        return winnersName;
     }
     
 }

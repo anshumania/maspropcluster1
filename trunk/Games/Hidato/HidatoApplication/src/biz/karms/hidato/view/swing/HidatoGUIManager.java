@@ -13,6 +13,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -31,6 +33,9 @@ public class HidatoGUIManager extends GUIManager {
     private int height = 0;
     private int width = 0;
     private JFrame statFrame = null;
+    private JFrame winnerFrame = null;
+    private long gameStartedTimestamp = 0;
+    private boolean gameIsRunning = false;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
         // setGameManager(hidatoGameManager);
@@ -66,6 +71,29 @@ public class HidatoGUIManager extends GUIManager {
     public Game getNewGame(Constraint constraint) {
         setGame((HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint));
         initializeCells();
+        getGui().getStatusText().setForeground(Color.red);
+        getGui().getStatusText().setBackground(Color.black);
+        getGui().getStatusText().setFont(new Font("DejaVu Sans", 1, 18));
+        getGui().getStatusText().validate();
+        getGui().getStatusBar().validate();
+        gameStartedTimestamp = System.currentTimeMillis();
+        gameIsRunning = true;
+        Thread timer = new Thread() {
+
+            @Override
+            public void run() {
+                while (gameIsRunning) {
+                    long diff = System.currentTimeMillis() - gameStartedTimestamp;
+                    getGui().getStatusText().setText((diff / 1000 / 60) + ":" + ((diff / 1000) % 60));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(HidatoGUIManager.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        timer.start();
         return getGame();
     }
 
@@ -204,6 +232,9 @@ public class HidatoGUIManager extends GUIManager {
 
     @Override
     public void gameOver() {
+        long gameDuration = System.currentTimeMillis() - gameStartedTimestamp;
+        gameIsRunning = false;
+
         Matrix matrix = getGame().getGameMatrix();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -214,7 +245,23 @@ public class HidatoGUIManager extends GUIManager {
                 cellsEditedByUser[x][y].setEditable(false);
             }
         }
-        System.out.println("ARE YOU A WINNER?:" + getGameManager().getGameValidator().validateGame(getGame()));
+
+        winnerFrame = new JFrame("Winner or looser?");
+        winnerFrame.setBounds(250, 250, 357, 225);
+        winnerFrame.add(((HidatoGUI) getGui()).getWinnerPanel());
+
+        if (getGameManager().getGameValidator().validateGame(getGame())) {
+            ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.GREEN);
+            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is correct! Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60));
+            ((HidatoGUI) getGui()).getWinnersName().setText("Your name please...");
+        } else {
+            ((HidatoGUI) getGui()).getWinnerText().setForeground(Color.RED);
+            ((HidatoGUI) getGui()).getWinnerText().setText("Your solution is not correct Duration:" + (gameDuration / 1000 / 60) + ":" + ((gameDuration / 1000) % 60));
+            ((HidatoGUI) getGui()).getWinnersName().setEnabled(false);
+        }
+        winnerFrame.setVisible(true);
+        winnerFrame.validate();
+
     }
 
     @Override
@@ -238,12 +285,16 @@ public class HidatoGUIManager extends GUIManager {
 
         statFrame.setVisible(true);
         statFrame.validate();
-        System.out.println("SHIYTT");
         return properties;
     }
 
     public void closeStatisctic() {
         statFrame.setVisible(false);
         statFrame.validate();
+    }
+
+    public void closeWinnerFrame() {
+        winnerFrame.setVisible(false);
+        winnerFrame.validate();
     }
 }
