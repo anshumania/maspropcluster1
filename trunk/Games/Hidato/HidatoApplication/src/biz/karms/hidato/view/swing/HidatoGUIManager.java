@@ -30,6 +30,7 @@ public class HidatoGUIManager extends GUIManager {
     private JTextField[][] cellsEditedByUser = null;
     private int height = 0;
     private int width = 0;
+    private JFrame statFrame = null;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
         // setGameManager(hidatoGameManager);
@@ -223,7 +224,7 @@ public class HidatoGUIManager extends GUIManager {
 
     @Override
     public Properties getStatistics() {
-        JFrame statFrame = new JFrame("Scores");
+        statFrame = new JFrame("Scores");
         statFrame.add(((HidatoGUI) getGui()).getStatPanel());
         Properties properties = getGameManager().getStatistics();
         ((GridLayout) ((HidatoGUI) getGui()).getStatPanelContainer().getLayout()).setRows(properties.keySet().size());
@@ -233,9 +234,16 @@ public class HidatoGUIManager extends GUIManager {
             ((HidatoGUI) getGui()).getStatPanelContainer().add(new JLabel(properties.getProperty((String) key)));
         }
         ((HidatoGUI) getGui()).getStatPanelContainer().validate();
-statFrame.setVisible(true);
+        statFrame.setBounds(200, 200, 300, 450);
+
+        statFrame.setVisible(true);
         statFrame.validate();
         System.out.println("SHIYTT");
         return properties;
+    }
+
+    public void closeStatisctic() {
+        statFrame.setVisible(false);
+        statFrame.validate();
     }
 }
