@@ -122,8 +122,8 @@ public class KarmHidatoGenerator implements GameGenerator {
         matrix = new int[width][height];
         maxValue = width * height;
         //This is maybe too many...
-        desiredNumberOfFilledCells = (maxValue / 4) * 3;
-        maxAllowedNumberOfRollbacks = 100;
+        desiredNumberOfFilledCells = (maxValue / 5) * 4;
+        maxAllowedNumberOfRollbacks = 1000;
         howDeepRollback = (width + height) - 2;
         //System.out.println("Rollback settings: width:" + width + ", height:" + height + ", maxValue:" + maxValue + ", desiredNumberOfFilledCells:" + desiredNumberOfFilledCells + ", maxAllowedNumberOfRollbacks:" + maxAllowedNumberOfRollbacks + ", howDeepRollback:" + howDeepRollback);
         logger.log(Level.SEVERE, "Rollback settings: width:" + width + ", height:" + height + ", maxValue:" + maxValue + ", desiredNumberOfFilledCells:" + desiredNumberOfFilledCells + ", maxAllowedNumberOfRollbacks:" + maxAllowedNumberOfRollbacks + ", howDeepRollback:" + howDeepRollback);
@@ -300,8 +300,11 @@ public class KarmHidatoGenerator implements GameGenerator {
             }
         }
 
+        int[] valuesWithHiddenOnes = hideSomeValues(values);
+
         Game game = new HidatoGame(constraint, new Matrix(width, height, values));
-        GameValidator validator = new HidatoValidator();
+
+       GameValidator validator = new HidatoValidator();
        System.out.println("STATISTIC:Number of iterations:" + iterationsCounter);
         System.out.println("STATISTIC:Valid:" + validator.validateGame(game));
 
@@ -598,5 +601,10 @@ public class KarmHidatoGenerator implements GameGenerator {
         coordinates.setCurrentX(currentX);
         coordinates.setCurrentY(currentY);
         return null;
+    }
+
+    private int[] hideSomeValues(int[] values) {
+        //TODO: Hide some values according to the difficulty
+        return values;
     }
 }

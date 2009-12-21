@@ -22,7 +22,7 @@ import javax.swing.border.LineBorder;
  */
 public class HidatoGUIManager extends GUIManager {
 
-    private HidatoGame hidatoGame = null;
+    //private HidatoGame hidatoGame = null;
     private HidatoGUIManager hidatoGUIManager = null;
     private HidatoGUI hidatoGUI = null;
 
@@ -59,9 +59,9 @@ public class HidatoGUIManager extends GUIManager {
     @Override
     public Game getNewGame(Constraint constraint) {
         //showGameWizard();
-        hidatoGame = (HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint);
+        setGame((HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint));
         initializeCells();
-        return hidatoGame;
+        return getGame();
     }
 
     @Override
@@ -73,8 +73,8 @@ public class HidatoGUIManager extends GUIManager {
         ((HidatoGUI) getGui()).getGameBoard().setVisible(true);
 
 
-        int height = hidatoGame.getGameMatrix().getHeight();
-        int width = hidatoGame.getGameMatrix().getWidth();
+        int height = getGame().getGameMatrix().getHeight();
+        int width = getGame().getGameMatrix().getWidth();
         Cell matrixCell = null;
 
         /**
@@ -95,7 +95,7 @@ public class HidatoGUIManager extends GUIManager {
                 /**
                  * Retrieve the cell from the matrix.
                  */
-                matrixCell = hidatoGame.getGameMatrix().getCell(new Coordinates(x, y));
+                matrixCell = getGame().getGameMatrix().getCell(new Coordinates(x, y));
 
                 /**
                  * JTextField customization
