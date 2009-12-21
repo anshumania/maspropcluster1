@@ -68,12 +68,26 @@ public class Coordinates {
         return (diffX >= -1) && (diffX <= 1) && (diffY >= -1) && (diffY <= 1);
     }
 
+    /**
+     * Checks if cells defined with coordintes are consecutive
+     * through 2 cells.
+     *
+     * @param coordinates coordinates
+     * @return true if is consecutive
+     */
     public boolean isConsecutive2(Coordinates coordinates) {
         int diffX = this.getX() - coordinates.getX();
         int diffY = this.getY() - coordinates.getY();
         return (diffX >= -2) && (diffX <= 2) && (diffY >= -2) && (diffY <= 2);
     }
 
+    /**
+     * Checks if cells defined with coordintes are consecutive
+     * through 3 cells.
+     *
+     * @param coordinates coordinates
+     * @return true if is consecutive
+     */
     public boolean isConsecutive3(Coordinates coordinates) {
         int diffX = this.getX() - coordinates.getX();
         int diffY = this.getY() - coordinates.getY();

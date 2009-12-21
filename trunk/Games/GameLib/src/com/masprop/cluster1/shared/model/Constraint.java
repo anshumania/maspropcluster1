@@ -95,10 +95,12 @@ public class Constraint {
         }
         Constraint constraint = (Constraint) object;
         return (this.getGameLevelType() == null
-                ? constraint.getGameLevelType() == null
-                : this.getGameLevelType().equals(constraint.getGameLevelType())) && (this.getGameVariant() == null
-                ? constraint.getGameVariant() == null
-                : this.getGameVariant().equals(constraint.getGameVariant())) && this.getNoOfFilledCells() == constraint.getNoOfFilledCells();
+                    ? constraint.getGameLevelType() == null
+                    : this.getGameLevelType().equals(constraint.getGameLevelType()))
+                && (this.getGameVariant() == null
+                    ? constraint.getGameVariant() == null
+                    : this.getGameVariant().equals(constraint.getGameVariant()))
+                && this.getNoOfFilledCells() == constraint.getNoOfFilledCells();
     }
 
     @Override
@@ -117,6 +119,7 @@ public class Constraint {
 
     @Override
     public String toString() {
-        return "GameLevelType=" + getGameLevelType() + ",GameVariant=" + getGameVariant() + ",FilledCells=" + getNoOfFilledCells();
+        return "GameLevelType=" + getGameLevelType() + ",GameVariant="
+                + getGameVariant() + ",FilledCells=" + getNoOfFilledCells();
     }
 }
