@@ -15,15 +15,25 @@ import com.masprop.cluster1.shared.model.GameType;
 import com.masprop.cluster1.sudoku.controller.SudokuAlgorithm;
 import com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuRandomizer;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SudokuRandomizerTest.
+ * 
  * @author ANSHUMAN
- *
  */
 public class SudokuRandomizerTest {
 	
+	/** The sdka. */
 	SudokuAlgorithm sdka =  null; // the algorithm to user
+	
+	/** The N. */
 	int N; //the dimension to use
 	
+	/**
+	 * Sets the up.
+	 * 
+	 * @throws Exception the exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		
@@ -31,6 +41,11 @@ public class SudokuRandomizerTest {
 
 	}
 
+	/**
+	 * Tear down.
+	 * 
+	 * @throws Exception the exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 		
@@ -38,7 +53,6 @@ public class SudokuRandomizerTest {
 	}
 
 	/**
-	 * 
 	 * A test to create a truly random random sudoku
 	 * test for 9x9
 	 * Test method for {@link com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuRandomizer#createSudoku(int)}.
@@ -74,7 +88,6 @@ public class SudokuRandomizerTest {
 	}
 
 	/**
-	 * 
 	 * A test for the generating a randomly filled valid
 	 * partial sudoku for the user.
 	 * Test method for {@link com.masprop.cluster1.sudoku.controller.dancingLinks.SudokuRandomizer#createRandomPartialSudoku(int)}.
