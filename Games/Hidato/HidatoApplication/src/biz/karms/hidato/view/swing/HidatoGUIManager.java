@@ -67,7 +67,12 @@ public class HidatoGUIManager extends GUIManager {
     @Override
     public void initializeCells() {
         super.initializeCells();
-((HidatoGUI) getGui()).getGameBoard().removeAll();
+        ((HidatoGUI) getGui()).getGameBoard().removeAll();
+        ((HidatoGUI) getGui()).getGameBoard().setVisible(false);
+        ((HidatoGUI) getGui()).getGameBoard().validate();
+        ((HidatoGUI) getGui()).getGameBoard().setVisible(true);
+
+
         int height = hidatoGame.getGameMatrix().getHeight();
         int width = hidatoGame.getGameMatrix().getWidth();
         Cell matrixCell = null;
@@ -169,7 +174,6 @@ public class HidatoGUIManager extends GUIManager {
     }
 
     private void showGameWizard() {
- 
     }
 
     private void closeGameWizard() {
