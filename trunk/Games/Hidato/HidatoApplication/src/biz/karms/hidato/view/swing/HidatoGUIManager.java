@@ -2,22 +2,15 @@ package biz.karms.hidato.view.swing;
 
 import biz.karms.hidato.app.controller.impl.HidatoGameManager;
 import biz.karms.hidato.app.game.impl.HidatoGame;
-import biz.karms.hidato.app.util.impl.GameVariantImpl;
-import biz.karms.hidato.app.util.impl.HidatoConstraint;
 import com.masprop.cluster1.shared.model.Cell;
 import com.masprop.cluster1.shared.model.Constraint;
 import com.masprop.cluster1.shared.model.Coordinates;
 import com.masprop.cluster1.shared.model.Game;
-import com.masprop.cluster1.shared.model.GameLevelType;
-import com.masprop.cluster1.shared.model.GameType;
-import com.masprop.cluster1.shared.model.GameVariant;
 import com.masprop.cluster1.shared.view.GUIManager;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.io.File;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -91,6 +84,21 @@ public class HidatoGUIManager extends GUIManager {
         ((GridLayout) ((HidatoGUI) getGui()).getGameBoard().getLayout()).setColumns(width);
         ((GridLayout) ((HidatoGUI) getGui()).getGameBoard().getLayout()).setRows(height);
 
+
+        /**
+         * Find the maximum value
+         */
+        int maximumValue = 0;
+        int currentValue = 0;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                currentValue = getGame().getGameMatrix().getCell(new Coordinates(x, y)).getCurrentValue();
+                if (currentValue > maximumValue) {
+                    maximumValue = currentValue;
+                }
+            }
+        }
+        setMaximalAllowedCellValue(maximumValue);
         /**
          * Iterate through all the rows and columns of the game matrix.
          */
@@ -106,9 +114,20 @@ public class HidatoGUIManager extends GUIManager {
                  * JTextField customization
                  */
                 setCell(new JTextField());
-                getCell().setBackground(new Color(239, 227, 209));
+                if (matrixCell.getCurrentValue() == maximumValue) {
+                                    getCell().setBackground(new Color(244, 174, 174));
+                } else if (matrixCell.getCurrentValue() == 1) {
+                                    getCell().setBackground(new Color(191, 244, 147));
+                } else {
+                                    getCell().setBackground(new Color(239, 227, 209));
+                }
                 getCell().setColumns(2);
-                getCell().setFont(new Font("DejaVu Sans", 1, 31));
+                getCell().setDisabledTextColor(new Color(66, 39, 0));
+                if (maximumValue > 99) {
+                    getCell().setFont(new Font("DejaVu Sans", 1, 9));
+                } else {
+                    getCell().setFont(new Font("DejaVu Sans", 1, 31));
+                }
                 getCell().setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
                 getCell().setMaximumSize(new Dimension(2, 2));
                 getCell().setMinimumSize(new Dimension(2, 2));
@@ -121,9 +140,6 @@ public class HidatoGUIManager extends GUIManager {
                  * Fetch the maximum allowed cell value for the validation purposes
                  */
                 if (matrixCell.getCurrentValue() != 0) {
-                    if (matrixCell.getCurrentValue() > getMaximalAllowedCellValue()) {
-                        setMaximalAllowedCellValue(matrixCell.getCurrentValue());
-                    }
                     /**
                      * Set the cell value
                      */
@@ -179,7 +195,6 @@ public class HidatoGUIManager extends GUIManager {
     }
 
     private void showGameWizard() {
- 
     }
 
     private void closeGameWizard() {
