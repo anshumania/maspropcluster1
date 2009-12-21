@@ -1,0 +1,24 @@
+The common code can be found in the folder SOURCE/GameLib
+
+GUI - Michal Babacek
+GUIManager - Michal Babacek
+
+Algorithm - Anshuman Mehta
+ApplicationController - Anshuman Mehta
+GameManager - Anshuman Mehta
+
+GameType - Andrea Gritti
+GameLevelType - Andrea Gritti
+Matrix - Andrea Gritti
+
+GameGenerator - Matteo De Martino
+GameSolver - Matteo De Martino
+GameValidator - Matteo De Martino
+GameVariant - Matteo De Martino
+
+StatisticsManager - Adrien Daunou
+StorageManager - Adrien Daunou
+
+Game - Matus Pleva
+Cell - Matus Pleva
+Constraint - Matus Pleva
