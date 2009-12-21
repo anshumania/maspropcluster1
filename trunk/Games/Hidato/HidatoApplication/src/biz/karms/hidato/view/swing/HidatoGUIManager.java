@@ -27,22 +27,23 @@ public class HidatoGUIManager extends GUIManager {
     private HidatoGUI hidatoGUI = null;
 
     public HidatoGUIManager(HidatoGameManager hidatoGameManager) {
-       // setGameManager(hidatoGameManager);
+        // setGameManager(hidatoGameManager);
         hidatoGUIManager = this;
         init();
     }
-/*
+    /*
     @Override
     public void saveGame(File file) {
-// System.out.println("Game: "+game.toString());
-        System.out.println("File: "+file.toString());
-        getGameManager().saveGame(getGame(), file);
+    // System.out.println("Game: "+game.toString());
+    System.out.println("File: "+file.toString());
+    getGameManager().saveGame(getGame(), file);
     }*/
-    
+
     @Override
     public void init() {
         java.awt.EventQueue.invokeLater(
                 new Runnable() {
+
                     public void run() {
                         hidatoGUI = new HidatoGUI(hidatoGUIManager);
                         hidatoGUI.setVisible(true);
@@ -57,19 +58,16 @@ public class HidatoGUIManager extends GUIManager {
      */
     @Override
     public Game getNewGame(Constraint constraint) {
-        hidatoGame = (HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(null);
-        showGameWizard();
+        //showGameWizard();
+        hidatoGame = (HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint);
         initializeCells();
-        //((HidatoMatrix) hg.getGameMatrix()).write();
-        //hg = (HidatoGame) hgm.solveGame(hg);
-        //((HidatoMatrix) hg.getGameMatrix()).write();
         return hidatoGame;
     }
 
     @Override
     public void initializeCells() {
         super.initializeCells();
-
+((HidatoGUI) getGui()).getGameBoard().removeAll();
         int height = hidatoGame.getGameMatrix().getHeight();
         int width = hidatoGame.getGameMatrix().getWidth();
         Cell matrixCell = null;
@@ -171,33 +169,20 @@ public class HidatoGUIManager extends GUIManager {
     }
 
     private void showGameWizard() {
-        //((HidatoGUI) getGui()).getWizardOptionsPanel().setSize(200,30);
-        JLabel label1 = new JLabel("Dimension X");
-        label1.setSize(100, 20);
-        ((HidatoGUI) getGui()).getWizardOptionsPanel().add(label1);
-
-        JTextField textField1 = new JTextField("6");
-        textField1.setSize(100, 20);
-        ((HidatoGUI) getGui()).getWizardOptionsPanel().add(textField1);
-        ((HidatoGUI) getGui()).getWizardWindow().setSize(500, 400);
-        ((HidatoGUI) getGui()).getWizardWindow().validate();
-
-        ((HidatoGUI) getGui()).getWizardWindow().setVisible(true);
+ 
     }
 
     private void closeGameWizard() {
         throw new UnsupportedOperationException("Coming soon!");
     }
 
-	@Override
-	public void gameOver() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void gameOver() {
+        // TODO Auto-generated method stub
+    }
 
-	@Override
-	public void getHelp() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void getHelp() {
+        // TODO Auto-generated method stub
+    }
 }

@@ -612,7 +612,7 @@ public class GUI extends javax.swing.JFrame {
 		}
 	}// GEN-LAST:event_fileChooserActionPerformed
 
-	private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_newGameMenuItemActionPerformed
+	protected void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_newGameMenuItemActionPerformed
 		System.out.println("GUIMANAGER:" + guiManager);
 		guiManager.getNewGame(null);
 	}// GEN-LAST:event_newGameMenuItemActionPerformed

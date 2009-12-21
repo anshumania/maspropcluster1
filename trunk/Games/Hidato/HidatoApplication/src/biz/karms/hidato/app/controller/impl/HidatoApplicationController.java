@@ -1,8 +1,8 @@
 package biz.karms.hidato.app.controller.impl;
 
-import biz.karms.hidato.app.util.impl.HidatoGenerator;
 import biz.karms.hidato.app.util.impl.HidatoSolver;
 import biz.karms.hidato.app.util.impl.HidatoValidator;
+import biz.karms.hidato.app.util.impl.KarmHidatoGenerator;
 import biz.karms.hidato.view.swing.HidatoGUIManager;
 import com.masprop.cluster1.shared.controller.ApplicationController;
 import com.masprop.cluster1.shared.controller.StorageManager;
@@ -41,7 +41,7 @@ public class HidatoApplicationController extends ApplicationController {
 
         assert getGameManager() != null;
 
-        getGameManager().setGameGenerator(new HidatoGenerator());
+        getGameManager().setGameGenerator(new KarmHidatoGenerator());
         getGameManager().setGameSolver(new HidatoSolver());
         getGameManager().setGameValidator(new HidatoValidator());
         getGameManager().setStorageManager(new StorageManager());

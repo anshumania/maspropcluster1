@@ -33,8 +33,7 @@ public class HidatoGame extends Game {
      * @param time time spent on playing game
      * @param solutions list of all possible solutions
      */
-    public HidatoGame(Constraint constraint, Matrix gameMatrix, long time,
-            List<Matrix> solutions) {
+    public HidatoGame(Constraint constraint, Matrix gameMatrix, long time, List<Matrix> solutions) {
         super(constraint, gameMatrix, time);
         this.solutions = solutions;
     }
