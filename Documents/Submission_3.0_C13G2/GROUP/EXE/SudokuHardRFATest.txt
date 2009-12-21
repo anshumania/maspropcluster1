@@ -1,0 +1,9 @@
+Test Cases for SudokuHardRFA which generates a random Sudoku
+The desriptions of the tests can be found in the Sudoku\test\ folder in class SudokuHardRFATest
+
+
+1.    Test to get a random extreme sudoku by indexing
+      randomly into the ExtremeSudoku17
+	
+	@Test
+	public void testGetAnExtremeSudoku() {
