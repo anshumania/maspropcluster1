@@ -1,0 +1,2 @@
+We didn't implemented option when user is allowed to input his own game, validate it and solve it. Because of time constraints caused by problems with game generator.
+Another difference due to problems with generator is that generator generate game with several extra non-active cells.
