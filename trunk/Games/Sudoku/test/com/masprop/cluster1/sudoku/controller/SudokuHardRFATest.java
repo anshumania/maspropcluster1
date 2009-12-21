@@ -4,8 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SudokuHardRFATest.
+ */
 public class SudokuHardRFATest {
 
+	/**
+	 * Test to get a random extreme sudoku by indexing
+	 * randomly into the ExtremeSudoku17
+	 */
 	@Test
 	public void testGetAnExtremeSudoku() {
 		
