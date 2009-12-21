@@ -13,3 +13,4 @@ This folder contains:
 
 - The SudokuUserManual.pdf
 - The SudokuRepresentation as a DancingLinks Matrix (for a 4x4) in Excel format : SudokuDLX.xlsx
+- SudokuAndDancingLinks.txt a short introduction to DancingLinks

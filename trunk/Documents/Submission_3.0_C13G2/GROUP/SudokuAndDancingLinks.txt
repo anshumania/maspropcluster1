@@ -1,0 +1,71 @@
+This is a very short introduction to representing Sudoku as a DancingLinks problem
+Kindly refer to SudokuDLX.xlsx for the below details.
+
+This example refers to a 4x4 Sudoku and can be extended to any NxN sudoku
+
+A sudoku Dancing Links matrix is a constraint problem which can be solved by satisfying the following four constraints
+
+1. Each of the N cells has to be filled by one number from 1-N.   NxN
+2. Each of the Rows has to be filled by one number from 1-N.      NxN
+3. Each of the Columns has to be filled by one number from 1-N.   NxN
+4. Each of the zones has to be filled by one number from 1-N.     NxN
+
+Thus there are NxNX4 Columns in the Sudoku Dancing Links Matrix
+
+Rows are the possible positions for each possible number
+ a. possible positions (cells) = NxN
+ b. possible numbers           = N
+
+Hence there are NxNxN rows in the sudoku Dancing Links Matrix
+
+The math involved is this 
+
+To put information 
+------------------------------------------
+i is the value put in
+4 columns group: <r,c> <i,r> <i,c> <i,b>
+1 : r*N+c
+2 : (N*N) + r*N + i 
+3 : (2*N*N) + c*N + i 
+4 : (3*N*N) + b*N + i
+--------------------------------------------------
+Retrieving row informations
+for the rows in solution rows
+i=row%N
+c=(row/N)%N
+r=row/(N*N)
+
+
+
+
+
+-------------------Other Game Details-----------------------
+
+For a 9x9 sudoku 
+
+In Game Generation the above game solver and validator is used to generate valid sudoku games.
+If a difficult game is to be generated then the number of givens placed in the sudoku are 30 and then 4000 random
+generations are created and tested for validity or uniqueness of solution. It has been taken into account that the random
+generations have numbers placed according to Sudoku rules hence bringing down the time drastically.
+After 4000 generations the number of givens is incremented by 1, i.e 31 and then 4000 generations are tried again.
+It goes on till a valid Sudoku is found usually around by givens 34. 
+For Medium Level the iteration for generations is placed at 3000 with givens at 40 and for Easy the givens are 45
+and the number of iterations are 1500.
+
+The Extreme level sudokus with 17 givens take a long time to generate and are pre-generated and randomly loaded.
+-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+Please refer to the SudokuDLX for a view of such a matrix.
+For more details on 
+a. Exact Cover problem  : http://en.wikipedia.org/wiki/Exact_cover
+b. Dancing Links        : http://en.wikipedia.org/wiki/Dancing_links
+c. Dr. Knuths paper     : www-cs-faculty.stanford.edu/~knuth/papers/dancing.ps.gz
+
+
+
