@@ -696,7 +696,7 @@ public class SudokuGUI extends GUI {
             
         }
 
-
+       highScore.setLocationRelativeTo(this);
        highScore.setVisible(true);
     }
 
