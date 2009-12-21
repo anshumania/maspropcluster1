@@ -301,7 +301,7 @@ public class HidatoGUIManager extends GUIManager {
         winnerFrame.validate();
         if (winner) {
             if (getGameManager().getStatisticsManager().isAHighScore(score)) {
-                getGameManager().getStatisticsManager().addHighScore(score, ((HidatoGUI) getGui()).getWinnerText().getText());
+                getGameManager().getStatisticsManager().addHighScore(score, ((HidatoGUI) getGui()).getWinnersName().getText());
                 getStatistics();
             }
         }
