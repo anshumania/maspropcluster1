@@ -44,6 +44,7 @@ public class SudokuApplicationControllerTest {
 	@Test
 	public void testInitalizeComponents() {
 		//Create the ApplicationController
+		System.out.println("----------testInitalizeComponents-----------");
 		ApplicationController sac = ApplicationController.getInstance(GameType.SUDOKU);
 		assertNotNull(sac);
 		//Initialize the components
@@ -65,6 +66,7 @@ public class SudokuApplicationControllerTest {
 		assertNotNull(sac.getGameManager().getStatisticsManager());
 		//StorageManager should not be null
 		assertNotNull(sac.getGameManager().getStorageManager());
+		System.out.println("----------test ended-----------");
 	}
 
 	/**
@@ -73,9 +75,10 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGetSudokuApplicationController() {
+		System.out.println("----------testGetSudokuApplicationController-----------");
 		ApplicationController sac = SudokuApplicationController.getSudokuApplicationController();
 		assertNotNull(sac);
-		
+		System.out.println("----------test ended-----------");
 	}
 	
 	/**
@@ -84,6 +87,7 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGetInstance() {
+		System.out.println("----------testGetInstance-----------");
 		ApplicationController sac = ApplicationController.getInstance(GameType.SUDOKU);
 		assertNotNull(sac);
 		
@@ -91,6 +95,7 @@ public class SudokuApplicationControllerTest {
 		assertNotNull(sac2);
 		
 		assertEquals(sac,sac2);
+		System.out.println("----------test ended-----------");
 	}
 	
 	/**
@@ -98,6 +103,7 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGetAndSetGameManager() {
+		System.out.println("----------testGetAndSetGameManager-----------");
 		//Create the ApplicationController
 		ApplicationController sac = ApplicationController.getUniqueInstance();
 		assertNotNull(sac);
@@ -109,6 +115,7 @@ public class SudokuApplicationControllerTest {
 		sac.setGameManager(new SudokuGameManager());
 		//Test set and get
 		assertNotNull(sac.getGameManager());
+		System.out.println("----------test ended-----------");
 	}
 
 	/**
@@ -116,14 +123,14 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGetAndSetGameToPlay() {
-		
+		System.out.println("----------testGetAndSetGameToPlay-----------");
 		if(ApplicationController.getGameToPlay()!=null)
 			ApplicationController.setGameToPlay(null);
 		
 		//Test Get and Set
 		ApplicationController.setGameToPlay(GameType.SUDOKU);
 		assertNotNull(ApplicationController.getGameToPlay());
-		
+		System.out.println("----------test ended-----------");
 	}
 
 	
@@ -133,6 +140,7 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGetUniqueInstance() {
+		System.out.println("----------testGetUniqueInstance-----------");
 		//	Get the ApplicationController -> This method assumes the Controller has been created
 		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
@@ -142,6 +150,7 @@ public class SudokuApplicationControllerTest {
 		
 		//Test both the instances are the same
 		assertEquals(sac, sac2);
+		System.out.println("----------test ended-----------");
 	}
 	
 	
@@ -151,6 +160,7 @@ public class SudokuApplicationControllerTest {
 	 */
 	@Test
 	public void testGenerateGUI() {
+		System.out.println("----------testGenerateGUI-----------");
 		//	Get the ApplicationController -> This method assumes the Controller has been created
 		
 		ApplicationController sac = ApplicationController.getUniqueInstance();
@@ -163,6 +173,8 @@ public class SudokuApplicationControllerTest {
 		
 		//Test both the instances are the same
 //		assertEquals(sac, sac2);
+		
+		System.out.println("----------test ended-----------");
 	}
 	
 

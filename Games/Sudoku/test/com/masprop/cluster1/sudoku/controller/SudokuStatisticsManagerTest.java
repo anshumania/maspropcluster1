@@ -16,6 +16,8 @@ public class SudokuStatisticsManagerTest {
 
 	@Test
 	public void testGetScoreFor() {
+		System.out.println("--------testGetScoreFor---------");
+
 		
 		try {
 			SudokuStatisticsManager ssm = new SudokuStatisticsManager();
@@ -31,22 +33,24 @@ public class SudokuStatisticsManagerTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("--------test ended---------");
 
 	}
 
 	@Test
 	public void testGetStatistics() {
+		System.out.println("--------testGetStatistics---------");
 		
 		SudokuStatisticsManager ssm = new SudokuStatisticsManager();
 		Properties listOfHighScore  = null; 
 		listOfHighScore = ssm.getStatistics();
 		assertNotNull(listOfHighScore);
-		
+		System.out.println("--------test ended---------");
 	}
 
 	@Test
 	public void testAddHighScore() {
+		System.out.println("--------testAddHighScore---------");
 		
 		SudokuStatisticsManager ssm = new SudokuStatisticsManager();
 			
@@ -69,16 +73,18 @@ public class SudokuStatisticsManagerTest {
             Logger.getLogger(SudokuStatisticsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-		
+        System.out.println("--------test ended---------");
 //		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testIsAHighScore() {
+		System.out.println("--------testIsAHighScore---------");
 		
 		SudokuStatisticsManager ssm = new SudokuStatisticsManager();
 		assertTrue(ssm.isAHighScore(9999999.00));
 		assertFalse(ssm.isAHighScore(-1.0));
+		System.out.println("--------test ended---------");
 		
 	}
 

@@ -11,6 +11,9 @@ public class SudokuGameValidatorTest {
 
 	@Test
 	public void testValidateGame() {
+		
+		 System.out.println("-------testValidateGame--------");
+
 		GameValidator gmv = new SudokuGameValidator();
 		try {
 			boolean validGame = gmv.validateGame(SudokuGame.getSampleSudokuGame());
@@ -20,6 +23,8 @@ public class SudokuGameValidatorTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("-------test ended--------");
+
 	}
 
 }
