@@ -68,7 +68,8 @@ public class HidatoGUI extends GUI {
 
         yDimensionSpinner.setModel(new javax.swing.SpinnerNumberModel(6, 4, 20, 1));
 
-        gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Easy", "Medium", "Difficult" }));
+        gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Easy", "Medium", "Difficult", "Test" }));
+        gameLevelComboBox.setToolTipText("Game level means how many cells are empty for you to fill. Test generates complete game.");
 
         boardShapeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rectangular", "Oval", "Donut" }));
 
@@ -163,7 +164,8 @@ public class HidatoGUI extends GUI {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        int numberOfCellsAlreadyFilled = 0;
+
         GameLevelType gameLevelType = null;
         if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("easy")) {
             gameLevelType = GameLevelType.EASY;
@@ -171,6 +173,9 @@ public class HidatoGUI extends GUI {
                         gameLevelType = GameLevelType.MEDIUM;
         } else if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("difficult")) {
                         gameLevelType = GameLevelType.DIFFICULT;
+        } else if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("test")) {
+                        gameLevelType = GameLevelType.EASY;
+                        numberOfCellsAlreadyFilled = (int)(Integer)xDimensionSpinner.getValue() * (int)(Integer)yDimensionSpinner.getValue();
         } else {
             throw new IllegalArgumentException("Unsupported GameLevel");
         }
@@ -187,7 +192,7 @@ public class HidatoGUI extends GUI {
         Constraint constraint = new HidatoConstraint(
             gameLevelType,
             gameVariant,
-            0,
+            numberOfCellsAlreadyFilled,
             GameType.HIDATO,
             (Integer)xDimensionSpinner.getValue(),
             (Integer)yDimensionSpinner.getValue()
