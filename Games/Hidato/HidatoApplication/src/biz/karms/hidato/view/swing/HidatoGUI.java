@@ -55,6 +55,10 @@ public class HidatoGUI extends GUI {
         boardShapeComboBox = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        statPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        statPanelContainer = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
 
         jLabel1.setText("X dimension");
 
@@ -161,6 +165,29 @@ public class HidatoGUI extends GUI {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
+        statPanelContainer.setLayout(new java.awt.GridLayout(1, 2));
+        jScrollPane1.setViewportView(statPanelContainer);
+
+        jButton3.setText("Dismiss");
+
+        javax.swing.GroupLayout statPanelLayout = new javax.swing.GroupLayout(statPanel);
+        statPanel.setLayout(statPanelLayout);
+        statPanelLayout.setHorizontalGroup(
+            statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, statPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3))
+        );
+        statPanelLayout.setVerticalGroup(
+            statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,16 +217,16 @@ public class HidatoGUI extends GUI {
         if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("easy")) {
             gameLevelType = GameLevelType.EASY;
         } else if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("medium")) {
-                        gameLevelType = GameLevelType.MEDIUM;
+            gameLevelType = GameLevelType.MEDIUM;
         } else if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("difficult")) {
-                        gameLevelType = GameLevelType.DIFFICULT;
+            gameLevelType = GameLevelType.DIFFICULT;
         } else if (gameLevelComboBox.getSelectedItem().toString().equalsIgnoreCase("test")) {
-                        gameLevelType = GameLevelType.EASY;
-                        numberOfCellsAlreadyFilled = (int)(Integer)xDimensionSpinner.getValue() * (int)(Integer)yDimensionSpinner.getValue();
+            gameLevelType = GameLevelType.EASY;
+            numberOfCellsAlreadyFilled = (int) (Integer) xDimensionSpinner.getValue() * (int) (Integer) yDimensionSpinner.getValue();
         } else {
             throw new IllegalArgumentException("Unsupported GameLevel");
         }
-       GameVariant gameVariant = null;
+        GameVariant gameVariant = null;
         if (boardShapeComboBox.getSelectedItem().toString().equalsIgnoreCase("rectangular")) {
             gameVariant = GameVariantImpl.RECTANGULAR_SHAPE;
         } else if (boardShapeComboBox.getSelectedItem().toString().equalsIgnoreCase("oval")) {
@@ -210,55 +237,55 @@ public class HidatoGUI extends GUI {
             throw new IllegalArgumentException("Unsupported GameLevel");
         }
         Constraint constraint = new HidatoConstraint(
-            gameLevelType,
-            gameVariant,
-            numberOfCellsAlreadyFilled,
-            GameType.HIDATO,
-            (Integer)xDimensionSpinner.getValue(),
-            (Integer)yDimensionSpinner.getValue()
-        );
+                gameLevelType,
+                gameVariant,
+                numberOfCellsAlreadyFilled,
+                GameType.HIDATO,
+                (Integer) xDimensionSpinner.getValue(),
+                (Integer) yDimensionSpinner.getValue());
         getGuiManager().getNewGame(constraint);
         wizFrame.setVisible(false);
         this.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void xDimensionSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xDimensionSpinnerMouseClicked
-
     }//GEN-LAST:event_xDimensionSpinnerMouseClicked
 
     private void yDimensionSpinnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yDimensionSpinnerMouseClicked
-
     }//GEN-LAST:event_yDimensionSpinnerMouseClicked
 
     private void xDimensionSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_xDimensionSpinnerStateChanged
-                if((Integer)xDimensionSpinner.getValue() > (Integer)yDimensionSpinner.getValue()+4) {
+        if ((Integer) xDimensionSpinner.getValue() > (Integer) yDimensionSpinner.getValue() + 4) {
 
-            yDimensionSpinner.setValue(new Integer((Integer)yDimensionSpinner.getValue()+1));
+            yDimensionSpinner.setValue(new Integer((Integer) yDimensionSpinner.getValue() + 1));
         }
-        if((Integer)xDimensionSpinner.getValue()+4 < (Integer)yDimensionSpinner.getValue()) {
-            yDimensionSpinner.setValue(new Integer((Integer)yDimensionSpinner.getValue()-1));
+        if ((Integer) xDimensionSpinner.getValue() + 4 < (Integer) yDimensionSpinner.getValue()) {
+            yDimensionSpinner.setValue(new Integer((Integer) yDimensionSpinner.getValue() - 1));
         }
     }//GEN-LAST:event_xDimensionSpinnerStateChanged
 
     private void yDimensionSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yDimensionSpinnerStateChanged
-                    if((Integer)yDimensionSpinner.getValue() > (Integer)xDimensionSpinner.getValue()+4) {
+        if ((Integer) yDimensionSpinner.getValue() > (Integer) xDimensionSpinner.getValue() + 4) {
 
-            xDimensionSpinner.setValue(new Integer((Integer)xDimensionSpinner.getValue()+1));
+            xDimensionSpinner.setValue(new Integer((Integer) xDimensionSpinner.getValue() + 1));
         }
-        if((Integer)yDimensionSpinner.getValue()+4 < (Integer)xDimensionSpinner.getValue()) {
-            xDimensionSpinner.setValue(new Integer((Integer)xDimensionSpinner.getValue()-1));
+        if ((Integer) yDimensionSpinner.getValue() + 4 < (Integer) xDimensionSpinner.getValue()) {
+            xDimensionSpinner.setValue(new Integer((Integer) xDimensionSpinner.getValue() - 1));
         }
     }//GEN-LAST:event_yDimensionSpinnerStateChanged
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boardShapeComboBox;
     private javax.swing.JComboBox gameLevelComboBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel statPanel;
+    private javax.swing.JPanel statPanelContainer;
     private javax.swing.JPanel wizPanel;
     private javax.swing.JSpinner xDimensionSpinner;
     private javax.swing.JSpinner yDimensionSpinner;
