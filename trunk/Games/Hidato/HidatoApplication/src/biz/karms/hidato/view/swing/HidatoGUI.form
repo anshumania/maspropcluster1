@@ -102,6 +102,10 @@
               <SpinnerModel initial="6" maximum="20" minimum="4" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="xDimensionSpinnerMouseClicked"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="xDimensionSpinnerStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSpinner" name="yDimensionSpinner">
           <Properties>
@@ -109,6 +113,10 @@
               <SpinnerModel initial="6" maximum="20" minimum="4" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="yDimensionSpinnerMouseClicked"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="yDimensionSpinnerStateChanged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="gameLevelComboBox">
           <Properties>

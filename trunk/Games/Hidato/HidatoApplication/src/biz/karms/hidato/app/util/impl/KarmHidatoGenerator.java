@@ -389,7 +389,7 @@ public class KarmHidatoGenerator implements GameGenerator {
         //Refresh seed every n iterations
         randomGeneratorCounter++;
         if (randomGeneratorCounter == 300) {
-            randomGenerator.setSeed(System.currentTimeMillis() / iterationsCounter);
+            randomGenerator.setSeed(System.currentTimeMillis());
             randomGeneratorCounter = 0;
         }
         return randomGenerator.nextInt(max - min + 1) + min;
