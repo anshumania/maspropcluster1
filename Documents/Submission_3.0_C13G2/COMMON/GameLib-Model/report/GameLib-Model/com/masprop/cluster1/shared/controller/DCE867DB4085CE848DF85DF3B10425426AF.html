@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Class</TITLE>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style"></HEAD>
+<BODY BGCOLOR="white">
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+<HR>
+<H2>
+<FONT SIZE="-1">com::masprop::cluster1::shared::controller</FONT>
+<BR>
+Class GameManager</H2>
+<PRE>
+<B>com::masprop::cluster1::shared::controller::GameManager</B>
+</PRE>
+<DL>
+<DT><B>All Known Associations: </B><DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE8166C59ECD22890DB205675F8C65B11C.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEEC8C24D90B9AE1C23036F18B3925C8E5.html" title="association in com::masprop::cluster1::shared::controller">ApplicationController</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEDF619C183B5E725F9182979C1B649CE4.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCECFF1D1D7AE4846B7B0E9DE87D9823841.html" title="association in com::masprop::cluster1::shared::controller">GameGenerator</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE328662893EA66D3D1E46D0F59B5DC123.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE06ABF4D15E0A0460A7CB7A0392872A27.html" title="association in com::masprop::cluster1::shared::controller">GameSolver</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE9C09BF39E24DCA3F41BF6A8D68FC9375.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEE13F0CBF5F64E90E434593D37CB7A68D.html" title="association in com::masprop::cluster1::shared::controller">GameValidator</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCED35555D3F644B6F564C640475DA70ACD.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE81100E39CC8C506DA9D505FF35F66CD2.html" title="association in com::masprop::cluster1::shared::controller">StorageManager</A></DD>
+<DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE28D7C83D2B43B613CE9A2F6C08C99D10.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE11CCF58C7E17B1BBCB13A506B6F259C3.html" title="association in com::masprop::cluster1::shared::controller">StatisticsManager</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public class <B>GameManager</B></DT></DL>
+</PRE>
+
+<P>
+This Interface provides the management operations on a <tt>Game</tt>
+ 
+ <p>All classes which need to manage operations on <tt>Game</tt> 
+ should implement this interface. Ideally there should be one GameManager
+ per instance of a game application. However the decision is left up
+ to the developer.</p>
+ 
+ <p>The interface provides for retrieving the specific Controllers of
+ a game, the <tt>GameGenerator</tt>, the <tt>GameValidator</tt> and
+ the <tt>GameSolver</tt> and delegating the client's requests to them</p>
+  <p>Also this interface provides the handle for the <tt>StorageManager</tt><p>
+ 
+ 
+ @see Game
+ @see GameGenerator
+ @see GameSolver
+ @see GameValidator
+ @see StorageManager
+ @author Anshuman Mehta
+ @version 1.0
+ @since 1.0</P><HR>
+<!-- =========== PROPERTY SUMMARY =========== -->
+<A NAME="property_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Properties</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Alias</B></TD>
+<TD>GameManager</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Visibility</B></TD>
+<TD>public</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Final</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Transient</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Abstract</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Leaf</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION SUMMARY =========== -->
+<A NAME="operation_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Operation Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCECFF1D1D7AE4846B7B0E9DE87D9823841.html">GameGenerator</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGameGenerator">getGameGenerator</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the game generator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE06ABF4D15E0A0460A7CB7A0392872A27.html">GameSolver</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGameSolver">getGameSolver</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the game solver.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEE13F0CBF5F64E90E434593D37CB7A68D.html">GameValidator</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getGameValidator">getGameValidator</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the game validator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE81100E39CC8C506DA9D505FF35F66CD2.html">StorageManager</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getStorageManager">getStorageManager</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the storage manager.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getNewGame">getNewGame</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE7AFEB635A4078ED2BBEB8574BC237577.html">Constraint</A>&nbsp;constraint)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the new game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCEF158341F1E8DB7F665046423AAE5D549.html">boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#validateGame">validateGame</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Validate game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#solveGame">solveGame</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Solve game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#saveGame">saveGame</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game,&nbsp;<A HREF="../../../../../../GameLib-Model/java/io/DCE9165FE281FC00C8F5ED6DFA27DDA32B2.html">File</A>&nbsp;file)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Save game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#loadGame">loadGame</A></B>(<A HREF="../../../../../../GameLib-Model/java/io/DCE9165FE281FC00C8F5ED6DFA27DDA32B2.html">File</A>&nbsp;file)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Load game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/java/util/DCE5F9A34A7A7CB7BAE8D67AB6828CBC589.html">Properties</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getStatistics">getStatistics</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets the statistics.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGameGenerator">setGameGenerator</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCECFF1D1D7AE4846B7B0E9DE87D9823841.html">GameGenerator</A>&nbsp;gameGenerator)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGameSolver">setGameSolver</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE06ABF4D15E0A0460A7CB7A0392872A27.html">GameSolver</A>&nbsp;gameSolver)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setGameValidator">setGameValidator</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEE13F0CBF5F64E90E434593D37CB7A68D.html">GameValidator</A>&nbsp;gameValidator)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setStorageManager">setStorageManager</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE81100E39CC8C506DA9D505FF35F66CD2.html">StorageManager</A>&nbsp;storageManager)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setStatisticsManager">setStatisticsManager</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE11CCF58C7E17B1BBCB13A506B6F259C3.html">StatisticsManager</A>&nbsp;statisticsManager)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE11CCF58C7E17B1BBCB13A506B6F259C3.html">StatisticsManager</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getStatisticsManager">getStatisticsManager</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION DETAIL =========== -->
+
+<A NAME="operationr_detail"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Operation Detail</B></FONT></TH>
+</TR>
+</TABLE>
+<A NAME="getGameGenerator"></A><H3>getGameGenerator</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCECFF1D1D7AE4846B7B0E9DE87D9823841.html">GameGenerator</A> <B>getGameGenerator</B>()</PRE>
+<DL>
+<DD>     Gets the game generator.
+          @return the game generator
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="getGameSolver"></A><H3>getGameSolver</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE06ABF4D15E0A0460A7CB7A0392872A27.html">GameSolver</A> <B>getGameSolver</B>()</PRE>
+<DL>
+<DD>     Gets the game solver.
+     
+     @return the game solver
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="getGameValidator"></A><H3>getGameValidator</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEE13F0CBF5F64E90E434593D37CB7A68D.html">GameValidator</A> <B>getGameValidator</B>()</PRE>
+<DL>
+<DD>     Gets the game validator.
+     
+     @return the game validator
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="getStorageManager"></A><H3>getStorageManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE81100E39CC8C506DA9D505FF35F66CD2.html">StorageManager</A> <B>getStorageManager</B>()</PRE>
+<DL>
+<DD>     Gets the storage manager.
+          @return the storage manager
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="getNewGame"></A><H3>getNewGame</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A> <B>getNewGame</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCE7AFEB635A4078ED2BBEB8574BC237577.html">Constraint</A>&nbsp;constraint)</PRE>
+<DL>
+<DD>     Gets the new game.
+     
+     @param constraint the constraint
+     
+     @return the new game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="validateGame"></A><H3>validateGame</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCEF158341F1E8DB7F665046423AAE5D549.html">boolean</A> <B>validateGame</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</PRE>
+<DL>
+<DD>     Validate game.
+     
+     @param game the game
+     
+     @return true, if successful
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="solveGame"></A><H3>solveGame</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A> <B>solveGame</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</PRE>
+<DL>
+<DD>     Solve game.
+     
+     @param game the game
+     
+     @return the game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="saveGame"></A><H3>saveGame</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>saveGame</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game,&nbsp;<A HREF="../../../../../../GameLib-Model/java/io/DCE9165FE281FC00C8F5ED6DFA27DDA32B2.html">File</A>&nbsp;file)</PRE>
+<DL>
+<DD>     Save game.
+     
+     @param game the game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="loadGame"></A><H3>loadGame</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A> <B>loadGame</B>(<A HREF="../../../../../../GameLib-Model/java/io/DCE9165FE281FC00C8F5ED6DFA27DDA32B2.html">File</A>&nbsp;file)</PRE>
+<DL>
+<DD>     Load game.
+     
+     @return the game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="getStatistics"></A><H3>getStatistics</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/java/util/DCE5F9A34A7A7CB7BAE8D67AB6828CBC589.html">Properties</A> <B>getStatistics</B>()</PRE>
+<DL>
+<DD>     Gets the statistics.
+     
+     @return the statistics
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGameGenerator"></A><H3>setGameGenerator</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGameGenerator</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCECFF1D1D7AE4846B7B0E9DE87D9823841.html">GameGenerator</A>&nbsp;gameGenerator)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGameSolver"></A><H3>setGameSolver</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGameSolver</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE06ABF4D15E0A0460A7CB7A0392872A27.html">GameSolver</A>&nbsp;gameSolver)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="setGameValidator"></A><H3>setGameValidator</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setGameValidator</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCEE13F0CBF5F64E90E434593D37CB7A68D.html">GameValidator</A>&nbsp;gameValidator)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="setStorageManager"></A><H3>setStorageManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setStorageManager</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE81100E39CC8C506DA9D505FF35F66CD2.html">StorageManager</A>&nbsp;storageManager)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="setStatisticsManager"></A><H3>setStatisticsManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setStatisticsManager</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE11CCF58C7E17B1BBCB13A506B6F259C3.html">StatisticsManager</A>&nbsp;statisticsManager)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+<HR>
+<A NAME="getStatisticsManager"></A><H3>getStatisticsManager</H3>
+<PRE>
+public <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE11CCF58C7E17B1BBCB13A506B6F259C3.html">StatisticsManager</A> <B>getStatisticsManager</B>()</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+
+<HR>
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+</BODY>
+</HTML>

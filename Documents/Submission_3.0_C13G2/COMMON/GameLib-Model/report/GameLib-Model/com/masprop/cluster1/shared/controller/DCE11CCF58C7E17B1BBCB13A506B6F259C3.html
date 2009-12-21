@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Interface</TITLE>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style"></HEAD>
+<BODY BGCOLOR="white">
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+<HR>
+<H2>
+<FONT SIZE="-1">com::masprop::cluster1::shared::controller</FONT>
+<BR>
+Interface StatisticsManager</H2>
+<PRE>
+<B>com::masprop::cluster1::shared::controller::StatisticsManager</B>
+</PRE>
+<DL>
+<DT><B>All Known Associations: </B><DD><IMG SRC="../../../../../../images/navigable-aggregation.png" ALT="(Navigable_Aggregation) "> <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE28D7C83D2B43B613CE9A2F6C08C99D10.html">Navigable_Aggregation</A>: <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/controller/DCE867DB4085CE848DF85DF3B10425426AF.html" title="association in com::masprop::cluster1::shared::controller">GameManager</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public interface <B>StatisticsManager</B></DT></DL>
+</PRE>
+
+<P>
+This interface handles Statistics management
+ It permits to get and set a score to a specific game
+ and to return a top10 list of scores
+  @author Adrien Daunou</P><HR>
+<!-- =========== PROPERTY SUMMARY =========== -->
+<A NAME="property_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Properties</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Alias</B></TD>
+<TD>StatisticsManager</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Visibility</B></TD>
+<TD>public</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Final</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Transient</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Abstract</B></TD>
+<TD><IMG src="../../../../../../images/checked.png" border=n></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B>Leaf</B></TD>
+<TD><IMG src="../../../../../../images/unchecked.png" border=n></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION SUMMARY =========== -->
+<A NAME="operation_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Operation Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE7C4999156D0597974BF195533FC63433.html">double</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getScoreFor">getScoreFor</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Gets score for a specific game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#setScoreFor">setScoreFor</A></B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Sets score for a specific game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>[0..*]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="#loadGame">loadGame</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Load game
+     @return
+     </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#addHighScore">addHighScore</A></B>(<A HREF="../../../../../../GameLib-Model/DCE8813F9AADB9799B6F0FAB96634AFFF46.html">Double</A>&nbsp;score,&nbsp;<A HREF="../../../../../../GameLib-Model/DCEDA4DFA4E00EFA7F9C0B0208458F2F988.html">String</A>&nbsp;name)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Save game.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/java/util/DCE5F9A34A7A7CB7BAE8D67AB6828CBC589.html">Properties</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#getStatistics">getStatistics</A></B>()</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Get statistics
+     @return top 10 of games scores
+     </TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE><A HREF="../../../../../../GameLib-Model/DCEF158341F1E8DB7F665046423AAE5D549.html">boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="#isAHighScore">isAHighScore</A></B>(<A HREF="../../../../../../GameLib-Model/DCE7C4999156D0597974BF195533FC63433.html">double</A>&nbsp;score)</CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== STEREOTYPE SUMMARY =========== -->
+
+<A NAME="stereotype_summary"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Stereotype Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="left" VALIGN="top" WIDTH="15%">
+interface
+</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- =========== OPERATION DETAIL =========== -->
+
+<A NAME="operationr_detail"></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Operation Detail</B></FONT></TH>
+</TR>
+</TABLE>
+<A NAME="getScoreFor"></A><H3>getScoreFor</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/DCE7C4999156D0597974BF195533FC63433.html">double</A> <B>getScoreFor</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</PRE>
+<DL>
+<DD>     Gets score for a specific game.
+          @param game the game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="setScoreFor"></A><H3>setScoreFor</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>setScoreFor</B>(<A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>&nbsp;game)</PRE>
+<DL>
+<DD>     Sets score for a specific game.
+          @param game the game
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="loadGame"></A><H3>loadGame</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/com/masprop/cluster1/shared/model/DCEE18B7C900E4A060968D26B091CDA0781.html">Game</A>[0..*] <B>loadGame</B>()</PRE>
+<DL>
+<DD>     Load game
+     @return
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="addHighScore"></A><H3>addHighScore</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/DCE5F1257799AD7F320CE049A15CCF384B8.html">void</A> <B>addHighScore</B>(<A HREF="../../../../../../GameLib-Model/DCE8813F9AADB9799B6F0FAB96634AFFF46.html">Double</A>&nbsp;score,&nbsp;<A HREF="../../../../../../GameLib-Model/DCEDA4DFA4E00EFA7F9C0B0208458F2F988.html">String</A>&nbsp;name)</PRE>
+<DL>
+<DD>     Save game.
+          @param game the game
+          
+<P>
+</DD></DL>
+<HR>
+<A NAME="getStatistics"></A><H3>getStatistics</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/java/util/DCE5F9A34A7A7CB7BAE8D67AB6828CBC589.html">Properties</A> <B>getStatistics</B>()</PRE>
+<DL>
+<DD>     Get statistics
+     @return top 10 of games scores
+     
+<P>
+</DD></DL>
+<HR>
+<A NAME="isAHighScore"></A><H3>isAHighScore</H3>
+<PRE>
+public abstract <A HREF="../../../../../../GameLib-Model/DCEF158341F1E8DB7F665046423AAE5D549.html">boolean</A> <B>isAHighScore</B>(<A HREF="../../../../../../GameLib-Model/DCE7C4999156D0597974BF195533FC63433.html">double</A>&nbsp;score)</PRE>
+<DL>
+<DD>
+<P>
+</DD></DL>
+
+<HR>
+<!-- ========= START OF NAVBAR ======= -->
+<A NAME="navbar_top"></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1"> &nbsp;<A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Package</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1Rev">    <FONT CLASS="NavBarFont1Rev"><B>Element</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Diagram</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+<b>NetBeans UML Modeling</b>
+</TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF NAVBAR ========= -->
+
+</BODY>
+</HTML>
