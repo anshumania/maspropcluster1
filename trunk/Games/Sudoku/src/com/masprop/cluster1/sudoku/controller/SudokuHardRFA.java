@@ -2,6 +2,7 @@ package com.masprop.cluster1.sudoku.controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.RandomAccessFile;
 
 
@@ -11,8 +12,8 @@ public class SudokuHardRFA {
 
 	
 	//TODO : CHANGE !!!
-	public static String FILE_NAME;
-	public static String RESOURCE_LOCATION="resources/ExtremeSudokus17.sdk";
+//	public static String FILE_NAME;
+	public static String RESOURCE_LOCATION="/com/masprop/cluster1/sudoku/controller/resources/ExtremeSudokus17.sdk";
 	
 	public static int FILE_SIZE= 48825;
 	
@@ -23,7 +24,7 @@ public class SudokuHardRFA {
 	//load at fileresource at startup
 	static
 	{
-		SudokuHardRFA.FILE_NAME = SudokuHardRFA.class.getResource(RESOURCE_LOCATION).getFile();
+//		SudokuHardRFA.FILE_NAME = SudokuHardRFA.class.getResource(RESOURCE_LOCATION).getFile();
 	}
 	
 	private static int[][]convertToSudokuNinePuzzle(String sudoku)
@@ -68,12 +69,16 @@ public class SudokuHardRFA {
 		
 				String sudoku = null;
 		        
-		        RandomAccessFile randomAccessFile = null;
+		      //  RandomAccessFile randomAccessFile = null;
+				InputStream ios = null; 
 		        try {
 		            
-		           	
+		        	ios = SudokuHardRFA.class.getResourceAsStream(RESOURCE_LOCATION);
+		        	
 		            //Create RandomAccessFile instance with read / write permissions
-		            randomAccessFile = new RandomAccessFile(FILE_NAME, "r");
+		        	
+		        	//ios
+		           // randomAccessFile = new RandomAccessFile(FILE_NAME, "r");
 		            
 //		            System.out.println(randomAccessFile.getFilePointer());
 		            //Fetch a random index into the file consisting of FILE_SIZE records 
@@ -84,13 +89,20 @@ public class SudokuHardRFA {
 		            int fp=index*(LINE_LENGTH+OFFSET_FOR_EOF);
 //		            System.out.println("increasing to end of current sudoku" + index);
 		            //Place the file pointer at required record
-		            randomAccessFile.seek(fp);
+		            
+		            //ios
+		            //randomAccessFile.seek(fp);
+		            ios.skip(fp);
 		            
 		            //Declare a buffer with the same length as the record
 		            byte[] buffer = new byte[LINE_LENGTH+OFFSET_FOR_EOF];
 		            
+		            
+		            ios.read(buffer);
+		            
+		            //ios
 		            //Read the record from the file
-		            randomAccessFile.read(buffer);
+		           // randomAccessFile.read(buffer);
 		            
 //		            System.out.println("length of buffer" + buffer.length);
 		            //Print out the buffer contents
@@ -104,8 +116,10 @@ public class SudokuHardRFA {
 		        } finally {
 		            try {
 		          
-		                if (randomAccessFile != null)
-		                    randomAccessFile.close();
+		                /*if (randomAccessFile != null)
+		                    randomAccessFile.close();*/
+		            	if(ios!=null)
+		            		ios.close();
 		            
 		                
 		            } catch (IOException ex) {

@@ -705,7 +705,7 @@ public class SudokuGUI extends GUI {
         try {
 //            URL url = SudokuGUI.class.getResource("resources/help.html");
 //        	helpEditorPane.setContentType("text/html");
-            InputStream helpIns = new FileInputStream(SudokuGUI.class.getResource("resources/help.html").getFile());
+            InputStream helpIns = getClass().getResourceAsStream("resources/help.html");
 //            InputStream helpIns = new FileInputStream();
             
        
