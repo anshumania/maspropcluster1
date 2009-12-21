@@ -1,7 +1,5 @@
 package com.masprop.cluster1.shared.model;
 
-import com.masprop.cluster1.shared.controller.ApplicationController;
-
 /**
  * Class handles game parameters such as difficulty level,
  * number of cells already filled and game variant.
@@ -10,7 +8,7 @@ import com.masprop.cluster1.shared.controller.ApplicationController;
  */
 public class Constraint {
 
-     /**
+    /**
      * Game difficulty level.
      */
     private GameLevelType gameLevelType;
@@ -35,7 +33,6 @@ public class Constraint {
         this.gameLevelType = gameLevelType;
         this.gameVariant = gameVariant;
         this.noOfFilledCells = noOfFilledCells;
-//        this.gameType = ApplicationController.getGameToPlay();
     }
 
     /**
@@ -88,8 +85,6 @@ public class Constraint {
         this.noOfFilledCells = noOfFilledCells;
     }
 
-
-
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -101,29 +96,27 @@ public class Constraint {
         Constraint constraint = (Constraint) object;
         return (this.getGameLevelType() == null
                 ? constraint.getGameLevelType() == null
-                : this.getGameLevelType().equals(constraint.getGameLevelType()))
-                    && (this.getGameVariant() == null
+                : this.getGameLevelType().equals(constraint.getGameLevelType())) && (this.getGameVariant() == null
                 ? constraint.getGameVariant() == null
-                : this.getGameVariant().equals(constraint.getGameVariant()))
-                    && this.getNoOfFilledCells() == constraint.getNoOfFilledCells();
+                : this.getGameVariant().equals(constraint.getGameVariant())) && this.getNoOfFilledCells() == constraint.getNoOfFilledCells();
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-    
+
         hash = 31 * hash + (this.getGameLevelType() == null
                 ? 0
                 : this.getGameLevelType().hashCode());
-        hash = 31 * hash + (this.getGameVariant() == null 
+        hash = 31 * hash + (this.getGameVariant() == null
                 ? 0
                 : this.getGameVariant().hashCode());
         hash = 31 * hash + this.getNoOfFilledCells();
         return hash;
     }
-    
-    public String toString()
-    {
-    	return "GameLevelType="+getGameLevelType()+",GameVariant="+getGameVariant()+",FilledCells="+getNoOfFilledCells();
+
+    @Override
+    public String toString() {
+        return "GameLevelType=" + getGameLevelType() + ",GameVariant=" + getGameVariant() + ",FilledCells=" + getNoOfFilledCells();
     }
 }
