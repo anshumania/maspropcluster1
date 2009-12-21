@@ -91,7 +91,7 @@ public class HidatoGUI extends GUI {
         gameLevelComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Test", "Easy", "Medium", "Difficult" }));
         gameLevelComboBox.setToolTipText("Game level means how many cells are empty for you to fill. Test generates complete game.");
 
-        boardShapeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rectangular", "Oval", "Donut" }));
+        boardShapeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rectangular" }));
 
         jButton1.setText("Dismiss");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

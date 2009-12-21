@@ -134,10 +134,8 @@
         <Component class="javax.swing.JComboBox" name="boardShapeComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="1">
                 <StringItem index="0" value="Rectangular"/>
-                <StringItem index="1" value="Oval"/>
-                <StringItem index="2" value="Donut"/>
               </StringArray>
             </Property>
           </Properties>
