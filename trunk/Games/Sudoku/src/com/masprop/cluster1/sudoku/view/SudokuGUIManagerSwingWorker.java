@@ -660,7 +660,7 @@ public class SudokuGUIManagerSwingWorker extends GUIManager implements Observer 
    {
        Properties score = super.getStatistics();
 
-       score.list(System.out);
+//       score.list(System.out);
 
        getGui().scoresMenuItemActionPerformed(score);
        return score;
