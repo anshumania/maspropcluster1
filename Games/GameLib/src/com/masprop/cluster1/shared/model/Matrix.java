@@ -10,12 +10,16 @@ public class Matrix {
 
     /**
      * Represents game grid.
+     * Made protected so that inheritance works without public accessors.
      */
-	//made protected so that inheritance works without public accessors
     protected Cell[][] matrix = null;
     private int width = 0;
     private int height = 0;
-    //need for inherited classes to instantiate their own constructors
+
+    /**
+     * Empty class constructor.
+     * Need for inherited classes to instantiate their own constructors.
+     */
     public Matrix(){}
 
     /**
