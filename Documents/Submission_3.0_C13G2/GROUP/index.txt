@@ -4,3 +4,12 @@ This folder contains:
 - SOURCE Folder: Source code of the classes implemented so far in GameLib (commoncode) and Sudoku(our 	code)
 - EXE Folder: Executable files to test the implemented classes or functionalities and test sets.
 - SCREENS Folder: Design of all screens.
+- Sudoku-Model : The Netbeans UML project for Sudoku
+- SudokuClassDiagram.png : The class diagram for the complete sudoku Application
+- SudokuControllerClassDiagram.png : The class diagram for the Sudoku Controller -> domain and domain controllers
+- SudokuModelClassDiagram.png : The Class diagram for the Sudoku Model -> disk managers
+- SudokuViewClassDiagram.png :  The Class diagram for the Sudoku view -> views and interface controllers
+
+
+- The SudokuUserManual.pdf
+- The SudokuRepresentation as a DancingLinks Matrix (for a 4x4) in Excel format : SudokuDLX.xlsx
