@@ -277,6 +277,7 @@ public class HidatoGUIManager extends GUIManager {
         statFrame = new JFrame("Scores");
         statFrame.add(((HidatoGUI) getGui()).getStatPanel());
         Properties properties = getGameManager().getStatistics();
+        ((HidatoGUI) getGui()).getStatPanelContainer().removeAll();
         ((GridLayout) ((HidatoGUI) getGui()).getStatPanelContainer().getLayout()).setRows(properties.keySet().size());
 
         for (Object key : properties.keySet()) {
@@ -284,7 +285,7 @@ public class HidatoGUIManager extends GUIManager {
             ((HidatoGUI) getGui()).getStatPanelContainer().add(new JLabel(properties.getProperty((String) key)));
         }
         ((HidatoGUI) getGui()).getStatPanelContainer().validate();
-        statFrame.setBounds(200, 200, 300, 450);
+        statFrame.setBounds(200, 200, 500, 450);
 
         statFrame.setVisible(true);
         statFrame.validate();
