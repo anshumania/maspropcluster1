@@ -23,7 +23,7 @@ public abstract class Game {
     /**
      * Time spent on playing game.
      */
-    private long time;
+    private long time = 0L;
 
     /**
      * Class constructor.
