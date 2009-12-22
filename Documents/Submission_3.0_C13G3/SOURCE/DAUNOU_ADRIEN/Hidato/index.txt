@@ -1,0 +1,4 @@
+Hidato: hidato classes programmed by Adrien Daunou
+
+This folder contains:
+- HidatoStatisticsManager.java

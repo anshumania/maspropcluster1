@@ -1,0 +1,5 @@
+GameLib: shared classes programmed by Michal Babacek
+
+This folder contains:
+- GUI.java
+- GUIManager.java

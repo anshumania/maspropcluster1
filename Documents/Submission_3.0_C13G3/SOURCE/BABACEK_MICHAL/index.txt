@@ -1,0 +1,5 @@
+BABACEK_MICHAL: classes programmed by Michal Babacek
+
+This folder contains:
+- GameLib - shared classes
+- Hidato

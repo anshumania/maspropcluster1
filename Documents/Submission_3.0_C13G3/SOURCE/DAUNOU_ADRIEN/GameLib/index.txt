@@ -1,0 +1,5 @@
+GameLib: shared classes programmed by Adrien Daunou
+
+This folder contains:
+- StatisticsManager.java
+- StorageManager.java

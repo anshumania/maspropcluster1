@@ -1,0 +1,7 @@
+Hidato: hidato classes programmed by Matus Pleva
+
+This folder contains:
+- HidatoGame.java
+- HidatoGameManager.java
+- HidatoSolver.java
+- HidatoValidator.java
