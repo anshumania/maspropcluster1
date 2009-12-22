@@ -9,11 +9,13 @@ import java.util.List;
 import com.masprop.cluster1.shared.controller.StatisticsManager;
 import com.masprop.cluster1.shared.model.Game;
 import com.masprop.cluster1.shared.model.GameLevelType;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Properties;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -23,14 +25,21 @@ import java.util.logging.Logger;
 
 public class HidatoStatisticsManager implements StatisticsManager {
 
-    public static String FILE_NAME;
-    public static String RESOURCE_LOCATION = "ressources/HidatoHighScores.upc";
-    private static SortedProperties highScores;
+    //public static String FILE_NAME;
+    //public static File RESOURCE_LOCATION = new File(System.getProperty("user.dir").toString()+"/HidatoHighScores.properties");
+    private SortedProperties highScores = null;
 
-    static {
-        FILE_NAME = HidatoStatisticsManager.class.getResource(RESOURCE_LOCATION).getFile();
+    public HidatoStatisticsManager() {
         loadHighScores();
     }
+
+    //static {
+        //FILE_NAME = HidatoStatisticsManager.class.getResource(RESOURCE_LOCATION).getFile();
+
+  
+    
+    
+    //}
 
     @Override
     public double getScoreFor(Game game) {
@@ -51,10 +60,10 @@ public class HidatoStatisticsManager implements StatisticsManager {
         return score;
     }
 
-    private static void loadHighScores() {
+    private void loadHighScores() {
         highScores = new SortedProperties();
         try {
-            FileInputStream fs = new FileInputStream(FILE_NAME);
+            FileInputStream fs = new FileInputStream(System.getProperty("user.dir").toString()+"/HidatoHighScores.properties");
             highScores.load(fs);
             fs.close();
         } catch (IOException ie) {
@@ -94,7 +103,7 @@ public class HidatoStatisticsManager implements StatisticsManager {
         highScores.put(String.valueOf(score.intValue()), name);
 
         try {
-            FileOutputStream fos = new FileOutputStream(FILE_NAME);
+            FileOutputStream fos = new FileOutputStream(new File(System.getProperty("user.dir").toString()+"/HidatoHighScores.properties"));
             highScores.store(fos, null);
             fos.close();
         } catch (IOException ex) {
@@ -128,7 +137,6 @@ public class HidatoStatisticsManager implements StatisticsManager {
     }
 
 }
-
 class SortedProperties extends Properties {
 
     @Override
