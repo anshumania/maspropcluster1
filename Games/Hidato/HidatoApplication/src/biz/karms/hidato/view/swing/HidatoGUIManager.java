@@ -64,29 +64,7 @@ public class HidatoGUIManager extends GUIManager {
     public Game getNewGame(Constraint constraint) {
         setGame((HidatoGame) ((HidatoGameManager) getGameManager()).getNewGame(constraint));
         initializeCells();
-        getGui().getStatusText().setForeground(Color.red);
-        getGui().getStatusText().setBackground(Color.black);
-        getGui().getStatusText().setFont(new Font("DejaVu Sans", 1, 18));
-        getGui().getStatusText().validate();
-        getGui().getStatusBar().validate();
-        gameStartedTimestamp = System.currentTimeMillis();
-        gameIsRunning = true;
-        Thread timer = new Thread() {
-
-            @Override
-            public void run() {
-                while (gameIsRunning) {
-                    long diff = System.currentTimeMillis() - gameStartedTimestamp;
-                    getGui().getStatusText().setText((diff / 1000 / 60) + ":" + ((diff / 1000) % 60));
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(HidatoGUIManager.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        };
-        timer.start();
+        
         return getGame();
     }
 
@@ -221,6 +199,32 @@ public class HidatoGUIManager extends GUIManager {
             }
         }
         ((HidatoGUI) getGui()).getGameBoard().validate();
+
+
+        getGui().getStatusText().setForeground(Color.red);
+        getGui().getStatusText().setBackground(Color.black);
+        getGui().getStatusText().setFont(new Font("DejaVu Sans", 1, 18));
+        getGui().getStatusText().validate();
+        getGui().getStatusBar().validate();
+        gameStartedTimestamp = System.currentTimeMillis();
+        gameIsRunning = true;
+        Thread timer = new Thread() {
+
+            @Override
+            public void run() {
+                while (gameIsRunning) {
+                    long diff = System.currentTimeMillis() - gameStartedTimestamp;
+                    getGui().getStatusText().setText((diff / 1000 / 60) + ":" + ((diff / 1000) % 60));
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(HidatoGUIManager.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        timer.start();
+
     }
 
     @Override
