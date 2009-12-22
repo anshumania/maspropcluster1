@@ -1,0 +1,10 @@
+Hidato: hidato classes programmed by Michal Babacek
+
+This folder contains:
+- GameVariantImpl.java
+- HidatoApplicationController.java
+- HidatoConstraint.java
+- HidatoGUI.java
+- HidatoGUIManager.java
+- KarmCoordinates.java
+- KarmHidatoGenerator.java

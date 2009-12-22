@@ -1,0 +1,9 @@
+GameLib: shared classes programmed by Matus Pleva
+
+This folder contains:
+- Cell.java
+- Constraint.java
+- Coordinates.java
+- Direction.java
+- Game.java
+- Matrix.java

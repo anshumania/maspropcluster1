@@ -1,0 +1,5 @@
+PLEVA_MATUS: classes programmed by Matus Pleva
+
+This folder contains:
+- GameLib - shared classes
+- Hidato
