@@ -2,12 +2,3 @@ COMMON: shared classes programmed by the other groups of the cluster
 
 This folder contains:
 - accept.txt - document in which members of the group explicitly accept that the shared classes programmed by the other groups comply with the agreed specifications and work fine.
-- Algorithm.java
-- ApplicationController.java
-- GameGenerator.java
-- GameLevelType.java
-- GameManager.java
-- GameSolver.java
-- GameType.java
-- GameValidator.java
-- GameVariant.java

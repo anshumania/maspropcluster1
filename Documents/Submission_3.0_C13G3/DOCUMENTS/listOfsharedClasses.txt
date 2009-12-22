@@ -24,4 +24,3 @@ Cell - Matus Pleva
 Constraint - Matus Pleva
 Coordinates - Matus Pleva
 Matrix - Matus Pleva
-Direction - Matus Pleva

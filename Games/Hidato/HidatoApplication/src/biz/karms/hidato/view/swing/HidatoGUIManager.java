@@ -224,7 +224,6 @@ public class HidatoGUIManager extends GUIManager {
             }
         };
         timer.start();
-
     }
 
     @Override
