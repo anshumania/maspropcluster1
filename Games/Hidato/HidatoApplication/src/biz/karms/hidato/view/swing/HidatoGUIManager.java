@@ -206,7 +206,11 @@ public class HidatoGUIManager extends GUIManager {
         getGui().getStatusText().setFont(new Font("DejaVu Sans", 1, 18));
         getGui().getStatusText().validate();
         getGui().getStatusBar().validate();
-        gameStartedTimestamp = System.currentTimeMillis();
+        if(getGame().getTime() == 0) {
+            gameStartedTimestamp = System.currentTimeMillis();
+        } else {
+            gameStartedTimestamp = getGame().getTime();
+        }
         gameIsRunning = true;
         Thread timer = new Thread() {
 
@@ -314,6 +318,9 @@ public class HidatoGUIManager extends GUIManager {
 
     @Override
     public void updateGameObject() {
+
+        getGame().setTime(System.currentTimeMillis() - gameStartedTimestamp);
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Coordinates coordinates = new Coordinates(x, y);

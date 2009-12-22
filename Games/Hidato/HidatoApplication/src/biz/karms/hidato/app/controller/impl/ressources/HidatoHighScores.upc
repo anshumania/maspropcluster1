@@ -1,4 +1,4 @@
-#Tue Dec 22 00:25:05 CET 2009
+#Tue Dec 22 01:07:23 CET 2009
 1000000=Google
 99999=Michal
 99997=Matteo
@@ -8,4 +8,4 @@
 10000=Android
 9712=Martian
 3151=Your solution is correct\! Duration\:0\:1, Score\:3151
-1000=Test
+3149=Karm
