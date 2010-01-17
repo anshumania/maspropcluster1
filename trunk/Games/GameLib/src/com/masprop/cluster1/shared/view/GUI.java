@@ -610,6 +610,7 @@ public class GUI extends javax.swing.JFrame {
                                 getGuiManager().initializeCells();
                         }
 		} else if (fileChooser.getDialogType() == JFileChooser.SAVE_DIALOG) {
+                    if (null != fileChooser.getSelectedFile())
 			guiManager.saveGame(fileChooser.getSelectedFile());
 		} else {
 			throw new IllegalArgumentException("illegal fileChooser state");
